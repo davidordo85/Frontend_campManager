@@ -19,10 +19,11 @@ const CampList = ({...props}) => {
     
     const getCamps = async () => {
         const campsList = await getAllCamps();
-        setCamps(campsList)
+        setCamps(campsList.data)
         console.log('--->', campsList.data)
     };
 
+    console.log(camps.map(camp => camp.activities))
 
     const camp = [
         {
