@@ -1,0 +1,45 @@
+.header-nav {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  background-color: black;
+}
+.login {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-right: 40px;
+}
+.logo {
+  width: 130px;
+  height: 70px;
+  margin-left: 15px;
+}
+/* .registerButton {
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 30px;
+  margin-right: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.registerButton:hover {
+  background-color: green;
+}
+.loginButton:hover {
+  background-color: green;
+}
+.loginButton {
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+} */
