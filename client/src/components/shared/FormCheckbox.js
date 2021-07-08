@@ -1,12 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 
+// TODO: cambiar forma de uso
 function FormCheckbox({ className, label, ...props }) {
   return (
     <div
       className={classNames(
         'formCheckbox',
-        { 'formCheckbox--active': false },
+        { 'formCheckbox--checked': false },
         className,
       )}
     >

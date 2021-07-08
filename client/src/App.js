@@ -1,3 +1,5 @@
+import React from 'react';
+
 import CampList from './components/index/CampList';
 import { LoginPage } from './components/auth';
 import bg from './assets/images/bg.jpeg';
@@ -12,9 +14,12 @@ var backgroundStyle = {
 };
 
 function App() {
+  const [isLogged, setIsLogged] = React.useState(false);
+
+  const handleLogin = () => setIsLogged(true);
   return (
     <div className="App" style={backgroundStyle}>
-      <LoginPage />
+      {isLogged ? <CampList /> : <LoginPage onLogin={handleLogin} />}
       {/* <CampList /> */}
     </div>
   );
