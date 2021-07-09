@@ -2,6 +2,8 @@ import React from 'react';
 import { FormLoginField, FormCheckbox } from '../../shared';
 import Button from '../../Button';
 
+import './LoginForm.css';
+
 function LoginForm({ onSubmit }) {
   const [credentials, setCredentials] = React.useState({
     email: '',
@@ -49,7 +51,12 @@ function LoginForm({ onSubmit }) {
         label="RememberPassword"
         className="loginFormCheckbox"
       />
-      <Button type="submit" variant="primary" disabled={!email || !password}>
+      <Button
+        type="submit"
+        variant="primary"
+        className="LoginFormSubmit"
+        disabled={!email || !password}
+      >
         Log in
       </Button>
     </form>

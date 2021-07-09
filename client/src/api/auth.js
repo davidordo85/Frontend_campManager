@@ -1,6 +1,13 @@
-import client from './client';
+import client, { configureClient, resetClient } from './client';
 
 export const login = credentials => {
-  // TODO: modificar para el backend_campManager
-  return client.post('api/auth/login', credentials);
+  return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
+    configureClient({ accessToken });
+  });
+};
+
+export const logout = () => {
+  return Promise.resolve().then(() => {
+    resetClient();
+  });
 };

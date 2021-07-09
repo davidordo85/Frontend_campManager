@@ -17,9 +17,14 @@ function App() {
   const [isLogged, setIsLogged] = React.useState(false);
 
   const handleLogin = () => setIsLogged(true);
+  const handleLogout = () => setIsLogged(false);
   return (
     <div className="App" style={backgroundStyle}>
-      {isLogged ? <CampList /> : <LoginPage onLogin={handleLogin} />}
+      {isLogged ? (
+        <CampList isLogged={isLogged} onLogout={handleLogout} />
+      ) : (
+        <LoginPage onLogin={handleLogin} />
+      )}
       {/* <CampList /> */}
     </div>
   );
