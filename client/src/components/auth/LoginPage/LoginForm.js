@@ -22,6 +22,11 @@ function LoginForm({ onSubmit, isLoading }) {
     });
   };
 
+  const handleCheckbox = event => {
+    const newCredentials = { ...credentials, remember: event.target.checked };
+    setCredentials(newCredentials);
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit(credentials);
@@ -52,7 +57,7 @@ function LoginForm({ onSubmit, isLoading }) {
         label="RememberPassword"
         className="loginFormCheckbox"
         checked={remember}
-        onChange={handleChange}
+        onChange={handleCheckbox}
       />
       <Button
         type="submit"
