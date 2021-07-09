@@ -1,16 +1,28 @@
 import client, { configureClient, resetClient } from './client';
 import storage from '../utils/storage';
 
-export const login = credentials => {
-  return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
-    configureClient({ accessToken });
-    storage.set('auth', accessToken);
-  });
+const authPath = '/api/auth';
+
+export const login = ({ remember, ...credentials }) => {
+  return client
+    .post(`${authPath}/login`, credentials)
+    .then(({ accessToken }) => {
+      configureClient({ accessToken });
+      return accessToken;
+    })
+    .then(accessToken => {
+      if (remember) {
+        storage.set('auth', accessToken);
+      }
+    });
 };
 
 export const logout = () => {
-  return Promise.resolve().then(() => {
-    resetClient();
-    storage.remove('auth');
-  });
+  return Promise.resolve()
+    .then(() => {
+      resetClient();
+    })
+    .then(() => {
+      storage.remove('auth');
+    });
 };

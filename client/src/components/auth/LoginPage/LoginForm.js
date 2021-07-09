@@ -4,10 +4,11 @@ import Button from '../../Button';
 
 import './LoginForm.css';
 
-function LoginForm({ onSubmit }) {
+function LoginForm({ onSubmit, isLoading }) {
   const [credentials, setCredentials] = React.useState({
     email: '',
     password: '',
+    remember: false,
   });
 
   const handleChange = event => {
@@ -26,7 +27,7 @@ function LoginForm({ onSubmit }) {
     onSubmit(credentials);
   };
 
-  const { email, password } = credentials;
+  const { email, password, remember } = credentials;
   return (
     <form className="loginForm" onSubmit={handleSubmit}>
       <FormLoginField
@@ -50,12 +51,15 @@ function LoginForm({ onSubmit }) {
         name="checkbox"
         label="RememberPassword"
         className="loginFormCheckbox"
+        checked={remember}
+        onChange={handleChange}
       />
       <Button
         type="submit"
         variant="primary"
         className="LoginFormSubmit"
-        disabled={!email || !password}
+        // TODO: cambiar el isLoading por el loader
+        disabled={isLoading || !email || !password}
       >
         Log in
       </Button>
