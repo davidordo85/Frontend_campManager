@@ -13,8 +13,8 @@ var backgroundStyle = {
   margin: 0,
 };
 
-function App() {
-  const [isLogged, setIsLogged] = React.useState(false);
+function App({ isInitiallyLogged }) {
+  const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
 
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);

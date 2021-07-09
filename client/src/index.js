@@ -2,4 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import storage from './utils/storage';
+import { configureClient } from './api/client';
+
+const accessToken = storage.get('auth');
+configureClient({ accessToken });
+
+ReactDOM.render(
+  <App isInitiallyLogged={!!accessToken} />,
+  document.getElementById('root'),
+);
