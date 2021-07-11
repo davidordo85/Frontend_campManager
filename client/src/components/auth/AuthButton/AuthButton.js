@@ -1,4 +1,5 @@
 import Button from '../../Button';
+import { Link } from 'react-router-dom';
 import { logout } from '../../../api/auth';
 
 const AuthButton = ({ className, isLogged, onLogout }) => {
@@ -9,13 +10,9 @@ const AuthButton = ({ className, isLogged, onLogout }) => {
   const props = isLogged
     ? { onClick: handleLogoutClick, children: 'Log out' }
     : {
-        // as: Link,
-        //  to: '/login',
+        as: Link,
+        to: '/login',
         children: 'Log in',
-      } && {
-        // as: Link,
-        // to: '/register',
-        children: 'Register',
       };
 
   return <Button className={className} {...props} />;

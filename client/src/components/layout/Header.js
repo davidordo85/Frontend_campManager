@@ -9,7 +9,7 @@ const Header = ({ isLogged, onLogout, ...props }) => {
     <header>
       <div className="header-nav">
         <div className="header-logo">
-          <img className="logo" src={logo}></img>
+          <img className="logo" alt="logo" src={logo}></img>
         </div>
         <nav className="login">
           <AuthButton isLogged={isLogged} onLogout={onLogout} />

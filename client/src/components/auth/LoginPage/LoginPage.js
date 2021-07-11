@@ -13,6 +13,7 @@ function LoginPage({ onLogin }) {
     if (isLogged.current) {
       onLogin();
     }
+    // TODO: arreglar esto con el use effect
   }, [isLogged.current, onLogin]);
 
   const handleSubmit = async credentials => {

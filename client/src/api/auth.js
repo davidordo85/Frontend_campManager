@@ -1,7 +1,7 @@
 import client, { configureClient, resetClient } from './client';
 import storage from '../utils/storage';
 
-const authPath = '/api/auth';
+const authPath = '/api/v1/auth';
 
 export const login = ({ remember, ...credentials }) => {
   return client

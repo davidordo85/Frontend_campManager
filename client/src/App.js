@@ -2,6 +2,7 @@ import React from 'react';
 
 import CampList from './components/index/CampList';
 import { LoginPage } from './components/auth';
+import { Switch, Route, Redirect } from 'react-router';
 import bg from './assets/images/bg.jpeg';
 import './App.css';
 
@@ -20,12 +21,32 @@ function App({ isInitiallyLogged }) {
   const handleLogout = () => setIsLogged(false);
   return (
     <div className="App" style={backgroundStyle}>
-      {isLogged ? (
-        <CampList isLogged={isLogged} onLogout={handleLogout} />
-      ) : (
-        <LoginPage onLogin={handleLogin} />
-      )}
-      {/* <CampList /> */}
+      <Switch>
+        {/*TODO: de las mas precisas a las menos precisas */}
+        <Route path="/login">
+          {() =>
+            isLogged ? <Redirect to="/" /> : <LoginPage onLogin={handleLogin} />
+          }
+        </Route>
+        <Route exact path="/">
+          <CampList isLogged={isLogged} onLogout={handleLogout}></CampList>
+        </Route>
+        {/*TODO: hacer pagina 404 */}
+        <Route path="/404">
+          <div
+            style={{
+              textAlign: 'center',
+              fontSize: 48,
+              fontWeight: 'bold',
+            }}
+          >
+            404 | Not found page
+          </div>
+        </Route>
+        <Route>
+          <Redirect to="/404"></Redirect>
+        </Route>
+      </Switch>
     </div>
   );
 }
