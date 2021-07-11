@@ -1,10 +1,10 @@
 import React from 'react';
-import './campList.css';
 import EmptyList from './EmptyList';
 import Layout from '../layout/layout';
-import { getAllCamps } from '../../api/camps';
+import { filteredCamp, getAllCamps } from '../../api/camps';
 import Loader from '../Loader/Loader';
 import Target from './Target';
+import FilterCamps from '../filter.js/Filter';
 
 const CampList = ({ ...props }) => {
   const [camps, setCamps] = React.useState([]);
@@ -16,40 +16,54 @@ const CampList = ({ ...props }) => {
   }, []);
 
   const getCamps = async () => {
-    const campsList = await getAllCamps();
-    setCamps(campsList.data);
-    console.log('--->', campsList.data);
+    try {
+      setLoading(true);
+      const campsList = await getAllCamps();
+      setCamps(campsList.data);
+    } catch {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  console.log(camps.map(camp => camp.activities));
-
-  const camp = [
-    {
-      name: 'Campamento Valencia',
-      location: 'Valencia, España',
-      descriptionshort:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry´s standard dummy text ever since the 1500s,',
-      places: 3,
-      maxPlaces: 20,
-      tags: 'playa',
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry´s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
-    },
-  ];
+  const handleFilterSubmit = async filterCamp => {
+    try {
+      setLoading(true);
+      const filteredCampList = await filteredCamp(filterCamp);
+      setCamps(filteredCampList.data);
+      setError(null);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <Layout {...props}>
+    <Layout>
+      <FilterCamps onSubmit={handleFilterSubmit} />
       <div>
-        {camp.map(camp => (
-          <Target
-            classNames={camp.tags === 'playa' ? 'container' : 'container1'}
-            tittle={camp.name}
-            location={camp.location}
-            places={camp.places}
-            occupiedPlaces={camp.maxPlaces}
-            description={camp.description}
+        <Loader hidden={!loading} />
+        {camps.length > 0 ? (
+          console.log(camps) ||
+          camps.map(camp => (
+            <Target
+              key={camp.id}
+              tags={camp.tag}
+              tittle={camp.name}
+              location={camp.location}
+              places={camp.capacity}
+              occupiedPlaces={camp.inPeople}
+              description={camp.description}
+            />
+          ))
+        ) : (
+          <EmptyList
+            title="Aún no se ha registrado nadie, ¡Se el primero!"
+            description="Tan solo tienes que registrarte y publicar tu campamento. En caso de tener cuenta, accede y publicalo."
           />
-        ))}
+        )}
       </div>
     </Layout>
   );
