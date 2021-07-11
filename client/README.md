@@ -1,1 +1,0 @@
-# CampManager Front-end
