@@ -7,10 +7,9 @@ import './target.css';
 const Target = ({tittle, location, places, description, occupiedPlaces, tag}) => {
 
     const handleBackground = (tag) => {
-       
         if (tag === 'playa') {
             return 'container'
-        } else if (tag === 'montaña') {
+        } else if (tag === 'montana') {
             return 'container1'
         } else {
             return 'container2'

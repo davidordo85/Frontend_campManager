@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import logo from '../../assets/images/logoW.png';
-import Button from '../Button';
+import Button from '../Buttons/Button';
 
 const Header = () => {
     
@@ -14,7 +14,6 @@ const Header = () => {
                 <nav className='login'>
                     <Button>¡Registrate!</Button>
                     <Button>Entrar</Button>
-
                 </nav>
             </div>
         </header>

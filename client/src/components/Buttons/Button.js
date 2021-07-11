@@ -22,6 +22,4 @@ width: 200px;
     
 `;
 
-
-
 export default Button;

@@ -1,10 +1,10 @@
 import React from 'react';
 import EmptyList from './EmptyList';
 import Layout from '../layout/layout';
-import { getAllCamps } from '../../api/camps';
+import { filteredCamp, getAllCamps } from '../../api/camps';
 import Loader from '../Loader/Loader';
 import Target from './Target';
-
+import FilterCamps from '../filter.js/Filter';
 
 const CampList = ({...props}) => {
 
@@ -12,6 +12,7 @@ const CampList = ({...props}) => {
     const [error, setError] = React.useState(null);
     const [loading, setLoading] = React.useState('');
 
+    
     React.useEffect(() => {
         getCamps()
     }, [])
@@ -28,13 +29,31 @@ const CampList = ({...props}) => {
         }
     };
 
+    const handleFilterSubmit = async filterCamp => {
+        try {
+            setLoading(true);
+            const filteredCampList = await filteredCamp(filterCamp);
+            setCamps(filteredCampList.data);
+            setError(null);
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    
+
+
     return (
         <Layout>
+            <FilterCamps onSubmit={handleFilterSubmit} />
             <div>
                  <Loader hidden={!loading}  />
                 {camps.length > 0 ?
+                console.log(camps) ||
                 camps.map(camp =>
                     <Target
+                    key={camp.id}
                     tags={camp.tag}
                     tittle={camp.name}
                     location={camp.location}
