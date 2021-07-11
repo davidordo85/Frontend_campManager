@@ -1,0 +1,8 @@
+.loginFormField,
+.LoginFormCheckbox {
+  padding: 1rem 0;
+}
+
+.LoginFormSubmit {
+  margin-top: 1rem;
+}

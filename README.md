@@ -11,6 +11,7 @@ Copy .env.example to .env and review the config.
 ```sh
 cp .env.example .env
 ```
+
 ### `npm start`
 
 Runs the app in the development mode.\
