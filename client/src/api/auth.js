@@ -6,13 +6,13 @@ const authPath = '/api/v1/auth';
 export const login = ({ remember, ...credentials }) => {
   return client
     .post(`${authPath}/login`, credentials)
-    .then(({ accessToken }) => {
-      configureClient({ accessToken });
-      return accessToken;
+    .then(({ token }) => {
+      configureClient({ token });
+      return token;
     })
-    .then(accessToken => {
+    .then(token => {
       if (remember) {
-        storage.set('auth', accessToken);
+        storage.set('auth', token);
       }
     });
 };
