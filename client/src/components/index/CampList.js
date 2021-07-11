@@ -41,7 +41,7 @@ const CampList = ({ ...props }) => {
   };
 
   return (
-    <Layout>
+    <Layout {...props}>
       <FilterCamps onSubmit={handleFilterSubmit} />
       <div>
         <Loader hidden={!loading} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormLoginField, FormCheckbox } from '../../shared';
-import Button from '../../Button';
+import Button from '../../Buttons/Button';
 
 import './LoginForm.css';
 
