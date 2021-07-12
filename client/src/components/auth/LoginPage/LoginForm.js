@@ -12,7 +12,6 @@ function LoginForm({ onSubmit, isLoading }) {
   });
 
   const handleChange = event => {
-    console.log(credentials);
     setCredentials(oldCredentials => {
       const newCredentials = {
         ...oldCredentials,

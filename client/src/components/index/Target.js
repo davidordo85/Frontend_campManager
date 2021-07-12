@@ -12,7 +12,6 @@ const Target = ({
   tags,
 }) => {
   const handleBackground = tags => {
-    console.log(tags);
     if (tags === 'playa') {
       return 'container';
     } else if (tags === 'montaña') {
