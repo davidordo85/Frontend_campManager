@@ -50,7 +50,7 @@ const CampList = ({ ...props }) => {
           camps.map(camp => (
             <Target
               key={camp.id}
-              tags={camp.tag}
+              tags={camp.tag[0]}
               tittle={camp.name}
               location={camp.location}
               places={camp.capacity}
