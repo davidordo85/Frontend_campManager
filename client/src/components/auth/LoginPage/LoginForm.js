@@ -37,16 +37,16 @@ function LoginForm({ onSubmit, isLoading }) {
       <FormLoginField
         type="email"
         name="email"
-        label="email"
-        className="loginFormField"
+        label="Email"
+        className="loginForm-field"
         value={email}
         onChange={handleChange}
       />
       <FormLoginField
         type="password"
         name="password"
-        label="password"
-        className="loginFormField"
+        label="Password"
+        className="loginForm-field"
         value={password}
         onChange={handleChange}
       />
@@ -54,11 +54,12 @@ function LoginForm({ onSubmit, isLoading }) {
         type="checkbox"
         name="checkbox"
         label="RememberPassword"
-        className="loginFormCheckbox"
+        className="loginForm-checkbox"
         checked={remember}
         onChange={handleCheckbox}
       />
       <Button
+        id="loginButton"
         type="submit"
         variant="primary"
         className="LoginFormSubmit"

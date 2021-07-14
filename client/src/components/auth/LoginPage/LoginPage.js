@@ -1,6 +1,9 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
+import logo from '../../../assets/images/logoW.png';
+
+import './LoginPage.css';
 
 function LoginPage({ onLogin }) {
   const [error, setError] = React.useState(null);
@@ -30,8 +33,19 @@ function LoginPage({ onLogin }) {
   };
   return (
     <div className="loginPage">
+      <header>
+        <div className="header-nav">
+          <div className="header-logo">
+            <img className="logo" alt="logo" src={logo}></img>
+          </div>
+        </div>
+      </header>
       <h1 className="loginPage-title">Log in to CampManager</h1>
-      <LoginForm onSubmit={handleSubmit} isLoading={isLoading} />
+      <LoginForm
+        className="loginPage-form"
+        onSubmit={handleSubmit}
+        isLoading={isLoading}
+      />
       {error && (
         <div onClick={resetError} className="loginPage-error">
           {error.message}

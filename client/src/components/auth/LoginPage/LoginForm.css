@@ -1,8 +1,25 @@
-.loginFormField,
-.LoginFormCheckbox {
-  padding: 1rem 0;
+/* TODO: Primera versión, falta mejorar */
+
+.loginForm-field {
+  margin: 0.65rem;
+  padding: 0.65rem;
 }
 
-.LoginFormSubmit {
-  margin-top: 1rem;
+.loginForm-field span {
+  display: flex;
+  justify-content: center;
+}
+
+.formFieldLogin-input {
+  border: 0;
+  height: 2rem;
+  width: 100%;
+}
+
+.loginForm-checkbox {
+  display: flex;
+  justify-content: center;
+}
+#loginButton {
+  margin-left: 28rem;
 }
