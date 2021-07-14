@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormLoginField, FormCheckbox } from '../../shared';
+import { Link } from 'react-router-dom';
 import Button from '../../Buttons/Button';
 
 import './LoginForm.css';
@@ -58,16 +59,23 @@ function LoginForm({ onSubmit, isLoading }) {
         checked={remember}
         onChange={handleCheckbox}
       />
-      <Button
-        id="loginButton"
-        type="submit"
-        variant="primary"
-        className="LoginFormSubmit"
-        // TODO: cambiar el isLoading por el loader
-        disabled={isLoading || !email || !password}
-      >
-        Log in
-      </Button>
+      <div className="buttonLogin">
+        <Button
+          type="submit"
+          className="LoginFormSubmit"
+          // TODO: cambiar el isLoading por el loader
+          disabled={isLoading || !email || !password}
+        >
+          Log in
+        </Button>
+        <Button
+          as={Link}
+          to={'./recoverPassword'}
+          disabled={isLoading || !email}
+        >
+          Forget Password?
+        </Button>
+      </div>
     </form>
   );
 }

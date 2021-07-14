@@ -20,6 +20,9 @@
   display: flex;
   justify-content: center;
 }
-#loginButton {
-  margin-left: 28rem;
+
+.buttonLogin {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
