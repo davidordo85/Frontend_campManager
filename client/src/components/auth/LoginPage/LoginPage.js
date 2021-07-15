@@ -5,7 +5,7 @@ import logo from '../../../assets/images/logoW.png';
 
 import './LoginPage.css';
 
-function LoginPage({ onLogin }) {
+function LoginPage({ onLogin, history }) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
@@ -15,6 +15,7 @@ function LoginPage({ onLogin }) {
   React.useEffect(() => {
     if (isLogged.current) {
       onLogin();
+      history.push('/');
     }
     // TODO: arreglar esto con el use effect
   }, [isLogged.current, onLogin]);
