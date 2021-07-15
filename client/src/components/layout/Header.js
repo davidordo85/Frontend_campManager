@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logoW.png';
 import Button from '../Buttons/Button';
 import AuthButton from '../auth/AuthButton';
@@ -13,7 +14,11 @@ const Header = ({ isLogged, onLogout, ...props }) => {
         </div>
         <nav className="login">
           <AuthButton isLogged={isLogged} onLogout={onLogout} />
-          {isLogged ? null : <Button>Register</Button>}
+          {isLogged ? null : (
+            <Button as={Link} to="/Register">
+              Register
+            </Button>
+          )}
         </nav>
       </div>
     </header>
