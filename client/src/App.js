@@ -25,9 +25,7 @@ function App({ isInitiallyLogged }) {
     <div className="App" style={backgroundStyle}>
       <Switch>
         {/*TODO: de las mas precisas a las menos precisas */}
-        <Route path="/campDetail/id">
-          <CampDetail />
-        </Route>
+        <Route path="/campDetail/:id" component={CampDetail} />
         <Route path="/login">
           {({ history }) => (
             <LoginPage onLogin={handleLogin} history={history} />
