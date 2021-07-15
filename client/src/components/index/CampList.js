@@ -6,7 +6,7 @@ import Loader from '../Loader/Loader';
 import Target from './Target';
 import FilterCamps from '../filter.js/Filter';
 
-const CampList = ({ ...props }) => {
+const CampList = ({ id, history, ...props }) => {
   const [camps, setCamps] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);

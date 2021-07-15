@@ -21,8 +21,13 @@ const Target = ({
     }
   };
 
+  const handleClick = () => {
+    alert('Construyendo un enlace al detalle...');
+    //history.push(`/campDetail/${id}`);
+  };
+
   return (
-    <div className={handleBackground(tags)}>
+    <div className={handleBackground(tags)} onClick={handleClick}>
       <div className="content-master">
         <div className="content-start">
           <h1 className="camp-title">{tittle}</h1>
