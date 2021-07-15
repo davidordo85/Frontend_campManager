@@ -70,7 +70,7 @@ function LoginForm({ onSubmit, isLoading }) {
         </Button>
         <Button
           as={Link}
-          to={'./recoverPassword'}
+          to={'./forgetPassword'}
           disabled={isLoading || !email}
         >
           Forget Password?

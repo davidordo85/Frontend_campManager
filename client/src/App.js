@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CampList from './components/index/CampList';
-import { LoginPage } from './components/auth';
+import { LoginPage, RegisterPage } from './components/auth';
 import { Switch, Route, Redirect } from 'react-router';
 import bg from './assets/images/bg.jpeg';
 import './App.css';
@@ -27,6 +27,9 @@ function App({ isInitiallyLogged }) {
           {() =>
             isLogged ? <Redirect to="/" /> : <LoginPage onLogin={handleLogin} />
           }
+        </Route>
+        <Route path="/register">
+          <RegisterPage />
         </Route>
         <Route exact path="/">
           <CampList isLogged={isLogged} onLogout={handleLogout}></CampList>
