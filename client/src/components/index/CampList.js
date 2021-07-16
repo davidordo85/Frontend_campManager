@@ -47,9 +47,10 @@ const CampList = ({ id, history, ...props }) => {
         <Loader hidden={!loading} />
         {camps.length > 0 ? (
           console.log(camps) ||
-          camps.map(camp => (
+          camps.map((camp, index) => (
             <Target
-              key={camp.id}
+              key={index}
+              id={camp._id}
               tags={camp.tag[0]}
               tittle={camp.name}
               location={camp.location}
