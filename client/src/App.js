@@ -1,12 +1,11 @@
 import React from 'react';
 
 import CampList from './components/index/CampList';
-import DetailCamps from './components/CampDetail/CampDetail';
-import { LoginPage, RegisterPage } from './components/auth';
+import { LoginPage, RegisterPage, PrivateRoute } from './components/auth';
 import { Switch, Route, Redirect } from 'react-router';
+import CampDetail from './components/CampDetail/CampDetail';
 import bg from './assets/images/bg.jpeg';
 import './App.css';
-import CampDetail from './components/CampDetail/CampDetail';
 
 var backgroundStyle = {
   width: '100%',
@@ -25,7 +24,11 @@ function App({ isInitiallyLogged }) {
     <div className="App" style={backgroundStyle}>
       <Switch>
         {/*TODO: de las mas precisas a las menos precisas */}
-        <Route path="/campDetail/:id" component={CampDetail} />
+        <PrivateRoute
+          path="/campDetail/:id"
+          isLogged={isLogged}
+          component={CampDetail}
+        />
         <Route path="/login">
           {({ history }) => (
             <LoginPage onLogin={handleLogin} history={history} />
