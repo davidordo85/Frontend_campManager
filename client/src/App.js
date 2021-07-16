@@ -24,11 +24,9 @@ function App({ isInitiallyLogged }) {
     <div className="App" style={backgroundStyle}>
       <Switch>
         {/*TODO: de las mas precisas a las menos precisas */}
-        <PrivateRoute
-          path="/campDetail/:id"
-          isLogged={isLogged}
-          component={CampDetail}
-        />
+        <PrivateRoute path="/campDetail/:id" isLogged={isLogged}>
+          <CampDetail isLogged={isLogged} onLogout={handleLogout} />
+        </PrivateRoute>
         <Route path="/login">
           {({ history }) => (
             <LoginPage onLogin={handleLogin} history={history} />
