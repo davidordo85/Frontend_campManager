@@ -4,9 +4,10 @@ import { getCampDetail } from '../../api/camps';
 
 const CampDetail = ({ history, ...props }) => {
   const [camp, setCamp] = React.useState([]);
+  const [error, setError] = React.useState([]);
 
   React.useEffect(() => {
-    getCampDetail(props.match.params.id).then(setCamp);
+    getCampDetail(props.match.params.id).then(setCamp).catch(setError(error));
   }, []);
 
   const campDetail = camp.data;

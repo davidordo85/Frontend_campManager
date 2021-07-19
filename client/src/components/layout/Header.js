@@ -7,11 +7,13 @@ import AuthButton from '../auth/AuthButton';
 
 const Header = ({ isLogged, onLogout, ...props }) => {
   return (
-    <header>
+    <header {...props}>
       <div className="header-nav">
-        <div className="header-logo">
-          <img className="logo" alt="logo" src={logo}></img>
-        </div>
+        <Link to="/">
+          <div className="header-logo">
+            <img className="logo" alt="logo" src={logo}></img>
+          </div>
+        </Link>
         <nav className="login">
           <AuthButton isLogged={isLogged} onLogout={onLogout} />
           {isLogged ? null : (

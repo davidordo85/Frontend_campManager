@@ -18,7 +18,7 @@ client.interceptors.response.use(
     }
     return Promise.reject({
       message: error.response.statusText,
-      ...error.response.data,
+      ...error.response,
     });
   },
 );

@@ -35,8 +35,12 @@ function App({ isInitiallyLogged }) {
         />
 
         <Route path="/login">
-          {({ history }) => (
-            <LoginPage onLogin={handleLogin} history={history} />
+          {({ history, location }) => (
+            <LoginPage
+              onLogin={handleLogin}
+              history={history}
+              location={location}
+            />
           )}
         </Route>
         <Route path="/register">
