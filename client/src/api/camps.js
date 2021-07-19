@@ -1,34 +1,40 @@
-import client from "./client";
-
+import client from './client';
 
 const campsBaseUrl = '/api/v1/camps';
 
 export const getAllCamps = () => {
-    const url = `${campsBaseUrl}`;
-    return client.get(url)
+  const url = `${campsBaseUrl}`;
+  return client.get(url);
 };
 
-export const filteredCamp = (filterCamp) => {
-    let filterCampUrl = '';
-    let isFirstParam = false;
+const campDetailBaseUrl = '/api/v1/camps';
 
-    Object.keys(filterCamp).forEach(filter => {
-        let operator = !isFirstParam ? '?' : '&';
+export const getCampDetail = _id => {
+  const url = `${campDetailBaseUrl}/${_id}`;
+  return client.get(url);
+};
 
-        if(filterCamp[filter] && filterCamp[filter].length > 0) {
-            if(Array.isArray(filterCamp[filter])) {
-                for (const element of filterCamp[filter]) {
-                    operator = !isFirstParam ? '?' : '&'
-                    filterCampUrl = `${operator}${filter}=${element}`
-                    if (!isFirstParam) isFirstParam = true
-                }
-            } else {
-                filterCampUrl += `${operator}${filter}=${filterCamp[filter]}`
-                if (!isFirstParam) isFirstParam = true
-            };
-        };
-    });
-   
-    const url = `${campsBaseUrl}${filterCampUrl}`
-    return client.get(url)
+export const filteredCamp = filterCamp => {
+  let filterCampUrl = '';
+  let isFirstParam = false;
+
+  Object.keys(filterCamp).forEach(filter => {
+    let operator = !isFirstParam ? '?' : '&';
+
+    if (filterCamp[filter] && filterCamp[filter].length > 0) {
+      if (Array.isArray(filterCamp[filter])) {
+        for (const element of filterCamp[filter]) {
+          operator = !isFirstParam ? '?' : '&';
+          filterCampUrl = `${operator}${filter}=${element}`;
+          if (!isFirstParam) isFirstParam = true;
+        }
+      } else {
+        filterCampUrl += `${operator}${filter}=${filterCamp[filter]}`;
+        if (!isFirstParam) isFirstParam = true;
+      }
+    }
+  });
+
+  const url = `${campsBaseUrl}${filterCampUrl}`;
+  return client.get(url);
 };

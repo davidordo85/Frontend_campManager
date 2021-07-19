@@ -57,6 +57,7 @@ const CampList = ({ id, history, ...props }) => {
               places={camp.capacity}
               occupiedPlaces={camp.inPeople}
               description={camp.description}
+              history={history}
             />
           ))
         ) : (

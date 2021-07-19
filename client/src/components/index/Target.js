@@ -4,12 +4,14 @@ import user from '../../assets/images/group.svg';
 import './target.css';
 
 const Target = ({
+  id,
   tittle,
   location,
   places,
   description,
   occupiedPlaces,
   tags,
+  history,
 }) => {
   const handleBackground = tags => {
     if (tags === 'playa') {
@@ -22,8 +24,7 @@ const Target = ({
   };
 
   const handleClick = () => {
-    alert('Construyendo un enlace al detalle...');
-    //history.push(`/campDetail/${id}`);
+    history.push(`/campDetail/${id}`);
   };
 
   return (

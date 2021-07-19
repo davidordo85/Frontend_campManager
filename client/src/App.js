@@ -24,9 +24,16 @@ function App({ isInitiallyLogged }) {
     <div className="App" style={backgroundStyle}>
       <Switch>
         {/*TODO: de las mas precisas a las menos precisas */}
-        <PrivateRoute path="/campDetail/:id" isLogged={isLogged}>
-          <CampDetail isLogged={isLogged} onLogout={handleLogout} />
-        </PrivateRoute>
+        <PrivateRoute
+          /* Si descompongo el componente no me coge el logeo y me manda al login
+           si lo dejo como está el Layout no reconoce si está logeado */
+          exact
+          path="/campDetail/:id"
+          isLogged={isLogged}
+          onLogout={handleLogout}
+          component={CampDetail}
+        />
+
         <Route path="/login">
           {({ history }) => (
             <LoginPage onLogin={handleLogin} history={history} />
@@ -36,7 +43,13 @@ function App({ isInitiallyLogged }) {
           <RegisterPage />
         </Route>
         <Route exact path="/">
-          <CampList isLogged={isLogged} onLogout={handleLogout}></CampList>
+          {({ history }) => (
+            <CampList
+              isLogged={isLogged}
+              onLogout={handleLogout}
+              history={history}
+            ></CampList>
+          )}
         </Route>
         {/*TODO: hacer pagina 404 */}
         <Route path="/404">
