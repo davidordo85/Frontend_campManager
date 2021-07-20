@@ -2,6 +2,7 @@ import React from 'react';
 import EmptyList from './EmptyList';
 import Layout from '../layout/layout';
 import { filteredCamp, getAllCamps } from '../../api/camps';
+import { Pagination } from '../Pagination';
 import Loader from '../Loader/Loader';
 import Target from './Target';
 import FilterCamps from '../filter.js/Filter';
@@ -66,6 +67,7 @@ const CampList = ({ id, history, ...props }) => {
             description="Tan solo tienes que registrarte y publicar tu campamento. En caso de tener cuenta, accede y publicalo."
           />
         )}
+        <Pagination />
       </div>
     </Layout>
   );
