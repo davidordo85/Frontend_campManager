@@ -24,15 +24,15 @@ function App({ isInitiallyLogged }) {
     <div className="App" style={backgroundStyle}>
       <Switch>
         {/*TODO: de las mas precisas a las menos precisas */}
-        <PrivateRoute
-          /* Si descompongo el componente no me coge el logeo y me manda al login
-           si lo dejo como está el Layout no reconoce si está logeado */
-          exact
-          path="/campDetail/:id"
-          isLogged={isLogged}
-          onLogout={handleLogout}
-          component={CampDetail}
-        />
+        <Route exact path="/campDetail/:id">
+          {routeProps => (
+            <CampDetail
+              isLogged={isLogged}
+              onLogout={handleLogout}
+              {...routeProps}
+            />
+          )}
+        </Route>
 
         <Route path="/login">
           {({ history, location }) => (

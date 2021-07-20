@@ -5,9 +5,9 @@ import logo from '../../assets/images/logoW.png';
 import Button from '../Buttons/Button';
 import AuthButton from '../auth/AuthButton';
 
-const Header = ({ isLogged, onLogout, ...props }) => {
+const Header = ({ isLogged, onLogout }) => {
   return (
-    <header {...props}>
+    <header>
       <div className="header-nav">
         <Link to="/">
           <div className="header-logo">
