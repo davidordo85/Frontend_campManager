@@ -75,15 +75,15 @@ const FilterCamps = ({ onSubmit, index }) => {
   const { name, activities, location } = filterCamp;
 
   const activityList = [
-    'piscina',
-    'taller de artesanias',
-    'taller de reciclaje',
-    'lectura',
-    'museo',
-    'senderismo',
-    'pintura',
-    'canto',
-    'teatro',
+    'pool',
+    'crafts workshop',
+    'recycling workshop',
+    'reading',
+    'museum',
+    'seminar',
+    'conference',
+    'meditation',
+    'show',
   ];
   return (
     <form className="box" onSubmit={handleSubmit}>

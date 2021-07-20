@@ -14,9 +14,9 @@ const Target = ({
   history,
 }) => {
   const handleBackground = tags => {
-    if (tags === 'playa') {
+    if (tags === 'beach') {
       return 'container';
-    } else if (tags === 'montaña') {
+    } else if (tags === 'mountain') {
       return 'container1';
     } else {
       return 'container2';
