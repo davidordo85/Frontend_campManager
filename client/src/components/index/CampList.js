@@ -1,22 +1,23 @@
 import React from 'react';
 import EmptyList from './EmptyList';
 import Layout from '../layout/layout';
-import { filteredCamp, getAllCamps } from '../../api/camps';
+import { filteredCamp, getAllCamps, getPaginationCamps } from '../../api/camps';
 import { Pagination } from '../Pagination';
 import Loader from '../Loader/Loader';
 import Target from './Target';
 import FilterCamps from '../filter.js/Filter';
 
-const CampList = ({ id, history, ...props }) => {
+const CampList = ({ id, history, location, ...props }) => {
   const [camps, setCamps] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    getCamps();
+    //getAllCamps();
+    paginationLocation(location.search);
   }, []);
 
-  const getCamps = async () => {
+  /*   const getCamps = async () => {
     try {
       setLoading(true);
       const campsList = await getAllCamps();
@@ -26,13 +27,26 @@ const CampList = ({ id, history, ...props }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
   const handleFilterSubmit = async filterCamp => {
     try {
       setLoading(true);
       const filteredCampList = await filteredCamp(filterCamp);
       setCamps(filteredCampList.data);
+      setError(null);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const paginationLocation = async location => {
+    try {
+      setLoading(true);
+      const paginationCampList = await getPaginationCamps(location);
+      setCamps(paginationCampList.data);
       setError(null);
     } catch (error) {
       setError(error);
