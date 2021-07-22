@@ -1,18 +1,20 @@
 import React from 'react';
 import logo from '../../../assets/images/logoW.png';
+import Layout from '../../layout/layout';
+import './register.css';
+import RegisterForm from './registerForm';
 
 function RegisterPage() {
   return (
     <div className="registerPage">
-      <header>
-        <div className="header-nav">
-          <div className="header-logo">
-            <img className="logo" alt="logo" src={logo}></img>
-          </div>
-        </div>
-      </header>
-      <h1 className="registerPage-title">Register in to CampManager</h1>
+          
+    <Layout>
+          <h1 className="registerPage-title">Register in to CampManager</h1>
+          <RegisterForm />
+
+    </Layout>
     </div>
+    
   );
 }
 
