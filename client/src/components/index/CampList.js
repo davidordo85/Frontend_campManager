@@ -1,7 +1,7 @@
 import React from 'react';
 import EmptyList from './EmptyList';
 import Layout from '../layout/layout';
-import { filteredCamp, getAllCamps, getPaginationCamps } from '../../api/camps';
+import { filteredCamp, getPaginationCamps } from '../../api/camps';
 import { Pagination } from '../Pagination';
 import Loader from '../Loader/Loader';
 import Target from './Target';
@@ -11,6 +11,8 @@ const CampList = ({ id, history, location, ...props }) => {
   const [camps, setCamps] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
+
+  const resetError = () => setError(null);
 
   React.useEffect(() => {
     //getAllCamps();
@@ -81,7 +83,13 @@ const CampList = ({ id, history, location, ...props }) => {
             description="Tan solo tienes que registrarte y publicar tu campamento. En caso de tener cuenta, accede y publicalo."
           />
         )}
-        <Pagination />
+        {error && (
+          <div onClick={resetError} className="loginPage-error">
+            {error.message}
+          </div>
+        )}
+
+        <Pagination location={location} {...props} />
       </div>
     </Layout>
   );
