@@ -89,7 +89,7 @@ const CampList = ({ id, history, location, ...props }) => {
           </div>
         )}
 
-        <Pagination location={location} {...props} />
+        <Pagination location={location} />
       </div>
     </Layout>
   );

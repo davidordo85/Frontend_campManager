@@ -3,7 +3,7 @@ import React from 'react';
 import CampList from './components/index/CampList';
 import { LoginPage, RegisterPage } from './components/auth';
 import { Switch, Route, Redirect } from 'react-router';
-import CampDetail from './components/CampDetail/CampDetail';
+import { CampDetail } from './components/CampDetail';
 import bg from './assets/images/bg.jpeg';
 import './App.css';
 
