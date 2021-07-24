@@ -1,0 +1,31 @@
+.title {
+  text-align: center;
+}
+
+.container-detail {
+  display: flex;
+  flex-direction: column;
+  background-color: lightcoral;
+}
+
+.container-title,
+.container-description,
+.container-date,
+.container-contact {
+  display: block;
+  text-align: center;
+  margin: 1rem;
+}
+
+.container-title {
+}
+
+.container-description {
+  list-style: none;
+}
+
+.container-date {
+}
+
+.container-contact {
+}

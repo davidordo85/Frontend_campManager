@@ -57,6 +57,8 @@ const CampList = ({ id, history, location, ...props }) => {
     }
   };
 
+  console.log(camps);
+
   return (
     <Layout {...props}>
       <FilterCamps onSubmit={handleFilterSubmit} />
