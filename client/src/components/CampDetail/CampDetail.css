@@ -5,7 +5,9 @@
 .container-detail {
   display: flex;
   flex-direction: column;
-  background-color: lightcoral;
+  background-image: url(../../assets/images/mountain.png);
+  background-size: cover;
+  margin: 0 3rem 0rem 3rem;
 }
 
 .container-title,
