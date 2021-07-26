@@ -1,9 +1,9 @@
 import React from 'react';
 
 import CampList from './components/index/CampList';
-import { LoginPage, RegisterPage, PrivateRoute } from './components/auth';
+import { LoginPage, RegisterPage } from './components/auth';
 import { Switch, Route, Redirect } from 'react-router';
-import CampDetail from './components/CampDetail/CampDetail';
+import { CampDetail } from './components/CampDetail';
 import bg from './assets/images/bg.jpeg';
 import './App.css';
 
@@ -47,11 +47,12 @@ function App({ isInitiallyLogged }) {
           <RegisterPage />
         </Route>
         <Route exact path="/">
-          {({ history }) => (
+          {({ history, location }) => (
             <CampList
               isLogged={isLogged}
               onLogout={handleLogout}
               history={history}
+              location={location}
             ></CampList>
           )}
         </Route>

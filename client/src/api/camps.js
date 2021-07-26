@@ -7,10 +7,13 @@ export const getAllCamps = () => {
   return client.get(url);
 };
 
-const campDetailBaseUrl = '/api/v1/camps';
-
 export const getCampDetail = _id => {
-  const url = `${campDetailBaseUrl}/${_id}`;
+  const url = `${campsBaseUrl}/${_id}`;
+  return client.get(url);
+};
+
+export const getPaginationCamps = location => {
+  const url = `${campsBaseUrl}${location}`;
   return client.get(url);
 };
 
