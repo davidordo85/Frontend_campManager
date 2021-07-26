@@ -1,31 +1,35 @@
 import React from 'react';
-import { FormLoginField, FormCheckbox } from '../../shared';
+import {FormLoginField} from '../../shared';
 import './registerForm.css';
 
+import SelectRole from './SelectRole';
 
-const RegisterForm = () => {
+
+const RegisterForm = ({onSubmit}) => {
 
     const [register, setRegister] = React.useState({
+        role: 'helper',
         email:'',
         name: '',
-        surname:'',
+        username:'',
+        firstFamilyName: '',
+        secondFamilyName: '',
         password:'',
-        telephone:'',
-        identify:'',
-        identifyNumber:'',
-        nacioality:'',
-        sex:'',
-        date:'',
+        phone:'',
+        documentId:'DNI',
+        idNumber:'',
+        nationality:'',
+        gender:'Hombre',
+        bornDate:'',
         photo:null,
-        country:'',
-        locality:'',
-        street:'',
-        number:'',
-        portal:'',
-        door:'',
+        address:'',
+        curriculum:null,
         allergies:'',
-        medical:''
+        medicalKnowledge: true,
+        about:'',
+        tutor:''
     });
+
 
     const handleChangeRegister = event => {
         setRegister(oldRegister => {
@@ -41,36 +45,107 @@ const RegisterForm = () => {
     }
 
     const [file, setFile] = React.useState();
+    const [curriculum, setCurriculum] = React.useState();
+    const [id, setId] = React.useState(); 
+    const [gender, setGender] = React.useState()
+    const [medical, setMedical] = React.useState()
 
     const handleChangeFile = event => {
-        const file = event.target.files[0]
+        const file = event.target.files[0].name
         setFile(file)
+        
+    }
+    const handleChangeCv = event => {
+        const cv = event.target.files[0].name
+        setCurriculum(cv) 
+    }
+    const handleSelectId = event => {
+        const id = event.target.value;
+        setId(id);
+    }
+    const handleGender = event => {
+        const gender = event.target.value;
+        setGender(gender)
+    }
+    const handleMedical = event => {
+        const medical = event.target.value
+        setMedical(medical)
+    }
+   
+    const handleSubmit = event => {
+        event.preventDefault();
+        const photo = file;
+        const cv = curriculum;
+        const documentId = id;
+        const selectGender = gender;
+        const selectMedical = medical
+        const RegisterData = {
+        role: register.role,
+        email: register.email,
+        name: register.name,
+        firstFamilyName: register.firstFamilyName,
+        secondFamilyName: register.secondFamilyName,
+        username: register.username,
+        password: register.password,
+        phone: register.phone,
+        documentId: register.documentId,
+        idNumber: register.idNumber,
+        nationality: register.nationality,
+        gender: register.gender,
+        bornDate: register.bornDate,
+        address: register.address,
+        curriculum: register.curriculum,
+        allergies: register.allergies,
+        about:register.about
+        }
+        if (photo) {
+            RegisterData['photo'] = photo;
+        }
+        if (cv){
+            RegisterData['curriculum'] = curriculum;
+        }
+        if (documentId) {
+            RegisterData['documentId'] = id;
+        }
+        if (selectGender) {
+            RegisterData['gender'] = gender;
+        }
+        if (selectMedical) {
+            RegisterData['medicalKnowledge']= medical;
+        }
+        onSubmit(RegisterData)
     }
 
      const {
-        email, 
-        name,
-        surname, 
-        password, 
-        telephone, 
-        identify, 
-        identifyNumber,
-        nacioality,
-        sex, 
-        date, 
-        country, 
-        locality,
-        street, 
-        number, 
-        portal, 
-        door, 
-        allergies, 
-        medical 
+    role,
+    name,
+    firstFamilyName,
+    secondFamilyName,
+    nationality,
+    idNumber,
+    bornDate,
+    address,
+    phone,
+    allergies,
+    username,
+    email,
+    password,
+    about, 
+    tutor
          } = register; 
+    
 return (
     <div>
-        <form className="loginForm" onSubmit={null}>
-            <h2 className='register-tittle'>Datos personales</h2>
+        <form className="loginForm" onSubmit={handleSubmit}>
+            <div className='rol-bloq'>
+                <SelectRole
+                    className='select-role'
+                    name='role'
+                    value={role}
+                    handleChange={handleChangeRegister}  />
+            </div>
+
+        <h2 className='register-tittle'>Datos personales</h2>
         <div className='bloq1'>
             <FormLoginField
             className="registerForm-mail"
@@ -90,10 +165,34 @@ return (
             />
             <FormLoginField
             type='text'
-            name="surname"
-            label="Apellidos"
+            name="firstFamilyName"
+            label="Apellido"
             className="registerForm-name"
-            value={surname}
+            value={firstFamilyName}
+            onChange={handleChangeRegister}
+            />
+            <FormLoginField
+            type='text'
+            name="secondFamilyName"
+            label="Segundo apellido"
+            className="registerForm-name"
+            value={secondFamilyName}
+            onChange={handleChangeRegister}
+            />
+            <FormLoginField
+            type='number'
+            name="phone"
+            label="Teléfono"
+            className="registerForm-name"
+            value={phone}
+            onChange={handleChangeRegister}
+            />
+            <FormLoginField
+            type='text'
+            name="username"
+            label="Nombre de usuario"
+            className="registerForm-name"
+            value={username}
             onChange={handleChangeRegister}
             />
             <FormLoginField
@@ -112,49 +211,42 @@ return (
             value={null}
             onChange={null}
             />
-            <FormLoginField
-            type='number'
-            name="telephone"
-            label="Teléfono"
-            className="registerForm-telephone"
-            value={telephone}
-            onChange={handleChangeRegister}
-            />
-            </div>
-            <div className='bloq2'>
-                <select name='identify' className='identify-form' value={identify} handleChange={handleChangeRegister}>
-                    <option value='DNI'>DNI</option>
+            <select name='documentId' className='identify-form' onChange={event => handleSelectId(event)}>
+                    <option defaultChecked='DNI' selected='selected'>DNI</option>
                     <option value='NIF'>NIF</option>
                     <option value='NIE'>NIE</option>
                 </select>
                 <FormLoginField
-                    className="registerForm-identify"
-                    type="text"
-                    name="identifyNumber"
+                    type='text'
+                    name="idNumber"
                     label="Identificador legal"
-                    value={identifyNumber}
-                    onChange= {handleChangeRegister}
+                    className="registerForm-identify"
+                    value={idNumber}
+                    onChange={handleChangeRegister}
                 />
-                <FormLoginField
+                 <FormLoginField
                     className="registerForm-nacionality"
                     type="text"
-                    name="nacionality"
+                    name="nationality"
                     label="Nacionalidad"
-                    value={nacioality}
+                    value={nationality}
                     onChange= {handleChangeRegister}
                 />
-                <select name='sex' className='gender-form' value={sex} handleChange={handleChangeRegister}>
-                    <option value='men'>Hombre</option>
-                    <option value='woman'>Mujer</option>
-                    <option value='other'>Otro</option>
+                <select name='sex' className='gender-form'  onChange={event => handleGender(event)}>
+                    <option value='hombre' >Hombre</option>
+                    <option value='Mujer'>Mujer</option>
+                    <option value='Otro'>Otro</option>
                 </select>
+               
+            </div>                
+            <div className='bloq2'>        
                 <FormLoginField
                     className="registerForm-date"
                     type="date"
-                    name="date"
+                    name="bornDate"
                     label="Fecha de nacimiento"
-                    value={date}
-                    onChange= {null}
+                    value={bornDate}
+                    onChange= {handleChangeRegister}
                 />
                 <FormLoginField
                     className="registerForm-date"
@@ -164,79 +256,59 @@ return (
                     value={register.photo}
                     onChange= {handleChangeFile}
                 />
-            </div>
-            <h2 className='register-tittle'>Dirección</h2>
-            <div className='bloq3'>
                 <FormLoginField
                     className="registerForm-country"
                     type="text"
-                    name="country"
-                    label="Pais de residencia"
-                    value={country}
+                    name="address"
+                    label="Dirección"
+                    value={address}
                     onChange= {handleChangeRegister}
                 />
+                {register.role === 'guest' ? 
                 <FormLoginField
-                    className="registerForm-locality"
-                    type="text"
-                    name="localidad"
-                    label="Localidad"
-                    value={locality}
-                    onChange= {handleChangeRegister}
-                />
-                 <FormLoginField
-                    className="registerForm-street"
-                    type="text"
-                    name="street"
-                    label="Calle"
-                    value={street}
-                    onChange= {handleChangeRegister}
-                />
-                <FormLoginField
-                    className="registerForm-number"
-                    type="number"
-                    name="number"
-                    label="Número"
-                    value={number}
-                    onChange= {handleChangeRegister}
-                />
-                 <FormLoginField
-                    className="registerForm-portal"
-                    type="number"
-                    name="portal"
-                    label="Portal"
-                    value={portal}
-                    onChange= {handleChangeRegister}
-                />
-                <FormLoginField
-                    className="registerForm-door"
-                    type="text"
-                    name="door"
-                    label="Puerta"
-                    value={door}
-                    onChange= {handleChangeRegister}
-                />
+                    className="registerForm-name"
+                    type='text'
+                    name="name"
+                    label="Nombre del tutor"
+                    value={tutor}
+                    onChange={handleChangeRegister}
+                /> : null}
             </div>
             <h2 className='register-tittle'>Otro datos personales:</h2>
             <div className='bloq4'>
-                 <label className='title-info'>Alergias:</label>
+                <FormLoginField
+                    className="registerForm-CV"
+                    type="file"
+                    name="cv"
+                    label="Curriculum Vitae"
+                    value={register.curriculum}
+                    onChange= {handleChangeCv}
+                />
+                <label>¿Tienes conocimientos médicos?</label>
+                <select name='medical' className='gender-form'  onChange={handleMedical}>
+                    <option value={true} >Sí</option>
+                    <option value={false}>No</option>
+                </select>
+                <label className='title-info'>Alergias:</label>
                 <input 
                     className="registerForm-alergias"
                     type="text"
-                    name="alergias"
+                    name="allergies"
                     value={allergies}
                     onChange= {handleChangeRegister}
                 />
-                <label>Conocimientos médicos:</label>
-                 <input 
-                    className="registerForm-medical"
-                    type="text"
-                    name="medical"
-                    value={medical}
-                    onChange= {handleChangeRegister}
-                /> 
+                <FormLoginField
+                    type='text'
+                    name="about"
+                    label="Sobre ti:"
+                    className="registerForm-name"
+                    value={about}
+                    onChange={handleChangeRegister}
+            />
+               
             </div>
             <div className='accept-button'>
-                <button className='register-button'>Registrar</button>
+                <button type='submit'  className='register-button'>Registrar</button>
 
             </div>
         </form>

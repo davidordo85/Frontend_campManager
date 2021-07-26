@@ -21,7 +21,7 @@ function App({ isInitiallyLogged }) {
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);
   return (
-    <div className="App">
+    <div className="App" style={backgroundStyle}>
       <Switch>
         {/*TODO: de las mas precisas a las menos precisas */}
         <Route exact path="/campDetail/:id">
