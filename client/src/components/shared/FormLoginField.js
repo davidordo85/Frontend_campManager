@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function FormLoginField({ className, label, ...props }) {
+function FormLoginField({ className, label, validate, ...props }) {
   return (
     <div
       className={classNames(
@@ -18,6 +18,7 @@ function FormLoginField({ className, label, ...props }) {
           {...props}
         ></input>
       </label>
+      <span style={{color: 'red'}}>{validate}</span>
     </div>
   );
 }

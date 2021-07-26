@@ -1,7 +1,6 @@
 import React from 'react';
 import {FormLoginField} from '../../shared';
 import './registerForm.css';
-
 import SelectRole from './SelectRole';
 
 
@@ -42,6 +41,12 @@ const RegisterForm = ({onSubmit}) => {
             }
             return newRegister
         })
+    }
+    const [repeatPassword, setRepeatPassword] = React.useState();
+
+    const handleRepeatPassword = event => {
+        const repeatPassword = event.target.value;
+        setRepeatPassword(repeatPassword)
     }
 
     const [file, setFile] = React.useState();
@@ -116,23 +121,23 @@ const RegisterForm = ({onSubmit}) => {
         onSubmit(RegisterData)
     }
 
-     const {
-    role,
-    name,
-    firstFamilyName,
-    secondFamilyName,
-    nationality,
-    idNumber,
-    bornDate,
-    address,
-    phone,
-    allergies,
-    username,
-    email,
-    password,
-    about, 
-    tutor
-         } = register; 
+    const {
+        role,
+        name,
+        firstFamilyName,
+        secondFamilyName,
+        nationality,
+        idNumber,
+        bornDate,
+        address,
+        phone,
+        allergies,
+        username,
+        email,
+        password,
+        about, 
+        tutor
+    } = register; 
     
 return (
     <div>
@@ -154,6 +159,7 @@ return (
             label="Email"
             value={email}
             onChange= {handleChangeRegister}
+            required
             />
             <FormLoginField
             className="registerForm-name"
@@ -162,6 +168,7 @@ return (
             label="Nombre"
             value={name}
             onChange={handleChangeRegister}
+            required
             />
             <FormLoginField
             type='text'
@@ -170,6 +177,7 @@ return (
             className="registerForm-name"
             value={firstFamilyName}
             onChange={handleChangeRegister}
+            required
             />
             <FormLoginField
             type='text'
@@ -186,6 +194,7 @@ return (
             className="registerForm-name"
             value={phone}
             onChange={handleChangeRegister}
+            required
             />
             <FormLoginField
             type='text'
@@ -194,6 +203,7 @@ return (
             className="registerForm-name"
             value={username}
             onChange={handleChangeRegister}
+            required
             />
             <FormLoginField
             type="password"
@@ -202,16 +212,18 @@ return (
             className="registerForm-password"
             value={password}
             onChange={handleChangeRegister}
+            required
             />
             <FormLoginField
             type="password"
             name="repeatPassword"
             label="Repite la contraseña"
             className="registerForm-password"
-            value={null}
-            onChange={null}
+            value={repeatPassword}
+            onChange={event => handleRepeatPassword(event)}
+            validate={password !== repeatPassword ? 'Las contraseñas no coinciden' : null}
             />
-            <select name='documentId' className='identify-form' onChange={event => handleSelectId(event)}>
+            <select name='documentId' required className='identify-form' onChange={event => handleSelectId(event)}>
                     <option defaultChecked='DNI' selected='selected'>DNI</option>
                     <option value='NIF'>NIF</option>
                     <option value='NIE'>NIE</option>
@@ -223,6 +235,7 @@ return (
                     className="registerForm-identify"
                     value={idNumber}
                     onChange={handleChangeRegister}
+                    required
                 />
                  <FormLoginField
                     className="registerForm-nacionality"
@@ -230,9 +243,10 @@ return (
                     name="nationality"
                     label="Nacionalidad"
                     value={nationality}
+                    required
                     onChange= {handleChangeRegister}
                 />
-                <select name='sex' className='gender-form'  onChange={event => handleGender(event)}>
+                <select name='sex' className='gender-form' required onChange={event => handleGender(event)}>
                     <option value='hombre' >Hombre</option>
                     <option value='Mujer'>Mujer</option>
                     <option value='Otro'>Otro</option>
@@ -247,6 +261,7 @@ return (
                     label="Fecha de nacimiento"
                     value={bornDate}
                     onChange= {handleChangeRegister}
+                    required
                 />
                 <FormLoginField
                     className="registerForm-date"
@@ -263,6 +278,7 @@ return (
                     label="Dirección"
                     value={address}
                     onChange= {handleChangeRegister}
+                    required
                 />
                 {register.role === 'guest' ? 
                 <FormLoginField
@@ -272,6 +288,7 @@ return (
                     label="Nombre del tutor"
                     value={tutor}
                     onChange={handleChangeRegister}
+                    required
                 /> : null}
             </div>
             <h2 className='register-tittle'>Otro datos personales:</h2>
@@ -304,11 +321,18 @@ return (
                     className="registerForm-name"
                     value={about}
                     onChange={handleChangeRegister}
+                    required
             />
                
             </div>
             <div className='accept-button'>
-                <button type='submit'  className='register-button'>Registrar</button>
+                <button 
+                    type='submit'  
+                    className='register-button'
+                    disabled = {password !== repeatPassword || !name || !firstFamilyName || !nationality || !bornDate || !address || !phone || !username || !email || !about}
+                    >
+                        Registrar
+                    </button>
 
             </div>
         </form>
@@ -320,3 +344,4 @@ return (
 }
 
 export default RegisterForm;
+

@@ -14,7 +14,6 @@ function RegisterPage() {
   const handleSubmit = async register => {
     try{
       setIsLoading(true);
-      console.log(register)
       await registerUser(register);
       setNewUser(true)
 
