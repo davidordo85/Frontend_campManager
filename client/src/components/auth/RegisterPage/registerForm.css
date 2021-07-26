@@ -1,0 +1,199 @@
+.bloq0 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.rol-bloq {
+  display: flex;
+  justify-content: center;
+}
+
+.select-role {
+  display: flex;
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.bloq1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.register-tittle {
+  margin-left: 80px;
+}
+.registerForm-mail input {
+  display: flex;
+  width: 250px;
+  border-radius: 10px;
+  outline: none;
+}
+.registerForm-name input {
+  display: flex;
+  width: 200px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.registerForm-password input {
+  display: flex;
+  width: 250px;
+  border-radius: 10px;
+  outline: none;
+}
+.registerForm-telephone input {
+  display: flex;
+  width: 250px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.bloq2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 20px;
+}
+.identify-form {
+  display: flex;
+  width: 150px;
+  height: 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  margin-top: 15px;
+}
+.registerForm-identify input {
+  display: flex;
+  width: 250px;
+  border-radius: 10px;
+  outline: none;
+}
+.registerForm-nacionality input {
+  display: flex;
+  width: 250px;
+  border-radius: 10px;
+  outline: none;
+}
+.gender-form {
+  display: flex;
+  width: 150px;
+  height: 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 15px;
+  outline: none;
+}
+
+.registerForm-date input {
+  display: flex;
+  width: 300px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.bloq3 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 20px;
+}
+.registerForm-country input {
+  display: flex;
+  width: 300px;
+  border-radius: 10px;
+  outline: none;
+}
+.registerForm-locality input {
+  display: flex;
+  width: 300px;
+  border-radius: 10px;
+  outline: none;
+}
+.registerForm-street input {
+  display: flex;
+  width: 300px;
+  border-radius: 10px;
+  outline: none;
+}
+.registerForm-number input {
+  display: flex;
+  width: 70px;
+  border-radius: 10px;
+  outline: none;
+}
+.registerForm-portal input {
+  display: flex;
+  width: 70px;
+  border-radius: 10px;
+  outline: none;
+}
+.registerForm-door input {
+  display: flex;
+  width: 70px;
+  border-radius: 10px;
+  outline: none;
+}
+.bloq4 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 20px;
+}
+.title-info {
+  display: flex;
+}
+.registerForm-alergias {
+  display: flex;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 70px;
+  padding-right: 400px;
+}
+.registerForm-medical {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding-bottom: 10px;
+  width: 150px;
+  height: 70px;
+  padding-right: 400px;
+}
+
+.accept-button {
+  display: flex;
+  justify-content: flex-end;
+}
+.register-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 45px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-right: 70px;
+}
+.register-button:hover {
+  background-color: black;
+  color: white;
+}

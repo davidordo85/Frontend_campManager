@@ -26,3 +26,15 @@ export const logout = () => {
       storage.remove('auth');
     });
 };
+export const registerUser = register => {
+  const url = `${authPath}/register`;
+  const formRegisterData = new FormData();
+  for (let item in register) {
+    formRegisterData.append(item, register[item])
+  }
+  return client.post(url, formRegisterData, {
+    headers:{
+      "Content-Type" : "multipart/form-data"
+    }
+  });
+}
