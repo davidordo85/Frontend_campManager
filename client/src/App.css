@@ -4,4 +4,10 @@
 
 body {
   margin: 0;
+  background-image: url('./assets/images/bg.jpeg');
+  background-size: cover;
+}
+
+.container-camps {
+  margin-top: 3.5rem;
 }

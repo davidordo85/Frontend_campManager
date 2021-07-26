@@ -61,37 +61,39 @@ const CampList = ({ id, history, location, ...props }) => {
 
   return (
     <Layout {...props}>
-      <FilterCamps onSubmit={handleFilterSubmit} />
-      <div>
-        <Loader hidden={!loading} />
-        {camps.length > 0 ? (
-          console.log(camps) ||
-          camps.map((camp, index) => (
-            <Target
-              key={index}
-              id={camp._id}
-              tags={camp.tag[0]}
-              tittle={camp.name}
-              location={camp.location}
-              places={camp.capacity}
-              occupiedPlaces={camp.inPeople}
-              description={camp.description}
-              history={history}
+      <div className="container-camps">
+        <FilterCamps onSubmit={handleFilterSubmit} />
+        <div>
+          <Loader hidden={!loading} />
+          {camps.length > 0 ? (
+            console.log(camps) ||
+            camps.map((camp, index) => (
+              <Target
+                key={index}
+                id={camp._id}
+                tags={camp.tag[0]}
+                tittle={camp.name}
+                location={camp.location}
+                places={camp.capacity}
+                occupiedPlaces={camp.inPeople}
+                description={camp.description}
+                history={history}
+              />
+            ))
+          ) : (
+            <EmptyList
+              title="Aún no se ha registrado nadie, ¡Se el primero!"
+              description="Tan solo tienes que registrarte y publicar tu campamento. En caso de tener cuenta, accede y publicalo."
             />
-          ))
-        ) : (
-          <EmptyList
-            title="Aún no se ha registrado nadie, ¡Se el primero!"
-            description="Tan solo tienes que registrarte y publicar tu campamento. En caso de tener cuenta, accede y publicalo."
-          />
-        )}
-        {error && (
-          <div onClick={resetError} className="loginPage-error">
-            {error.message}
-          </div>
-        )}
+          )}
+          {error && (
+            <div onClick={resetError} className="loginPage-error">
+              {error.message}
+            </div>
+          )}
 
-        <Pagination location={location} />
+          <Pagination location={location} />
+        </div>
       </div>
     </Layout>
   );
