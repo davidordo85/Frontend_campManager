@@ -9,7 +9,8 @@ const FilterCamps = ({ onSubmit, index }) => {
 
   const [filterCamp, setFilterCamp] = React.useState({
     name: '',
-    date: '',
+    from: today,
+    to: '',
     location: '',
     activities: [],
   });
@@ -48,6 +49,22 @@ const FilterCamps = ({ onSubmit, index }) => {
     setFilterCamp(newFilterCamp);
   };
 
+  const handleFilterbyFrom = event => {
+    const newFilterCamp = {
+      ...filterCamp,
+      from: event.target.value,
+    };
+    setFilterCamp(newFilterCamp);
+  };
+
+  const handleFilterbyTo = event => {
+    const newFilterCamp = {
+      ...filterCamp,
+      to: event.target.value,
+    };
+    setFilterCamp(newFilterCamp);
+  };
+
   const addActivities = (activity, selectedActivity) => {
     return activity.concat([selectedActivity]);
   };
@@ -72,7 +89,7 @@ const FilterCamps = ({ onSubmit, index }) => {
       }
     }
   };
-  const { name, activities, location } = filterCamp;
+  const { name, activities, location, from, to } = filterCamp;
 
   const activityList = [
     'pool',
@@ -99,7 +116,8 @@ const FilterCamps = ({ onSubmit, index }) => {
         className="filter-date"
         type="date"
         placeholder="desde"
-        // value={date}
+        value={from}
+        onChange={handleFilterbyFrom}
         min={today}
         max="2025-12-31"
       />
@@ -108,7 +126,8 @@ const FilterCamps = ({ onSubmit, index }) => {
         className="filter-date"
         type="date"
         placeholder="hasta"
-        // value={date}
+        value={to}
+        onChange={handleFilterbyTo}
         min="2021-01-01"
         max="2025-12-31"
       />
