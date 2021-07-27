@@ -2,7 +2,8 @@ import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logoW.png';
-import Button from '../Buttons/Button';
+//import Button from '../Buttons/Button';
+import { Button } from 'react-bootstrap';
 import AuthButton from '../auth/AuthButton';
 
 const Header = ({ isLogged, onLogout }) => {
@@ -17,7 +18,12 @@ const Header = ({ isLogged, onLogout }) => {
         <nav className="login">
           <AuthButton isLogged={isLogged} onLogout={onLogout} />
           {isLogged ? null : (
-            <Button as={Link} to="/Register">
+            <Button
+              className="register"
+              variant="primary"
+              as={Link}
+              to="/Register"
+            >
               Register
             </Button>
           )}

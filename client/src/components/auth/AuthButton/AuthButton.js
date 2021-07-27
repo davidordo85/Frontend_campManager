@@ -1,4 +1,6 @@
-import Button from '../../Buttons/Button';
+//import Button from '../../Buttons/Button';
+
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { logout } from '../../../api/auth';
 
