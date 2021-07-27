@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../layout/layout';
+import { Button } from 'react-bootstrap';
 import { getCampDetail } from '../../api/camps';
 import Loader from '../Loader/Loader';
 
@@ -37,41 +38,78 @@ const CampDetail = ({ history, ...props }) => {
 
   return (
     <Layout {...props}>
-      <div>
+      <div className="detail">
         <Loader hidden={!loading} />
         <h1 className={'title'}>Detail Camp</h1>
         {/* TODO: que cambie la imagen de fondo como en la pagina inicial */}
-        <section className={'container-detail'}>
+        <section className={'section'}>
           <div className={'container-title'}>
-            <h2 className={'description'}>Name and direction</h2>
-            <h3 className={'title-camp'}>{camp.name}</h3>
-            <p className={'address'}>{camp.address}</p>
-            <p className={'location'}>{camp.location}</p>
-            <p>{camp.tag}</p>
-            <p className={'edition'}>{camp.edition}</p>
+            <h2 className={'title-container'}>Name and direction</h2>
+            <div className={'name'}>
+              <p className={'title-description'}>Name camp: </p>
+              <p className={'camp'}>{camp.name}</p>
+            </div>
+            <div className={'name'}>
+              <p className={'title-description'}>Direction:</p>
+              <p className={'camp'}>{camp.address}</p>
+            </div>
+            <div className={'name'}>
+              <p className={'title-description'}>Location:</p>
+              <p className={'camp'}>{camp.location}</p>
+            </div>
+            <div className={'name'}>
+              <p className={'title-description'}>Place:</p>
+              <p className={'camp'}>{camp.tag}</p>
+            </div>
+            <div className={'name'}>
+              <p className={'title-description'}>Edition:</p>
+              <p className={'camp'}>{camp.edition}</p>
+            </div>
           </div>
-          <div className={'container-description'}>
-            <h2 className={'description'}>Description</h2>
-            <p className={'message'}>{camp.description}</p>
-            {camp.activities.map((activity, index) => (
-              <li className={'activities'} key={index}>
-                {activity}
-              </li>
-            ))}
+          <div className={'container-title'}>
+            <h2 className={''}>Description</h2>
+            <div className={'name'}>
+              <p className={'title-description'}>Description:</p>
+              <p className={'camp'}>{camp.description}</p>
+            </div>
+            <div className={'name'}>
+              <p className={'title-description'}>Activities:</p>
+              {camp.activities.map((activity, index) => (
+                <li className={'activities'} key={index}>
+                  {activity}
+                </li>
+              ))}
+            </div>
           </div>
-          <div className={'container-date'}>
-            <h2 className={'description'}>Dates</h2>
-            <time>{camp.createdAt}</time>
-            <time>{camp.from}</time>
-            <time>{camp.to}</time>
+          <div className={'container-title'}>
+            <h2 className={''}>Dates</h2>
+            <div className={'name'}>
+              <p className={'title-description'}>Date creation:</p>
+              <time className={'camp'}>{camp.createdAt}</time>
+            </div>
+            <div className={'name'}>
+              <p className={'title-description'}>Date from:</p>
+              <time className={'camp'}>{camp.from}</time>
+            </div>
+            <div className={'name'}>
+              <p className={'title-description'}>Date to:</p>
+              <time className={'camp'}>{camp.to}</time>
+            </div>
           </div>
-          <div className={'container-contact'}>
-            <h2 className={'description'}>Contact</h2>
-            <p>{camp.email}</p>
-            <p>{camp.phone}</p>
-            <p>{camp.helpers}</p>
-            <p>{camp.guests}</p>
+          <div className={'container-title'}>
+            <h2 className={''}>Contact</h2>
+            <p className={'title-description'}>Email:</p>
+            <p className={'camp'}>{camp.email}</p>
+            <p className={'title-description'}>Phone:</p>
+            <p className={'camp'}>{camp.phone}</p>
+            <p className={'title-description'}>Helpers:</p>
+            <p className={'camp'}>{camp.helpers}</p>
+            <p className={'title-description'}>Guests:</p>
+            <p className={'camp'}>{camp.guests}</p>
           </div>
+          <Button size="lg" variant="success" className="sign">
+            Sign up
+          </Button>
         </section>
         {error && (
           <div onClick={resetError} className="loginPage-error">

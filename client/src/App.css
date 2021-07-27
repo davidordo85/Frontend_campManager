@@ -11,3 +11,7 @@ body {
 .container-camps {
   margin-top: 3.5rem;
 }
+
+.btn {
+  border-radius: 99px;
+}

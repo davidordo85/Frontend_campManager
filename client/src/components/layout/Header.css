@@ -9,6 +9,11 @@
   height: 80px;
   background-color: black;
 }
+
+.register {
+  margin: 1rem;
+}
+
 .login {
   display: flex;
   flex-direction: row;
