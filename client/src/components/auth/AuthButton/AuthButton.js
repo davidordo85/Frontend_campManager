@@ -17,7 +17,7 @@ const AuthButton = ({ className, isLogged, onLogout }) => {
         children: 'Log in',
       };
 
-  return <Button className={className} {...props} />;
+  return <Button size="lg" className={className} {...props} />;
 };
 
 export default AuthButton;

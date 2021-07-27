@@ -1,10 +1,10 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import CampList from './components/index/CampList';
 import { LoginPage, RegisterPage } from './components/auth';
 import { Switch, Route, Redirect } from 'react-router';
 import { CampDetail } from './components/CampDetail';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* var backgroundStyle = {
   width: '100%',

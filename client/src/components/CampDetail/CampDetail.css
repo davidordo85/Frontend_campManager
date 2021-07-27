@@ -1,33 +1,29 @@
+.section {
+  background-color: #fff;
+  margin: 4rem;
+  padding: 4rem;
+  border-radius: 9px;
+  box-shadow: 0 4rem 8rem 0 rgba(0, 0, 0, 0.8);
+}
+
 .title {
   text-align: center;
-}
-
-.container-detail {
-  display: flex;
-  flex-direction: column;
-  background-image: url(../../assets/images/mountain.png);
-  background-size: cover;
-  margin: 0 3rem 0rem 3rem;
-}
-
-.container-title,
-.container-description,
-.container-date,
-.container-contact {
-  display: block;
-  text-align: center;
-  margin: 1rem;
+  margin-top: 4rem;
 }
 
 .container-title {
+  margin: 1rem 3rem 3rem 3rem;
 }
 
-.container-description {
+.camp,
+.activities {
+  margin-left: 1rem;
+}
+
+.activities {
   list-style: none;
 }
 
-.container-date {
-}
-
-.container-contact {
+.sign {
+  margin-left: 60rem;
 }
