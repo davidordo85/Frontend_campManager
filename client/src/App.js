@@ -7,13 +7,13 @@ import { CampDetail } from './components/CampDetail';
 import bg from './assets/images/bg.jpeg';
 import './App.css';
 
-var backgroundStyle = {
+/* var backgroundStyle = {
   width: '100%',
   height: '100vh',
   backgroundPosition: ' 10px 30px',
   backgroundImage: `url(${bg})`,
   margin: 0,
-};
+}; */
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
@@ -21,7 +21,7 @@ function App({ isInitiallyLogged }) {
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);
   return (
-    <div className="App" style={backgroundStyle}>
+    <div className="App">
       <Switch>
         {/*TODO: de las mas precisas a las menos precisas */}
         <Route exact path="/campDetail/:id">

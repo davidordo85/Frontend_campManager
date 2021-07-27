@@ -34,7 +34,7 @@ export const registerUser = register => {
   }
   return client.post(url, formRegisterData, {
     headers:{
-      "Content-Type" : "multipart/form-data"
+      "content-type": "application/json"
     }
   });
 }
