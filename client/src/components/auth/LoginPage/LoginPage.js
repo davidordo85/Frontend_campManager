@@ -1,7 +1,9 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
-import logo from '../../../assets/images/logoW.png';
+import Alert from 'react-bootstrap/Alert';
+import { Link } from 'react-router-dom';
+//import logo from '../../../assets/images/logoW.png';
 
 import './LoginPage.css';
 
@@ -34,13 +36,6 @@ function LoginPage({ onLogin, history, location }) {
   };
   return (
     <div className="loginPage">
-      <header>
-        <div className="header-nav">
-          <div className="header-logo">
-            <img className="logo" alt="logo" src={logo}></img>
-          </div>
-        </div>
-      </header>
       <h1 className="loginPage-title">Log in to CampManager</h1>
       <LoginForm
         className="loginPage-form"
@@ -48,9 +43,15 @@ function LoginPage({ onLogin, history, location }) {
         isLoading={isLoading}
       />
       {error && (
-        <div onClick={resetError} className="loginPage-error">
+        <Alert
+          onClick={resetError}
+          variant="danger"
+          className="loginPage-error"
+        >
           {error.message}
-        </div>
+          <br />
+          <Link to="/forgetPassword">Forget password</Link>
+        </Alert>
       )}
     </div>
   );
