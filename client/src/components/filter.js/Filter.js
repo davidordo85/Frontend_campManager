@@ -23,6 +23,7 @@ const FilterCamps = ({ onSubmit, index }) => {
     event.preventDefault();
     onSubmit(filterCamp);
     console.log(onSubmit);
+    console.log(activities, 'Activitiess');
   };
 
   // TODO FILTER DATE
@@ -128,7 +129,7 @@ const FilterCamps = ({ onSubmit, index }) => {
         placeholder="hasta"
         value={to}
         onChange={handleFilterbyTo}
-        min="2021-01-01"
+        min={from}
         max="2025-12-31"
       />
       <input

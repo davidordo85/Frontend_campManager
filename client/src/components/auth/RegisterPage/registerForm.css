@@ -160,12 +160,12 @@
 .title-info {
   display: flex;
 }
-.registerForm-alergias {
+.registerForm-allergies {
   display: flex;
   margin-bottom: 10px;
-  width: 150px;
-  height: 70px;
-  padding-right: 400px;
+  width: 20rem;
+  height: 5rem;
+  padding-right: 1rem;
 }
 .registerForm-medical {
   display: flex;
