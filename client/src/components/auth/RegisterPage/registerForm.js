@@ -33,6 +33,7 @@ const RegisterForm = ({ onSubmit }) => {
         ...oldRegister,
         [event.target.name]: event.target.value,
       };
+      console.log(event.target.name, event.target.value)
       if (register.photo) {
         oldRegister.append(file);
       }
@@ -325,23 +326,25 @@ const RegisterForm = ({ onSubmit }) => {
             <option value={true}>Sí</option>
             <option value={false}>No</option>
           </select>
-          <label className="title-info">Alergias:</label>
-          <input
-            className="registerForm-alergias"
-            type="text"
-            name="allergies"
-            value={allergies}
-            onChange={handleChangeRegister}
-          />
-          <FormLoginField
-            type="text"
-            name="about"
-            label="Sobre ti:"
-            className="registerForm-name"
-            value={about}
-            onChange={handleChangeRegister}
-            required
-          />
+          <div class="FormFieldLogin">
+            <label for="allergies" className="title-info">Alergias:</label>
+            <textarea
+              className="registerForm-allergies"
+              name="allergies"
+              value={allergies}
+              rows="1"
+              onChange={handleChangeRegister}
+            />
+            <FormLoginField
+              type="text"
+              name="about"
+              label="Sobre ti:"
+              className="registerForm-name"
+              value={about}
+              onChange={handleChangeRegister}
+              required
+            />
+          </div>
         </div>
         <div className="accept-button">
           <button
