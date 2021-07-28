@@ -14,6 +14,13 @@ export const login = ({ remember, ...credentials }) => {
       if (remember) {
         storage.set('auth', token);
       }
+    })
+    .catch(error => {
+      if (error.data.error === "Invalid credentials") {
+        throw Error('Invalid credentials')
+      } else {
+        throw Error('Server Error', error)
+      }
     });
 };
 
@@ -24,17 +31,30 @@ export const logout = () => {
     })
     .then(() => {
       storage.remove('auth');
+    })
+    .catch(error => {
+      throw Error('Server Error', error)
     });
-};
-export const registerUser = register => {
-  const url = `${authPath}/register`;
-  const formRegisterData = new FormData();
-  for (let item in register) {
-    formRegisterData.append(item, register[item])
-  }
-  return client.post(url, formRegisterData, {
-    headers:{
-      "content-type": "application/json"
+}
+
+export const registerUser = async register => {
+  try {
+    const url = `${authPath}/register`;
+    const formRegisterData = new FormData();
+    for (let item in register) {
+      formRegisterData.append(item, register[item])
     }
-  });
+    return await client.post(url, formRegisterData, {
+      headers:{
+        "content-type": "application/json"
+      }
+    });
+  } catch (error) {
+    const errorMsg = error.data.error
+    console.log(error)
+    if (errorMsg.startsWith('User validation failed: password: Path')) {
+      throw Error('Validation Error: password must be at least 6 characters long', error)
+    } else {
+      throw Error('Server Error', error)
+  }}
 }

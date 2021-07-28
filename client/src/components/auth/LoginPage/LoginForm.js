@@ -1,9 +1,6 @@
 import React from 'react';
-import { FormLoginField, FormCheckbox } from '../../shared';
-import { Link } from 'react-router-dom';
-import Button from '../../Buttons/Button';
-
-import './LoginForm.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function LoginForm({ onSubmit, isLoading }) {
   const [credentials, setCredentials] = React.useState({
@@ -33,50 +30,42 @@ function LoginForm({ onSubmit, isLoading }) {
   };
 
   const { email, password, remember } = credentials;
+  console.log(credentials);
   return (
-    <form className="loginForm" onSubmit={handleSubmit}>
-      <FormLoginField
-        type="email"
-        name="email"
-        label="Email"
-        className="loginForm-field"
-        value={email}
-        onChange={handleChange}
-      />
-      <FormLoginField
-        type="password"
-        name="password"
-        label="Password"
-        className="loginForm-field"
-        value={password}
-        onChange={handleChange}
-      />
-      <FormCheckbox
-        type="checkbox"
-        name="checkbox"
-        label="RememberPassword"
-        className="loginForm-checkbox"
-        checked={remember}
-        onChange={handleCheckbox}
-      />
-      <div className="buttonLogin">
-        <Button
-          type="submit"
-          className="LoginFormSubmit"
-          // TODO: cambiar el isLoading por el loader
-          disabled={isLoading || !email || !password}
-        >
-          Log in
-        </Button>
-        <Button
-          as={Link}
-          to={'./forgetPassword'}
-          disabled={isLoading || !email}
-        >
-          Forget Password?
-        </Button>
-      </div>
-    </form>
+    <Form className="form-login" onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Email</Form.Label>
+        <Form.Control
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleChange}
+        />
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+        />
+        <Form.Check
+          type="checkbox"
+          name="checkbox"
+          label="Remember Password"
+          checked={remember}
+          onChange={handleCheckbox}
+        />
+      </Form.Group>
+      <Button
+        type="submit"
+        className="LoginFormSubmit"
+        variant="outline-primary"
+        // TODO: cambiar el isLoading por el loader
+        disabled={isLoading || !email || !password}
+      >
+        Log in
+      </Button>
+    </Form>
   );
 }
 
