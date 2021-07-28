@@ -3,7 +3,10 @@ import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
 import Alert from 'react-bootstrap/Alert';
 import { Link } from 'react-router-dom';
-//import logo from '../../../assets/images/logoW.png';
+
+import Card from 'react-bootstrap/Card';
+import Navbar from 'react-bootstrap/Navbar';
+import logo from '../../../assets/images/logoW.png';
 
 import './LoginPage.css';
 
@@ -36,23 +39,33 @@ function LoginPage({ onLogin, history, location }) {
   };
   return (
     <div className="loginPage">
-      <h1 className="loginPage-title">Log in to CampManager</h1>
-      <LoginForm
-        className="loginPage-form"
-        onSubmit={handleSubmit}
-        isLoading={isLoading}
-      />
-      {error && (
-        <Alert
-          onClick={resetError}
-          variant="danger"
-          className="loginPage-error"
-        >
-          {error.message}
-          <br />
-          <Link to="/forgetPassword">Forget password</Link>
-        </Alert>
-      )}
+      <Navbar bg="dark" expand="lg">
+        <Navbar.Brand>
+          <img className="logo" alt="logo" src={logo}></img>
+        </Navbar.Brand>
+      </Navbar>
+      <Card border="dark" className="card-login">
+        <Card.Header className="text-header">Log in to CampManager</Card.Header>
+        <LoginForm
+          className="loginPage-form"
+          onSubmit={handleSubmit}
+          isLoading={isLoading}
+        />
+        {error && (
+          <Alert
+            onClick={resetError}
+            variant="danger"
+            className="loginPage-error"
+          >
+            {error.message}
+            <br />
+            <Link to="/forgetPassword">Forget password</Link>
+          </Alert>
+        )}
+      </Card>
+      <footer className="layout-footer bordered">
+        © 2021 KeepCoding - CodeSword - Práctica final
+      </footer>
     </div>
   );
 }

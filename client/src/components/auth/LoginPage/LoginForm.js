@@ -29,6 +29,12 @@ function LoginForm({ onSubmit, isLoading }) {
     onSubmit(credentials);
   };
 
+  {
+    /*
+TODO: faltan las validaciones
+*/
+  }
+
   const { email, password, remember } = credentials;
   console.log(credentials);
   return (
@@ -59,7 +65,7 @@ function LoginForm({ onSubmit, isLoading }) {
       <Button
         type="submit"
         className="LoginFormSubmit"
-        variant="outline-primary"
+        variant="outline-dark"
         // TODO: cambiar el isLoading por el loader
         disabled={isLoading || !email || !password}
       >

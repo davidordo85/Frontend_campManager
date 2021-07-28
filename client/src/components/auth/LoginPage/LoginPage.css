@@ -1,13 +1,21 @@
-.loginPage-title {
-  margin: 7rem 7rem 0 7rem;
+.text-header {
   text-align: center;
 }
 
-.form-login,
-.loginPage-error {
-  margin: 7rem 7rem 0 7rem;
+.card-login {
+  margin: 7rem 7rem 7rem 7rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-login {
+  margin: 5rem 7rem 7rem 7rem;
+}
+
+.LoginFormSubmit {
+  margin-top: 2rem;
 }
 
 .loginPage-error {
   text-align: center;
+  margin: 0rem 7rem 3rem 7rem;
 }
