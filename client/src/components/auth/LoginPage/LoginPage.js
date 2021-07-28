@@ -1,11 +1,8 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
-import Alert from 'react-bootstrap/Alert';
+import { Alert, Card, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-import Card from 'react-bootstrap/Card';
-import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../../assets/images/logoW.png';
 
 import './LoginPage.css';
