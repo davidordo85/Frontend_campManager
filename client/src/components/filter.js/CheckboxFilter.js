@@ -3,8 +3,8 @@ import { Form } from 'react-bootstrap';
 
 function CheckboxFilter({ handleChange, label, classNames, value }) {
   return (
-    <>
-      <Form.Label>{label}</Form.Label>
+    <Form.Label>
+      {label}
       <Form.Check
         inline
         className={classNames}
@@ -12,7 +12,7 @@ function CheckboxFilter({ handleChange, label, classNames, value }) {
         value={value}
         onChange={event => handleChange(event)}
       />
-    </>
+    </Form.Label>
   );
 }
 

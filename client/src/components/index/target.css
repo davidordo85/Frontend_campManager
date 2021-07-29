@@ -31,3 +31,6 @@
 .img-places {
   height: 1.5rem;
 }
+
+@media (min-width: 608px) {
+}
