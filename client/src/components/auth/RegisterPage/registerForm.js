@@ -159,6 +159,30 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            className="registerForm-password"
+            value={password}
+            onChange={handleChangeRegister}
+            required
+          />
+        </div>
+        <div>
+          <Form.Label>Repeat password</Form.Label>
+          <Form.Control
+            type="password"
+            name="repeatPassword"
+            className="registerForm-password"
+            value={repeatPassword}
+            onChange={event => handleRepeatPassword(event)}
+            validate={
+              password !== repeatPassword ? 'Password do not match' : null
+            }
+          />
+        </div>
+        <div>
           <Form.Label>Name</Form.Label>
           <Form.Control
             className="registerForm-name"
@@ -210,30 +234,6 @@ const RegisterForm = ({ onSubmit }) => {
             value={username}
             onChange={handleChangeRegister}
             required
-          />
-        </div>
-        <div>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            className="registerForm-password"
-            value={password}
-            onChange={handleChangeRegister}
-            required
-          />
-        </div>
-        <div>
-          <Form.Label>Repeat password</Form.Label>
-          <Form.Control
-            type="password"
-            name="repeatPassword"
-            className="registerForm-password"
-            value={repeatPassword}
-            onChange={event => handleRepeatPassword(event)}
-            validate={
-              password !== repeatPassword ? 'Password do not match' : null
-            }
           />
         </div>
         <div className="form-role">

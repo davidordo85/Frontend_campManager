@@ -49,7 +49,7 @@ const CampDetail = ({ history, ...props }) => {
           <CardColumns className="columns">
             <Card className="detail-description">
               <Card.Header className="detail-header">Description</Card.Header>
-              <Card.Text> direction: {camp.address}</Card.Text>
+              <Card.Text> address: {camp.address}</Card.Text>
               <Card.Text> location: {camp.location}</Card.Text>
               <Card.Text> edition: {camp.edition}</Card.Text>
             </Card>

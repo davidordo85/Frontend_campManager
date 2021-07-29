@@ -14,8 +14,7 @@
 }
 
 .sign-up {
-  margin-top: -7rem;
-  margin-left: 7rem;
+  margin: 1rem 2rem 0 2rem;
 }
 
 @media (min-width: 650px) {
@@ -41,5 +40,10 @@
   }
   .activities {
     list-style: none;
+  }
+
+  .sign-up {
+    margin-top: -7rem;
+    margin-left: 7rem;
   }
 }
