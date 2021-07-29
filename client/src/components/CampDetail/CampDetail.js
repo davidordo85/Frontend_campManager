@@ -2,7 +2,8 @@ import React from 'react';
 import Layout from '../layout/layout';
 import { getCampDetail } from '../../api/camps';
 import Loader from '../Loader/Loader';
-import { Button, Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
+import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 import './CampDetail.css';
 
@@ -86,9 +87,6 @@ const CampDetail = ({ history, ...props }) => {
               <Card.Text>helpers: {camp.helpers}</Card.Text>
               <Card.Text>guests: {camp.guests}</Card.Text>
             </Card>
-            <Button variant="outline-dark" className="sign-up">
-              Sign up
-            </Button>
           </CardColumns>
           {error && (
             <Alert
@@ -100,6 +98,9 @@ const CampDetail = ({ history, ...props }) => {
             </Alert>
           )}
         </Card>
+        <Button variant="outline-dark" className="sign-up">
+          Sign up
+        </Button>
       </div>
     </Layout>
   );
