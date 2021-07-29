@@ -21,7 +21,7 @@ const Header = ({ isLogged, onLogout }) => {
             <Button
               size="lg"
               className="register"
-              variant="primary"
+              variant="outline-light"
               as={Link}
               to="/Register"
             >

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form, FormLabel, FormCheck } from 'react-bootstrap';
 
 
 
@@ -7,17 +8,16 @@ function CheckboxFilter ({handleChange, label, classNames, value}) {
     
 
     return (
-            <label>
-                {label}
-                <input
-                    className={classNames}
-                    type='checkbox'
-                    value={value}
-                    onChange={(event) => handleChange(event)}
-                />
-            </label>
-           
-        
+        <>
+            <Form.Label>{label}</Form.Label>  
+            <Form.Check
+                inline
+                className={classNames}
+                type='checkbox'
+                value={value}
+                onChange={(event) => handleChange(event)}
+            />
+        </>
     )
 }
 

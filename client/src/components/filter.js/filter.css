@@ -1,3 +1,35 @@
+.mb-3{
+  margin: 4rem auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterForm-Row{
+  margin: 1rem;
+}
+
+.filterForm-label{
+  font-weight: bold;
+}
+
+.filterForm-submitWrapper{
+  display: flex;
+  padding: 0.5rem;
+  flex-direction: row;
+  justify-content: baseline;
+  align-content: center;
+}
+
+.filterForm-submit{
+  margin: auto;
+}
+
+.filterForm-checkbox{
+  display: flex;
+  justify-content: space-around;
+}
+
 .box {
   display: flex;
   flex-direction: row;
