@@ -19,18 +19,6 @@ const CampList = ({ id, history, location, ...props }) => {
     paginationLocation(location.search);
   }, []);
 
-  /*   const getCamps = async () => {
-    try {
-      setLoading(true);
-      const campsList = await getAllCamps();
-      setCamps(campsList.data);
-    } catch {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  }; */
-
   const handleFilterSubmit = async filterCamp => {
     try {
       setLoading(true);

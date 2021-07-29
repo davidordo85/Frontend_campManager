@@ -3,7 +3,7 @@ import './filter.css';
 //import FilterButton from '../Buttons/FilterButton';
 import CheckboxFilter from './CheckboxFilter';
 import moment from 'moment';
-import { Button, Form, Row, Col} from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 
 const FilterCamps = ({ onSubmit, index }) => {
   var today = moment().format('YYYY-MM-DD');
@@ -108,7 +108,7 @@ const FilterCamps = ({ onSubmit, index }) => {
     <Form className="mb-3" onSubmit={handleSubmit}>
       <Row className="filterForm-Row">
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label">Nombre:</Form.Label>
+          <Form.Label className="filterForm-label">Name:</Form.Label>
           <Form.Control
             className="filter-name"
             type="text"
@@ -118,7 +118,7 @@ const FilterCamps = ({ onSubmit, index }) => {
           />
         </Form.Group>
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label">País:</Form.Label>
+          <Form.Label className="filterForm-label">Country:</Form.Label>
           <Form.Control
             className="filter-name"
             type="text"
@@ -131,7 +131,7 @@ const FilterCamps = ({ onSubmit, index }) => {
 
       <Row className="filterForm-Row">
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label">Desde:</Form.Label>
+          <Form.Label className="filterForm-label">From:</Form.Label>
           <Form.Control
             className="filter-date"
             type="date"
@@ -143,7 +143,7 @@ const FilterCamps = ({ onSubmit, index }) => {
           />
         </Form.Group>
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label">Hasta:</Form.Label>
+          <Form.Label className="filterForm-label">To:</Form.Label>
           <Form.Control
             className="filter-date"
             type="date"
@@ -156,32 +156,36 @@ const FilterCamps = ({ onSubmit, index }) => {
         </Form.Group>
       </Row>
 
-      <Row className="filterForm-Row">
-        <Form.Group>
-          <Form.Label className="filterForm-label">Actividades:</Form.Label>
-          <br/>
-          <div  className="filterForm-checkbox">
-            {activityList.map((activity, index) => {
-              return (
-                <CheckboxFilter
-                  key={index}
-                  classNames="filter-tag"
-                  name={activity}
-                  value={activity}
-                  label={activity}
-                  handleChange={setActivity}
-                />
-              );
-            })}
-          </div>
-        </Form.Group>
-      </Row>
+      <Form.Group>
+        <Form.Label className="filterForm-label">Activities:</Form.Label>
+        <br />
+        <div className="filterForm-checkbox">
+          {activityList.map((activity, index) => {
+            return (
+              <CheckboxFilter
+                key={index}
+                classNames="filter-tag"
+                name={activity}
+                value={activity}
+                label={activity}
+                handleChange={setActivity}
+              />
+            );
+          })}
+        </div>
+      </Form.Group>
 
       <Row className="filterForm-Row">
         <Form.Group className="filterForm-submitWrapper">
-          <Button type="submit" className="filterForm-submit" variant="outline-dark">Filtrar</Button>
+          <Button
+            type="submit"
+            className="filterForm-submit"
+            variant="outline-dark"
+          >
+            Filtrar
+          </Button>
         </Form.Group>
-      </Row> 
+      </Row>
     </Form>
   );
 };
