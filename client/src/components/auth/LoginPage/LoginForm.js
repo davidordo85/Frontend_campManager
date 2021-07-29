@@ -44,6 +44,7 @@ TODO: faltan las validaciones
           name="email"
           value={email}
           onChange={handleChange}
+          isValid={email ? true : false}
         />
         <Form.Label>Password</Form.Label>
         <Form.Control
@@ -51,6 +52,7 @@ TODO: faltan las validaciones
           name="password"
           value={password}
           onChange={handleChange}
+          isValid={password ? true : false}
         />
         <Form.Check
           type="checkbox"
