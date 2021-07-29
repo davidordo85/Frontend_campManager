@@ -1,94 +1,33 @@
+.cards {
+  margin: 1rem;
+  display: flex;
+}
+
+.title {
+  text-align: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  height: 220px;
-  border: 1px solid;
-  border-color: black;
-  border-radius: 20px;
-  margin: 10px 50px 10px 50px;
-  background-image: url(../../assets/images/playa.jpeg);
-  background-size: contain;
-}
-.container1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 190px;
-  border: 1px solid;
-  border-color: black;
-  border-radius: 20px;
-  margin: 10px 50px 10px 50px;
-  background-image: url(../../assets/images/mountain.png);
-  background-size: contain;
+  margin: 1rem;
 }
 
-.container2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 150px;
-  border: 1px solid;
-  border-color: black;
-  border-radius: 20px;
-  margin: 10px 50px 10px 50px;
-  background-image: url(../../assets/images/city.jpeg);
-  background-size: contain;
-}
-.content-master {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.content-start {
-  display: flex;
-  padding-left: 15px;
-  padding-top: 3px;
-}
-.content-center {
-  display: flex;
-  padding-top: 3px;
-}
-.content-end {
-  display: flex;
-  padding-top: 3px;
-  padding-right: 15px;
-}
-.camp-title {
-  margin-top: 10px;
-}
-.description {
-  display: flex;
-  align-content: flex-end;
-  margin-right: 110px;
-  margin-left: 20px;
-  margin-bottom: 10px;
-  background-color: white;
-  border: 1px solid;
-  border-radius: 40px;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: justify;
-}
-.mark {
-  margin-top: 5px;
-  margin-left: 70px;
-  width: 20px;
-  height: 20px;
+.type-camp {
+  height: 3.5rem;
 }
 
-.partaker {
-  margin-top: 5px;
-  margin-left: 70px;
-  width: 20px;
-  height: 20px;
+.location,
+.places {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  margin-top: 1rem;
 }
-.users {
-  display: flex;
-  justify-content: flex-end;
+
+.img-location {
+  height: 2rem;
 }
-.number {
-  padding-top: 5px;
-  padding-left: 5px;
-  font-size: 20px;
+
+.img-places {
+  height: 1.5rem;
 }

@@ -17,14 +17,14 @@ const FilterCamps = ({ onSubmit, index }) => {
   });
 
   React.useEffect(() => {
-    setFilterCamp(filterCamp, []);
-  });
+    setFilterCamp(filterCamp);
+  }, []);
 
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit(filterCamp);
     console.log(onSubmit);
-    console.log(activities, 'Activitiess');
+    console.log(activities, 'Activities');
   };
 
   // TODO FILTER DATE
@@ -92,7 +92,11 @@ const FilterCamps = ({ onSubmit, index }) => {
     }
   };
   const { name, activities, location, from, to } = filterCamp;
-
+  {
+    /*
+  TODO: esto deberia de devolverlo el backend
+  */
+  }
   const activityList = [
     'pool',
     'crafts workshop',

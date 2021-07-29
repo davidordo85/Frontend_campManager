@@ -6,6 +6,9 @@ import { Pagination } from '../Pagination';
 import Loader from '../Loader/Loader';
 import Target from './Target';
 import FilterCamps from '../filter.js/Filter';
+import { Card } from 'react-bootstrap';
+
+import './CampList.css';
 
 const CampList = ({ id, history, location, ...props }) => {
   const [camps, setCamps] = React.useState([]);
@@ -50,8 +53,8 @@ const CampList = ({ id, history, location, ...props }) => {
   return (
     <Layout {...props}>
       <div className="container-camps">
-        <FilterCamps onSubmit={handleFilterSubmit} />
-        <div>
+        <Card className="card">
+          <FilterCamps onSubmit={handleFilterSubmit} />
           <Loader hidden={!loading} />
           {camps.length > 0 ? (
             console.log(camps) ||
@@ -80,8 +83,8 @@ const CampList = ({ id, history, location, ...props }) => {
             </div>
           )}
 
-          <Pagination location={location} />
-        </div>
+          <Pagination className="pagination" location={location} />
+        </Card>
       </div>
     </Layout>
   );
