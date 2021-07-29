@@ -8,13 +8,24 @@
   flex-direction: column;
 }
 
+.form-group > div {
+  margin: 0.1rem;
+}
+
 .form-role,
 .text-header {
   text-align: center;
 }
 
-.label-role {
+.label-role,
+.medical-label {
   margin-right: 1rem;
+}
+
+.form-gender,
+.form-medical {
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .identify-label,
@@ -28,4 +39,31 @@
 .identify-form,
 .gender-form {
   margin-bottom: 1rem;
+}
+
+@media (min-width: 668px) {
+  .card-register {
+    margin: 3rem 2rem 2rem 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .form-register {
+    margin: 1rem;
+  }
+
+  .form-group {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (min-width: 1080px) {
+  .card-register {
+    margin: 5rem 7rem 2rem 7rem;
+  }
+  .form-group {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-gap: 0.1rem;
+  }
 }
