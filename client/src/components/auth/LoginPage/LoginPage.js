@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
-import { Alert, Card, Navbar } from 'react-bootstrap';
+import { Alert, Card, Navbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logoW.png';
 
@@ -38,7 +38,9 @@ function LoginPage({ onLogin, history, location }) {
     <div className="loginPage">
       <Navbar bg="dark" expand="lg">
         <Navbar.Brand>
-          <img className="logo" alt="logo" src={logo}></img>
+          <Link to="/" variant="outline-light">
+            <img className="logo" alt="logo" src={logo}></img>
+          </Link>
         </Navbar.Brand>
       </Navbar>
       <Card border="dark" className="card-login">

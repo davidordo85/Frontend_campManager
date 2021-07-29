@@ -35,7 +35,6 @@ TODO: faltan las validaciones
   }
 
   const { email, password, remember } = credentials;
-  console.log(credentials);
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
       <Form.Group>
