@@ -1,9 +1,10 @@
-.cards {
+.container-target {
   margin: 1rem;
   display: flex;
 }
 
-.title {
+.title,
+.description {
   text-align: center;
 }
 
@@ -25,7 +26,7 @@
 }
 
 .img-location {
-  height: 2rem;
+  height: 2.5rem;
 }
 
 .img-places {
@@ -33,4 +34,16 @@
 }
 
 @media (min-width: 608px) {
+  .container-target {
+    margin: 1rem;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+  }
+
+  .text-location {
+    margin-top: 0.5rem;
+  }
 }

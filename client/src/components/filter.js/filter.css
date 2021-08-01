@@ -2,6 +2,10 @@
   margin: 1rem;
 }
 
+.filter-tag {
+  margin-left: 0.1rem;
+}
+
 .filterForm-submit {
   margin-left: 1rem;
 }
@@ -35,8 +39,8 @@
   }
 
   .filterForm-checkbox {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
   }
 
   .box {

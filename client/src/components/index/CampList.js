@@ -53,7 +53,7 @@ const CampList = ({ id, history, location, ...props }) => {
   return (
     <Layout {...props}>
       <div className="container-camps">
-        <Card className="card">
+        <Card className="container-card">
           <FilterCamps onSubmit={handleFilterSubmit} />
           <Loader hidden={!loading} />
           <Card className="card-list">

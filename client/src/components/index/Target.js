@@ -32,7 +32,7 @@ const Target = ({
   };
 
   return (
-    <Card className="cards" onClick={handleClick}>
+    <Card className="container-target" onClick={handleClick}>
       <Card.Header className="title">{tittle}</Card.Header>
       <Card.Text className="description">{description}</Card.Text>
       <div className="container">
