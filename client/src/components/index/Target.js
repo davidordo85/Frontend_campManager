@@ -1,6 +1,10 @@
 import React from 'react';
-import mark from '../../assets/images/location.png';
+import mark from '../../assets/images/location.svg';
 import user from '../../assets/images/group.svg';
+import beach from '../../assets/images/beach.svg';
+import mountain from '../../assets/images/mountain.svg';
+import city from '../../assets/images/buildings.svg';
+import { Card } from 'react-bootstrap';
 import './target.css';
 
 const Target = ({
@@ -15,11 +19,11 @@ const Target = ({
 }) => {
   const handleBackground = tags => {
     if (tags === 'beach') {
-      return 'container';
+      return beach;
     } else if (tags === 'mountain') {
-      return 'container1';
+      return mountain;
     } else {
-      return 'container2';
+      return city;
     }
   };
 
@@ -28,29 +32,24 @@ const Target = ({
   };
 
   return (
-    <div className={handleBackground(tags)} onClick={handleClick}>
-      <div className="content-master">
-        <div className="content-start">
-          <h1 className="camp-title">{tittle}</h1>
+    <Card className="container-target" onClick={handleClick}>
+      <Card.Header className="title">{tittle}</Card.Header>
+      <Card.Text className="description">{description}</Card.Text>
+      <div className="container">
+        <Card.Img className="type-camp" src={handleBackground(tags)} />
+        <div className="location">
+          <Card.Img className="img-location" alt="location" src={mark} />
+          <Card.Text className="text-location">{location}</Card.Text>
         </div>
-        <div className="content-center">
-          <img className="mark" alt="location" src={mark} />
-          <h4 className="camp-title">{location} </h4>
-        </div>
-        <div className="content-end">
-          <img className="partaker" alt="places" src={user} />
-          <label className="number">
+        <div className="places">
+          <Card.Img className="img-places" alt="places" src={user} />
+          <Card.Text className="text-places">
             {' '}
             {occupiedPlaces}/{places}
-          </label>
+          </Card.Text>
         </div>
       </div>
-      <div className="content">
-        <div className="description">
-          <p>{description}</p>
-        </div>
-      </div>
-    </div>
+    </Card>
   );
 };
 
