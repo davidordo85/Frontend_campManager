@@ -8,6 +8,11 @@
   text-align: center;
 }
 
+.detail-title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 .columns {
   display: grid;
   margin: 1rem;

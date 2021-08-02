@@ -56,7 +56,7 @@ const CampList = ({ id, history, location, ...props }) => {
         <Card className="card">
           <FilterCamps onSubmit={handleFilterSubmit} />
           <Loader hidden={!loading} />
-          <Card className="card-list">
+          <Card className="card-list" border="light">
             {camps.length > 0 ? (
               console.log(camps) ||
               camps.map((camp, index) => (

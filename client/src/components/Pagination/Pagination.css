@@ -13,10 +13,16 @@
 }
 
 a.active {
-  background-color: dodgerblue;
+  background-color: black;
   color: white;
+}
+
+a.active:hover{
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .pagination a:hover:not(.active) {
   background-color: #ddd;
+  color: black;
 }

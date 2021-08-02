@@ -43,48 +43,68 @@ const CampDetail = ({ history, ...props }) => {
       <div className="detail">
         <Loader hidden={!loading} />
         <Card className="card-exterior">
-          <Card.Header className="detail-header">Detail Camp</Card.Header>
-          <Card.Text className="detail-text">{camp.name}</Card.Text>
+          <Card.Header className="detail-header">
+            <Card.Title className="detail-title">{camp.name}</Card.Title>
+          </Card.Header>
+          <Card.Text className="detail-text">{camp.description}</Card.Text>
           <CardColumns className="columns">
             <Card className="detail-description">
-              <Card.Header className="detail-header">Description</Card.Header>
-              <Card.Text> direction: {camp.address}</Card.Text>
-              <Card.Text> location: {camp.location}</Card.Text>
-              <Card.Text> edition: {camp.edition}</Card.Text>
+              <Card.Header className="detail-header">
+                <Card.Title>Description</Card.Title>
+              </Card.Header>
+              <Card.Body className="detail-body">
+              <Card.Text>Direction: {camp.address}</Card.Text>
+              <Card.Text>Location: {camp.location}</Card.Text>
+              <Card.Text>Edition: {camp.edition}</Card.Text>
+              </Card.Body>
             </Card>
             <Card>
-              <Card.Header className="detail-header">Detail</Card.Header>
-              <Card.Text>{camp.description}</Card.Text>
-              <ListGroup>
-                <Card.Header>activities:</Card.Header>
-                {camp.activities.map((activity, index) => (
-                  <ListGroup.Item className={'activities'} key={index}>
-                    {activity}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
+              <Card.Header className="detail-header">
+                <Card.Title>Detail</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Card.Text>{camp.description}</Card.Text>
+                <ListGroup>
+                  <Card.Header>
+                    <Card.Title>Activities</Card.Title>
+                  </Card.Header>
+                  {camp.activities.map((activity, index) => (
+                    <ListGroup.Item className={'activities'} key={index}>
+                      {activity}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card.Body>
             </Card>
             <Card>
-              <Card.Header className="detail-header">Dates</Card.Header>
-              <Card.Text>
-                <span>created: </span>
-                <time>{createdAt[0]}</time>
-              </Card.Text>
-              <Card.Text>
-                <span>from: </span>
-                <time>{camp.from}</time>
-              </Card.Text>
-              <Card.Text>
-                <span>to: </span>
-                <time>{camp.to}</time>
-              </Card.Text>
+              <Card.Header className="detail-header">
+                <Card.Title>Dates</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  <span>From: </span>
+                  <time>{camp.from}</time>
+                </Card.Text>
+                <Card.Text>
+                  <span>To: </span>
+                  <time>{camp.to}</time>
+                </Card.Text>
+                <Card.Text>
+                  <span>Created: </span>
+                  <time>{createdAt[0]}</time>
+                </Card.Text>
+              </Card.Body>
             </Card>
             <Card>
-              <Card.Header className="detail-header">Contact</Card.Header>
-              <Card.Text>phone: {camp.phone}</Card.Text>
-              <Card.Text>email: {camp.email}</Card.Text>
-              <Card.Text>helpers: {camp.helpers}</Card.Text>
-              <Card.Text>guests: {camp.guests}</Card.Text>
+              <Card.Header className="detail-header">
+                <Card.Title>Contact</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Card.Text>Phone: {camp.phone}</Card.Text>
+                <Card.Text>Email: {camp.email}</Card.Text>
+                <Card.Text>Helpers: {camp.helpers}</Card.Text>
+                <Card.Text>Guests: {camp.guests}</Card.Text>
+              </Card.Body>
             </Card>
             <Button variant="outline-dark" className="sign-up">
               Sign up
