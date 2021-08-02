@@ -2,21 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logoW.png';
 //import Button from '../Buttons/Button';
-import { Button } from 'react-bootstrap';
+import { Button, Navbar } from 'react-bootstrap';
 import AuthButton from '../auth/AuthButton';
 import './Header.css';
 
 const Header = ({ isLogged, onLogout }) => {
   return (
-    <header>
-      <div className="header-nav">
-        <Link to="/">
-          <div className="header-logo">
+    <div className="header">
+      <Navbar bg="dark" expand="lg">
+        <Navbar.Brand>
+          <Link to="/" variant="outline-light">
             <img className="logo" alt="logo" src={logo}></img>
-          </div>
-        </Link>
-        <nav className="login">
-          <AuthButton isLogged={isLogged} onLogout={onLogout} />
+          </Link>
+          <AuthButton
+            className="login"
+            isLogged={isLogged}
+            onLogout={onLogout}
+          />
           {isLogged ? null : (
             <Button
               size="lg"
@@ -28,9 +30,9 @@ const Header = ({ isLogged, onLogout }) => {
               Register
             </Button>
           )}
-        </nav>
-      </div>
-    </header>
+        </Navbar.Brand>
+      </Navbar>
+    </div>
   );
 };
 
