@@ -1,6 +1,7 @@
 import React from 'react';
 import CampList from './components/index/CampList';
 import { LoginPage, RegisterPage } from './components/auth';
+import { ForgotPasswordPage } from './components/auth';
 import { Switch, Route, Redirect } from 'react-router';
 import { CampDetail } from './components/CampDetail';
 import './App.css';
@@ -44,6 +45,9 @@ function App({ isInitiallyLogged }) {
         </Route>
         <Route path="/register">
           <RegisterPage />
+        </Route>
+        <Route path="/forgotpassword">
+          <ForgotPasswordPage />
         </Route>
         <Route exact path="/">
           {({ history, location }) => (
