@@ -3,26 +3,45 @@
   margin: 1rem;
 }
 
+.loginform-label{
+  margin-top: 1rem;
+}
+
+.form-login {
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.LoginFormSubmit {
+  margin-top: 2rem;
+  position: center;
+}
+
+.loginPage-error {
+  text-align: center;
+  margin: 0rem 7rem 3rem 7rem;
+}
+
+.text-header {
+  text-align: center;
+}
+
+.card-login {
+  margin: 7rem auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @media (min-width: 548px) {
-  .text-header {
-    text-align: center;
-  }
-
   .card-login {
-    margin: 7rem 7rem 7rem 7rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 95%;
   }
+}
 
-  .form-login {
-    margin: 5rem 7rem 7rem 7rem;
-  }
-
-  .LoginFormSubmit {
-    margin-top: 2rem;
-  }
-
-  .loginPage-error {
-    text-align: center;
-    margin: 0rem 7rem 3rem 7rem;
+@media (min-width: 608px) {
+  .card-login{
+    width:70%;
   }
 }
