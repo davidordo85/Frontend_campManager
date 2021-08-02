@@ -32,11 +32,9 @@ const Target = ({
   };
 
   return (
-    <Card className="cards" onClick={handleClick}>
-      <Card.Header className="card-header" border="dark">
-        <Card.Img className="type-camp" src={handleBackground(tags)} />
-      </Card.Header>
+    <Card className="cards" border="dark" onClick={handleClick}>
       <Card.Body>
+        <Card.Img className="type-camp" src={handleBackground(tags)} />
         <Card.Title className="title">{tittle}</Card.Title>
         <Card.Text className="description">{description}</Card.Text>
         <div className="container">
