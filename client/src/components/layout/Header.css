@@ -1,16 +1,36 @@
+.header {
+  display: block;
+}
+
 .logo {
   width: 130px;
   height: 70px;
   margin-left: 15px;
-  margin-right: 60vw;
+}
+
+.login {
+  margin-left: 5vw;
+  margin-right: 1rem;
 }
 
 .register {
-  margin: 1rem;
+  margin-right: auto;
 }
 
-@media (max-width: 1080px) {
-  .logo {
-    margin-right: 5vw;
+@media (min-width: 1000px) {
+  .login {
+    margin-left: 60vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .login {
+    margin-left: 65vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .login {
+    margin-left: 70vw;
   }
 }
