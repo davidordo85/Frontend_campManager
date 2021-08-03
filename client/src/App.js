@@ -6,6 +6,7 @@ import { CampDetail } from './components/CampDetail';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateCamp from './components/admin/CreateCamp/CreateCamp';
+import Requests from './components/admin/Requests/Requests';
 
 /* var backgroundStyle = {
   width: '100%',
@@ -48,6 +49,9 @@ function App({ isInitiallyLogged }) {
         </Route>
         <Route exact path="/createCamp">
           <CreateCamp isLogged={isLogged} onLogout={handleLogout} />
+        </Route>
+        <Route exact path="/requests">
+          <Requests isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/">
           {({ history, location }) => (

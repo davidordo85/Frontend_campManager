@@ -10,7 +10,9 @@ const DashboardAdmin = () => {
         Create Camp
       </Link>
       <Link className="link">Modify Camp</Link>
-      <Link className="link">Requests</Link>
+      <Link to="/requests" className="link">
+        Requests
+      </Link>
       <Link className="link">Users List</Link>
       <Link className="link">Observations Users</Link>
       <Link className="link">Modify Profile</Link>
