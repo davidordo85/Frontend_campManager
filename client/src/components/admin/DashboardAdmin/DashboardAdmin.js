@@ -9,7 +9,9 @@ const DashboardAdmin = () => {
       <Link to="/createCamp" className="link">
         Create Camp
       </Link>
-      <Link className="link">Modify Camp</Link>
+      <Link to="/modifyCamp" className="link">
+        Modify Camp
+      </Link>
       <Link to="/requests" className="link">
         Requests
       </Link>
