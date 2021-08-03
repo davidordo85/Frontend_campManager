@@ -6,7 +6,9 @@ import './DashboardAdmin.css';
 const DashboardAdmin = () => {
   return (
     <div className="dashboardAdmin">
-      <Link className="link">Create Camp</Link>
+      <Link to="/createCamp" className="link">
+        Create Camp
+      </Link>
       <Link className="link">Modify Camp</Link>
       <Link className="link">Requests</Link>
       <Link className="link">Users List</Link>

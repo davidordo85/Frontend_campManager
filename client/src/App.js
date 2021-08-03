@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import { CampDetail } from './components/CampDetail';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CreateCamp from './components/admin/CreateCamp/CreateCamp';
 
 /* var backgroundStyle = {
   width: '100%',
@@ -44,6 +45,9 @@ function App({ isInitiallyLogged }) {
         </Route>
         <Route path="/register">
           <RegisterPage />
+        </Route>
+        <Route exact path="/createCamp">
+          <CreateCamp isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/">
           {({ history, location }) => (
