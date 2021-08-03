@@ -45,7 +45,7 @@ const CampDetail = ({ history, ...props }) => {
         <Loader hidden={!loading} />
         <Card className="card-exterior">
           <Card.Header className="detail-header">
-            <Card.Title className="detail-title">{camp.name}</Card.Title>
+            <Card.Text className="detail-title">{camp.name}</Card.Text>
           </Card.Header>
           <Card.Text className="detail-text">{camp.description}</Card.Text>
           <CardColumns className="columns">
@@ -117,10 +117,13 @@ const CampDetail = ({ history, ...props }) => {
               {error.message}
             </Alert>
           )}
+          <Card.Footer className="detailCamp-footer">
+            <Button variant="outline-dark" className="sign-up">
+            Sign up
+            </Button>
+          </Card.Footer>
         </Card>
-        <Button variant="outline-dark" className="sign-up">
-          Sign up
-        </Button>
+        
       </div>
     </Layout>
   );

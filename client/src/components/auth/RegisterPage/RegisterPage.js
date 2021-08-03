@@ -44,20 +44,22 @@ function RegisterPage() {
       </Navbar>
       <Card border="dark" className="card-register">
         <Card.Header className="text-header">
-          Register in to CampManager
+          <Card.Text className="register-title">CampManager Register</Card.Text>
         </Card.Header>
-        <RegisterForm onSubmit={handleSubmit} isLoading={isLoading} />
-        {error && (
-          <Alert
-            onClick={resetError}
-            variant="danger"
-            className="registerPage-error"
-          >
-            {error.message}
-            <br />
-            <Link to="/forgetPassword">Forget password</Link>
-          </Alert>
-        )}
+        <Card.Body>
+          <RegisterForm onSubmit={handleSubmit} isLoading={isLoading} />
+          {error && (
+            <Alert
+              onClick={resetError}
+              variant="danger"
+              className="registerPage-error"
+            >
+              {error.message}
+              <br />
+              <Link to="/forgetPassword">Forget password</Link>
+            </Alert>
+          )}
+        </Card.Body>
       </Card>
       <footer className="layout-footer bordered">
         © 2021 KeepCoding - CodeSword - Práctica final

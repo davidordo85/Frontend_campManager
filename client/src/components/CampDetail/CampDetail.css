@@ -9,8 +9,7 @@
 }
 
 .detail-title {
-  font-weight: bold;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .columns {
@@ -18,8 +17,8 @@
   margin: 1rem;
 }
 
-.sign-up {
-  margin: 1rem 2rem 0 2rem;
+.sign-up{
+  margin: 0.5rem;
 }
 
 @media (min-width: 650px) {
@@ -47,8 +46,11 @@
     list-style: none;
   }
 
-  .sign-up {
-    margin-top: -7rem;
-    margin-left: 7rem;
+  .detailCamp-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
   }
+
 }

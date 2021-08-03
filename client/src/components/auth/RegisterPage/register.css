@@ -1,3 +1,7 @@
+.register-title {
+  font-size: 3rem;
+}
+
 .card-register,
 .form-register {
   margin: 1rem;
@@ -12,33 +16,18 @@
   margin: 0.1rem;
 }
 
-.form-role,
-.text-header {
-  text-align: center;
-}
-
-.label-role,
-.medical-label {
-  margin-right: 1rem;
-}
-
-.form-gender,
-.form-medical {
-  text-align: center;
+.register-label{
   margin-top: 1rem;
 }
 
-.identify-label,
-.gender-label,
-.identify-form,
-.medical-label,
-.Allergies-label {
-  margin-top: 1rem;
-}
-
-.identify-form,
-.gender-form {
+.identify-form {
   margin-bottom: 1rem;
+}
+
+.registerButton-container{
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
 }
 
 @media (min-width: 668px) {
@@ -65,5 +54,17 @@
     display: grid;
     grid-template-columns: repeat(3, 33%);
     grid-gap: 0.1rem;
+  }
+}
+
+@media (max-width: 668px) {
+  .registerButton-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .register-button{
+    margin: 2rem;
   }
 }
