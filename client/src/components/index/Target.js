@@ -35,7 +35,7 @@ const Target = ({
     <Card className="cards" border="dark" onClick={handleClick}>
       <Card.Body>
         <Card.Img className="type-camp" src={handleBackground(tags)} />
-        <Card.Title className="title">{tittle}</Card.Title>
+        <Card.Text className="title">{tittle}</Card.Text>
         <Card.Text className="description">{description}</Card.Text>
         <div className="container">
           <div className="location">
