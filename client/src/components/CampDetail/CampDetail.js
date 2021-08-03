@@ -54,9 +54,9 @@ const CampDetail = ({ history, ...props }) => {
                 <Card.Title>Description</Card.Title>
               </Card.Header>
               <Card.Body className="detail-body">
-              <Card.Text>Direction: {camp.address}</Card.Text>
-              <Card.Text>Location: {camp.location}</Card.Text>
-              <Card.Text>Edition: {camp.edition}</Card.Text>
+                <Card.Text>Direction: {camp.address}</Card.Text>
+                <Card.Text>Location: {camp.location}</Card.Text>
+                <Card.Text>Edition: {camp.edition}</Card.Text>
               </Card.Body>
             </Card>
             <Card>
@@ -117,13 +117,10 @@ const CampDetail = ({ history, ...props }) => {
               {error.message}
             </Alert>
           )}
-          <Card.Footer className="detailCamp-footer">
-            <Button variant="outline-dark" className="sign-up">
-            Sign up
-            </Button>
-          </Card.Footer>
         </Card>
-        
+        <Button variant="outline-dark" className="sign-up">
+          Sign up
+        </Button>
       </div>
     </Layout>
   );
