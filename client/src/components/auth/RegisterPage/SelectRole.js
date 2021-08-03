@@ -7,7 +7,7 @@ function SelectRole({ className, handleChange, name }) {
   };
 
   return (
-    <Form className="form-role">
+    <Form className="role">
       <Form.Label className="label-role">Role</Form.Label>
       <Form.Select
         name={name}

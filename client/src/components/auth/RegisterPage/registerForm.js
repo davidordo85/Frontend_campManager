@@ -140,12 +140,14 @@ const RegisterForm = ({ onSubmit }) => {
 
   return (
     <Form className="form-register" onSubmit={handleSubmit}>
-      <SelectRole
-        className="select-role"
-        name="role"
-        value={role}
-        handleChange={handleChangeRegister}
-      />
+      <div className="role-column">
+        <SelectRole
+          className="select-role"
+          name="role"
+          value={role}
+          handleChange={handleChangeRegister}
+        />
+      </div>
       <Form.Group className="form-group">
         <div>
           <Form.Label className="register-label">Email</Form.Label>
@@ -263,7 +265,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="form-role">
-          <Form.Label className="label-role register-label">Type legal identifier</Form.Label>
+          <Form.Label className="label-role register-label">
+            Type legal identifier
+          </Form.Label>
           <Form.Select
             name="documentId"
             required
@@ -357,7 +361,9 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label className="Allergies-label register-label">Allergies</Form.Label>
+          <Form.Label className="Allergies-label register-label">
+            Allergies
+          </Form.Label>
           <Form.Control
             className="registerForm-allergies"
             placeholder="Include here food restrictions due beliefs or habits"
