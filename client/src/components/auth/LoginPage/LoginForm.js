@@ -38,7 +38,7 @@ TODO: faltan las validaciones
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label>Email</Form.Label>
+        <Form.Label className="loginform-label">Email</Form.Label>
         <Form.Control
           type="email"
           name="email"
@@ -46,7 +46,7 @@ TODO: faltan las validaciones
           onChange={handleChange}
           isValid={email ? true : false}
         />
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="loginform-label">Password</Form.Label>
         <Form.Control
           type="password"
           name="password"
@@ -60,6 +60,7 @@ TODO: faltan las validaciones
           label="Remember Password"
           checked={remember}
           onChange={handleCheckbox}
+          className="loginform-label"
         />
       </Form.Group>
       <Button

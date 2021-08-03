@@ -1,11 +1,21 @@
-.container-target {
+.cards {
+  width: 95%;
   margin: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
+  align-items: center;
+}
+
+.cards:hover{
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
 .title,
 .description {
   text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .container {
@@ -14,23 +24,39 @@
   margin: 1rem;
 }
 
+.description{
+  margin: 1rem;
+  text-align: center;
+
+}
+
 .type-camp {
-  height: 3.5rem;
+  height: 5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .location,
 .places {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .img-location {
-  height: 2.5rem;
+  margin: auto 1rem;
+  height: 1.5rem;
+  max-width: 2rem;
 }
 
 .img-places {
   height: 1.5rem;
+  display: inline;
 }
 
 @media (min-width: 608px) {
@@ -45,5 +71,9 @@
 
   .text-location {
     margin-top: 0.5rem;
+  }
+
+  .cards{
+    width:70%;
   }
 }

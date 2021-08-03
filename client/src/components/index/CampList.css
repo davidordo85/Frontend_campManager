@@ -1,4 +1,14 @@
-.container-card {
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  width: 70%;
+  border: none;
+}
+
+.card {
   margin: 1rem;
 }
 
@@ -14,5 +24,8 @@
 
   .card-list {
     margin: 1rem;
+    display: grid;
+    grid-template-rows: repeat(2, 50%);
+    width: 90%;
   }
 }

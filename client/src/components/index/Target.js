@@ -1,5 +1,5 @@
 import React from 'react';
-import mark from '../../assets/images/location.svg';
+import mark from '../../assets/images/location.png';
 import user from '../../assets/images/group.svg';
 import beach from '../../assets/images/beach.svg';
 import mountain from '../../assets/images/mountain.svg';
@@ -32,23 +32,25 @@ const Target = ({
   };
 
   return (
-    <Card className="container-target" onClick={handleClick}>
-      <Card.Header className="title">{tittle}</Card.Header>
-      <Card.Text className="description">{description}</Card.Text>
-      <div className="container">
+    <Card className="cards" border="dark" onClick={handleClick}>
+      <Card.Body>
         <Card.Img className="type-camp" src={handleBackground(tags)} />
-        <div className="location">
-          <Card.Img className="img-location" alt="location" src={mark} />
-          <Card.Text className="text-location">{location}</Card.Text>
+        <Card.Title className="title">{tittle}</Card.Title>
+        <Card.Text className="description">{description}</Card.Text>
+        <div className="container">
+          <div className="location">
+            <Card.Img className="img-location" alt="location" src={mark} />
+            <Card.Text className="text-location">{location}</Card.Text>
+          </div>
+          <div className="places">
+            <Card.Img className="img-places" alt="places" src={user} />
+            <Card.Text className="text-places">
+              {' '}
+              {occupiedPlaces}/{places}
+            </Card.Text>
+          </div>
         </div>
-        <div className="places">
-          <Card.Img className="img-places" alt="places" src={user} />
-          <Card.Text className="text-places">
-            {' '}
-            {occupiedPlaces}/{places}
-          </Card.Text>
-        </div>
-      </div>
+      </Card.Body>
     </Card>
   );
 };

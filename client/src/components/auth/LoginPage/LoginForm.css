@@ -1,0 +1,9 @@
+/* TODO: Primera versión, falta mejorar */
+.form-login,
+.loginPage-error {
+  margin: 2rem 2rem 0 2rem;
+}
+
+.loginPage-error {
+  text-align: center;
+}

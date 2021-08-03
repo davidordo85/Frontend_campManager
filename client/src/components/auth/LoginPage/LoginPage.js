@@ -44,23 +44,27 @@ function LoginPage({ onLogin, history, location }) {
         </Navbar.Brand>
       </Navbar>
       <Card border="dark" className="card-login">
-        <Card.Header className="text-header">Log in to CampManager</Card.Header>
-        <LoginForm
-          className="loginPage-form"
-          onSubmit={handleSubmit}
-          isLoading={isLoading}
-        />
-        {error && (
-          <Alert
-            onClick={resetError}
-            variant="danger"
-            className="loginPage-error"
-          >
-            {error.message}
-            <br />
-            <Link to="/forgetPassword">Forget password</Link>
-          </Alert>
-        )}
+        <Card.Header className="text-header">
+          <Card.Title>Login</Card.Title>
+        </Card.Header>
+        <Card.Body>
+          <LoginForm
+            className="loginPage-form"
+            onSubmit={handleSubmit}
+            isLoading={isLoading}
+          />
+          {error && (
+            <Alert
+              onClick={resetError}
+              variant="danger"
+              className="loginPage-error"
+            >
+              {error.message}
+              <br />
+              <Link to="/forgetPassword">Forget password</Link>
+            </Alert>
+          )}
+        </Card.Body>
       </Card>
       <footer className="layout-footer bordered">
         © 2021 KeepCoding - CodeSword - Práctica final
