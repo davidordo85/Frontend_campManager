@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateCamp from './components/admin/CreateCamp/CreateCamp';
 import Requests from './components/admin/Requests/Requests';
 import UserList from './components/admin/UsersList/UsersList';
+import ObservationUser from './components/admin/ObservationUser/ObservationUser';
 
 /* var backgroundStyle = {
   width: '100%',
@@ -59,6 +60,9 @@ function App({ isInitiallyLogged }) {
         </Route>
         <Route exact path="/userList">
           <UserList isLogged={isLogged} onLogout={handleLogout} />
+        </Route>
+        <Route exact path="/ObservationUser">
+          <ObservationUser isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/">
           {({ history, location }) => (
