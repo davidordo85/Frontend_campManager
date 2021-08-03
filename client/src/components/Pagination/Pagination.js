@@ -3,9 +3,6 @@ import React from 'react';
 import './Pagination.css';
 
 const Pagination = ({ location }) => {
-  // si location = ?page=2 desactivar todos los active y activar el 2
-  // si el location = ?page=3 desactivar todos los active y activar el 3
-
   const activate = location.search;
   if (activate === '?page=2') {
     return (
