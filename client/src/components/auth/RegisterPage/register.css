@@ -41,6 +41,8 @@
 }
 
 .registerButton-container {
+  grid-column: 1;
+  padding-top: 2rem;
 }
 
 @media (min-width: 668px) {
@@ -75,9 +77,5 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-  }
-
-  .register-button {
-    margin: 2rem;
   }
 }
