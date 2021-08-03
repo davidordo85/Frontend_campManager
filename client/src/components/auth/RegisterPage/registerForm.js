@@ -208,6 +208,7 @@ const RegisterForm = ({ onSubmit }) => {
           <Form.Label className="register-label">Second surname</Form.Label>
           <Form.Control
             type="text"
+            placeholder="Only if you hav two family names"
             name="secondFamilyName"
             className="registerForm-name"
             value={secondFamilyName}
@@ -217,6 +218,7 @@ const RegisterForm = ({ onSubmit }) => {
         <div>
           <Form.Label className="register-label">Phone</Form.Label>
           <Form.Control
+            placeholder="Do not forget international prefix"
             type="number"
             name="phone"
             className="registerForm-name"
@@ -343,7 +345,7 @@ const RegisterForm = ({ onSubmit }) => {
         </div>
         <div className="form-medical">
           <Form.Label className="medical-label register-label">
-            You have medical knowledge
+            Medical knowledge
           </Form.Label>
           <Form.Select
             name="medical"

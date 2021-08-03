@@ -1,3 +1,14 @@
+.form-group{
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.form-role{
+  margin: 0.5rem;
+  padding: 1rem;
+  width: 98%;
+}
+
 .register-title {
   font-size: 3rem;
 }
