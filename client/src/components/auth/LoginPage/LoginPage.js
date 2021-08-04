@@ -45,7 +45,7 @@ function LoginPage({ onLogin, history, location }) {
       </Navbar>
       <Card border="dark" className="card-login">
         <Card.Header className="text-header">
-          <Card.Title>Login</Card.Title>
+          <Card.Text className="login-title">Login</Card.Text>
         </Card.Header>
         <Card.Body>
           <LoginForm

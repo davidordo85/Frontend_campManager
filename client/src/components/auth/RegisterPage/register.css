@@ -3,6 +3,10 @@
   grid-template-columns: repeat(3, 33%);
 }
 
+.register-placeholder::placeholder{
+  font-weight: lighter;
+}
+
 .role-column {
   display: grid;
   grid-template-columns: repeat(3, 33%);

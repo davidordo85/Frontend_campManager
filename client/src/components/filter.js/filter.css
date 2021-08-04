@@ -10,6 +10,10 @@
   margin-left: 1rem;
 }
 
+.filter-placeholder::placeholder{
+  font-weight: lighter;
+}
+
 @media (min-width: 608px) {
   .mb-3 {
     margin: 4rem auto;

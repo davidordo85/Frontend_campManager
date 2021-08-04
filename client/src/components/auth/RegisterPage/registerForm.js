@@ -212,7 +212,7 @@ const RegisterForm = ({ onSubmit }) => {
             type="text"
             placeholder="Only if you hav two family names"
             name="secondFamilyName"
-            className="registerForm-name"
+            className="registerForm-name  register-placeholder"
             value={secondFamilyName}
             onChange={handleChangeRegister}
           />
@@ -223,7 +223,7 @@ const RegisterForm = ({ onSubmit }) => {
             placeholder="Do not forget international prefix"
             type="number"
             name="phone"
-            className="registerForm-name"
+            className="registerForm-name  register-placeholder"
             value={phone}
             onChange={handleChangeRegister}
             required
@@ -365,7 +365,7 @@ const RegisterForm = ({ onSubmit }) => {
             Allergies
           </Form.Label>
           <Form.Control
-            className="registerForm-allergies"
+            className="registerForm-allergies register-placeholder"
             placeholder="Include here food restrictions due beliefs or habits"
             name="allergies"
             value={allergies}
@@ -379,7 +379,7 @@ const RegisterForm = ({ onSubmit }) => {
             placeholder="Brief introduction about yourself"
             type="text"
             name="about"
-            className="registerForm-about"
+            className="registerForm-about register-placeholder"
             value={about}
             onChange={handleChangeRegister}
             required

@@ -122,7 +122,7 @@ const FilterCamps = ({ onSubmit, index }) => {
           />
         </Form.Group>
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label">Country</Form.Label>
+          <Form.Label className="filterForm-label filter-placeholder">Country</Form.Label>
           <Form.Control
             className="filter-name"
             type="text"
@@ -135,7 +135,7 @@ const FilterCamps = ({ onSubmit, index }) => {
 
       <Row className="filterForm-Row">
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label">From</Form.Label>
+          <Form.Label className="filterForm-label filter-placeholder">From</Form.Label>
           <Form.Control
             className="filter-date"
             type="date"
