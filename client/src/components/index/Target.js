@@ -49,7 +49,7 @@ const Target = ({
             <Card.Text className="text-places">
               Guests:
               {' '}
-              {occupiedGuests}/{places}
+              {occupiedGuests}/{occupiedHelpers}
             </Card.Text>
           </div>
           <div className="placesHelpers">

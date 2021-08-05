@@ -118,7 +118,10 @@ const CampDetail = ({ history, ...props }) => {
             </Alert>
           )}
         </Card>
-        <Button variant="outline-dark" className="sign-up">
+        <Button 
+        variant="outline-dark" 
+        className="sign-up"
+        >
           Sign up
         </Button>
       </div>
