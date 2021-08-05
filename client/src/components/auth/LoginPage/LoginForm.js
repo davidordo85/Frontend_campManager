@@ -38,30 +38,35 @@ TODO: faltan las validaciones
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label className="loginform-label">Email</Form.Label>
+        <Form.Label for="email" className="loginform-label">Email</Form.Label>
         <Form.Control
           type="email"
           name="email"
+          id="email"
           value={email}
           onChange={handleChange}
           isValid={email ? true : false}
         />
-        <Form.Label className="loginform-label">Password</Form.Label>
+        <Form.Label for="password" className="loginform-label">Password</Form.Label>
         <Form.Control
           type="password"
           name="password"
+          id="password"
           value={password}
           onChange={handleChange}
           isValid={password ? true : false}
         />
-        <Form.Check
-          type="checkbox"
-          name="checkbox"
-          label="Remember Password"
-          checked={remember}
-          onChange={handleCheckbox}
-          className="loginform-label"
-        />
+        <div className="rememberPassword">
+          <Form.Check
+            type="checkbox"
+            name="checkbox"
+            id="checkbox"
+            checked={remember}
+            onChange={handleCheckbox}
+            className="loginform-check loginform-label"
+          />
+          <Form.Label for="checkbox">Remember Password</Form.Label>
+        </div>
       </Form.Group>
       <Button
         type="submit"
