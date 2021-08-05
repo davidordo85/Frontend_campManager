@@ -26,6 +26,8 @@ function LoginForm({ onSubmit, isLoading }) {
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit(credentials);
+    // TODO: recargar la pagina al logearte para que salga el dashboard
+    window.location.replace('/');
   };
 
   {

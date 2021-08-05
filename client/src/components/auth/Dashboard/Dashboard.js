@@ -19,6 +19,7 @@ const Dashboard = () => {
       console.log('ok');
     }
   };
+
   {
     /*TODO: mete aqui tus dashboard*/
   }

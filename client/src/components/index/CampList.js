@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 import Target from './Target';
 import FilterCamps from '../filter.js/Filter';
 import { Card } from 'react-bootstrap';
-import Dashboard from '../auth/Dashboard/Dashboard';
+//import Dashboard from '../auth/Dashboard/Dashboard';
 
 import './CampList.css';
 
@@ -51,7 +51,6 @@ const CampList = ({ id, history, location, ...props }) => {
 
   return (
     <Layout {...props}>
-      <Dashboard />
       <div className="container-camps">
         <Card className="container-card">
           <FilterCamps onSubmit={handleFilterSubmit} />

@@ -4,6 +4,7 @@ import logo from '../../assets/images/logoW.png';
 //import Button from '../Buttons/Button';
 import { Button, Navbar } from 'react-bootstrap';
 import AuthButton from '../auth/AuthButton';
+import Dashboard from '../auth/Dashboard/Dashboard';
 import './Header.css';
 
 const Header = ({ isLogged, onLogout }) => {
@@ -14,7 +15,9 @@ const Header = ({ isLogged, onLogout }) => {
           <img className="logo" alt="logo" src={logo}></img>
         </Link>
         <AuthButton className="login" isLogged={isLogged} onLogout={onLogout} />
-        {isLogged ? null : (
+        {isLogged ? (
+          <Dashboard isLogged={isLogged} onLogout={onLogout} />
+        ) : (
           <Button
             size="lg"
             className="register"
