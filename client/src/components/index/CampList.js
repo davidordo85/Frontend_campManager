@@ -65,7 +65,8 @@ const CampList = ({ id, history, location, ...props }) => {
                   tittle={camp.name}
                   location={camp.location}
                   places={camp.capacity}
-                  occupiedPlaces={camp.inPeople}
+                  occupiedHelpers={camp.confirmedHelpers.length}
+                  occupiedGuests={camp.confirmedGuests.length}
                   description={camp.description}
                   history={history}
                 />

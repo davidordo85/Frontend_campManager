@@ -103,8 +103,8 @@ const CampDetail = ({ history, ...props }) => {
               <Card.Body>
                 <Card.Text>Phone: {camp.phone}</Card.Text>
                 <Card.Text>Email: {camp.email}</Card.Text>
-                <Card.Text>Helpers: {camp.helpers}</Card.Text>
-                <Card.Text>Guests: {camp.guests}</Card.Text>
+                <Card.Text>Helpers: {camp.confirmedHelpers+' , '}</Card.Text>
+                <Card.Text>Guests: {camp.confirmedGuests+' , '}</Card.Text>
               </Card.Body>
             </Card>
           </CardColumns>
