@@ -65,13 +65,12 @@ function App({ isInitiallyLogged }) {
           <ObservationUser isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/">
-          {({ history, location }) => (
+          {routeProps => (
             <CampList
               isLogged={isLogged}
               onLogout={handleLogout}
-              history={history}
-              location={location}
-            ></CampList>
+              {...routeProps}
+            />
           )}
         </Route>
         {/*TODO: hacer pagina 404 */}
