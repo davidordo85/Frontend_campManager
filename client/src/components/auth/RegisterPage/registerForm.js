@@ -140,31 +140,33 @@ const RegisterForm = ({ onSubmit }) => {
 
   return (
     <Form className="form-register" onSubmit={handleSubmit}>
-      <div className="role-column">
+      <Form.Label className="role-column">
         <SelectRole
           className="select-role"
           name="role"
           value={role}
           handleChange={handleChangeRegister}
         />
-      </div>
+      </Form.Label>
       <Form.Group className="form-group">
         <div>
-          <Form.Label className="register-label">Email</Form.Label>
+          <Form.Label for="email" className="register-label">Email</Form.Label>
           <Form.Control
             className="registerForm-mail"
             type="email"
             name="email"
+            id="email"
             value={email}
             onChange={handleChangeRegister}
             required
           />
         </div>
         <div>
-          <Form.Label className="register-label">Password</Form.Label>
+          <Form.Label for="password" className="register-label">Password</Form.Label>
           <Form.Control
             type="password"
             name="password"
+            id="password"
             className="registerForm-password"
             value={password}
             onChange={handleChangeRegister}
@@ -172,10 +174,11 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label className="register-label">Repeat password</Form.Label>
+          <Form.Label for="repeatPassword" className="register-label">Repeat password</Form.Label>
           <Form.Control
             type="password"
             name="repeatPassword"
+            id="repeatPassword"
             className="registerForm-password"
             value={repeatPassword}
             onChange={event => handleRepeatPassword(event)}
@@ -185,10 +188,11 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label className="register-label">Name</Form.Label>
+          <Form.Label for="name" className="register-label">Name</Form.Label>
           <Form.Control
             className="registerForm-name"
             type="text"
+            id="name"
             name="name"
             value={name}
             onChange={handleChangeRegister}
@@ -196,10 +200,11 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label className="register-label">Last name</Form.Label>
+          <Form.Label for="firstFamilyName" className="register-label">Last name</Form.Label>
           <Form.Control
             type="text"
             name="firstFamilyName"
+            id="firstFamilyName"
             className="registerForm-name"
             value={firstFamilyName}
             onChange={handleChangeRegister}
@@ -207,9 +212,10 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label className="register-label">Second surname</Form.Label>
+          <Form.Label for="secondFamilyName" className="register-label">Second surname</Form.Label>
           <Form.Control
             type="text"
+            id="secondFamilyName"
             placeholder="Only if you hav two family names"
             name="secondFamilyName"
             className="registerForm-name  register-placeholder"
@@ -218,11 +224,12 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label className="register-label">Phone</Form.Label>
+          <Form.Label for="phone" className="register-label">Phone</Form.Label>
           <Form.Control
             placeholder="Do not forget international prefix"
             type="number"
             name="phone"
+            id="phone"
             className="registerForm-name  register-placeholder"
             value={phone}
             onChange={handleChangeRegister}
@@ -230,10 +237,11 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label className="register-label">Username</Form.Label>
+          <Form.Label for="username" className="register-label">Username</Form.Label>
           <Form.Control
             type="text"
             name="username"
+            id="username"
             className="registerForm-name"
             value={username}
             onChange={handleChangeRegister}
@@ -241,9 +249,10 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="form-gender">
-          <Form.Label className="label-role register-label">Gender</Form.Label>
+          <Form.Label for="gender" className="label-role register-label">Gender</Form.Label>
           <Form.Select
-            name="sex"
+            name="gender"
+            id="gender"
             className="gender-form"
             required
             onChange={event => handleGender(event)}
@@ -254,10 +263,11 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label className="register-label">Nationality</Form.Label>
+          <Form.Label for="nationality" className="register-label">Nationality</Form.Label>
           <Form.Control
             className="registerForm-nationality"
             type="text"
+            id="nationality"
             name="nationality"
             value={nationality}
             onChange={handleChangeRegister}
@@ -265,11 +275,12 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="form-role">
-          <Form.Label className="label-role register-label">
+          <Form.Label for="documentId" className="label-role register-label">
             Type legal identifier
           </Form.Label>
           <Form.Select
             name="documentId"
+            id="documentId"
             required
             className="identify-form"
             onChange={event => handleSelectId(event)}
@@ -282,10 +293,11 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label className="register-label">Legal identifier</Form.Label>
+          <Form.Label for="idNumber" className="register-label">Legal identifier</Form.Label>
           <Form.Control
             type="text"
             name="idNumber"
+            id="idNumber"
             className="registerForm-identify"
             value={idNumber}
             onChange={handleChangeRegister}
@@ -293,18 +305,19 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label className="register-label">Birth date</Form.Label>
+          <Form.Label for="bornDate" className="register-label">Birth date</Form.Label>
           <Form.Control
             className="registerForm-date"
             type="date"
             name="bornDate"
+            id="bornDate"
             value={bornDate}
             onChange={handleChangeRegister}
             required
           />
         </div>
         <div>
-          <Form.Label className="register-label">Photo</Form.Label>
+          <Form.Label for="registerForm-photo" className="register-label">Photo</Form.Label>
           <Form.Control
             id="registerForm-photo"
             type="file"
@@ -314,11 +327,12 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label className="register-label">Address</Form.Label>
+          <Form.Label for="address" className="register-label">Address</Form.Label>
           <Form.Control
             className="registerForm-country"
             type="text"
             name="address"
+            id="address"
             value={address}
             onChange={handleChangeRegister}
             required
@@ -326,11 +340,12 @@ const RegisterForm = ({ onSubmit }) => {
         </div>
         {register.role === 'guest' ? (
           <div>
-            <Form.Label className="register-label">Tutor's name</Form.Label>
+            <Form.Label for="tutorName" className="register-label">Tutor's name</Form.Label>
             <Form.Control
               className="registerForm-name"
               type="text"
-              name="name"
+              id="tutorName"
+              name="tutorName"
               value={tutor}
               onChange={handleChangeRegister}
               required
@@ -338,7 +353,7 @@ const RegisterForm = ({ onSubmit }) => {
           </div>
         ) : null}
         <div>
-          <Form.Label className="register-label">Curriculum vitae</Form.Label>
+          <Form.Label for="registerForm-CV" className="register-label">Curriculum vitae</Form.Label>
           <Form.Control
             id="registerForm-CV"
             type="file"
@@ -348,10 +363,11 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="form-medical">
-          <Form.Label className="medical-label register-label">
+          <Form.Label for="medical" className="medical-label register-label">
             Medical knowledge
           </Form.Label>
           <Form.Select
+            id="medical"
             name="medical"
             className="medical-form"
             onChange={handleMedical}
@@ -361,24 +377,26 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label className="Allergies-label register-label">
+          <Form.Label for="allergies" className="Allergies-label register-label">
             Allergies
           </Form.Label>
           <Form.Control
             className="registerForm-allergies register-placeholder"
             placeholder="Include here food restrictions due beliefs or habits"
             name="allergies"
+            id="allergies"
             value={allergies}
             rows="1"
             onChange={handleChangeRegister}
           />
         </div>
         <div className="about">
-          <Form.Label className="register-label">About you</Form.Label>
+          <Form.Label for="about" className="register-label">About you</Form.Label>
           <Form.Control
             placeholder="Brief introduction about yourself"
             type="text"
             name="about"
+            id="about"
             className="registerForm-about register-placeholder"
             value={about}
             onChange={handleChangeRegister}

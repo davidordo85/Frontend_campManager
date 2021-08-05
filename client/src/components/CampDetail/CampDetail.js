@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 import './CampDetail.css';
 
-const CampDetail = ({ history, ...props }) => {
+const CampDetail = ({ history, isLogged, ...props }) => {
   const [camp, setCamp] = React.useState({
     activities: ['await'],
     createdAt: '2021-07-28T00:18:07.898Z',
@@ -36,6 +36,9 @@ const CampDetail = ({ history, ...props }) => {
     }
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+  }
   const createdAt = camp.createdAt.split('T');
   console.log(camp);
 
@@ -119,8 +122,11 @@ const CampDetail = ({ history, ...props }) => {
           )}
         </Card>
         <Button 
+        type="submit"
+        onSubmit={handleSubmit}
         variant="outline-dark" 
         className="sign-up"
+        disabled={!isLogged}
         >
           Sign up
         </Button>
