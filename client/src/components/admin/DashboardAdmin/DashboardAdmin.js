@@ -1,28 +1,9 @@
 import React from 'react';
-import { getMe } from '../../../api/auth';
 import { Link } from 'react-router-dom';
 
 import './DashboardAdmin.css';
 
 const DashboardAdmin = () => {
-  const [me, setMe] = React.useState({});
-
-  React.useEffect(() => {
-    handleMe();
-  }, []);
-
-  const handleMe = async () => {
-    try {
-      const meDates = await getMe('auth');
-      setMe(meDates);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      console.log('ok');
-    }
-  };
-
-  console.log(me);
   return (
     <div className="dashboardAdmin">
       <Link to="/createCamp" className="link">
