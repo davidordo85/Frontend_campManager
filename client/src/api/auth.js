@@ -51,7 +51,6 @@ export const registerUser = async register => {
     });
   } catch (error) {
     const errorMsg = error.data.error
-    console.log(error)
     if (errorMsg.startsWith('User validation failed: password: Path')) {
       throw Error('Validation Error: password must be at least 6 characters long', error)
     } else {

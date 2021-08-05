@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
-import { Alert, Card, Navbar, Button } from 'react-bootstrap';
+import { Alert, Card, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logoW.png';
 

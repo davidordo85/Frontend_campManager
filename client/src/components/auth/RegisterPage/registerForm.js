@@ -33,7 +33,6 @@ const RegisterForm = ({ onSubmit }) => {
         ...oldRegister,
         [event.target.name]: event.target.value,
       };
-      console.log(event.target.name, event.target.value);
       if (register.photo) {
         oldRegister.append(file);
       }
@@ -135,8 +134,6 @@ const RegisterForm = ({ onSubmit }) => {
     about,
     tutor,
   } = register;
-
-  console.log(register);
 
   return (
     <Form className="form-register" onSubmit={handleSubmit}>

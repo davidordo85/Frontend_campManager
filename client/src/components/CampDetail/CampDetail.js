@@ -21,7 +21,7 @@ const CampDetail = ({ history, isLogged, ...props }) => {
 
   React.useEffect(() => {
     campDetail(paramsId);
-  }, []);
+  }, [paramsId]);
 
   const campDetail = async props => {
     setLoading(true);
@@ -40,7 +40,6 @@ const CampDetail = ({ history, isLogged, ...props }) => {
     event.preventDefault();
   }
   const createdAt = camp.createdAt.split('T');
-  console.log(camp);
 
   return (
     <Layout {...props}>

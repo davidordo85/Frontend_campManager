@@ -28,11 +28,8 @@ function LoginForm({ onSubmit, isLoading }) {
     onSubmit(credentials);
   };
 
-  {
-    /*
-TODO: faltan las validaciones
-*/
-  }
+
+  //TODO: faltan las validaciones
 
   const { email, password, remember } = credentials;
   return (
