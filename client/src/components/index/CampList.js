@@ -7,6 +7,7 @@ import Loader from '../Loader/Loader';
 import Target from './Target';
 import FilterCamps from '../filter.js/Filter';
 import { Card } from 'react-bootstrap';
+//import Dashboard from '../auth/Dashboard/Dashboard';
 
 import './CampList.css';
 
