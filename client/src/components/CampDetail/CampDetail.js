@@ -11,6 +11,8 @@ const CampDetail = ({ history, isLogged, ...props }) => {
   const [camp, setCamp] = React.useState({
     activities: ['await'],
     createdAt: '2021-07-28T00:18:07.898Z',
+    confirmedHelpers: '',
+    confirmedGuests: ''
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -42,7 +44,7 @@ const CampDetail = ({ history, isLogged, ...props }) => {
   const createdAt = camp.createdAt.split('T');
 
   return (
-    <Layout {...props}>
+    <Layout isLogged={isLogged} {...props}>
       <div className="detail">
         <Loader hidden={!loading} />
         <Card className="card-exterior">
@@ -105,8 +107,8 @@ const CampDetail = ({ history, isLogged, ...props }) => {
               <Card.Body>
                 <Card.Text>Phone: {camp.phone}</Card.Text>
                 <Card.Text>Email: {camp.email}</Card.Text>
-                <Card.Text>Helpers: {camp.confirmedHelpers+' , '}</Card.Text>
-                <Card.Text>Guests: {camp.confirmedGuests+' , '}</Card.Text>
+                <Card.Text>Helpers: {camp.confirmedHelpers.length}</Card.Text>
+                <Card.Text>Guests: {camp.confirmedGuests.length}</Card.Text>
               </Card.Body>
             </Card>
           </CardColumns>
