@@ -58,21 +58,3 @@ export const registerUser = async register => {
       throw Error('Server Error', error)
   }}
 }
-
-export const forgotPassword = async (email) => {
-  try {
-    const url = `${authPath}/forgotpassword`
-    return await client.post(url, email)
-  } catch (error) {
-    console.log(error)
-    throw Error('Server Error', error)
-  }
-  // return client
-  //   .post(`${authPath}/forgotpassword`, email)
-  //   .then(() => {
-  //     console.log('email sent')
-  //   }).catch((error) => {
-  //     console.log(error)
-  //     throw Error('Server Error', error)
-  //   })
-};

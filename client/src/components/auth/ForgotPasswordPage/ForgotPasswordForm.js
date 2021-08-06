@@ -1,13 +1,26 @@
-import React from 'react';
+ import { useState } from 'react';
+// import { useHistory } from 'react-router-dom'
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
 
-const ForgotPasswordForm = ({ onSubmit, isLoading }) => {
-  const [email, setEmail] = React.useState('')
+const ForgotPasswordForm = () => {
+  const [email, setEmail] = useState('')
+  const [isPending, setIsPending] = useState('')
+  // const history = useHistory()
+  const url = `${process.env.REACT_APP_API_BASE_URL}/api/v1/auth/forgotpassword`
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    onSubmit(email)
-  };
+
+    fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(email)
+    }).then(() => {
+      setIsPending(false)
+      // history.push('/login')
+    })
+  }
 
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
@@ -29,7 +42,7 @@ const ForgotPasswordForm = ({ onSubmit, isLoading }) => {
           type="submit"
           className="LoginFormSubmit" 
           variant="outline-dark"
-          disabled={isLoading || !email}
+          disabled={isPending || !email}
         >
           Submit
         </Button>
