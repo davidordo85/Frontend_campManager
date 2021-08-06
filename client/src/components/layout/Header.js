@@ -6,7 +6,12 @@ import { Button, Navbar } from 'react-bootstrap';
 import AuthButton from '../auth/AuthButton';
 import './Header.css';
 
+
 const Header = ({ isLogged, onLogout }) => {
+
+  console.log(isLogged,'isLogged Header')
+
+  
   return (
     <div className="header">
       <Navbar bg="dark" expand="lg">

@@ -8,11 +8,11 @@ export const login = ({ remember, ...credentials }) => {
     .post(`${authPath}/login`, credentials)
     .then(({ token }) => {
       configureClient({ token });
-      return token;
+      storage.set(token);
     })
     .then(token => {
       if (remember) {
-        storage.set('auth', token);
+        storage.remember('auth', token);
       }
     })
     .catch(error => {

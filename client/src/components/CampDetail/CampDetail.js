@@ -21,6 +21,9 @@ const CampDetail = ({ history, isLogged, ...props }) => {
 
   const paramsId = props.match.params.id;
 
+  console.log(localStorage,'localStorage')
+  console.log(sessionStorage,'sessionStorage')
+
   React.useEffect(() => {
     campDetail(paramsId);
   }, [paramsId]);
