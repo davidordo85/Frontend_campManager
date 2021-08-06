@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
-import { Alert, Card, Navbar, Button } from 'react-bootstrap';
+import { Alert, Card, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logoW.png';
 
@@ -47,27 +47,23 @@ function LoginPage({ onLogin, history, location }) {
         </Navbar.Brand>
       </Navbar>
       <Card border="dark" className="card-login">
-        <Card.Header className="text-header">
-          <Card.Text className="login-title">Login</Card.Text>
-        </Card.Header>
-        <Card.Body>
-          <LoginForm
-            className="loginPage-form"
-            onSubmit={handleSubmit}
-            isLoading={isLoading}
-          />
-          {error && (
-            <Alert
-              onClick={resetError}
-              variant="danger"
-              className="loginPage-error"
-            >
-              {error.message}
-              <br />
-              <Link to="/forgetPassword">Forget password</Link>
-            </Alert>
-          )}
-        </Card.Body>
+        <Card.Header className="text-header">Login</Card.Header>
+        <LoginForm
+          className="loginPage-form"
+          onSubmit={handleSubmit}
+          isLoading={isLoading}
+        />
+        {error && (
+          <Alert
+            onClick={resetError}
+            variant="danger"
+            className="loginPage-error"
+          >
+            {error.message}
+            <br />
+            <Link to="/forgotpassword">Forgot password</Link>
+          </Alert>
+        )}
       </Card>
       <footer className="layout-footer bordered">
         © 2021 KeepCoding - CodeSword - Práctica final
