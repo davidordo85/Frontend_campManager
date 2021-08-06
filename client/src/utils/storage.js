@@ -25,6 +25,7 @@ const storage = {
 
   remove(key) {
     sessionStorage.removeItem(key);
+    localStorage.removeItem(key);
   },
 };
 
