@@ -8,9 +8,6 @@ import './Header.css';
 
 
 const Header = ({ isLogged, onLogout }) => {
-
-  console.log(isLogged,'isLogged Header')
-
   
   return (
     <div className="header">

@@ -1,19 +1,18 @@
 const storage = {
   get(key) {
-    const value = sessionStorage.getItem(key);
-    // const valueSession = sessionStorage.getItem(key);
-    // console.log(valueLocal,'valueLocal')
-    // console.log(valueSession,'valueSession')
+    const valueSession = sessionStorage.getItem(key);
+    const valueLocal = localStorage.getItem(key);
 
-    if (!value) {
+    if (!valueSession && !valueLocal) {
       return null;
     }
-    
-    return JSON.parse(value);
-    // }else if(valueSession){
-    //   return JSON.parse(valueSession)
-    
-    
+
+    if(valueSession){
+      return JSON.parse(valueSession);
+    }else if(valueLocal) {
+      return JSON.parse(valueLocal)
+    }
+
   },
 
   remember(key, value) {

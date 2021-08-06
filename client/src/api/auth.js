@@ -7,13 +7,11 @@ export const login = ({ remember, ...credentials }) => {
   return client
     .post(`${authPath}/login`, credentials)
     .then(({ token }) => {
-      configureClient({ token });
-      storage.set(token);
-    })
-    .then(token => {
-      if (remember) {
+      if(remember){
         storage.remember('auth', token);
       }
+      configureClient({ token });
+      storage.set('auth', token);
     })
     .catch(error => {
       if (error.data.error === "Invalid credentials") {
