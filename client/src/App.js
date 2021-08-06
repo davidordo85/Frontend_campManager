@@ -6,7 +6,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import { CampDetail } from './components/CampDetail';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CreateCamp from './components/admin/CreateCamp/CreateCamp';
+import CreateCamp from './components/admin/CreateCamp/CreateCampPage';
 import Requests from './components/admin/Requests/Requests';
 import UserList from './components/admin/UsersList/UsersList';
 import ObservationUser from './components/admin/ObservationUser/ObservationUser';

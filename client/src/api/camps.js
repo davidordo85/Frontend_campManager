@@ -41,3 +41,20 @@ export const filteredCamp = filterCamp => {
   const url = `${campsBaseUrl}${filterCampUrl}`;
   return client.get(url);
 };
+
+export const createCamp = async create => {
+  try {
+    const url = `${campsBaseUrl}`;
+    const formCreateData = new FormData();
+    for (let item in create) {
+      formCreateData.append(item, create[item])
+    }
+    return await client.post(url, formCreateData, {
+      headers:{
+        "content-type": "application/json"
+      }
+    });
+  } catch (error) {
+    throw Error('Server Error', error)
+  }
+}
