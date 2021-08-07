@@ -11,7 +11,7 @@ const CreateCampForm = ({ onSubmit }) => {
     location: '',
     description: '',
     tag: 'urban',
-    activities: 'reading',
+    activities: 'museum',
     address: '',
     phone: '111-111-1111',
     email: 'camps@campmanager.com',
@@ -87,7 +87,7 @@ const CreateCampForm = ({ onSubmit }) => {
   } = camp;
 
   return (
-    <Form className="form-createCamps">
+    <Form className="form-createCamps" onSubmit={handleSubmit}>
       <Form.Group className="form-groupCreate">
         <div>
           <Form.Label>Name</Form.Label>
@@ -256,8 +256,7 @@ const CreateCampForm = ({ onSubmit }) => {
           variant="outline-dark"
           type="submit"
           className="button-createCamp"
-          onSubmit={handleSubmit}
-          disabled={
+          /*           disabled={
             !name ||
             !edition ||
             !location ||
@@ -269,7 +268,7 @@ const CreateCampForm = ({ onSubmit }) => {
             !email ||
             !from ||
             !to
-          }
+          } */
         >
           Submit
         </Button>
