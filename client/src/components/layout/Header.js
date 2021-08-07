@@ -19,7 +19,8 @@ const Header = ({ isLogged, onLogout }) => {
         <AuthButton className="login" isLogged={isLogged} onLogout={onLogout} />
         {isLogged ? (
           <Dashboard isLogged={isLogged} onLogout={onLogout} />
-        ) : (
+        ) : null}
+        {isLogged ? null : (
           <Button
             size="lg"
             className="register"

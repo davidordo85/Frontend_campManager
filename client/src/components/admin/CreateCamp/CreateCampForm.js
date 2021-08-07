@@ -1,51 +1,49 @@
 import { useState } from 'react';
 import { Form, Badge, Button } from 'react-bootstrap';
 
-import SelectTag from './SelectTag'
-import SelectActivities from './SelectActivities'
+import SelectTag from './SelectTag';
+import SelectActivities from './SelectActivities';
 
-import './createCampForm.css';
-
-const CreateCampForm = ({onSubmit}) => {
+const CreateCampForm = ({ onSubmit }) => {
   const [camp, setCamp] = useState({
-		name: '',
-		edition: '',
-		location: '',
-		description: '',
-		tag: 'urban',
-		activities: 'reading',
-		address: '',
-		phone: '111-111-1111',
-		email: 'camps@campmanager.com',
-		from: '',
-		to: '',
-		capacity: 30,
-		inPeople: 0,
+    name: '',
+    edition: '',
+    location: '',
+    description: '',
+    tag: 'urban',
+    activities: 'reading',
+    address: '',
+    phone: '111-111-1111',
+    email: 'camps@campmanager.com',
+    from: '',
+    to: '',
+    capacity: 30,
+    inPeople: 0,
     available: true,
-		helpers: [],
-		guests: []
-  })
+    helpers: [],
+    guests: [],
+  });
 
   const handleCreateCamp = e => {
     setCamp(oldForm => {
       const newForm = {
         ...oldForm,
         [e.target.name]: e.target.value,
-      }
-      return newForm
-    })
-  }
+      };
+      return newForm;
+    });
+  };
 
-  const [availability, setAvailability] = useState()
+  const [availability, setAvailability] = useState();
 
   const handleAvailavility = e => {
-    const availability = e.target.value
-    setAvailability(availability)
-  }
+    const availability = e.target.value;
+    setAvailability(availability);
+  };
 
   const handleSubmit = e => {
-    e.preventDefault()
-    const selectAvailability = availability
+    e.preventDefault();
+    const selectAvailability = availability;
     const campData = {
       name: camp.name,
       edition: camp.edition,
@@ -63,12 +61,12 @@ const CreateCampForm = ({onSubmit}) => {
       available: camp.available,
       helpers: camp.helpers,
       guests: camp.guests,
-    }
+    };
     if (selectAvailability) {
-      campData['availability'] = availability
+      campData['availability'] = availability;
     }
-    onSubmit(campData)
-  }
+    onSubmit(campData);
+  };
 
   const {
     name,
@@ -86,11 +84,11 @@ const CreateCampForm = ({onSubmit}) => {
     inPeople,
     helpers,
     guests,
-  } = camp
+  } = camp;
 
-  return ( 
-    <Form className="form-register">
-      <Form.Group className="form-group">
+  return (
+    <Form className="form-createCamps">
+      <Form.Group className="form-groupCreate">
         <div>
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -134,18 +132,14 @@ const CreateCampForm = ({onSubmit}) => {
             onChange={handleCreateCamp}
           />
         </div>
-        <SelectTag
-          className=""
-          name="tag"
-          value={tag}
-          handleChange={handleCreateCamp}
-        />
-        <SelectActivities
-          className="label-activities"
-          name="activities"
-          value={activities}
-          handleChange={handleCreateCamp}
-        />
+        <div>
+          <SelectTag
+            className=""
+            name="tag"
+            value={tag}
+            handleChange={handleCreateCamp}
+          />
+        </div>
         <div>
           <Form.Label>Address</Form.Label>
           <Form.Control
@@ -155,6 +149,14 @@ const CreateCampForm = ({onSubmit}) => {
             value={address}
             onChange={handleCreateCamp}
             required
+          />
+        </div>
+        <div className="activities">
+          <SelectActivities
+            className=""
+            name="activities"
+            value={activities}
+            handleChange={handleCreateCamp}
           />
         </div>
         <div>
@@ -212,19 +214,16 @@ const CreateCampForm = ({onSubmit}) => {
             required
           />
         </div>
-        <div>
-          <Badge 
-            bg="secondary"
-            className="inPeople"        
-          >
-          Suscribed {inPeople}
+        <div className="badge">
+          <Badge bg="secondary" className="text-badge">
+            Suscribed {inPeople}
           </Badge>
         </div>
-        <div className="form-medical">
-          <Form.Label className="medical-label">Available</Form.Label>
+        <div className="">
+          <Form.Label className="">Available</Form.Label>
           <Form.Select
             name="availability"
-            className="form-medical"
+            className=""
             onChange={handleAvailavility}
           >
             <option value={true}>Yes</option>
@@ -253,30 +252,30 @@ const CreateCampForm = ({onSubmit}) => {
             required
           />
         </div>
+        <Button
+          variant="outline-dark"
+          type="submit"
+          className="button-createCamp"
+          onSubmit={handleSubmit}
+          disabled={
+            !name ||
+            !edition ||
+            !location ||
+            !description ||
+            !tag ||
+            !activities ||
+            !address ||
+            !phone ||
+            !email ||
+            !from ||
+            !to
+          }
+        >
+          Submit
+        </Button>
       </Form.Group>
-          <Button
-            variant="outline-dark"
-            type="submit"
-            className=""
-            onSubmit={handleSubmit}
-            disabled={
-              !name ||
-              !edition ||
-              !location ||
-              !description ||
-              !tag ||
-              !activities ||
-              !address ||
-              !phone ||
-              !email ||
-              !from ||
-              !to
-            }
-          >
-            Submit
-          </Button>
     </Form>
-  )
-}
+  );
+};
 
 export default CreateCampForm;
