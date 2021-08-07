@@ -7,7 +7,9 @@ import AuthButton from '../auth/AuthButton';
 import Dashboard from '../auth/Dashboard/Dashboard';
 import './Header.css';
 
+
 const Header = ({ isLogged, onLogout }) => {
+  
   return (
     <Navbar fixed="top" bg="dark" expand="lg" className="header">
       <Navbar.Brand>

@@ -37,6 +37,16 @@
   justify-content: center;
 }
 
+.rememberPassword{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.loginform-check{
+  margin-right: 0.5rem;
+}
+
 @media (max-width: 608px) {
   .card-login {
     margin: 3rem 1rem 1rem 1rem;

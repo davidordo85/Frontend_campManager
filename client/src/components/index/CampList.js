@@ -21,7 +21,7 @@ const CampList = ({ id, history, location, ...props }) => {
   React.useEffect(() => {
     //getAllCamps();
     paginationLocation(location.search);
-  }, []);
+  }, [location.search]);
 
   const handleFilterSubmit = async filterCamp => {
     try {
@@ -57,7 +57,6 @@ const CampList = ({ id, history, location, ...props }) => {
           <Loader hidden={!loading} />
           <Card className="card-list" border="light">
             {camps.length > 0 ? (
-              console.log(camps) ||
               camps.map((camp, index) => (
                 <Target
                   key={index}
@@ -66,7 +65,8 @@ const CampList = ({ id, history, location, ...props }) => {
                   tittle={camp.name}
                   location={camp.location}
                   places={camp.capacity}
-                  occupiedPlaces={camp.inPeople}
+                  occupiedHelpers={camp.confirmedHelpers.length}
+                  occupiedGuests={camp.confirmedGuests.length}
                   description={camp.description}
                   history={history}
                 />

@@ -19,7 +19,7 @@ const Pagination = ({ location }) => {
         <a href="?page=3" value="3">
           3
         </a>
-        <a href="" value="end">
+        <a href="?page=3" value="end">
           &raquo;
         </a>
       </div>
@@ -40,7 +40,7 @@ const Pagination = ({ location }) => {
           <a href="?page=3" value="3" className="active">
             3
           </a>
-          <a href="" value="end">
+          <a href="?page=4" value="end">
             &raquo;
           </a>
         </div>
@@ -60,7 +60,7 @@ const Pagination = ({ location }) => {
           <a href="?page=3" value="3">
             3
           </a>
-          <a href="" value="end">
+          <a href="?page=2" value="end">
             &raquo;
           </a>
         </div>

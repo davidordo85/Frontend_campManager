@@ -1,6 +1,7 @@
 import React from 'react';
 import mark from '../../assets/images/location.png';
-import user from '../../assets/images/group.svg';
+import userHelper from '../../assets/images/group.svg';
+import userGuest from '../../assets/images/group2.svg';
 import beach from '../../assets/images/beach.svg';
 import mountain from '../../assets/images/mountain.svg';
 import city from '../../assets/images/buildings.svg';
@@ -13,7 +14,8 @@ const Target = ({
   location,
   places,
   description,
-  occupiedPlaces,
+  occupiedHelpers,
+  occupiedGuests,
   tags,
   history,
 }) => {
@@ -42,11 +44,20 @@ const Target = ({
             <Card.Img className="img-location" alt="location" src={mark} />
             <Card.Text className="text-location">{location}</Card.Text>
           </div>
-          <div className="places">
-            <Card.Img className="img-places" alt="places" src={user} />
+          <div className="placesGuests">
+            <Card.Img className="img-places" alt="places" src={userGuest} />
             <Card.Text className="text-places">
+              Guests:
               {' '}
-              {occupiedPlaces}/{places}
+              {occupiedGuests}/{occupiedHelpers}
+            </Card.Text>
+          </div>
+          <div className="placesHelpers">
+            <Card.Img className="img-places" alt="places" src={userHelper} />
+            <Card.Text className="text-places">
+              Helpers:
+              {' '}
+              {occupiedHelpers}/{places}
             </Card.Text>
           </div>
         </div>

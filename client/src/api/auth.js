@@ -7,13 +7,11 @@ export const login = ({ remember, ...credentials }) => {
   return client
     .post(`${authPath}/login`, credentials)
     .then(({ token }) => {
-      configureClient({ token });
-      return token;
-    })
-    .then(token => {
-      if (remember) {
-        storage.set('auth', token);
+      if(remember){
+        storage.remember('auth', token);
       }
+      configureClient({ token });
+      storage.set('auth', token);
     })
     .catch(error => {
       if (error.data.error === 'Invalid credentials') {
@@ -51,7 +49,6 @@ export const registerUser = async register => {
     });
   } catch (error) {
     const errorMsg = error.data.error;
-    console.log(error);
     if (errorMsg.startsWith('User validation failed: password: Path')) {
       throw Error(
         'Validation Error: password must be at least 6 characters long',

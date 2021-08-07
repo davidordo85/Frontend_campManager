@@ -7,6 +7,7 @@ import storage from './utils/storage';
 import { configureClient } from './api/client';
 
 const accessToken = storage.get('auth');
+
 configureClient({ accessToken });
 
 ReactDOM.render(

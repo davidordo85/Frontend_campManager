@@ -1,16 +1,31 @@
 import React from 'react';
 import Layout from '../layout/layout';
 import { getCampDetail } from '../../api/camps';
+import { getMe } from '../../api/auth';
 import Loader from '../Loader/Loader';
 import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 import './CampDetail.css';
 
-const CampDetail = ({ history, ...props }) => {
+// console.log(sessionStorage,'sessionStorage');
+// console.log(localStorage,'localStorage')
+// const token = sessionStorage.auth
+// const user = getMe({ headers: {"Authorization" : `Bearer ${token}`}});
+// console.log(user)
+// if(sessionStorage){
+//   const user = getMe(sessionStorage.auth);
+//   console.log(user,'user');
+// }
+// const user = getMe();
+// console.log(user,'user');
+
+const CampDetail = ({ history, isLogged, ...props }) => {
   const [camp, setCamp] = React.useState({
     activities: ['await'],
     createdAt: '2021-07-28T00:18:07.898Z',
+    confirmedHelpers: '',
+    confirmedGuests: ''
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -21,7 +36,7 @@ const CampDetail = ({ history, ...props }) => {
 
   React.useEffect(() => {
     campDetail(paramsId);
-  }, []);
+  }, [paramsId]);
 
   const campDetail = async props => {
     setLoading(true);
@@ -36,11 +51,13 @@ const CampDetail = ({ history, ...props }) => {
     }
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+  }
   const createdAt = camp.createdAt.split('T');
-  console.log(camp);
 
   return (
-    <Layout {...props}>
+    <Layout isLogged={isLogged} {...props}>
       <div className="detail">
         <Loader hidden={!loading} />
         <Card className="card-exterior">
@@ -103,8 +120,8 @@ const CampDetail = ({ history, ...props }) => {
               <Card.Body>
                 <Card.Text>Phone: {camp.phone}</Card.Text>
                 <Card.Text>Email: {camp.email}</Card.Text>
-                <Card.Text>Helpers: {camp.helpers}</Card.Text>
-                <Card.Text>Guests: {camp.guests}</Card.Text>
+                <Card.Text>Helpers: {camp.confirmedHelpers.length}</Card.Text>
+                <Card.Text>Guests: {camp.confirmedGuests.length}</Card.Text>
               </Card.Body>
             </Card>
           </CardColumns>
@@ -118,7 +135,13 @@ const CampDetail = ({ history, ...props }) => {
             </Alert>
           )}
         </Card>
-        <Button variant="outline-dark" className="sign-up">
+        <Button 
+        type="submit"
+        onSubmit={handleSubmit}
+        variant="outline-dark" 
+        className="sign-up"
+        disabled={!isLogged}
+        >
           Sign up
         </Button>
       </div>
