@@ -4,8 +4,6 @@ import { Form, Badge, Button } from 'react-bootstrap';
 import SelectTag from './SelectTag';
 import SelectActivities from './SelectActivities';
 
-import './createCampForm.css';
-
 const CreateCampForm = ({ onSubmit }) => {
   const [camp, setCamp] = useState({
     name: '',
@@ -134,18 +132,14 @@ const CreateCampForm = ({ onSubmit }) => {
             onChange={handleCreateCamp}
           />
         </div>
-        <SelectTag
-          className=""
-          name="tag"
-          value={tag}
-          handleChange={handleCreateCamp}
-        />
-        <SelectActivities
-          className=""
-          name="activities"
-          value={activities}
-          handleChange={handleCreateCamp}
-        />
+        <div>
+          <SelectTag
+            className=""
+            name="tag"
+            value={tag}
+            handleChange={handleCreateCamp}
+          />
+        </div>
         <div>
           <Form.Label>Address</Form.Label>
           <Form.Control
@@ -155,6 +149,14 @@ const CreateCampForm = ({ onSubmit }) => {
             value={address}
             onChange={handleCreateCamp}
             required
+          />
+        </div>
+        <div className="activities">
+          <SelectActivities
+            className=""
+            name="activities"
+            value={activities}
+            handleChange={handleCreateCamp}
           />
         </div>
         <div>
@@ -212,8 +214,8 @@ const CreateCampForm = ({ onSubmit }) => {
             required
           />
         </div>
-        <div>
-          <Badge bg="secondary" className="">
+        <div className="badge">
+          <Badge bg="secondary" className="text-badge">
             Suscribed {inPeople}
           </Badge>
         </div>
@@ -250,28 +252,28 @@ const CreateCampForm = ({ onSubmit }) => {
             required
           />
         </div>
+        <Button
+          variant="outline-dark"
+          type="submit"
+          className="button-createCamp"
+          onSubmit={handleSubmit}
+          disabled={
+            !name ||
+            !edition ||
+            !location ||
+            !description ||
+            !tag ||
+            !activities ||
+            !address ||
+            !phone ||
+            !email ||
+            !from ||
+            !to
+          }
+        >
+          Submit
+        </Button>
       </Form.Group>
-      <Button
-        variant="outline-dark"
-        type="submit"
-        className=""
-        onSubmit={handleSubmit}
-        disabled={
-          !name ||
-          !edition ||
-          !location ||
-          !description ||
-          !tag ||
-          !activities ||
-          !address ||
-          !phone ||
-          !email ||
-          !from ||
-          !to
-        }
-      >
-        Submit
-      </Button>
     </Form>
   );
 };

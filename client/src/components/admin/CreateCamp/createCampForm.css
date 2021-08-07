@@ -1,0 +1,32 @@
+.card-createCamp {
+  margin: 10rem 7rem 5rem 20rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title-createCamps {
+  text-align: center;
+}
+
+.form-groupCreate {
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.activities {
+  grid-column: 1 / -1;
+}
+
+.activities-checkbox {
+  display: flex;
+}
+
+.badge {
+  margin-top: 1.3rem;
+}
+
+.button-createCamp {
+  margin: 1rem 0 1rem 0;
+  grid-column: 1;
+}

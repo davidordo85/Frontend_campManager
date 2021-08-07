@@ -26,10 +26,8 @@ const CreateCampPage = ({ ...props }) => {
 
   return (
     <Layout {...props}>
-      <Card border="dark" className="card-login">
-        <Card.Header className="register-title text-header">
-          Create Camp
-        </Card.Header>
+      <Card border="dark" className="card-createCamp">
+        <Card.Header className="title-createCamps">Create Camp</Card.Header>
         <CreateCampForm
           className=""
           onSubmit={handleSubmit}
