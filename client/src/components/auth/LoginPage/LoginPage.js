@@ -47,7 +47,9 @@ function LoginPage({ onLogin, history, location }) {
         </Navbar.Brand>
       </Navbar>
       <Card border="dark" className="card-login">
-        <Card.Header className="text-header">Login</Card.Header>
+        <Card.Header className="text-header">
+          <Card.Text className="login-title">Login</Card.Text>
+        </Card.Header>
         <LoginForm
           className="loginPage-form"
           onSubmit={handleSubmit}
