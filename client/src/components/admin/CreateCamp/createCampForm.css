@@ -14,12 +14,25 @@
   align-content: space-around;
 }
 
+.form-createCamps {
+  margin: 1rem;
+}
+
+.label-activities {
+  margin-top: 1rem;
+  margin-left: 45%;
+}
+
 .activities {
   grid-column: 1 / -1;
 }
 
 .activities-checkbox {
   display: flex;
+}
+
+.activities-checkbox > div {
+  margin: 0 0 1rem 15rem;
 }
 
 .badge {
