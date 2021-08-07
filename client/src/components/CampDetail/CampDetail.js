@@ -1,11 +1,24 @@
 import React from 'react';
 import Layout from '../layout/layout';
 import { getCampDetail } from '../../api/camps';
+import { getMe } from '../../api/auth';
 import Loader from '../Loader/Loader';
 import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 import './CampDetail.css';
+
+// console.log(sessionStorage,'sessionStorage');
+// console.log(localStorage,'localStorage')
+// const token = sessionStorage.auth
+// const user = getMe({ headers: {"Authorization" : `Bearer ${token}`}});
+// console.log(user)
+// if(sessionStorage){
+//   const user = getMe(sessionStorage.auth);
+//   console.log(user,'user');
+// }
+// const user = getMe();
+// console.log(user,'user');
 
 const CampDetail = ({ history, isLogged, ...props }) => {
   const [camp, setCamp] = React.useState({

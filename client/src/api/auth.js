@@ -55,3 +55,12 @@ export const registerUser = async register => {
       throw Error('Server Error', error)
   }}
 }
+
+export const getMe = async (token) => {
+  try {
+    const url = `${authPath}/me`;
+    return await client.get(url);
+  } catch(error) {
+    throw Error('Fail to get user information', error.status)
+  }
+}
