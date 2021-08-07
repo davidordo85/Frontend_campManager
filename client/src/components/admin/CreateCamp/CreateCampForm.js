@@ -256,7 +256,7 @@ const CreateCampForm = ({ onSubmit }) => {
           variant="outline-dark"
           type="submit"
           className="button-createCamp"
-          /*           disabled={
+          disabled={
             !name ||
             !edition ||
             !location ||
@@ -268,7 +268,7 @@ const CreateCampForm = ({ onSubmit }) => {
             !email ||
             !from ||
             !to
-          } */
+          }
         >
           Submit
         </Button>
