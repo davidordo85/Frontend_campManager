@@ -1,82 +1,36 @@
+import React from 'react';
+
 import { Form } from 'react-bootstrap';
 
-const SelectActivities = ({ className, handleChange, activities, name }) => {
-  // const handleSelectChange = e => {
-  //   handleChange(e)
-  // }
+const SelectActivities = ({ className }) => {
+  const [field, setField] = React.useState([]);
 
+  console.log(field);
   return (
-    <Form className="form-activities">
-      <Form.Label className="label-activities">Activities</Form.Label>
-      {['checkbox'].map(activities => (
-        <div key={`inline-${activities}`} className="activities-checkbox">
-          <Form.Group className="group-activities">
-            <Form.Check
-              inline
-              label="pool"
-              name={name}
-              type={activities}
-              id={`inline-${activities}-1`}
-            />
-            <Form.Check
-              inline
-              label="museum"
-              name="activities"
-              type={activities}
-              id={`inline-${activities}-2`}
-            />
-            <Form.Check
-              inline
-              label="reading"
-              name="activities"
-              type={activities}
-              id={`inline-${activities}-3`}
-            />
-            <Form.Check
-              inline
-              label="recycling"
-              name="activities"
-              type={activities}
-              id={`inline-${activities}-4`}
-            />
-            <Form.Check
-              inline
-              label="crafts"
-              name="activities"
-              type={activities}
-              id={`inline-${activities}-5`}
-            />
-            <Form.Check
-              inline
-              label="conference"
-              name="activities"
-              type={activities}
-              id={`inline-${activities}-6`}
-            />
-            <Form.Check
-              inline
-              label="seminar"
-              name="activities"
-              type={activities}
-              id={`inline-${activities}-7`}
-            />
-            <Form.Check
-              inline
-              label="show"
-              name="activities"
-              type={activities}
-              id={`inline-${activities}-8`}
-            />
-            <Form.Check
-              inline
-              label="meditation"
-              name="activities"
-              type={activities}
-              id={`inline-${activities}-9`}
-            />
-          </Form.Group>
-        </div>
-      ))}
+    <Form>
+      <Form.Label className="">Activities</Form.Label>
+      <Form.Control
+        as="select"
+        name="activities"
+        className={className}
+        multiple
+        value={field}
+        onChange={event =>
+          setField(
+            [].slice.call(event.target.selectedOptions).map(item => item.value),
+          )
+        }
+      >
+        <option value="pool" label="pool" />
+        <option value="reading" label="reading" />
+        <option value="conference" label="conference" />
+        <option value="crafts workshop" label="crafts workshop" />
+        <option value="museum" label="museum" />
+        <option value="meditation" label="meditation" />
+        <option value="recycling workshop" label="recycling workshop" />
+        <option value="seminar" label="seminar" />
+        <option value="show" label="show" />
+      </Form.Control>
     </Form>
   );
 };

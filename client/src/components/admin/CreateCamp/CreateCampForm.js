@@ -11,7 +11,7 @@ const CreateCampForm = ({ onSubmit }) => {
     location: '',
     description: '',
     tag: 'urban',
-    activities: 'museum',
+    activities: [],
     address: '',
     phone: '111-111-1111',
     email: 'camps@campmanager.com',
@@ -86,6 +86,8 @@ const CreateCampForm = ({ onSubmit }) => {
     guests,
   } = camp;
 
+  console.log(camp);
+
   return (
     <Form className="form-createCamps" onSubmit={handleSubmit}>
       <Form.Group className="form-groupCreate">
@@ -156,7 +158,7 @@ const CreateCampForm = ({ onSubmit }) => {
             className=""
             name="activities"
             value={activities}
-            handleChange={handleCreateCamp}
+            onChange={handleCreateCamp}
           />
         </div>
         <div>
