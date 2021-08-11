@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Badge, Button } from 'react-bootstrap';
+import Select from 'react-select';
 
 import SelectTag from './SelectTag';
 
@@ -10,7 +11,8 @@ const CreateCampForm = ({ onSubmit }) => {
     location: '',
     description: '',
     tag: 'urban',
-    activities: [],
+    // si mandas activities: [], da fallo
+    activities: '',
     address: '',
     phone: '111-111-1111',
     email: 'camps@campmanager.com',
@@ -35,11 +37,25 @@ const CreateCampForm = ({ onSubmit }) => {
 
   const [act, setAct] = React.useState([]);
 
-  const handleActivities = event => {
-    setAct([].slice.call(event.target.selectedOptions).map(item => item.value));
+  const options = [
+    { value: 'pool', label: 'pool' },
+    { value: 'reading', label: 'reading' },
+    { value: 'conference', label: 'conference' },
+    { value: 'craft workshop', label: 'craft workshop' },
+    { value: 'museum', label: 'museum' },
+    { value: 'meditation', label: 'meditation' },
+    { value: 'recycling workshop', label: 'recycling workshop' },
+    { value: 'seminar', label: 'seminar' },
+    { value: 'show', label: 'show' },
+  ];
+
+  const handleActivities = selectedOptions => {
+    setAct([].slice.call(selectedOptions).map(item => item.value));
   };
 
-  console.log(act);
+  // esto es lo que guarda el select
+  console.log('datos del select', act);
+
   const [availability, setAvailability] = React.useState();
 
   const handleAvailavility = e => {
@@ -56,7 +72,8 @@ const CreateCampForm = ({ onSubmit }) => {
       location: camp.location,
       description: camp.description,
       tag: camp.tag,
-      activities: camp.activities,
+      // Si le mando solo act da el fallo
+      activities: act[0],
       address: camp.address,
       phone: camp.phone,
       email: camp.email,
@@ -72,6 +89,7 @@ const CreateCampForm = ({ onSubmit }) => {
       campData['availability'] = availability;
     }
     onSubmit(campData);
+    console.log('lo que envia al hacer onSubmit', campData);
   };
 
   const {
@@ -91,7 +109,6 @@ const CreateCampForm = ({ onSubmit }) => {
     guests,
   } = camp;
 
-  console.log(camp);
   return (
     <Form className="form-createCamps" onSubmit={handleSubmit}>
       <Form.Group className="form-groupCreate">
@@ -159,25 +176,17 @@ const CreateCampForm = ({ onSubmit }) => {
         </div>
         <div className="activities">
           <Form.Label className="">Activities</Form.Label>
-          <Form.Control
-            as="select"
-            name="activities"
+          <Select
             className="activities"
-            multiple
-            value={act}
+            classNamePrefix="activities"
+            isMulti
+            placeholder="Select activities..."
+            isClearable={false}
+            options={options}
             onChange={handleActivities}
-          >
-            <option value="pool" label="pool" />
-            <option value="reading" label="reading" />
-            <option value="conference" label="conference" />
-            <option value="crafts workshop" label="crafts workshop" />
-            <option value="museum" label="museum" />
-            <option value="meditation" label="meditation" />
-            <option value="recycling workshop" label="recycling workshop" />
-            <option value="seminar" label="seminar" />
-            <option value="show" label="show" />
-          </Form.Control>
+          />
         </div>
+
         <div>
           <Form.Label>Phone</Form.Label>
           <Form.Control
