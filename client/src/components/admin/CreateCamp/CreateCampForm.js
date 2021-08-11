@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import React from 'react';
 import { Form, Badge, Button } from 'react-bootstrap';
 
 import SelectTag from './SelectTag';
-import SelectActivities from './SelectActivities';
 
 const CreateCampForm = ({ onSubmit }) => {
-  const [camp, setCamp] = useState({
+  const [camp, setCamp] = React.useState({
     name: '',
     edition: '',
     location: '',
@@ -34,7 +33,14 @@ const CreateCampForm = ({ onSubmit }) => {
     });
   };
 
-  const [availability, setAvailability] = useState();
+  const [act, setAct] = React.useState([]);
+
+  const handleActivities = event => {
+    setAct([].slice.call(event.target.selectedOptions).map(item => item.value));
+  };
+
+  console.log(act);
+  const [availability, setAvailability] = React.useState();
 
   const handleAvailavility = e => {
     const availability = e.target.value;
@@ -74,7 +80,6 @@ const CreateCampForm = ({ onSubmit }) => {
     location,
     description,
     tag,
-    activities,
     address,
     phone,
     email,
@@ -87,7 +92,6 @@ const CreateCampForm = ({ onSubmit }) => {
   } = camp;
 
   console.log(camp);
-
   return (
     <Form className="form-createCamps" onSubmit={handleSubmit}>
       <Form.Group className="form-groupCreate">
@@ -154,12 +158,25 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div className="activities">
-          <SelectActivities
-            className=""
+          <Form.Label className="">Activities</Form.Label>
+          <Form.Control
+            as="select"
             name="activities"
-            value={activities}
-            onChange={handleCreateCamp}
-          />
+            className="activities"
+            multiple
+            value={act}
+            onChange={handleActivities}
+          >
+            <option value="pool" label="pool" />
+            <option value="reading" label="reading" />
+            <option value="conference" label="conference" />
+            <option value="crafts workshop" label="crafts workshop" />
+            <option value="museum" label="museum" />
+            <option value="meditation" label="meditation" />
+            <option value="recycling workshop" label="recycling workshop" />
+            <option value="seminar" label="seminar" />
+            <option value="show" label="show" />
+          </Form.Control>
         </div>
         <div>
           <Form.Label>Phone</Form.Label>
@@ -264,7 +281,7 @@ const CreateCampForm = ({ onSubmit }) => {
             !location ||
             !description ||
             !tag ||
-            !activities ||
+            //!activities ||
             !address ||
             !phone ||
             !email ||

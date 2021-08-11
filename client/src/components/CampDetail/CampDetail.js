@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../layout/layout';
 import { getCampDetail } from '../../api/camps';
-import { getMe } from '../../api/auth';
+//import { getMe } from '../../api/auth';
 import Loader from '../Loader/Loader';
 import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -25,7 +25,7 @@ const CampDetail = ({ history, isLogged, ...props }) => {
     activities: ['await'],
     createdAt: '2021-07-28T00:18:07.898Z',
     confirmedHelpers: '',
-    confirmedGuests: ''
+    confirmedGuests: '',
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -53,7 +53,7 @@ const CampDetail = ({ history, isLogged, ...props }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-  }
+  };
   const createdAt = camp.createdAt.split('T');
 
   return (
@@ -135,12 +135,12 @@ const CampDetail = ({ history, isLogged, ...props }) => {
             </Alert>
           )}
         </Card>
-        <Button 
-        type="submit"
-        onSubmit={handleSubmit}
-        variant="outline-dark" 
-        className="sign-up"
-        disabled={!isLogged}
+        <Button
+          type="submit"
+          onSubmit={handleSubmit}
+          variant="outline-dark"
+          className="sign-up"
+          disabled={!isLogged}
         >
           Sign up
         </Button>
