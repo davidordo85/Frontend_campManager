@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import React from 'react';
 import { Form, Badge, Button } from 'react-bootstrap';
+import Select from 'react-select';
 
 import SelectTag from './SelectTag';
-import SelectActivities from './SelectActivities';
 
 const CreateCampForm = ({ onSubmit }) => {
-  const [camp, setCamp] = useState({
+  const [camp, setCamp] = React.useState({
     name: '',
     edition: '',
     location: '',
     description: '',
     tag: 'urban',
-    activities: 'reading',
+    activities: [],
     address: '',
     phone: '111-111-1111',
     email: 'camps@campmanager.com',
@@ -34,7 +34,25 @@ const CreateCampForm = ({ onSubmit }) => {
     });
   };
 
-  const [availability, setAvailability] = useState();
+  const [act, setAct] = React.useState([]);
+
+  const options = [
+    { value: 'pool', label: 'pool' },
+    { value: 'reading', label: 'reading' },
+    { value: 'conference', label: 'conference' },
+    { value: 'craft workshop', label: 'craft workshop' },
+    { value: 'museum', label: 'museum' },
+    { value: 'meditation', label: 'meditation' },
+    { value: 'recycling workshop', label: 'recycling workshop' },
+    { value: 'seminar', label: 'seminar' },
+    { value: 'show', label: 'show' },
+  ];
+
+  const handleActivities = selectedOptions => {
+    setAct([].slice.call(selectedOptions).map(item => item.value));
+  };
+
+  const [availability, setAvailability] = React.useState();
 
   const handleAvailavility = e => {
     const availability = e.target.value;
@@ -50,7 +68,7 @@ const CreateCampForm = ({ onSubmit }) => {
       location: camp.location,
       description: camp.description,
       tag: camp.tag,
-      activities: camp.activities,
+      activities: act,
       address: camp.address,
       phone: camp.phone,
       email: camp.email,
@@ -74,7 +92,6 @@ const CreateCampForm = ({ onSubmit }) => {
     location,
     description,
     tag,
-    activities,
     address,
     phone,
     email,
@@ -87,7 +104,7 @@ const CreateCampForm = ({ onSubmit }) => {
   } = camp;
 
   return (
-    <Form className="form-createCamps">
+    <Form className="form-createCamps" onSubmit={handleSubmit}>
       <Form.Group className="form-groupCreate">
         <div>
           <Form.Label>Name</Form.Label>
@@ -152,13 +169,18 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div className="activities">
-          <SelectActivities
-            className=""
-            name="activities"
-            value={activities}
-            handleChange={handleCreateCamp}
+          <Form.Label className="">Activities</Form.Label>
+          <Select
+            className="activities"
+            classNamePrefix="activities"
+            isMulti
+            placeholder="Select activities..."
+            isClearable={false}
+            options={options}
+            onChange={handleActivities}
           />
         </div>
+
         <div>
           <Form.Label>Phone</Form.Label>
           <Form.Control
@@ -256,14 +278,13 @@ const CreateCampForm = ({ onSubmit }) => {
           variant="outline-dark"
           type="submit"
           className="button-createCamp"
-          onSubmit={handleSubmit}
           disabled={
             !name ||
             !edition ||
             !location ||
             !description ||
             !tag ||
-            !activities ||
+            //!activities ||
             !address ||
             !phone ||
             !email ||
