@@ -13,6 +13,10 @@ const CreateCampPage = ({ ...props }) => {
 
   const resetError = () => setError(null);
 
+  /*   React.useEffect(() => {
+    handleSubmit();
+  }, []); */
+
   const handleSubmit = async create => {
     resetError();
     setIsLoading(true);
@@ -24,6 +28,7 @@ const CreateCampPage = ({ ...props }) => {
       setError(error);
     } finally {
       setIsLoading(false);
+      setNewCamp(false);
     }
   };
 

@@ -11,8 +11,7 @@ const CreateCampForm = ({ onSubmit }) => {
     location: '',
     description: '',
     tag: 'urban',
-    // si mandas activities: [], da fallo
-    activities: '',
+    activities: [],
     address: '',
     phone: '111-111-1111',
     email: 'camps@campmanager.com',
@@ -53,9 +52,6 @@ const CreateCampForm = ({ onSubmit }) => {
     setAct([].slice.call(selectedOptions).map(item => item.value));
   };
 
-  // esto es lo que guarda el select
-  console.log('datos del select', act);
-
   const [availability, setAvailability] = React.useState();
 
   const handleAvailavility = e => {
@@ -72,8 +68,7 @@ const CreateCampForm = ({ onSubmit }) => {
       location: camp.location,
       description: camp.description,
       tag: camp.tag,
-      // Si le mando solo act da el fallo
-      activities: act[0],
+      activities: act,
       address: camp.address,
       phone: camp.phone,
       email: camp.email,
@@ -89,7 +84,6 @@ const CreateCampForm = ({ onSubmit }) => {
       campData['availability'] = availability;
     }
     onSubmit(campData);
-    console.log('lo que envia al hacer onSubmit', campData);
   };
 
   const {
