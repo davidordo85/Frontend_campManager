@@ -40,7 +40,7 @@ const CreateCampForm = ({ onSubmit }) => {
     { value: 'pool', label: 'pool' },
     { value: 'reading', label: 'reading' },
     { value: 'conference', label: 'conference' },
-    { value: 'craft workshop', label: 'craft workshop' },
+    { value: 'crafts workshop', label: 'crafts workshop' },
     { value: 'museum', label: 'museum' },
     { value: 'meditation', label: 'meditation' },
     { value: 'recycling workshop', label: 'recycling workshop' },
