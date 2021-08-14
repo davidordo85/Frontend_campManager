@@ -1,9 +1,9 @@
 import React from 'react';
-import Target from '../index/Target';
+import { Link } from 'react-router-dom';
 
 import './Pagination.css';
 
-const Pagination = ({ location, number, i, target }) => {
+const Pagination = ({ location, number, i }) => {
   const activate = location.search;
   const campsNumber = number / 5;
   var num = [];
@@ -21,17 +21,22 @@ const Pagination = ({ location, number, i, target }) => {
 
   return (
     <div className="pagination">
-      <a href="/" value="init">
+      <Link to="/" value="init">
         &laquo;
-      </a>
+      </Link>
       {num.map((index, key) => (
-        <a key={key} href={`?page=${index + 1}`} value={`${index + 1}`}>{`${
-          index + 1
-        }`}</a>
+        <li>
+          <Link
+            key={key}
+            className={activate === `?page=${index + 1}` ? 'active' : null}
+            to={`?page=${index + 1}`}
+            value={`${index + 1}`}
+          >{`${index + 1}`}</Link>
+        </li>
       ))}
-      <a href="?page=3" value="end">
+      <Link to={`?page=${i}`} value="end">
         &raquo;
-      </a>
+      </Link>
     </div>
   );
 };
