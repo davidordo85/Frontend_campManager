@@ -25,14 +25,12 @@ const Pagination = ({ location, number, i }) => {
         &laquo;
       </Link>
       {num.map((index, key) => (
-        <li>
-          <Link
-            key={key}
-            className={activate === `?page=${index + 1}` ? 'active' : null}
-            to={`?page=${index + 1}`}
-            value={`${index + 1}`}
-          >{`${index + 1}`}</Link>
-        </li>
+        <Link
+          key={key}
+          className={activate === `?page=${index + 1}` ? 'active' : null}
+          to={`?page=${index + 1}`}
+          value={`${index + 1}`}
+        >{`${index + 1}`}</Link>
       ))}
       <Link to={`?page=${i}`} value="end">
         &raquo;
