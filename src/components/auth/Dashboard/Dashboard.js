@@ -20,9 +20,9 @@ const Dashboard = () => {
     }
   };
 
-  {
-    /*TODO: mete aqui tus dashboard*/
-  }
+  /*   {
+    /*TODO: mete aqui tus dashboard
+  } */
   return <div>{me.role === 'admin' ? <DashboardAdmin /> : null}</div>;
 };
 
