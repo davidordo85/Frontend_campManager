@@ -10,6 +10,7 @@ import CreateCamp from './components/admin/CreateCamp/CreateCampPage';
 import Requests from './components/admin/Requests/Requests';
 import UserList from './components/admin/UsersList/UsersList';
 import ObservationUser from './components/admin/ObservationUser/ObservationUser';
+import ModifyCamp from './components/admin/ModifyCamp/ModifyCampPage';
 
 /* var backgroundStyle = {
   width: '100%',
@@ -60,7 +61,7 @@ function App({ isInitiallyLogged }) {
           <Requests isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/modifyCamp">
-          <Requests isLogged={isLogged} onLogout={handleLogout} />
+          <ModifyCamp isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/userList">
           <UserList isLogged={isLogged} onLogout={handleLogout} />
