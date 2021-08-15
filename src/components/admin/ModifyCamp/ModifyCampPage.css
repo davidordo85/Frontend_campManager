@@ -1,0 +1,12 @@
+.main {
+  margin: 12rem 7rem 7rem 22rem;
+}
+
+.card-header,
+.list-group {
+  text-align: center;
+}
+
+.list-group {
+  margin: 1rem;
+}
