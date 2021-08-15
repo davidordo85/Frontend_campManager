@@ -10,7 +10,8 @@ import CreateCamp from './components/admin/CreateCamp/CreateCampPage';
 import Requests from './components/admin/Requests/Requests';
 import UserList from './components/admin/UsersList/UsersList';
 import ObservationUser from './components/admin/ObservationUser/ObservationUser';
-import ModifyCamp from './components/admin/ModifyCamp/ModifyCampPage';
+import ModifyCampList from './components/admin/ModifyCamp/ModifyCampPageList';
+import ModifyCampPage from './components/admin/ModifyCamp/ModifyCampPage';
 
 /* var backgroundStyle = {
   width: '100%',
@@ -32,6 +33,15 @@ function App({ isInitiallyLogged }) {
         <Route exact path="/campDetail/:id">
           {routeProps => (
             <CampDetail
+              isLogged={isLogged}
+              onLogout={handleLogout}
+              {...routeProps}
+            />
+          )}
+        </Route>
+        <Route exact path="/campModify/:id">
+          {routeProps => (
+            <ModifyCampPage
               isLogged={isLogged}
               onLogout={handleLogout}
               {...routeProps}
@@ -60,8 +70,8 @@ function App({ isInitiallyLogged }) {
         <Route exact path="/requests">
           <Requests isLogged={isLogged} onLogout={handleLogout} />
         </Route>
-        <Route exact path="/modifyCamp">
-          <ModifyCamp isLogged={isLogged} onLogout={handleLogout} />
+        <Route exact path="/modifyCampList">
+          <ModifyCampList isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/userList">
           <UserList isLogged={isLogged} onLogout={handleLogout} />
