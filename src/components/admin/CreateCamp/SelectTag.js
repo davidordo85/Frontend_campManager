@@ -6,7 +6,7 @@ const SelectTag = ({ className, handleChange, name }) => {
   };
 
   return (
-    <Form className="form-tag">
+    <div className="form-tag">
       <Form.Label className="label-tag">Tag</Form.Label>
       <Form.Select
         name={name}
@@ -17,7 +17,7 @@ const SelectTag = ({ className, handleChange, name }) => {
         <option value="mountain" label="mountain" />
         <option value="beach" label="beach" />
       </Form.Select>
-    </Form>
+    </div>
   );
 };
 

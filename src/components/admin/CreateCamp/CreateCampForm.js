@@ -180,7 +180,6 @@ const CreateCampForm = ({ onSubmit }) => {
             onChange={handleActivities}
           />
         </div>
-
         <div>
           <Form.Label>Phone</Form.Label>
           <Form.Control
