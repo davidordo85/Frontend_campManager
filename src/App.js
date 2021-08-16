@@ -71,7 +71,13 @@ function App({ isInitiallyLogged }) {
           <Requests isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/modifyCamp">
-          <ModifyCampList isLogged={isLogged} onLogout={handleLogout} />
+          {routeProps => (
+            <ModifyCampList
+              isLogged={isLogged}
+              onLogout={handleLogout}
+              {...routeProps}
+            />
+          )}
         </Route>
         <Route exact path="/userList">
           <UserList isLogged={isLogged} onLogout={handleLogout} />

@@ -3,10 +3,11 @@ import Layout from '../../layout/layout';
 import { getAllCamps } from '../../../api/camps';
 import Loader from '../../Loader/Loader';
 import { Card, ListGroup } from 'react-bootstrap';
+import List from './List';
 import './ModifyCampPageList.css';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 
-const ModifyCampList = ({ ...props }) => {
+const ModifyCampList = ({ id, history, ...props }) => {
   const [camps, setCamps] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -29,28 +30,24 @@ const ModifyCampList = ({ ...props }) => {
     }
   };
 
-  const handleClick = event => {
-    console.log('estoy clickando', event.target.id);
-  };
-
   return (
     <Layout {...props}>
       <div className="main">
         <Loader hidden={!loading} />
-        <Card>
+        <Card className="card-modify">
           <CardHeader className="card-header">
             Choose the camp to modify
           </CardHeader>
           <ListGroup className="list-group">
             {camps.map((camp, index) => (
-              <ListGroup.Item
+              <List
                 key={index}
                 id={camp._id}
+                name={camp.name}
+                location={camp.location}
                 className="list-camp"
-                onClick={handleClick}
-              >
-                {camp.name} / {camp.location}
-              </ListGroup.Item>
+                history={history}
+              ></List>
             ))}
           </ListGroup>
           {error && (

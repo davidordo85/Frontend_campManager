@@ -3,7 +3,7 @@ import client from './client';
 const campsBaseUrl = '/api/v1/camps';
 
 export const getAllCamps = () => {
-  const url = `${campsBaseUrl}`;
+  const url = `${campsBaseUrl}/nopagination`;
   return client.get(url);
 };
 
