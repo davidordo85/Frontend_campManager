@@ -1,10 +1,11 @@
 import React from 'react';
 import Layout from '../../layout/layout';
-import { getCampDetail } from '../../../api/camps';
+import { getCampDetail, updateCamp } from '../../../api/camps';
 import { Card, Form, Alert, Button } from 'react-bootstrap';
 import SelectTag from '../CreateCamp/SelectTag';
 import Loader from '../../Loader/Loader';
 import Select from 'react-select';
+import { Redirect } from 'react-router-dom';
 import './ModifyCampPage.css';
 
 const ModifyCampPage = ({ history, ...props }) => {
@@ -33,6 +34,18 @@ const ModifyCampPage = ({ history, ...props }) => {
     }
   };
 
+  const [newCamp, setNewCamp] = React.useState(oldCamp);
+  const handleEditCamp = event => {
+    setNewCamp(oldData => {
+      const newData = {
+        ...oldData,
+        [event.target.name]: event.target.value,
+      };
+      console.log(newData);
+      return newData;
+    });
+  };
+
   const options = [
     { value: 'pool', label: 'pool' },
     { value: 'reading', label: 'reading' },
@@ -47,16 +60,42 @@ const ModifyCampPage = ({ history, ...props }) => {
 
   const [act, setAct] = React.useState([]);
 
-  console.log(oldCamp.activities);
-
   const handleActivities = selectedOptions => {
     setAct([].slice.call(selectedOptions).map(item => item.value));
   };
 
+  const id = oldCamp._id;
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    try {
+      await updateCamp(newCamp, id);
+    } catch (error) {
+      setError(error);
+    } finally {
+      console.log('ok');
+    }
+  };
+
+  const {
+    name,
+    edition,
+    location,
+    description,
+    tag,
+    address,
+    phone,
+    email,
+    from,
+    to,
+    capacity,
+  } = newCamp;
+
   return (
     <Layout {...props}>
       <Loader hidden={!loading} />
-      <Card className="card-form">
+      <Card className="card-form" onSubmit={handleSubmit}>
+        <Card.Header>Modify Camp</Card.Header>
         <Form className="form-modify">
           <Form.Group className="form-groupModify">
             <div>
@@ -66,9 +105,8 @@ const ModifyCampPage = ({ history, ...props }) => {
                 type="text"
                 name="name"
                 placeholder={oldCamp.name}
-                //value={name}
-                //onChange={handleCreateCamp}
-                required
+                value={name}
+                onChange={handleEditCamp}
               />
             </div>
             <div>
@@ -78,9 +116,8 @@ const ModifyCampPage = ({ history, ...props }) => {
                 type="text"
                 name="edition"
                 placeholder={oldCamp.edition}
-                //value={edition}
-                //onChange={handleCreateCamp}
-                required
+                value={edition}
+                onChange={handleEditCamp}
               />
             </div>
             <div>
@@ -90,29 +127,27 @@ const ModifyCampPage = ({ history, ...props }) => {
                 name="location"
                 className=""
                 placeholder={oldCamp.location}
-                //value={location}
-                //onChange={handleCreateCamp}
-                required
+                value={location}
+                onChange={handleEditCamp}
               />
             </div>
             <div>
               <Form.Label>Description</Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
                 name="description"
                 className=""
                 placeholder={oldCamp.description}
-                //value={description}
-                //onChange={handleCreateCamp}
+                value={description}
+                onChange={handleEditCamp}
               />
             </div>
             <div>
               <SelectTag
                 className=""
                 name="tag"
-                placeholder={oldCamp.tag}
-                //value={tag}
-                //handleChange={handleCreateCamp}
+                value={tag}
+                handleChange={handleEditCamp}
               />
             </div>
             <div>
@@ -122,9 +157,8 @@ const ModifyCampPage = ({ history, ...props }) => {
                 name="address"
                 className=""
                 placeholder={oldCamp.address}
-                //value={address}
-                //onChange={handleCreateCamp}
-                required
+                value={address}
+                onChange={handleEditCamp}
               />
             </div>
             <div className="activities">
@@ -145,9 +179,8 @@ const ModifyCampPage = ({ history, ...props }) => {
                 name="phone"
                 className=""
                 placeholder={oldCamp.phone}
-                //value={phone}
-                //onChange={handleCreateCamp}
-                required
+                value={phone}
+                onChange={handleEditCamp}
               />
             </div>
             <div>
@@ -157,9 +190,8 @@ const ModifyCampPage = ({ history, ...props }) => {
                 name="email"
                 className=""
                 placeholder={oldCamp.email}
-                //value={email}
-                //onChange={handleCreateCamp}
-                required
+                value={email}
+                onChange={handleEditCamp}
               />
             </div>
             <div>
@@ -169,9 +201,8 @@ const ModifyCampPage = ({ history, ...props }) => {
                 type="date"
                 name="from"
                 placeholder={oldCamp.from}
-                //value={from}
-                //onChange={handleCreateCamp}
-                required
+                value={from}
+                onChange={handleEditCamp}
               />
             </div>
             <div>
@@ -181,9 +212,8 @@ const ModifyCampPage = ({ history, ...props }) => {
                 type="date"
                 name="to"
                 placeholder={oldCamp.to}
-                //value={to}
-                // onChange={handleCreateCamp}
-                required
+                value={to}
+                onChange={handleEditCamp}
               />
             </div>
             <div>
@@ -193,9 +223,8 @@ const ModifyCampPage = ({ history, ...props }) => {
                 name="capacity"
                 className=""
                 placeholder={oldCamp.capacity}
-                //value={capacity}
-                //onChange={handleCreateCamp}
-                required
+                value={capacity}
+                onChange={handleEditCamp}
               />
             </div>
             <Button

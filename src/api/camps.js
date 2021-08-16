@@ -46,3 +46,8 @@ export const createCamp = camp => {
   const url = `${campsBaseUrl}`;
   return client.post(url, camp);
 };
+
+export const updateCamp = (data, id) => {
+  const url = `${campsBaseUrl}/${id}`;
+  return client.put(url, data);
+};
