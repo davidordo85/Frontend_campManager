@@ -14,3 +14,7 @@
 .list-group {
   margin: 1rem;
 }
+
+.list-group:hover {
+  cursor: pointer;
+}
