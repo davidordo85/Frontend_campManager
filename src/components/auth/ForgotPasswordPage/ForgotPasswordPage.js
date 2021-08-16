@@ -42,7 +42,7 @@ const ForgotPasswordPage = () => {
         </Navbar.Brand>
       </Navbar>
       <Card border="dark" className="card-login">
-        <Card.Header className="text-header">Reset Password</Card.Header>
+        <Card.Header className="text-header login-title">Reset Password</Card.Header>
         <ForgotPasswordForm 
           className="loginPage-form"
           onSubmit={handleSubmit}

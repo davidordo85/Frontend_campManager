@@ -107,8 +107,9 @@ const CreateCampForm = ({ onSubmit }) => {
     <Form className="form-createCamps" onSubmit={handleSubmit}>
       <Form.Group className="form-groupCreate">
         <div>
-          <Form.Label>Name</Form.Label>
+          <Form.Label for="name">Name</Form.Label>
           <Form.Control
+            id="name"
             className=""
             type="text"
             name="name"
@@ -118,8 +119,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Edition</Form.Label>
+          <Form.Label for="edition">Edition</Form.Label>
           <Form.Control
+            id="edition"
             className=""
             type="text"
             name="edition"
@@ -129,8 +131,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Location</Form.Label>
+          <Form.Label for="location">Location</Form.Label>
           <Form.Control
+            id="location"
             type="text"
             name="location"
             className=""
@@ -140,8 +143,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Description</Form.Label>
+          <Form.Label for="description">Description</Form.Label>
           <Form.Control
+            id="description"
             type="text"
             name="description"
             className=""
@@ -158,8 +162,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Address</Form.Label>
+          <Form.Label for="address">Address</Form.Label>
           <Form.Control
+            id="address"
             type="text"
             name="address"
             className=""
@@ -169,8 +174,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div className="activities">
-          <Form.Label className="">Activities</Form.Label>
+          <Form.Label for="activities">Activities</Form.Label>
           <Select
+            id="activities"
             className="activities"
             classNamePrefix="activities"
             isMulti
@@ -181,8 +187,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Phone</Form.Label>
+          <Form.Label for="phone">Phone</Form.Label>
           <Form.Control
+            id="phone"
             type="text"
             name="phone"
             className=""
@@ -192,8 +199,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Email</Form.Label>
+          <Form.Label for="email">Email</Form.Label>
           <Form.Control
+            id="email"
             type="email"
             name="email"
             className=""
@@ -203,8 +211,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>From</Form.Label>
+          <Form.Label for="from">From</Form.Label>
           <Form.Control
+            id="from"
             className=""
             type="date"
             name="from"
@@ -214,8 +223,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>To</Form.Label>
+          <Form.Label for="to">To</Form.Label>
           <Form.Control
+            id="from"
             className=""
             type="date"
             name="to"
@@ -225,8 +235,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Capacity</Form.Label>
+          <Form.Label for="capacity">Capacity</Form.Label>
           <Form.Control
+            id="capacity"
             type="number"
             name="capacity"
             className=""
@@ -240,9 +251,10 @@ const CreateCampForm = ({ onSubmit }) => {
             Suscribed {inPeople}
           </Badge>
         </div>
-        <div className="">
-          <Form.Label className="">Available</Form.Label>
+        <div>
+          <Form.Label for="available">Available</Form.Label>
           <Form.Select
+            id="available"
             name="availability"
             className=""
             onChange={handleAvailavility}
@@ -252,8 +264,9 @@ const CreateCampForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label>Helpers</Form.Label>
+          <Form.Label for="helpers">Helpers</Form.Label>
           <Form.Control
+            id="helpers"
             type="text"
             name="helpers"
             className=""
@@ -263,8 +276,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Guests</Form.Label>
+          <Form.Label for="guests">Guests</Form.Label>
           <Form.Control
+            id="guests"
             type="text"
             name="guests"
             className=""

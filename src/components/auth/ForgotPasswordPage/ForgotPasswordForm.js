@@ -18,8 +18,9 @@ const ForgotPasswordForm = ({ onSubmit}) => {
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
       <Form.Group controlId="email">
-        <Form.Label>Reset Password</Form.Label>
+        <Form.Label for="reset-password" className="loginform-label">Reset Password</Form.Label>
         <Form.Control
+          id="reset-password"
           type="email"
           value={email}
           onChange={forgotPasswordData}
