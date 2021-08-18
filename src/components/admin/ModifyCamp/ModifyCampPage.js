@@ -97,7 +97,11 @@ const ModifyCampPage = ({ history, ...props }) => {
   } = newCamp;
 
   const activities = act.map(item => item.value);
-  newCamp.activities = activities;
+  if (activities.length === 0) {
+    newCamp.activities = oldCamp.activities;
+  } else {
+    newCamp.activities = activities;
+  }
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -110,6 +114,10 @@ const ModifyCampPage = ({ history, ...props }) => {
       history.push('/');
     }
   };
+
+  console.log(newCamp);
+  console.log('old', oldCamp.activities);
+  console.log('new', newCamp.activities);
 
   return (
     <Layout {...props}>
