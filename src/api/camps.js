@@ -3,7 +3,7 @@ import client from './client';
 const campsBaseUrl = '/api/v1/camps';
 
 export const getAllCamps = () => {
-  const url = `${campsBaseUrl}`;
+  const url = `${campsBaseUrl}/nopagination`;
   return client.get(url);
 };
 
@@ -45,4 +45,9 @@ export const filteredCamp = filterCamp => {
 export const createCamp = camp => {
   const url = `${campsBaseUrl}`;
   return client.post(url, camp);
+};
+
+export const updateCamp = (data, id) => {
+  const url = `${campsBaseUrl}/${id}`;
+  return client.put(url, data);
 };

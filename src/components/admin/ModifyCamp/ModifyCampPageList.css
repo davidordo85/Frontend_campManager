@@ -1,0 +1,20 @@
+.main {
+  margin: 12rem 7rem 7rem 22rem;
+}
+
+.card-modify {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-header,
+.list-group {
+  text-align: center;
+}
+
+.list-group {
+  margin: 1rem;
+}
+
+.list-group:hover {
+  cursor: pointer;
+}
