@@ -5,7 +5,6 @@ import { Card, Form, Alert, Button } from 'react-bootstrap';
 import SelectTag from '../CreateCamp/SelectTag';
 import Loader from '../../Loader/Loader';
 import Select from 'react-select';
-import { Redirect } from 'react-router-dom';
 import './ModifyCampPage.css';
 
 const ModifyCampPage = ({ history, ...props }) => {
@@ -99,8 +98,6 @@ const ModifyCampPage = ({ history, ...props }) => {
 
   const activities = act.map(item => item.value);
   newCamp.activities = activities;
-
-  console.log(newCamp);
 
   const handleSubmit = async event => {
     event.preventDefault();
