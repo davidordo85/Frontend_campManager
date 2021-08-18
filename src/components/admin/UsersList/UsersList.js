@@ -1,8 +1,12 @@
 import React from 'react';
 import Layout from '../../layout/layout';
+import Loader from '../../Loader/Loader';
+import { Card, ListGroup } from 'react-bootstrap';
+import List from './List';
 import { getUser } from '../../../api/auth';
+import './UserList.css';
 
-const UserList = ({ ...props }) => {
+const UserList = ({ id, history, ...props }) => {
   const [user, setUser] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -26,7 +30,38 @@ const UserList = ({ ...props }) => {
     }
   };
   console.log(user);
-  return <Layout {...props}></Layout>;
+  return (
+    <Layout {...props}>
+      <div>
+        <Loader hidden={!loading} />
+        <Card className="user-list">
+          <Card.Header className="card-header">
+            Choose the camp to modify
+          </Card.Header>
+          <ListGroup className="list-group">
+            {user.map((user, index) => (
+              <List
+                key={index}
+                id={user._id}
+                name={user.name}
+                firstFamilyName={user.firstFamilyName}
+                //secondFamilyName={user.secondFamilyName}
+                email={user.email}
+                role={user.role}
+                className=""
+                history={history}
+              ></List>
+            ))}
+          </ListGroup>
+          {error && (
+            <div onClick={resetError} className="loginPage-error">
+              {error.message}
+            </div>
+          )}
+        </Card>
+      </div>
+    </Layout>
+  );
 };
 
 export default UserList;
