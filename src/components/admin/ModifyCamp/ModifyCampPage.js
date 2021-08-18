@@ -115,10 +115,6 @@ const ModifyCampPage = ({ history, ...props }) => {
     }
   };
 
-  console.log(newCamp);
-  console.log('old', oldCamp.activities);
-  console.log('new', newCamp.activities);
-
   return (
     <Layout {...props}>
       <Loader hidden={!loading} />
