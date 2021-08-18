@@ -9,7 +9,9 @@ import { Redirect } from 'react-router-dom';
 import './ModifyCampPage.css';
 
 const ModifyCampPage = ({ history, ...props }) => {
-  const [oldCamp, setOldCamp] = React.useState([]);
+  const [oldCamp, setOldCamp] = React.useState({
+    activities: [''],
+  });
 
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -33,15 +35,18 @@ const ModifyCampPage = ({ history, ...props }) => {
       setLoading(false);
     }
   };
+  const defaultOptions = [];
 
+  const [value, setValue] = React.useState(false);
+  const [act, setAct] = React.useState([]);
   const [newCamp, setNewCamp] = React.useState(oldCamp);
+
   const handleEditCamp = event => {
     setNewCamp(oldData => {
       const newData = {
         ...oldData,
         [event.target.name]: event.target.value,
       };
-      console.log(newData);
       return newData;
     });
   };
@@ -58,24 +63,25 @@ const ModifyCampPage = ({ history, ...props }) => {
     { value: 'show', label: 'show' },
   ];
 
-  const [act, setAct] = React.useState([]);
+  oldCamp.activities.forEach(function (activities, index) {
+    for (
+      index = 0;
+      index < oldCamp.activities.length / oldCamp.activities.length;
+      index++
+    ) {
+      defaultOptions.push({
+        value: activities,
+        label: activities,
+      });
+    }
+  });
 
   const handleActivities = selectedOptions => {
-    setAct([].slice.call(selectedOptions).map(item => item.value));
+    setValue(true);
+    setAct([].slice.call(selectedOptions).map(item => item));
   };
 
   const id = oldCamp._id;
-
-  const handleSubmit = async event => {
-    event.preventDefault();
-    try {
-      await updateCamp(newCamp, id);
-    } catch (error) {
-      setError(error);
-    } finally {
-      console.log('ok');
-    }
-  };
 
   const {
     name,
@@ -90,6 +96,23 @@ const ModifyCampPage = ({ history, ...props }) => {
     to,
     capacity,
   } = newCamp;
+
+  const activities = act.map(item => item.value);
+  newCamp.activities = activities;
+
+  console.log(newCamp);
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      await updateCamp(newCamp, id);
+    } catch (error) {
+      setError(error);
+    } finally {
+      history.push('/');
+    }
+  };
 
   return (
     <Layout {...props}>
@@ -168,6 +191,7 @@ const ModifyCampPage = ({ history, ...props }) => {
                 classNamePrefix="activities"
                 isMulti
                 isClearable={false}
+                value={!value ? defaultOptions : act}
                 options={options}
                 onChange={handleActivities}
               />
@@ -195,23 +219,21 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>From</Form.Label>
+              <Form.Label>From / From old {oldCamp.from}</Form.Label>
               <Form.Control
                 className=""
                 type="date"
                 name="from"
-                placeholder={oldCamp.from}
                 value={from}
                 onChange={handleEditCamp}
               />
             </div>
             <div>
-              <Form.Label>To</Form.Label>
+              <Form.Label>To / To old {oldCamp.from}</Form.Label>
               <Form.Control
                 className=""
                 type="date"
                 name="to"
-                placeholder={oldCamp.to}
                 value={to}
                 onChange={handleEditCamp}
               />
