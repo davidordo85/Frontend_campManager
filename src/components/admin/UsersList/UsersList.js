@@ -1,12 +1,32 @@
 import React from 'react';
 import Layout from '../../layout/layout';
+import { getUser } from '../../../api/auth';
 
 const UserList = ({ ...props }) => {
-  return (
-    <Layout {...props}>
-      {/* TODO: solo he metido la página para ver que funciona el link. Le falta toda la funcionalidad */}
-    </Layout>
-  );
+  const [user, setUser] = React.useState([]);
+  const [error, setError] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
+
+  const resetError = () => setError(null);
+
+  React.useEffect(() => {
+    userList();
+  }, []);
+
+  const userList = async () => {
+    try {
+      setLoading(true);
+      const getUserList = await getUser();
+      setUser(getUserList.data);
+      setError(null);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  console.log(user);
+  return <Layout {...props}></Layout>;
 };
 
 export default UserList;

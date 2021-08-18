@@ -7,7 +7,7 @@ export const login = ({ remember, ...credentials }) => {
   return client
     .post(`${authPath}/login`, credentials)
     .then(({ token }) => {
-      if(remember){
+      if (remember) {
         storage.remember('auth', token);
       }
       configureClient({ token });
@@ -62,5 +62,10 @@ export const registerUser = async register => {
 
 export const getMe = () => {
   const url = `${authPath}/me`;
+  return client.get(url);
+};
+
+export const getUser = () => {
+  const url = '/api/v1/users';
   return client.get(url);
 };
