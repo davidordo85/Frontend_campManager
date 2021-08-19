@@ -51,3 +51,9 @@ export const updateCamp = (data, id) => {
   const url = `${campsBaseUrl}/${id}`;
   return client.put(url, data);
 };
+
+export const subscribe = data => {
+  const url = `${campsBaseUrl}/${data}/subscribe`;
+  console.log(url);
+  return client.put(url);
+};
