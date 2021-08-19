@@ -37,7 +37,7 @@ const List = ({ id, email, role, onSubmit, location, history }) => {
           <Form.Control type="textarea" />
         </div>
 
-        <Button variant="outline-dark" type="submit">
+        <Button variant="outline-dark" className="submit-role" type="submit">
           Submit
         </Button>
       </Card>
