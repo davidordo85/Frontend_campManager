@@ -12,6 +12,16 @@ const List = ({
   location,
   history,
 }) => {
+  const options = [
+    { value: 'admin', label: 'admin' },
+    { value: 'helper', label: 'helper' },
+    { value: 'guest', label: 'guest' },
+  ];
+
+  const handleChange = event => {
+    console.log(event);
+  };
+
   return (
     <ListGroup.Item className="item-list">
       <p>{name}</p>
@@ -20,11 +30,11 @@ const List = ({
       <p>{role}</p>
       <Form>
         <div>
-          <Form.Label>Select new role...</Form.Label>
-          <Select />
+          <Form.Label className="label-text">Select new role...</Form.Label>
+          <Select options={options} onChange={handleChange} />
         </div>
         <div>
-          <Form.Label>Add comment</Form.Label>
+          <Form.Label className="label-text">Add comment</Form.Label>
           <Form.Control type="textarea" />
         </div>
       </Form>
