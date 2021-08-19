@@ -1,26 +1,29 @@
- import { useState } from 'react';
+import { useState } from 'react';
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
 
-const ForgotPasswordForm = ({ onSubmit}) => {
-  const [email, setEmail] = useState('')
+const ForgotPasswordForm = ({ onSubmit }) => {
+  const [send, setSend] = useState({
+    email: '',
+  });
 
-  const forgotPasswordData = e => {
-    setEmail({
-      [e.target.name]: e.target.value
-    })
-  }
+  const forgotPasswordData = event => {
+    const aver = { email: event.target.value };
+    setSend(aver);
+  };
 
   const handleSubmit = e => {
-    e.preventDefault()
-    onSubmit(email)
-  }
+    e.preventDefault();
+    console.log(send);
+    onSubmit(send);
+  };
+
+  const email = send.email;
 
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
       <Form.Group controlId="email">
-        <Form.Label for="reset-password" className="loginform-label">Reset Password</Form.Label>
+        <Form.Label className="loginform-label">Reset Password</Form.Label>
         <Form.Control
-          id="reset-password"
           type="email"
           value={email}
           onChange={forgotPasswordData}
@@ -28,21 +31,20 @@ const ForgotPasswordForm = ({ onSubmit}) => {
           required
         />
         <Form.Text className="text-muted">
-        Wait for email and follow instructions 
+          Wait for email and follow instructions
         </Form.Text>
       </Form.Group>
       <ButtonGroup>
-        <Button 
+        <Button
           type="submit"
-          className="LoginFormSubmit" 
+          className="LoginFormSubmit"
           variant="outline-dark"
-          disabled={!email}
         >
           Submit
         </Button>
       </ButtonGroup>
     </Form>
   );
-}
+};
 
-export default ForgotPasswordForm
+export default ForgotPasswordForm;
