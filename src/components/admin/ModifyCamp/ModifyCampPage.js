@@ -119,7 +119,7 @@ const ModifyCampPage = ({ history, ...props }) => {
     <Layout {...props}>
       <Loader hidden={!loading} />
       <Card className="card-form" onSubmit={handleSubmit}>
-        <Card.Header>Modify Camp</Card.Header>
+        <Card.Header className="header">Modify Camp</Card.Header>
         <Form className="form-modify">
           <Form.Group className="form-groupModify">
             <div>
@@ -250,11 +250,7 @@ const ModifyCampPage = ({ history, ...props }) => {
                 onChange={handleEditCamp}
               />
             </div>
-            <Button
-              variant="outline-dark"
-              type="submit"
-              className="button-createCamp"
-            >
+            <Button variant="outline-dark" type="submit">
               Submit
             </Button>
           </Form.Group>
