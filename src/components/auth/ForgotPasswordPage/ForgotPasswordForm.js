@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Form } from 'react-bootstrap';
 
 const ForgotPasswordForm = ({ onSubmit }) => {
   const [send, setSend] = useState({
-    email: '',
+    email: 'await',
   });
 
   const forgotPasswordData = event => {
