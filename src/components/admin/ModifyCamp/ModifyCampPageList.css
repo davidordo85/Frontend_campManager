@@ -15,8 +15,16 @@
   font-size: 2rem;
 }
 
+.modifyCampForm-title{
+  font-size: 2rem;
+}
+
 .list-group {
   margin: 1rem;
+}
+
+.modifyCampForm-label{
+  margin-top: 1rem;
 }
 
 .list-group:hover {

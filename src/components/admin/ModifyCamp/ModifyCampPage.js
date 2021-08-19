@@ -119,11 +119,13 @@ const ModifyCampPage = ({ history, ...props }) => {
     <Layout {...props}>
       <Loader hidden={!loading} />
       <Card className="card-form" onSubmit={handleSubmit}>
-        <Card.Header className="header">Modify Camp</Card.Header>
+        <Card.Header className="header">
+          <Card.Text className="modifyCampForm-title">Modify Camp: {oldCamp.name}</Card.Text>
+        </Card.Header>
         <Form className="form-modify">
           <Form.Group className="form-groupModify">
             <div>
-              <Form.Label>Name</Form.Label>
+              <Form.Label className="modifyCampForm-label">Name</Form.Label>
               <Form.Control
                 className=""
                 type="text"
@@ -134,7 +136,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>Edition</Form.Label>
+              <Form.Label className="modifyCampForm-label">Edition</Form.Label>
               <Form.Control
                 className=""
                 type="text"
@@ -145,7 +147,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>Location</Form.Label>
+              <Form.Label className="modifyCampForm-label">Location</Form.Label>
               <Form.Control
                 type="text"
                 name="location"
@@ -156,7 +158,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>Description</Form.Label>
+              <Form.Label className="modifyCampForm-label">Description</Form.Label>
               <Form.Control
                 as="textarea"
                 name="description"
@@ -175,7 +177,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>Address</Form.Label>
+              <Form.Label className="modifyCampForm-label">Address</Form.Label>
               <Form.Control
                 type="text"
                 name="address"
@@ -186,7 +188,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div className="activities">
-              <Form.Label className="">Activities</Form.Label>
+              <Form.Label  className="modifyCampForm-label">Activities</Form.Label>
               <Select
                 className="activities"
                 classNamePrefix="activities"
@@ -198,7 +200,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>Phone</Form.Label>
+              <Form.Label className="modifyCampForm-label">Phone</Form.Label>
               <Form.Control
                 type="text"
                 name="phone"
@@ -209,7 +211,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>Email</Form.Label>
+              <Form.Label className="modifyCampForm-label">Email</Form.Label>
               <Form.Control
                 type="email"
                 name="email"
@@ -220,7 +222,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>From / From old {oldCamp.from}</Form.Label>
+              <Form.Label className="modifyCampForm-label">From / From old {oldCamp.from}</Form.Label>
               <Form.Control
                 className=""
                 type="date"
@@ -230,7 +232,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>To / To old {oldCamp.from}</Form.Label>
+              <Form.Label className="modifyCampForm-label">To / To old {oldCamp.from}</Form.Label>
               <Form.Control
                 className=""
                 type="date"
@@ -240,7 +242,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label>Capacity</Form.Label>
+              <Form.Label className="modifyCampForm-label">Capacity</Form.Label>
               <Form.Control
                 type="number"
                 name="capacity"
@@ -250,9 +252,11 @@ const ModifyCampPage = ({ history, ...props }) => {
                 onChange={handleEditCamp}
               />
             </div>
-            <Button variant="outline-dark" type="submit">
-              Submit
-            </Button>
+            <div>
+              <Button variant="outline-dark" type="submit">
+                Submit
+              </Button>
+            </div>
           </Form.Group>
         </Form>
         {error && (

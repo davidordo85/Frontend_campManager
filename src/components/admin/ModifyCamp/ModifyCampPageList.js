@@ -35,7 +35,9 @@ const ModifyCampList = ({ id, history, ...props }) => {
       <div className="main">
         <Loader hidden={!loading} />
         <Card className="card-modify">
-          <CardHeader className="header">Choose the camp to modify</CardHeader>
+          <CardHeader className="header">
+            <Card.Text className="modifyCampForm-title">Choose the camp to modify</Card.Text>
+          </CardHeader>
           <ListGroup className="list-group">
             {camps.map((camp, index) => (
               <List
