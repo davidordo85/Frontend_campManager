@@ -222,7 +222,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label className="modifyCampForm-label">From / From old {oldCamp.from}</Form.Label>
+              <Form.Label className="modifyCampForm-label">From (previously {oldCamp.from})</Form.Label>
               <Form.Control
                 className=""
                 type="date"
@@ -232,12 +232,13 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label className="modifyCampForm-label">To / To old {oldCamp.from}</Form.Label>
+              <Form.Label className="modifyCampForm-label">To (previously {oldCamp.to})</Form.Label>
               <Form.Control
                 className=""
                 type="date"
                 name="to"
                 value={to}
+                min={from}
                 onChange={handleEditCamp}
               />
             </div>
@@ -252,11 +253,9 @@ const ModifyCampPage = ({ history, ...props }) => {
                 onChange={handleEditCamp}
               />
             </div>
-            <div>
-              <Button variant="outline-dark" type="submit">
-                Submit
-              </Button>
-            </div>
+            <Button variant="outline-dark" type="submit" className="modifyCamp-submit">
+              Submit
+            </Button>
           </Form.Group>
         </Form>
         {error && (

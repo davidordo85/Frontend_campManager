@@ -30,3 +30,8 @@
 .list-group:hover {
   cursor: pointer;
 }
+
+.modifyCamp-submit{
+  margin-top: 3rem;
+  height: 43%;
+}
