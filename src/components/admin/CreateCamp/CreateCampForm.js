@@ -1,10 +1,13 @@
 import React from 'react';
 import { Form, Badge, Button } from 'react-bootstrap';
 import Select from 'react-select';
+import moment from 'moment';
 
 import SelectTag from './SelectTag';
 
 const CreateCampForm = ({ onSubmit }) => {
+  var today = moment().format('YYYY-MM-DD');
+
   const [camp, setCamp] = React.useState({
     name: '',
     edition: '',
@@ -15,7 +18,7 @@ const CreateCampForm = ({ onSubmit }) => {
     address: '',
     phone: '111-111-1111',
     email: 'camps@campmanager.com',
-    from: '',
+    from: today,
     to: '',
     capacity: 30,
     inPeople: 0,
@@ -218,6 +221,7 @@ const CreateCampForm = ({ onSubmit }) => {
             type="date"
             name="from"
             value={from}
+            min={today}
             onChange={handleCreateCamp}
             required
           />
@@ -229,6 +233,7 @@ const CreateCampForm = ({ onSubmit }) => {
             className=""
             type="date"
             name="to"
+            min={from}
             value={to}
             onChange={handleCreateCamp}
             required
