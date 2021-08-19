@@ -4,7 +4,12 @@
 }
 
 .title-createCamps {
-  text-align: center;
+  text-align: center; 
+  font-size: 2rem;
+}
+
+.newCamp-label, .label-tag{
+  margin-top: 1rem;
 }
 
 .form-groupCreate {
@@ -38,9 +43,11 @@
 
 .badge {
   margin-top: 1.3rem;
+  display: none;
 }
 
 .button-createCamp {
   margin: 1rem 0 1rem 0;
-  grid-column: 1;
+  grid-column: 2;
 }
+

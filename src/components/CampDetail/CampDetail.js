@@ -64,7 +64,6 @@ const CampDetail = ({ history, isLogged, ...props }) => {
           <Card.Header className="detail-header">
             <Card.Text className="detail-title">{camp.name}</Card.Text>
           </Card.Header>
-          <Card.Text className="detail-text">{camp.description}</Card.Text>
           <CardColumns className="columns">
             <Card className="detail-description">
               <Card.Header className="detail-header">
