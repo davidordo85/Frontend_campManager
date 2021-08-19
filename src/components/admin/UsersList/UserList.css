@@ -2,3 +2,25 @@
   margin: 12rem 7rem 7rem 22rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+.item-list {
+  padding: 1rem;
+  margin: 1rem;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.item-list > p {
+  text-align: center;
+}
+
+.item-list > Form,
+.item-list > Button {
+  margin: 1rem;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../layout/layout';
 import Loader from '../../Loader/Loader';
-import { Card, ListGroup } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import List from './List';
 import { getUser } from '../../../api/auth';
 import './UserList.css';
@@ -38,7 +38,7 @@ const UserList = ({ id, history, ...props }) => {
           <Card.Header className="card-header">
             Choose the camp to modify
           </Card.Header>
-          <ListGroup className="list-group">
+          <div className="list">
             {user.map((user, index) => (
               <List
                 key={index}
@@ -52,7 +52,7 @@ const UserList = ({ id, history, ...props }) => {
                 history={history}
               ></List>
             ))}
-          </ListGroup>
+          </div>
           {error && (
             <div onClick={resetError} className="loginPage-error">
               {error.message}
