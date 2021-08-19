@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateCamp from './components/admin/CreateCamp/CreateCampPage';
 import Requests from './components/admin/Requests/Requests';
 import UserList from './components/admin/UsersList/UsersList';
-import ObservationUser from './components/admin/ObservationUser/ObservationUser';
 import ModifyCampList from './components/admin/ModifyCamp/ModifyCampPageList';
 import ModifyCampPage from './components/admin/ModifyCamp/ModifyCampPage';
 
@@ -81,9 +80,6 @@ function App({ isInitiallyLogged }) {
         </Route>
         <Route exact path="/userList">
           <UserList isLogged={isLogged} onLogout={handleLogout} />
-        </Route>
-        <Route exact path="/ObservationUser">
-          <ObservationUser isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route exact path="/">
           {routeProps => (
