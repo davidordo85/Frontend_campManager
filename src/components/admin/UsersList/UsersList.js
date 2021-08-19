@@ -3,7 +3,7 @@ import Layout from '../../layout/layout';
 import Loader from '../../Loader/Loader';
 import { Card } from 'react-bootstrap';
 import List from './List';
-import { getUser } from '../../../api/auth';
+import { getUser, editRole } from '../../../api/auth';
 import './UserList.css';
 
 const UserList = ({ id, history, ...props }) => {
@@ -29,13 +29,26 @@ const UserList = ({ id, history, ...props }) => {
       setLoading(false);
     }
   };
+
+  const handleSubmit = async (id, data) => {
+    resetError();
+    setLoading(true);
+    try {
+      await editRole(id, data);
+    } catch (error) {
+      setError(error);
+    } finally {
+      userList();
+      setLoading(false);
+    }
+  };
   console.log(user);
   return (
     <Layout {...props}>
       <div>
         <Loader hidden={!loading} />
         <Card className="user-list">
-          <Card.Header className="card-header">
+          <Card.Header className="header">
             Choose the camp to modify
           </Card.Header>
           <div className="list">
@@ -43,13 +56,11 @@ const UserList = ({ id, history, ...props }) => {
               <List
                 key={index}
                 id={user._id}
-                name={user.name}
-                firstFamilyName={user.firstFamilyName}
-                //secondFamilyName={user.secondFamilyName}
                 email={user.email}
                 role={user.role}
                 className=""
                 history={history}
+                onSubmit={handleSubmit}
               ></List>
             ))}
           </div>

@@ -69,3 +69,8 @@ export const getUser = () => {
   const url = '/api/v1/users';
   return client.get(url);
 };
+
+export const editRole = (data, id) => {
+  const url = `/api/v1/users/${id}`;
+  return client.put(url, data);
+};

@@ -7,24 +7,29 @@
   display: grid;
   grid-template-columns: repeat(2, 50%);
 }
+
 .item-list {
   padding: 1rem;
   margin: 1rem;
-  border: none;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
+.role,
 .item-list > p {
   text-align: center;
 }
 
-.item-list > Form,
-.item-list > Button {
+.item-list > Form {
   margin: 1rem;
 }
 
+.item-list > Button,
 .label-text {
   margin-top: 1rem;
+}
+
+.header {
+  font-size: 2rem;
 }

@@ -1,45 +1,47 @@
 import React from 'react';
-import { ListGroup, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button } from 'react-bootstrap';
 import Select from 'react-select';
 
-const List = ({
-  id,
-  name,
-  firstFamilyName,
-  secondFamilyName,
-  email,
-  role,
-  location,
-  history,
-}) => {
+const List = ({ id, email, role, onSubmit, location, history }) => {
+  const [newUserRole, setNewUserRole] = React.useState({ role: '' });
   const options = [
     { value: 'admin', label: 'admin' },
     { value: 'helper', label: 'helper' },
     { value: 'guest', label: 'guest' },
   ];
 
-  const handleChange = event => {
-    console.log(event);
+  const handleEditUser = event => {
+    const role = { role: event.value };
+    setNewUserRole(role);
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(newUserRole);
+    onSubmit(newUserRole, id);
+  };
+
+  console.log(newUserRole);
+
   return (
-    <ListGroup.Item className="item-list">
-      <p>{name}</p>
-      <p>{firstFamilyName}</p>
-      <p>{email}</p>
-      <p>{role}</p>
-      <Form>
+    <Form onSubmit={handleSubmit}>
+      <Card className="item-list">
+        <Card.Header className="">{email}</Card.Header>
+        <p className="role">{role}</p>
         <div>
           <Form.Label className="label-text">Select new role...</Form.Label>
-          <Select options={options} onChange={handleChange} />
+          <Select options={options} onChange={handleEditUser} />
         </div>
         <div>
           <Form.Label className="label-text">Add comment</Form.Label>
           <Form.Control type="textarea" />
         </div>
-      </Form>
-      <Button variant="outline-dark">Submit</Button>
-    </ListGroup.Item>
+
+        <Button variant="outline-dark" type="submit">
+          Submit
+        </Button>
+      </Card>
+    </Form>
   );
 };
 
