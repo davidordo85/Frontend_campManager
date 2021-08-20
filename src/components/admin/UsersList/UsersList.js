@@ -42,7 +42,6 @@ const UserList = ({ id, history, ...props }) => {
       setLoading(false);
     }
   };
-  console.log(user);
   return (
     <Layout {...props}>
       <div>
@@ -58,6 +57,7 @@ const UserList = ({ id, history, ...props }) => {
                 id={user._id}
                 email={user.email}
                 role={user.role}
+                comments={user.coments}
                 className=""
                 history={history}
                 onSubmit={handleSubmit}
