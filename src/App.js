@@ -1,4 +1,5 @@
 import React from 'react';
+import { getMe } from './api/auth';
 import CampList from './components/index/CampList';
 import { LoginPage, RegisterPage } from './components/auth';
 import { ForgotPasswordPage } from './components/auth';
@@ -12,19 +13,33 @@ import UserList from './components/admin/UsersList/UsersList';
 import ModifyCampList from './components/admin/ModifyCamp/ModifyCampPageList';
 import ModifyCampPage from './components/admin/ModifyCamp/ModifyCampPage';
 
-/* var backgroundStyle = {
-  width: '100%',
-  height: '100vh',
-  backgroundPosition: ' 10px 30px',
-  backgroundImage: `url(${bg})`,
-  margin: 0,
-}; */
-
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
+  const [me, setMe] = React.useState({
+    campsConfirmed: [],
+    campsRequested: [],
+  });
 
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);
+
+  React.useEffect(() => {
+    handleMe();
+  }, []);
+
+  const handleMe = async () => {
+    if (isLogged) {
+      try {
+        const meDates = await getMe('auth');
+        setMe(meDates.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        console.log('ok');
+      }
+    }
+  };
+
   return (
     <div className="App">
       <Switch>
@@ -34,6 +49,8 @@ function App({ isInitiallyLogged }) {
             <CampDetail
               isLogged={isLogged}
               onLogout={handleLogout}
+              confirmed={me.campsConfirmed}
+              requested={me.campsRequested}
               {...routeProps}
             />
           )}
