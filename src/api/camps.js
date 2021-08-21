@@ -57,3 +57,9 @@ export const subscribe = data => {
   console.log(url);
   return client.put(url);
 };
+
+export const unSubscribe = data => {
+  const url = `${campsBaseUrl}/${data}/unsubscribe`;
+  console.log(url);
+  return client.put(url);
+};

@@ -1,14 +1,13 @@
 import React from 'react';
 import Layout from '../layout/layout';
-import { getCampDetail, subscribe } from '../../api/camps';
-//import { getMe } from '../../api/auth';
+import { getCampDetail, subscribe, unSubscribe } from '../../api/camps';
 import Loader from '../Loader/Loader';
 import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 import './CampDetail.css';
 
-const CampDetail = ({ history, isLogged, ...props }) => {
+const CampDetail = ({ history, isLogged, _id, ...props }) => {
   const [camp, setCamp] = React.useState({
     activities: ['await'],
     createdAt: '2021-07-28T00:18:07.898Z',
@@ -47,8 +46,28 @@ const CampDetail = ({ history, isLogged, ...props }) => {
       setError(error);
     } finally {
       setLoading(false);
+      window.location.reload();
     }
   };
+
+  const handleSubmitUnsubscribe = async event => {
+    const id = event.target.baseURI.split('/');
+    try {
+      await unSubscribe(id[4]);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+      window.location.reload();
+    }
+  };
+
+  const confirmed = props.confirmed;
+  const requested = props.requested;
+
+  function compare(item1, item2) {
+    return item1.some(item => item2 === item);
+  }
 
   const createdAt = camp.createdAt.split('T');
 
@@ -130,15 +149,34 @@ const CampDetail = ({ history, isLogged, ...props }) => {
             </Alert>
           )}
         </Card>
-        <Button
-          type="submit"
-          onClick={handleSubmit}
-          variant="outline-dark"
-          className="sign-up"
-          disabled={!isLogged}
-        >
-          Sign up
-        </Button>
+        {!isLogged ? null : compare(confirmed, paramsId) ? (
+          <Button
+            type="submit"
+            onClick={handleSubmitUnsubscribe}
+            variant="outline-danger"
+            className="sign-up"
+          >
+            Cancel sign
+          </Button>
+        ) : compare(requested, paramsId) ? (
+          <Button
+            type="submit"
+            onClick={handleSubmitUnsubscribe}
+            variant="outline-danger"
+            className="sign-up"
+          >
+            Cancel sign
+          </Button>
+        ) : (
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            variant="outline-dark"
+            className="sign-up"
+          >
+            Sign up
+          </Button>
+        )}
       </div>
     </Layout>
   );
