@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../layout/layout';
+import { Link } from 'react-router-dom';
 import { getCampDetail, subscribe, unSubscribe } from '../../api/camps';
 import Loader from '../Loader/Loader';
 import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
@@ -38,10 +39,9 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
     }
   };
 
-  const handleSubmit = async event => {
-    const id = event.target.baseURI.split('/');
+  const handleSubmit = async () => {
     try {
-      await subscribe(id[4]);
+      await subscribe(paramsId);
     } catch (error) {
       setError(error);
     } finally {
@@ -50,10 +50,9 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
     }
   };
 
-  const handleSubmitUnsubscribe = async event => {
-    const id = event.target.baseURI.split('/');
+  const handleSubmitUnsubscribe = async () => {
     try {
-      await unSubscribe(id[4]);
+      await unSubscribe(paramsId);
     } catch (error) {
       setError(error);
     } finally {
@@ -64,6 +63,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
 
   const confirmed = props.confirmed;
   const requested = props.requested;
+  const role = props.role;
 
   function compare(item1, item2) {
     return item1.some(item => item2 === item);
@@ -149,7 +149,10 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
             </Alert>
           )}
         </Card>
-        {!isLogged ? null : compare(confirmed, paramsId) ? (
+        {!isLogged ? null : role === 'admin' ? null : compare(
+            confirmed,
+            paramsId,
+          ) ? (
           <Button
             type="submit"
             onClick={handleSubmitUnsubscribe}
@@ -177,6 +180,17 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
             Sign up
           </Button>
         )}
+        {!isLogged ? null : role === 'admin' ? (
+          <Button
+            as={Link}
+            to={`/campModify/${paramsId}`}
+            variant="outline-dark"
+            className="sign-up"
+          >
+            {' '}
+            Edit camp
+          </Button>
+        ) : null}
       </div>
     </Layout>
   );
