@@ -12,6 +12,13 @@
   font-size: 3rem;
 }
 
+.status {
+  margin: 2rem 2rem 0 2rem;
+}
+
+.status > .img-txt {
+  text-align: center;
+}
 .columns {
   display: grid;
   margin: 1rem;

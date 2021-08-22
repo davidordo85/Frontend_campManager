@@ -3,6 +3,9 @@ import Layout from '../layout/layout';
 import { Link } from 'react-router-dom';
 import { getCampDetail, subscribe, unSubscribe } from '../../api/camps';
 import Loader from '../Loader/Loader';
+import pending from '../../assets/images/pending.svg';
+import accepted from '../../assets/images/accepted.svg';
+import rejected from '../../assets/images/rejected.svg';
 import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
@@ -64,6 +67,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   const confirmed = props.confirmed;
   const requested = props.requested;
   const role = props.role;
+  console.log(props);
 
   function compare(item1, item2) {
     return item1.some(item => item2 === item);
@@ -88,6 +92,26 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
                 <Card.Text>Direction: {camp.address}</Card.Text>
                 <Card.Text>Location: {camp.location}</Card.Text>
                 <Card.Text>Edition: {camp.edition}</Card.Text>
+                {/* TODO: donde tengo el array de solicitudes cancelladas? */}
+                {!isLogged ? null : role === 'admin' ? null : compare(
+                    confirmed,
+                    paramsId,
+                  ) ? (
+                  <div className="status">
+                    <Card.Text className="img-txt">Request status</Card.Text>
+                    <Card.Img className="type-camp" src={accepted} />
+                  </div>
+                ) : compare(requested, paramsId) ? (
+                  <div>
+                    <Card.Text className="img-txt">Request status</Card.Text>
+                    <Card.Img className="type-camp" src={pending} />
+                  </div>
+                ) : (
+                  <div>
+                    <Card.Text className="img-txt">Request status</Card.Text>
+                    <Card.Img className="type-camp" src={rejected} />
+                  </div>
+                )}
               </Card.Body>
             </Card>
             <Card>
