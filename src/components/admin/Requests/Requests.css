@@ -1,0 +1,12 @@
+.requests {
+  margin: 12rem 7rem 7rem 22rem;
+  width: 100vh;
+}
+
+.accept {
+  margin: 0 1rem 0 1.5rem;
+}
+
+.empty {
+  text-align: center;
+}
