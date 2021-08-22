@@ -58,7 +58,8 @@ function App({ isInitiallyLogged }) {
           )}
         </Route>
         <PrivateRouteAdmin
-          admin={isLogged && me.role === 'admin'}
+          admin={me.role === 'admin'}
+          isLogged={isLogged}
           exact
           path="/campModify/:id"
         >
@@ -87,21 +88,24 @@ function App({ isInitiallyLogged }) {
           <ForgotPasswordPage />
         </Route>
         <PrivateRouteAdmin
-          admin={isLogged && me.role === 'admin'}
+          isLogged={isLogged}
+          admin={me.role === 'admin'}
           exact
           path="/createCamp"
         >
           <CreateCamp isLogged={isLogged} onLogout={handleLogout} />
         </PrivateRouteAdmin>
         <PrivateRouteAdmin
-          admin={isLogged && me.role === 'admin'}
+          isLogged={isLogged}
+          admin={me.role === 'admin'}
           exact
           path="/requests"
         >
           <Requests isLogged={isLogged} onLogout={handleLogout} />
         </PrivateRouteAdmin>
         <PrivateRouteAdmin
-          admin={isLogged && me.role === 'admin'}
+          isLogged={isLogged}
+          admin={me.role === 'admin'}
           exact
           path="/modifyCamp"
         >
@@ -114,11 +118,18 @@ function App({ isInitiallyLogged }) {
           )}
         </PrivateRouteAdmin>
         <PrivateRouteAdmin
-          admin={isLogged && me.role === 'admin'}
+          isLogged={isLogged}
+          admin={me.role === 'admin'}
           exact
           path="/userList"
         >
-          <UserList isLogged={isLogged} onLogout={handleLogout} />
+          {routeProps => (
+            <UserList
+              isLogged={isLogged}
+              onLogout={handleLogout}
+              {...routeProps}
+            />
+          )}
         </PrivateRouteAdmin>
         <Route exact path="/">
           {routeProps => (
