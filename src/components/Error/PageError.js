@@ -13,8 +13,10 @@ const PageError = () => {
       </Card.Header>
       <Card.Body className="Error-children">
         <Card.Text className="Error-number">404</Card.Text>
-        <Card.Text>Oops!</Card.Text>
-        <Card.Text>Not page found in camp manager...</Card.Text>
+        <Card.Text className="Error-text">Oops!</Card.Text>
+        <Card.Text className="Error-text">
+          Not page found in camp manager...
+        </Card.Text>
         <div className="home">
           <Button variant="outline-dark" as={Link} to="/">
             Home

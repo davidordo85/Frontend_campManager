@@ -1,6 +1,6 @@
 import React from 'react';
 import { getRequests } from '../../../api/requestsCamps';
-import { Table, Alert, Button } from 'react-bootstrap';
+import { Table, Alert, Button, Spinner } from 'react-bootstrap';
 import Layout from '../../layout/layout';
 import './Requests.css';
 
@@ -31,6 +31,7 @@ const Requests = ({ ...props }) => {
   console.log(request);
   return (
     <Layout {...props}>
+      <Spinner animation="border" variant="info" hidden={!loading} />
       <Table striped bordered hover className="requests">
         <thead>
           <tr>

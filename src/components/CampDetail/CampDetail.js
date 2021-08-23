@@ -102,12 +102,12 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
                     <Card.Img className="type-camp" src={accepted} />
                   </div>
                 ) : compare(requested, paramsId) ? (
-                  <div>
+                  <div className="status">
                     <Card.Text className="img-txt">Request status</Card.Text>
                     <Card.Img className="type-camp" src={pending} />
                   </div>
                 ) : (
-                  <div>
+                  <div className="status">
                     <Card.Text className="img-txt">Request status</Card.Text>
                     <Card.Img className="type-camp" src={rejected} />
                   </div>

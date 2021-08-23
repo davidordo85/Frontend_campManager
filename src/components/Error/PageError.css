@@ -22,6 +22,10 @@
   font-weight: bold;
 }
 
+.Error-text {
+  font-weight: bold;
+}
+
 @media (min-width: 650px) {
   .target {
     width: 500px;
