@@ -1,0 +1,35 @@
+.target {
+  margin: 20vh auto;
+  width: 300px;
+  height: 500px;
+}
+
+.Error {
+  background-color: #212529;
+  display: flex;
+  justify-content: center;
+}
+
+.Error-children {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Error-number {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+@media (min-width: 650px) {
+  .target {
+    width: 500px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .target {
+    width: 800px;
+  }
+}

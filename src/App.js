@@ -13,6 +13,7 @@ import Requests from './components/admin/Requests/Requests';
 import UserList from './components/admin/UsersList/UsersList';
 import ModifyCampList from './components/admin/ModifyCamp/ModifyCampPageList';
 import ModifyCampPage from './components/admin/ModifyCamp/ModifyCampPage';
+import PageError from './components/Error/PageError';
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
@@ -142,15 +143,7 @@ function App({ isInitiallyLogged }) {
         </Route>
         {/*TODO: hacer pagina 404 */}
         <Route path="/404">
-          <div
-            style={{
-              textAlign: 'center',
-              fontSize: 48,
-              fontWeight: 'bold',
-            }}
-          >
-            404 | Not found page
-          </div>
+          <PageError />
         </Route>
         <Route>
           <Redirect to="/404"></Redirect>

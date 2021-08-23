@@ -28,14 +28,13 @@ function LoginForm({ onSubmit, isLoading }) {
     onSubmit(credentials);
   };
 
-
-  //TODO: faltan las validaciones
-
   const { email, password, remember } = credentials;
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label for="email" className="loginform-label">Email</Form.Label>
+        <Form.Label for="email" className="loginform-label">
+          Email
+        </Form.Label>
         <Form.Control
           type="email"
           name="email"
@@ -44,7 +43,9 @@ function LoginForm({ onSubmit, isLoading }) {
           onChange={handleChange}
           isValid={email ? true : false}
         />
-        <Form.Label for="password" className="loginform-label">Password</Form.Label>
+        <Form.Label for="password" className="loginform-label">
+          Password
+        </Form.Label>
         <Form.Control
           type="password"
           name="password"

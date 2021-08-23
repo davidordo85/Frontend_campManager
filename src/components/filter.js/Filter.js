@@ -1,6 +1,5 @@
 import React from 'react';
 import './filter.css';
-//import FilterButton from '../Buttons/FilterButton';
 import CheckboxFilter from './CheckboxFilter';
 import moment from 'moment';
 import { Button, Form, Row, Col } from 'react-bootstrap';
