@@ -53,6 +53,7 @@ function App({ isInitiallyLogged }) {
               onLogout={handleLogout}
               confirmed={me.campsConfirmed}
               requested={me.campsRequested}
+              reject={me.campsRejected}
               role={me.role}
               {...routeProps}
             />

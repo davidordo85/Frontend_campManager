@@ -66,6 +66,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
 
   const confirmed = props.confirmed;
   const requested = props.requested;
+  const reject = props.reject;
   const role = props.role;
 
   function compare(item1, item2) {
@@ -105,12 +106,12 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
                     <Card.Text className="img-txt">Request status</Card.Text>
                     <Card.Img className="type-camp" src={pending} />
                   </div>
-                ) : (
+                ) : compare(reject, paramsId) ? (
                   <div className="status">
                     <Card.Text className="img-txt">Request status</Card.Text>
                     <Card.Img className="type-camp" src={rejected} />
                   </div>
-                )}
+                ) : null}
               </Card.Body>
             </Card>
             <Card>
