@@ -13,7 +13,6 @@ const ForgotPasswordForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(send);
     onSubmit(send);
   };
 

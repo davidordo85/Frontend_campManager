@@ -28,7 +28,6 @@ const Requests = ({ ...props }) => {
     }
   };
 
-  console.log(request);
   return (
     <Layout {...props}>
       <Spinner animation="border" variant="info" hidden={!loading} />

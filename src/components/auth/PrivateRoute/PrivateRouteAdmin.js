@@ -14,7 +14,6 @@ const PrivateRouteAdmin = ({ admin, isLogged, ...props }) => {
           <Redirect to={{ pathname: '/login', state: { from: location } }} />
         ),
       };
-  console.log(isLogged);
   return <Route {...routeProps} />;
 };
 
