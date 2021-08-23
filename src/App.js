@@ -141,7 +141,6 @@ function App({ isInitiallyLogged }) {
             />
           )}
         </Route>
-        {/*TODO: hacer pagina 404 */}
         <Route path="/404">
           <PageError />
         </Route>
