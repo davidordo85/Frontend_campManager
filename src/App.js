@@ -6,6 +6,7 @@ import { ForgotPasswordPage } from './components/auth';
 import { Switch, Route, Redirect } from 'react-router';
 import PrivateRouteAdmin from './components/auth/PrivateRoute/PrivateRouteAdmin';
 import { CampDetail } from './components/CampDetail';
+import { PrivateRoute } from './components/auth';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateCamp from './components/admin/CreateCamp/CreateCampPage';
@@ -14,6 +15,8 @@ import UserList from './components/admin/UsersList/UsersList';
 import ModifyCampList from './components/admin/ModifyCamp/ModifyCampPageList';
 import ModifyCampPage from './components/admin/ModifyCamp/ModifyCampPage';
 import PageError from './components/Error/PageError';
+import UserRequest from './components/user/userRequest';
+import MyProfile from './components/user/MyProfile';
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
@@ -72,7 +75,22 @@ function App({ isInitiallyLogged }) {
             />
           )}
         </PrivateRouteAdmin>
-
+        <PrivateRoute isLogged={isLogged} onLogout={handleLogout} exact path="/myProfile">
+          <MyProfile  isLogged={isLogged} onLogout={handleLogout} />
+        </PrivateRoute>
+        <PrivateRoute isLogged={isLogged} onLogout={handleLogout}  exact path="/userRequests">
+          {routeProps => (
+            
+            <UserRequest  
+              isLogged={isLogged} 
+              onLogout={handleLogout}
+              confirmed={me.campsConfirmed}
+              requests={me.campsRequested}
+              role={me.role}
+              {...routeProps}
+            />
+            )}
+        </PrivateRoute>
         <Route path="/login">
           {({ history, location }) => (
             <LoginPage

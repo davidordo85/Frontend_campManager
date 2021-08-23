@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardAdmin from '../../admin/DashboardAdmin/DashboardAdmin';
 import { getMe } from '../../../api/auth';
+import UserDashboard from '../../user/dashboard-user';
 
 const Dashboard = () => {
   const [me, setMe] = React.useState({});
@@ -23,7 +24,7 @@ const Dashboard = () => {
   /*   {
     /*TODO: mete aqui tus dashboard
   } */
-  return <div>{me.role === 'admin' ? <DashboardAdmin /> : null}</div>;
+  return <div>{me.role === 'admin' ? <DashboardAdmin /> : me.role === 'helper' ? <UserDashboard /> : null}</div>;
 };
 
 export default Dashboard;

@@ -2,6 +2,7 @@ import client, { configureClient, resetClient } from './client';
 import storage from '../utils/storage';
 
 const authPath = '/api/v1/auth';
+const usersPath = '/api/v1/users/';
 
 export const login = ({ remember, ...credentials }) => {
   return client
@@ -59,6 +60,32 @@ export const registerUser = async register => {
     }
   }
 };
+export const editProfile = async (id, newData) => {
+  const url = `${usersPath}${id}/`;
+  const editData = new FormData();
+  for (let item in newData) {
+      editData.append(item, newData[item]);
+    }
+  console.log(url, editData)
+  return await client.put(url, editData)
+}
+
+export const  editPhotoProfile = (id, photoData) => {
+  const url = `${usersPath}${id}/photo`;
+  const editPhotoData = new FormData();
+  for (let item in photoData) {
+      editPhotoData.append(item, photoData[item]);
+  }
+  return client.put(url, editPhotoData);   
+}
+export const  editCVProfile = (id, cvData) => {
+  const url = `${usersPath}${id}/cv`;
+  const editCVData = new FormData();
+  for (let item in cvData) {
+      editCVData.append(item, cvData[item]);
+  }
+  return client.put(url, editCVData);   
+}
 
 export const getMe = () => {
   const url = `${authPath}/me`;
