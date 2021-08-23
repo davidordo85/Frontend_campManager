@@ -67,7 +67,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   const confirmed = props.confirmed;
   const requested = props.requested;
   const role = props.role;
-  console.log(props);
 
   function compare(item1, item2) {
     return item1.some(item => item2 === item);
