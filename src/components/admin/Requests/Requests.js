@@ -1,6 +1,6 @@
 import React from 'react';
 import { getRequests } from '../../../api/requestsCamps';
-import { Table, Alert, Button, Spinner } from 'react-bootstrap';
+import { Card, Alert, Button, Spinner } from 'react-bootstrap';
 import Layout from '../../layout/layout';
 import './Requests.css';
 
@@ -28,51 +28,39 @@ const Requests = ({ ...props }) => {
     }
   };
 
-  console.log(request);
   return (
     <Layout {...props}>
       <Spinner animation="border" variant="info" hidden={!loading} />
-      <Table striped bordered hover className="requests">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Request date</th>
-            <th>Applicant's email</th>
-            <th>Requested camp</th>
-            <th>State request</th>
-            <th>Options</th>
-          </tr>
-        </thead>
-        {request.length > 0 ? (
-          request.map((item, index) => (
-            <tbody>
-              <tr>
-                <td>{index + 1}</td>
-                <td>{item.createdAt}</td>
-                <td>{item.personName}</td>
-                <td>{item.campName}</td>
-                <td>{item.status}</td>
-                <td>
-                  <Button
-                    className="accept"
-                    size="sm"
-                    variant="outline-success"
-                  >
-                    Accept
-                  </Button>
-                  <Button size="sm" variant="outline-danger">
-                    Cancel
-                  </Button>
-                </td>
-              </tr>
-            </tbody>
-          ))
-        ) : (
-          <tbody size="sm" className="empty">
-            <Alert>You have no requests to review...</Alert>
-          </tbody>
-        )}
-      </Table>
+      <Card className="request">
+        <Card.Header className="header">Requests</Card.Header>
+        <Card.Body className="request-list">
+          {request.length > 0 ? (
+            request.map((item, index) => (
+              <Card>
+                <Card.Header className="request-header">
+                  {index + 1}
+                </Card.Header>
+                <Card.Body className="request-body">
+                  <Card.Text className="text-title">Request date: </Card.Text>
+                  <Card.Text className="text">{item.createdAt}</Card.Text>
+                  <Card.Text className="text-title">
+                    Applicant's email:{' '}
+                  </Card.Text>
+                  <Card.Text className="text">{item.personName}</Card.Text>
+                  <Card.Text className="text-title">requested camp: </Card.Text>
+                  <Card.Text className="text">{item.campName}</Card.Text>
+                  <div className="request-button">
+                    <Button variant="outline-success">Accept</Button>
+                    <Button variant="outline-danger">Cancel</Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            ))
+          ) : (
+            <Card.Text>You have no pending requests... </Card.Text>
+          )}
+        </Card.Body>
+      </Card>
       {error && (
         <Alert
           variant="danger"

@@ -56,6 +56,7 @@ function App({ isInitiallyLogged }) {
               onLogout={handleLogout}
               confirmed={me.campsConfirmed}
               requested={me.campsRequested}
+              reject={me.campsRejected}
               role={me.role}
               {...routeProps}
             />
@@ -159,7 +160,6 @@ function App({ isInitiallyLogged }) {
             />
           )}
         </Route>
-        {/*TODO: hacer pagina 404 */}
         <Route path="/404">
           <PageError />
         </Route>

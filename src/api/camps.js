@@ -54,12 +54,10 @@ export const updateCamp = (data, id) => {
 
 export const subscribe = data => {
   const url = `${campsBaseUrl}/${data}/subscribe`;
-  console.log(url);
   return client.put(url);
 };
 
 export const unSubscribe = data => {
   const url = `${campsBaseUrl}/${data}/unsubscribe`;
-  console.log(url);
   return client.put(url);
 };

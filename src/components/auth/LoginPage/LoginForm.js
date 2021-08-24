@@ -32,9 +32,7 @@ function LoginForm({ onSubmit, isLoading }) {
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label for="email" className="loginform-label">
-          Email
-        </Form.Label>
+        <Form.Label className="loginform-label">Email</Form.Label>
         <Form.Control
           type="email"
           name="email"
@@ -43,9 +41,7 @@ function LoginForm({ onSubmit, isLoading }) {
           onChange={handleChange}
           isValid={email ? true : false}
         />
-        <Form.Label for="password" className="loginform-label">
-          Password
-        </Form.Label>
+        <Form.Label className="loginform-label">Password</Form.Label>
         <Form.Control
           type="password"
           name="password"
@@ -63,7 +59,7 @@ function LoginForm({ onSubmit, isLoading }) {
             onChange={handleCheckbox}
             className="loginform-check loginform-label"
           />
-          <Form.Label for="checkbox">Remember Password</Form.Label>
+          <Form.Label>Remember Password</Form.Label>
         </div>
       </Form.Group>
       <Button

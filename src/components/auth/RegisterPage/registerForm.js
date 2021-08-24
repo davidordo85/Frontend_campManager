@@ -147,7 +147,9 @@ const RegisterForm = ({ onSubmit }) => {
       </Form.Label>
       <Form.Group className="form-group">
         <div>
-          <Form.Label for="email" className="register-label">Email</Form.Label>
+          <Form.Label for="email" className="register-label">
+            Email
+          </Form.Label>
           <Form.Control
             className="registerForm-mail"
             type="email"
@@ -159,7 +161,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="password" className="register-label">Password</Form.Label>
+          <Form.Label for="password" className="register-label">
+            Password
+          </Form.Label>
           <Form.Control
             type="password"
             name="password"
@@ -171,7 +175,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="repeatPassword" className="register-label">Repeat password</Form.Label>
+          <Form.Label for="repeatPassword" className="register-label">
+            Repeat password
+          </Form.Label>
           <Form.Control
             type="password"
             name="repeatPassword"
@@ -185,7 +191,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="name" className="register-label">Name</Form.Label>
+          <Form.Label for="name" className="register-label">
+            Name
+          </Form.Label>
           <Form.Control
             className="registerForm-name"
             type="text"
@@ -197,7 +205,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="firstFamilyName" className="register-label">Last name</Form.Label>
+          <Form.Label for="firstFamilyName" className="register-label">
+            Last name
+          </Form.Label>
           <Form.Control
             type="text"
             name="firstFamilyName"
@@ -209,7 +219,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="secondFamilyName" className="register-label">Second surname</Form.Label>
+          <Form.Label for="secondFamilyName" className="register-label">
+            Second surname
+          </Form.Label>
           <Form.Control
             type="text"
             id="secondFamilyName"
@@ -221,7 +233,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="phone" className="register-label">Phone</Form.Label>
+          <Form.Label for="phone" className="register-label">
+            Phone
+          </Form.Label>
           <Form.Control
             placeholder="Do not forget international prefix"
             type="number"
@@ -234,7 +248,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="username" className="register-label">Username</Form.Label>
+          <Form.Label for="username" className="register-label">
+            Username
+          </Form.Label>
           <Form.Control
             type="text"
             name="username"
@@ -246,7 +262,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="form-gender">
-          <Form.Label for="gender" className="label-role register-label">Gender</Form.Label>
+          <Form.Label for="gender" className="label-role register-label">
+            Gender
+          </Form.Label>
           <Form.Select
             name="gender"
             id="gender"
@@ -260,7 +278,9 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label for="nationality" className="register-label">Nationality</Form.Label>
+          <Form.Label for="nationality" className="register-label">
+            Nationality
+          </Form.Label>
           <Form.Control
             className="registerForm-nationality"
             type="text"
@@ -290,7 +310,9 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label for="idNumber" className="register-label">Legal identifier</Form.Label>
+          <Form.Label for="idNumber" className="register-label">
+            Legal identifier
+          </Form.Label>
           <Form.Control
             type="text"
             name="idNumber"
@@ -302,7 +324,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="bornDate" className="register-label">Birth date</Form.Label>
+          <Form.Label for="bornDate" className="register-label">
+            Birth date
+          </Form.Label>
           <Form.Control
             className="registerForm-date"
             type="date"
@@ -314,7 +338,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="registerForm-photo" className="register-label">Photo</Form.Label>
+          <Form.Label for="registerForm-photo" className="register-label">
+            Photo
+          </Form.Label>
           <Form.Control
             id="registerForm-photo"
             type="file"
@@ -324,7 +350,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="address" className="register-label">Address</Form.Label>
+          <Form.Label for="address" className="register-label">
+            Address
+          </Form.Label>
           <Form.Control
             className="registerForm-country"
             type="text"
@@ -337,7 +365,9 @@ const RegisterForm = ({ onSubmit }) => {
         </div>
         {register.role === 'guest' ? (
           <div>
-            <Form.Label for="tutorName" className="register-label">Tutor's name</Form.Label>
+            <Form.Label for="tutorName" className="register-label">
+              Tutor's name
+            </Form.Label>
             <Form.Control
               className="registerForm-name"
               type="text"
@@ -350,7 +380,9 @@ const RegisterForm = ({ onSubmit }) => {
           </div>
         ) : null}
         <div>
-          <Form.Label for="registerForm-CV" className="register-label">Curriculum vitae</Form.Label>
+          <Form.Label for="registerForm-CV" className="register-label">
+            Curriculum vitae
+          </Form.Label>
           <Form.Control
             id="registerForm-CV"
             type="file"
@@ -374,7 +406,10 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label for="allergies" className="Allergies-label register-label">
+          <Form.Label
+            for="allergies"
+            className="Allergies-label register-label"
+          >
             Allergies
           </Form.Label>
           <Form.Control
@@ -388,7 +423,9 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="about">
-          <Form.Label for="about" className="register-label">About you</Form.Label>
+          <Form.Label for="about" className="register-label">
+            About you
+          </Form.Label>
           <Form.Control
             placeholder="Brief introduction about yourself"
             type="text"
