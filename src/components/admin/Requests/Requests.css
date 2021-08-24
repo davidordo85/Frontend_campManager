@@ -1,12 +1,28 @@
-.requests {
-  margin: 12rem 7rem 7rem 22rem;
-  width: 100vh;
+.request {
+  margin: 12rem 7rem 7rem 15rem;
 }
 
-.accept {
-  margin: 0 1rem 0 1.5rem;
-}
-
-.empty {
+.request-header,
+.text {
   text-align: center;
+}
+
+.request-list {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.request-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.text-title {
+  font-weight: bold;
+}
+
+.request-button {
+  display: flex;
+  justify-content: space-around;
 }
