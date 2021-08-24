@@ -4,7 +4,7 @@ import storage from '../utils/storage';
 const authPath = '/api/v1/auth';
 
 export const login = ({ remember, ...credentials }) => {
-  return client
+  return console.log(client)
     .post(`${authPath}/login`, credentials)
     .then(({ token }) => {
       if(remember){
