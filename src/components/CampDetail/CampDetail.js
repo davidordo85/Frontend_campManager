@@ -5,7 +5,6 @@ import { getCampDetail, subscribe, unSubscribe } from '../../api/camps';
 import Loader from '../Loader/Loader';
 import pending from '../../assets/images/pending.svg';
 import accepted from '../../assets/images/accepted.svg';
-import rejected from '../../assets/images/rejected.svg';
 import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
@@ -66,7 +65,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
 
   const confirmed = props.confirmed;
   const requested = props.requested;
-  const reject = props.reject;
   const role = props.role;
 
   function compare(item1, item2) {
@@ -105,11 +103,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
                   <div className="status">
                     <Card.Text className="img-txt">Request status</Card.Text>
                     <Card.Img className="type-camp" src={pending} />
-                  </div>
-                ) : compare(reject, paramsId) ? (
-                  <div className="status">
-                    <Card.Text className="img-txt">Request status</Card.Text>
-                    <Card.Img className="type-camp" src={rejected} />
                   </div>
                 ) : null}
               </Card.Body>
