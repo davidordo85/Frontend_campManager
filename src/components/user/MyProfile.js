@@ -3,7 +3,7 @@ import { Card, Form } from 'react-bootstrap';
 import Layout from '../layout/layout';
 import UserDashboard from './dashboard-user';
 import { editCVProfile, editPhotoProfile, editProfile , getMe } from '../../api/auth';
-import profile from './profile.css';
+import './profile.css';
 import EditProfile from './edit-profile';
 import EditPhoto from './edit-Photo';
 import EditCV from './edit-cv';
@@ -67,12 +67,15 @@ const MyProfile = ({ ...props }) => {
             <UserDashboard />
             <div className='profile'>
                 <Card border="dark" className="card-register">
-                    <Card.Header className="text-header">
-                        Edit your profile in to CampManager
-                </Card.Header>
-                    <EditPhoto photoEdit={handlePhotoSubmit}/>
-                    <EditProfile {...props} callApi={handleSubmit}/>
-                    <EditCV CVEdit={handleCVSubmit}/>
+                    <Card.Header>
+                        <Card.Text className="text-header">Edit your profile</Card.Text>
+                    </Card.Header>
+                    <Card.Body className="profile-card-body">
+                        <EditPhoto photoEdit={handlePhotoSubmit}/>
+                        <EditProfile {...props} callApi={handleSubmit}/>
+                        <EditCV CVEdit={handleCVSubmit}/>
+                    </Card.Body>
+                        
                 </Card>
             </div>
     </Layout>
