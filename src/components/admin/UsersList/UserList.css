@@ -3,13 +3,17 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.user-list-cardBody{
+  padding: 1rem;
+}
+
 .list {
+  margin: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 50%);
 }
 
 .item-list {
-  padding: 1rem;
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -32,6 +36,7 @@
 .submit-role,
 .label-text {
   margin-top: 1rem;
+  width: 100%;
 }
 
 .header {

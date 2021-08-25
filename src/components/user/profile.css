@@ -1,17 +1,42 @@
+.edit-register{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
 .profile {
   margin-top: 53px;
   margin-left: 140px;
   padding-top: 1px;
 }
+
+.profile-card-body{
+  padding: 2rem;
+}
+
+.text-header{
+  font-size: 2.5rem;
+}
+
 .edit-photo {
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.profile-edit-photo, .profile-edit-cv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .editCV {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 }
 
 .registerForm-photo {
@@ -54,7 +79,6 @@
 .edit-button  {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
+  justify-self: center;
+  align-self: center;
 }

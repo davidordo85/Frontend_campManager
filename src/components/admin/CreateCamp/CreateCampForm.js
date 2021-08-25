@@ -102,8 +102,6 @@ const CreateCampForm = ({ onSubmit }) => {
     to,
     capacity,
     inPeople,
-    helpers,
-    guests,
   } = camp;
 
   return (
@@ -268,28 +266,7 @@ const CreateCampForm = ({ onSubmit }) => {
             <option value={false}>No</option>
           </Form.Select>
         </div>
-        <div>
-          <Form.Label for="helpers" className="newCamp-label">Helpers</Form.Label>
-          <Form.Control
-            id="helpers"
-            type="text"
-            name="helpers"
-            className=""
-            value={helpers}
-            onChange={handleCreateCamp}
-          />
-        </div>
-        <div>
-          <Form.Label for="guests" className="newCamp-label">Guests</Form.Label>
-          <Form.Control
-            id="guests"
-            type="text"
-            name="guests"
-            className=""
-            value={guests}
-            onChange={handleCreateCamp}
-          />
-        </div>
+        
         <Button
           variant="outline-dark"
           type="submit"
@@ -308,7 +285,7 @@ const CreateCampForm = ({ onSubmit }) => {
             !to
           }
         >
-          Submit
+          Create
         </Button>
       </Form.Group>
     </Form>

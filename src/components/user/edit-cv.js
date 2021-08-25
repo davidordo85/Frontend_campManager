@@ -14,15 +14,12 @@ const EditCV = ({CVEdit, ...props}) => {
 
     const handleOldData = async () => {
       const myOldData = await getMe();
-      setOldData(myOldData.data)
+      setOldData(myOldData.data);
     };
 
     const handleChangeFile = event => {
-        const CV = event.target.files[0].name;
-        const newCV = {
-            file: CV,
-        }
-        setCV(newCV)  
+        const cv = event.target.files[0];
+        setCV(cv);
     };
  
     
@@ -37,7 +34,7 @@ const EditCV = ({CVEdit, ...props}) => {
 
     return (
         <div className='editCV'>
-            <Form onSubmit={ handleSubmit }>
+            <Form onSubmit={ handleSubmit } className="profile-edit-cv">
             <Form.Label>Curriculum vitae</Form.Label>
                 <Form.Control
                     className="registerForm-CV"

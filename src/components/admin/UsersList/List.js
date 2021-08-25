@@ -38,31 +38,33 @@ const List = ({ id, email, role, comments, onSubmit, location, history }) => {
     <Form onSubmit={handleSubmit}>
       <Card className="item-list">
         <Card.Header className="">{email}</Card.Header>
-        <p className="role">
-          Role: <br /> {role}
-        </p>
-        {!comments ? null : (
+        <Card.Body className="user-list-cardBody">
           <p className="role">
-            Comments: <br />
-            {comments}
+            Role: {role}
           </p>
-        )}
-        <div>
-          <Form.Label className="label-text">Select new role...</Form.Label>
-          <Select options={options} onChange={handleEditUser} />
-        </div>
-        <div>
-          <Form.Label className="label-text">Add comment</Form.Label>
-          <Form.Control
-            type="textarea"
-            name="coments"
-            onChange={handleChange}
-          />
-        </div>
+          {!comments ? null : (
+            <p className="role">
+              Comments: 
+              {comments}
+            </p>
+          )}
+          <div>
+            <Form.Label className="label-text">Select new role...</Form.Label>
+            <Select options={options} onChange={handleEditUser} />
+          </div>
+          <div>
+            <Form.Label className="label-text">Add comment</Form.Label>
+            <Form.Control
+              type="textarea"
+              name="coments"
+              onChange={handleChange}
+            />
+          </div>
 
-        <Button variant="outline-dark" className="submit-role" type="submit">
-          Submit
-        </Button>
+          <Button variant="outline-dark" className="submit-role" type="submit">
+            Modify
+          </Button>
+        </Card.Body>
       </Card>
     </Form>
   );

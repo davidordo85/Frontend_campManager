@@ -63,12 +63,14 @@ const MyProfile = ({ ...props }) => {
             <UserDashboard />
             <div className='profile'>
                 <Card border="dark" className="card-register">
-                    <Card.Header className="text-header">
-                        Edit your profile in to CampManager
-                </Card.Header>
-                    <EditPhoto photoEdit={handlePhotoSubmit}/>
-                    <EditProfile {...props} callApi={handleSubmit}/>
-                    <EditCV CVEdit={handleCVSubmit}/>
+                    <Card.Header>
+                        <Card.Text className="text-header">Edit your profile</Card.Text>
+                    </Card.Header>
+                    <Card.Body className="profile-card-body">
+                        <EditPhoto photoEdit={handlePhotoSubmit}/>
+                        <EditProfile {...props} callApi={handleSubmit}/>
+                        <EditCV CVEdit={handleCVSubmit}/>
+                    </Card.Body> 
                 </Card>
             </div>
     </Layout>

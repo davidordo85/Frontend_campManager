@@ -78,11 +78,9 @@ export const editPhotoProfile = (id, photoData) => {
 
 export const editCVProfile = (id, cvData) => {
   const url = `${usersPath}${id}/cv`;
-  const editCVData = new FormData();
-  for (let item in cvData) {
-    editCVData.append(item, cvData[item]);
-  }
-  return client.put(url, editCVData);
+  const formData = new FormData();
+  formData.append('file', cvData);
+  return client.put(url, formData);
 };
 
 export const getMyCampsRequest = (id) => {
