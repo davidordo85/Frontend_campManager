@@ -48,27 +48,29 @@ const UserList = ({ id, history, ...props }) => {
         <Loader hidden={!loading} />
         <Card className="user-list">
           <Card.Header className="header">
-            Choose the camp to modify
+            Choose the user to modify
           </Card.Header>
-          <div className="list">
-            {user.map((user, index) => (
-              <List
-                key={index}
-                id={user._id}
-                email={user.email}
-                role={user.role}
-                comments={user.coments}
-                className=""
-                history={history}
-                onSubmit={handleSubmit}
-              ></List>
-            ))}
-          </div>
-          {error && (
-            <div onClick={resetError} className="loginPage-error">
-              {error.message}
+          <Card.Body className="user-list-body">
+            <div className="list">
+              {user.map((user, index) => (
+                <List
+                  key={index}
+                  id={user._id}
+                  email={user.email}
+                  role={user.role}
+                  comments={user.coments}
+                  className="item-list"
+                  history={history}
+                  onSubmit={handleSubmit}
+                ></List>
+              ))}
             </div>
-          )}
+            {error && (
+              <div onClick={resetError} className="loginPage-error">
+                {error.message}
+              </div>
+            )}
+          </Card.Body>
         </Card>
       </div>
     </Layout>

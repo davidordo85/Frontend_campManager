@@ -147,7 +147,7 @@ const RegisterForm = ({ onSubmit }) => {
       </Form.Label>
       <Form.Group className="form-group">
         <div>
-          <Form.Label for="email" className="register-label">
+          <Form.Label className="register-label">
             Email
           </Form.Label>
           <Form.Control
@@ -161,7 +161,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="password" className="register-label">
+          <Form.Label className="register-label">
             Password
           </Form.Label>
           <Form.Control
@@ -175,7 +175,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="repeatPassword" className="register-label">
+          <Form.Label className="register-label">
             Repeat password
           </Form.Label>
           <Form.Control
@@ -191,7 +191,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="name" className="register-label">
+          <Form.Label className="register-label">
             Name
           </Form.Label>
           <Form.Control
@@ -205,7 +205,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="firstFamilyName" className="register-label">
+          <Form.Label className="register-label">
             Last name
           </Form.Label>
           <Form.Control
@@ -219,7 +219,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="secondFamilyName" className="register-label">
+          <Form.Label className="register-label">
             Second surname
           </Form.Label>
           <Form.Control
@@ -233,7 +233,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="phone" className="register-label">
+          <Form.Label className="register-label">
             Phone
           </Form.Label>
           <Form.Control
@@ -248,7 +248,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="username" className="register-label">
+          <Form.Label className="register-label">
             Username
           </Form.Label>
           <Form.Control
@@ -262,7 +262,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="form-gender">
-          <Form.Label for="gender" className="label-role register-label">
+          <Form.Label className="label-role register-label">
             Gender
           </Form.Label>
           <Form.Select
@@ -278,7 +278,7 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label for="nationality" className="register-label">
+          <Form.Label className="register-label">
             Nationality
           </Form.Label>
           <Form.Control
@@ -292,7 +292,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="form-role">
-          <Form.Label for="documentId" className="label-role register-label">
+          <Form.Label className="label-role register-label">
             Type legal identifier
           </Form.Label>
           <Form.Select
@@ -310,7 +310,7 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label for="idNumber" className="register-label">
+          <Form.Label className="register-label">
             Legal identifier
           </Form.Label>
           <Form.Control
@@ -324,7 +324,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="bornDate" className="register-label">
+          <Form.Label className="register-label">
             Birth date
           </Form.Label>
           <Form.Control
@@ -338,7 +338,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="registerForm-photo" className="register-label">
+          <Form.Label className="register-label">
             Photo
           </Form.Label>
           <Form.Control
@@ -350,7 +350,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="address" className="register-label">
+          <Form.Label className="register-label">
             Address
           </Form.Label>
           <Form.Control
@@ -365,7 +365,7 @@ const RegisterForm = ({ onSubmit }) => {
         </div>
         {register.role === 'guest' ? (
           <div>
-            <Form.Label for="tutorName" className="register-label">
+            <Form.Label className="register-label">
               Tutor's name
             </Form.Label>
             <Form.Control
@@ -380,7 +380,7 @@ const RegisterForm = ({ onSubmit }) => {
           </div>
         ) : null}
         <div>
-          <Form.Label for="registerForm-CV" className="register-label">
+          <Form.Label className="register-label">
             Curriculum vitae
           </Form.Label>
           <Form.Control
@@ -392,7 +392,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="form-medical">
-          <Form.Label for="medical" className="medical-label register-label">
+          <Form.Label className="medical-label register-label">
             Medical knowledge
           </Form.Label>
           <Form.Select
@@ -406,10 +406,7 @@ const RegisterForm = ({ onSubmit }) => {
           </Form.Select>
         </div>
         <div>
-          <Form.Label
-            for="allergies"
-            className="Allergies-label register-label"
-          >
+          <Form.Label className="Allergies-label register-label">
             Allergies
           </Form.Label>
           <Form.Control
@@ -423,7 +420,7 @@ const RegisterForm = ({ onSubmit }) => {
           />
         </div>
         <div className="about">
-          <Form.Label for="about" className="register-label">
+          <Form.Label className="register-label">
             About you
           </Form.Label>
           <Form.Control

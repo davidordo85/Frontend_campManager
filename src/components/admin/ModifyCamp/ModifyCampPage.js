@@ -222,7 +222,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label className="modifyCampForm-label">From (previously {oldCamp.from})</Form.Label>
+              <Form.Label className="modifyCampForm-label">From (previously: {oldCamp.from})</Form.Label>
               <Form.Control
                 className=""
                 type="date"
@@ -232,7 +232,7 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label className="modifyCampForm-label">To (previously {oldCamp.to})</Form.Label>
+              <Form.Label className="modifyCampForm-label">To (previously: {oldCamp.to})</Form.Label>
               <Form.Control
                 className=""
                 type="date"
