@@ -64,28 +64,27 @@ export const editProfile = async (id, newData) => {
   const url = `${usersPath}${id}/`;
   const editData = new FormData();
   for (let item in newData) {
-      editData.append(item, newData[item]);
-    }
-  console.log(url, editData)
-  return await client.put(url, editData)
-}
-
-export const  editPhotoProfile = (id, photoData) => {
-  const url = `${usersPath}${id}/photo`;
-  const editPhotoData = new FormData();
-  for (let item in photoData) {
-      editPhotoData.append(item, photoData[item]);
+    editData.append(item, newData[item]);
   }
-  return client.put(url, editPhotoData);   
-}
-export const  editCVProfile = (id, cvData) => {
+  console.log(url, editData);
+  return await client.put(url, editData);
+};
+
+export const editPhotoProfile = (id, photoData) => {
+  const url = `${usersPath}${id}/photo`;
+  const formData = new FormData();
+  formData.append('file', photoData);
+  return client.put(url, formData);
+};
+
+export const editCVProfile = (id, cvData) => {
   const url = `${usersPath}${id}/cv`;
   const editCVData = new FormData();
   for (let item in cvData) {
-      editCVData.append(item, cvData[item]);
+    editCVData.append(item, cvData[item]);
   }
-  return client.put(url, editCVData);   
-}
+  return client.put(url, editCVData);
+};
 
 export const getMe = () => {
   const url = `${authPath}/me`;
