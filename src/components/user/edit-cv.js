@@ -30,7 +30,7 @@ const EditCV = ({CVEdit, ...props}) => {
 
     return (
         <div className='editCV'>
-            <Form onSubmit={ handleSubmit }>
+            <Form onSubmit={ handleSubmit } className="profile-edit-cv">
             <Form.Label>Curriculum vitae</Form.Label>
                 <Form.Control
                     className="registerForm-CV"
