@@ -47,6 +47,7 @@ const MyProfile = ({ ...props }) => {
             setError(error)
         } finally {
             console.log('todo ok, Buse!')
+            console.log(Response)
         }
     }
       const handleCVSubmit = async cvData => {
