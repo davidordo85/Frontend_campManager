@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import { getMe } from '../../api/auth';
 import placeholder from '../../assets/images/placeholder.png';
-import profile from './profile.css';
+import './profile.css';
 
 const EditPhoto = ({ photoEdit, ...props }) => {
   const [newPhoto, setNewPhoto] = React.useState({});
@@ -35,7 +35,7 @@ const EditPhoto = ({ photoEdit, ...props }) => {
 
   return (
     <div className="edit-photo">
-      <Form>
+      <Form className="profile-edit-photo">
         <Form.Label className="title-photo">Profile picture</Form.Label>
         <img
           className="prueba"
