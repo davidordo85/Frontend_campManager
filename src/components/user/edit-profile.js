@@ -38,7 +38,7 @@ const EditProfile = ({callApi, ...props}) => {
     
     return (
 
-        <Form className="edit-register" onSubmit={ handleSubmit }>
+        <Form className="edit-register-form" onSubmit={ handleSubmit }>
             <Form.Group className="form-group" >
                 <div>
                     <Form.Label>Email</Form.Label>
@@ -213,10 +213,10 @@ const EditProfile = ({callApi, ...props}) => {
                 variant="outline-dark"
                 type="submit"
                 className="edit-button"
-        >
-            Edit profile
-        </Button>
-    </Form>
+            >
+                Edit profile
+            </Button>
+        </Form>
     )
 }
 

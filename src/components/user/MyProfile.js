@@ -75,8 +75,7 @@ const MyProfile = ({ ...props }) => {
                         <EditPhoto photoEdit={handlePhotoSubmit}/>
                         <EditProfile {...props} callApi={handleSubmit}/>
                         <EditCV CVEdit={handleCVSubmit}/>
-                    </Card.Body>
-                        
+                    </Card.Body> 
                 </Card>
             </div>
     </Layout>

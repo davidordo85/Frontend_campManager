@@ -1,3 +1,10 @@
+.edit-register{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
 .profile {
   margin-top: 53px;
   margin-left: 140px;
@@ -29,7 +36,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .registerForm-photo {
@@ -72,8 +79,6 @@
 .edit-button  {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
+  justify-self: center;
   align-self: center;
 }
