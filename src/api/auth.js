@@ -66,7 +66,6 @@ export const editProfile = async (id, newData) => {
   for (let item in newData) {
     editData.append(item, newData[item]);
   }
-  console.log(url, editData);
   return await client.put(url, editData);
 };
 
@@ -85,6 +84,11 @@ export const editCVProfile = (id, cvData) => {
   }
   return client.put(url, editCVData);
 };
+
+export const getMyCampsRequest = (id) => {
+  const url = `${usersPath}${id}/solics`;
+  return client.get(url);
+}
 
 export const getMe = () => {
   const url = `${authPath}/me`;

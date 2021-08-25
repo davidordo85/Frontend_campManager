@@ -1,22 +1,18 @@
 import React from 'react';
-import { Card, Form } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import Layout from '../layout/layout';
 import UserDashboard from './dashboard-user';
 import { editCVProfile, editPhotoProfile, editProfile , getMe } from '../../api/auth';
-import profile from './profile.css';
+import './profile.css';
 import EditProfile from './edit-profile';
 import EditPhoto from './edit-Photo';
 import EditCV from './edit-cv';
-import placeholder from '../../assets/images/placeholder.png' 
-
 
 const MyProfile = ({ ...props }) => {
 
     const [oldData, setOldData] = React.useState({});
     const [error, setError] = React.useState();
-
-    
-
+    const [loading, setLoading] = React.useState(false);
     React.useEffect(() => {
         handleOldData();
     }, []);
@@ -29,36 +25,35 @@ const MyProfile = ({ ...props }) => {
     const handleSubmit= async data => {
         const id = oldData._id;
         try {
+            setLoading(true)
             await editProfile(id, data)
         } catch (error) {
             setError(error)
         } finally {
-            console.log('ok')
+           setLoading(false)
         }
     }
-    console.log(oldData)
 
     const handlePhotoSubmit = async photoData => {
         const id = oldData._id;
         try {
-            console.log('llamo a la API')
+            setLoading(true)
             await editPhotoProfile(id, photoData)
         } catch (error) {
             setError(error)
         } finally {
-            console.log('todo ok, Buse!')
-            console.log(Response)
+           setLoading(false)
         }
     }
       const handleCVSubmit = async cvData => {
         const id = oldData._id;
         try {
-            console.log('llamo a la API')
+            setLoading(true)
             await editCVProfile(id, cvData)
         } catch (error) {
             setError(error)
         } finally {
-            console.log('todo ok, Buse!')
+            setLoading(false)
         }
 
     }

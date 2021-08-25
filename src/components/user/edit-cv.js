@@ -7,7 +7,7 @@ const EditCV = ({CVEdit, ...props}) => {
 
     const [oldData, setOldData] = React.useState({});
     const [cv, setCV] = React.useState({});
-    console.log(oldData)
+
     React.useEffect(() => {
         handleOldData();
     }, []);
@@ -32,6 +32,7 @@ const EditCV = ({CVEdit, ...props}) => {
         CVEdit(CVFile);
     }
 
+    console.log(oldData)
 
 
     return (
@@ -45,6 +46,13 @@ const EditCV = ({CVEdit, ...props}) => {
                     value={null}
                     onChange={handleChangeFile}
                 />
+
+                {oldData.curriculum === '' ?
+                <h5>No hay ningún archivo subido</h5>
+            :
+                <img src={null} />
+            }
+
                 <Button
                     variant="outline-dark"
                     type="submit"

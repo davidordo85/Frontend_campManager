@@ -30,7 +30,6 @@ const EditProfile = ({callApi, ...props}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = oldData;
-
         callApi(data);
     };
 
