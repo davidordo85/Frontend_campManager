@@ -1,13 +1,12 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import {  getMe } from '../../api/auth';
-import profile from './profile.css';
+import './profile.css';
 
 const EditCV = ({CVEdit, ...props}) => {
 
     const [oldData, setOldData] = React.useState({});
     const [cv, setCV] = React.useState({});
-    console.log(oldData)
     React.useEffect(() => {
         handleOldData();
     }, []);

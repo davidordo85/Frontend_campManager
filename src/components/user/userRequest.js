@@ -20,8 +20,6 @@ const UserRequest = ({ ...props }) => {
 
 
     const idCamp = props.requested;
-    console.log(idCamp)
-
 
     React.useEffect(() => {
       campDetail();

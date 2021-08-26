@@ -66,7 +66,6 @@ export const editProfile = async (id, newData) => {
   for (let item in newData) {
     editData.append(item, newData[item]);
   }
-  console.log(url, editData);
   return await client.put(url, editData);
 };
 

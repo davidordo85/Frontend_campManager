@@ -19,7 +19,7 @@ const Requests = ({ ...props }) => {
     try {
       setLoading(true);
       const getRequestsList = await getRequests();
-      setRequest(getRequestsList.data);
+      setRequest(getRequestsList.data[0]);
       setError(null);
     } catch (error) {
       setError(error);

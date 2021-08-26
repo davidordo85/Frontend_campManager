@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { getMe } from '../../api/auth';
 import placeholder from '../../assets/images/placeholder.png';
 import './profile.css';
@@ -17,9 +17,6 @@ const EditPhoto = ({ photoEdit, ...props }) => {
     setOldData(myOldData.data);
   };
 
-  console.log(oldData)
-  console.log(oldData.photo)
-
   const handleChangeFile = event => {
     const file = event.target.files[0];
     setNewPhoto(file);
@@ -31,7 +28,6 @@ const EditPhoto = ({ photoEdit, ...props }) => {
   };
 
   const myPhoto = 'http://localhost:5000/photos/'+oldData.photo
-  console.log(myPhoto)
 
   return (
     <div className="edit-photo">
@@ -39,8 +35,8 @@ const EditPhoto = ({ photoEdit, ...props }) => {
         <Form.Label className="title-photo">Profile picture</Form.Label>
         <img
           className="prueba"
+          alt="user"
           src={oldData.photo === null || ''  ? placeholder : myPhoto}
-          
         ></img>
         <Form.Control
           className="registerForm-photo"
