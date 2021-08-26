@@ -1,11 +1,11 @@
 import React from 'react';
-import { getRequests } from '../../../api/requestsCamps';
+import { getRequests, putRequests } from '../../../api/requestsCamps';
 import { Card, Alert, Button, Spinner } from 'react-bootstrap';
 import Layout from '../../layout/layout';
 import './Requests.css';
 
 const Requests = ({ ...props }) => {
-  const [request, setRequest] = React.useState([]);
+  const [request, setRequest] = React.useState(['']);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
@@ -28,15 +28,45 @@ const Requests = ({ ...props }) => {
     }
   };
 
+  const handleAccept = async event => {
+    const id = event.target.value;
+    const data = { status: 'accepted' };
+    try {
+      setLoading(true);
+      await putRequests(id, data);
+    } catch (error) {
+      setError(null);
+    } finally {
+      setLoading(false);
+      requestsList();
+    }
+  };
+
+  const handleReject = async event => {
+    const id = event.target.value;
+    const data = { status: 'rejected' };
+    try {
+      setLoading(true);
+      await putRequests(id, data);
+    } catch (error) {
+      setError(null);
+    } finally {
+      setLoading(false);
+      requestsList();
+    }
+  };
+
+  //console.log(request);
+
   return (
     <Layout {...props}>
       <Spinner animation="border" variant="info" hidden={!loading} />
       <Card className="request">
         <Card.Header className="header">Requests</Card.Header>
         <Card.Body className="request-list">
-          {request.length > 0 ? (
-            request.map((item, index) => (
-              <Card>
+          {request[0].length > 0 ? (
+            request[0].map((item, index) => (
+              <Card key={index}>
                 <Card.Header className="request-header">
                   {index + 1}
                 </Card.Header>
@@ -47,11 +77,23 @@ const Requests = ({ ...props }) => {
                     Applicant's email:{' '}
                   </Card.Text>
                   <Card.Text className="text">{item.personName}</Card.Text>
-                  <Card.Text className="text-title">requested camp: </Card.Text>
+                  <Card.Text className="text-title">Requested camp: </Card.Text>
                   <Card.Text className="text">{item.campName}</Card.Text>
                   <div className="request-button">
-                    <Button variant="outline-success">Accept</Button>
-                    <Button variant="outline-danger">Cancel</Button>
+                    <Button
+                      variant="outline-success"
+                      value={item._id}
+                      onClick={handleAccept}
+                    >
+                      Accept
+                    </Button>
+                    <Button
+                      variant="outline-danger"
+                      value={item._id}
+                      onClick={handleReject}
+                    >
+                      Reject
+                    </Button>
                   </div>
                 </Card.Body>
               </Card>

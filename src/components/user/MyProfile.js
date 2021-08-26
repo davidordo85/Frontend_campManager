@@ -12,6 +12,7 @@ const MyProfile = ({ ...props }) => {
 
     const [oldData, setOldData] = React.useState({});
     const [error, setError] = React.useState();
+    const [loading, setLoading] = React.useState(false);
 
     React.useEffect(() => {
         handleOldData();
@@ -25,26 +26,35 @@ const MyProfile = ({ ...props }) => {
     const handleSubmit= async data => {
         const id = oldData._id;
         try {
+            setLoading(true)
             await editProfile(id, data)
         } catch (error) {
             setError(error)
-        } 
+        } finally {
+           setLoading(false)
+        }
     }
 
     const handlePhotoSubmit = async photoData => {
         const id = oldData._id;
         try {
+            setLoading(true)
             await editPhotoProfile(id, photoData)
         } catch (error) {
             setError(error)
-        } 
+        } finally {
+           setLoading(false)
+        }
     }
       const handleCVSubmit = async cvData => {
         const id = oldData._id;
         try {
+            setLoading(true)
             await editCVProfile(id, cvData)
         } catch (error) {
             setError(error)
+        } finally {
+            setLoading(false)
         }
     }
   

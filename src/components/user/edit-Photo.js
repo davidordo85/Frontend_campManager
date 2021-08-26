@@ -37,7 +37,7 @@ const EditPhoto = ({ photoEdit, ...props }) => {
           className="prueba"
           alt="user"
           src={oldData.photo === null || ''  ? placeholder : myPhoto}
-        ></img>
+         />
         <Form.Control
           className="registerForm-photo"
           type="file"

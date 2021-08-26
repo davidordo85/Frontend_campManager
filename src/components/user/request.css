@@ -1,0 +1,12 @@
+.container-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 240px;
+}
+.card-request {
+  display: flex;
+  width: 300px;
+  height: 200px;
+}

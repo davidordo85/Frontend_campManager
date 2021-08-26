@@ -83,6 +83,11 @@ export const editCVProfile = (id, cvData) => {
   return client.put(url, formData);
 };
 
+export const getMyCampsRequest = (id) => {
+  const url = `${usersPath}${id}/solics`;
+  return client.get(url);
+}
+
 export const getMe = () => {
   const url = `${authPath}/me`;
   return client.get(url);
