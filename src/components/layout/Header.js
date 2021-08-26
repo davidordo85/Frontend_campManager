@@ -7,9 +7,19 @@ import AuthButton from '../auth/AuthButton';
 import Dashboard from '../auth/Dashboard/Dashboard';
 import './Header.css';
 
-
 const Header = ({ isLogged, onLogout }) => {
-  
+  const [hidden, setHidden] = React.useState(false);
+
+  const handleClick = event => {
+    if (event) {
+      if (!hidden) {
+        setHidden(true);
+      } else if (hidden) {
+        setHidden(false);
+      }
+    }
+  };
+
   return (
     <Navbar fixed="top" bg="dark" expand="lg" className="header">
       <Navbar.Brand>
@@ -18,7 +28,19 @@ const Header = ({ isLogged, onLogout }) => {
         </Link>
         <AuthButton className="login" isLogged={isLogged} onLogout={onLogout} />
         {isLogged ? (
-          <Dashboard isLogged={isLogged} onLogout={onLogout} />
+          <div>
+            <Button
+              size="lg"
+              id="menu"
+              variant="outline-light"
+              onClick={handleClick}
+            >
+              Menu
+            </Button>
+            {!hidden || window.innerWidth >= 600 ? (
+              <Dashboard isLogged={isLogged} onLogout={onLogout} />
+            ) : null}
+          </div>
         ) : null}
         {isLogged ? null : (
           <Button

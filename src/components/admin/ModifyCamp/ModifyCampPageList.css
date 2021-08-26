@@ -15,7 +15,7 @@
   font-size: 2rem;
 }
 
-.modifyCampForm-title{
+.modifyCampForm-title {
   font-size: 2rem;
 }
 
@@ -23,7 +23,7 @@
   margin: 1rem;
 }
 
-.modifyCampForm-label{
+.modifyCampForm-label {
   margin-top: 1rem;
 }
 
@@ -31,7 +31,19 @@
   cursor: pointer;
 }
 
-.modifyCamp-submit{
+.modifyCamp-submit {
   margin-top: 3rem;
   height: 43%;
+}
+
+@media (max-width: 900px) {
+  .main {
+    margin: 8rem 1rem 1rem 10rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    margin: 8rem 1rem 1rem 1rem;
+  }
 }

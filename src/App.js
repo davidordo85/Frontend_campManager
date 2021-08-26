@@ -23,6 +23,7 @@ function App({ isInitiallyLogged }) {
   const [me, setMe] = React.useState({
     campsConfirmed: [],
     campsRequested: [],
+    campsRejected: [],
   });
 
   const handleLogin = () => setIsLogged(true);
@@ -74,21 +75,30 @@ function App({ isInitiallyLogged }) {
             />
           )}
         </PrivateRouteAdmin>
-        <PrivateRoute isLogged={isLogged} onLogout={handleLogout} exact path="/myProfile">
-          <MyProfile  isLogged={isLogged} onLogout={handleLogout} />
+        <PrivateRoute
+          isLogged={isLogged}
+          onLogout={handleLogout}
+          exact
+          path="/myProfile"
+        >
+          <MyProfile isLogged={isLogged} onLogout={handleLogout} />
         </PrivateRoute>
-        <PrivateRoute isLogged={isLogged} onLogout={handleLogout}  exact path="/userRequests">
+        <PrivateRoute
+          isLogged={isLogged}
+          onLogout={handleLogout}
+          exact
+          path="/userRequests"
+        >
           {routeProps => (
-            
-            <UserRequest  
-              isLogged={isLogged} 
+            <UserRequest
+              isLogged={isLogged}
               onLogout={handleLogout}
               confirmed={me.campsConfirmed}
               requests={me.campsRequested}
               role={me.role}
               {...routeProps}
             />
-            )}
+          )}
         </PrivateRoute>
         <Route path="/login">
           {({ history, location }) => (
