@@ -35,6 +35,7 @@ const EditPhoto = ({ photoEdit, ...props }) => {
         <Form.Label className="title-photo">Profile picture</Form.Label>
         <img
           className="prueba"
+          alt="user"
           src={oldData.photo === null || ''  ? placeholder : myPhoto}
          />
         <Form.Control

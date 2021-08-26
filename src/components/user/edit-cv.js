@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import {  getMe } from '../../api/auth';
-import profile from './profile.css';
+import './profile.css';
 
 const EditCV = ({CVEdit, ...props}) => {
 

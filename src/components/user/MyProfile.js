@@ -13,6 +13,7 @@ const MyProfile = ({ ...props }) => {
     const [oldData, setOldData] = React.useState({});
     const [error, setError] = React.useState();
     const [loading, setLoading] = React.useState(false);
+
     React.useEffect(() => {
         handleOldData();
     }, []);
@@ -55,7 +56,6 @@ const MyProfile = ({ ...props }) => {
         } finally {
             setLoading(false)
         }
-
     }
   
        return (

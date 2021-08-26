@@ -38,10 +38,8 @@ function App({ isInitiallyLogged }) {
         const meDates = await getMe('auth');
         setMe(meDates.data);
       } catch (error) {
-        console.log(error);
-      } finally {
-        console.log('ok');
-      }
+        throw new Error(error);
+      } 
     }
   };
 
