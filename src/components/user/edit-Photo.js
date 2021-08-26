@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { getMe } from '../../api/auth';
 import placeholder from '../../assets/images/placeholder.png';
 import './profile.css';
@@ -13,7 +13,7 @@ const EditPhoto = ({ photoEdit, ...props }) => {
   }, []);
 
   const handleOldData = async () => {
-    const myOldData = await getMe();
+    const myOldData = await getMe(); 
     setOldData(myOldData.data);
   };
 

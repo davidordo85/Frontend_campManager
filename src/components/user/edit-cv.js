@@ -21,8 +21,8 @@ const EditCV = ({CVEdit, ...props}) => {
         const cv = event.target.files[0];
         setCV(cv);
     };
- 
     
+    console.log(cv)
     const handleSubmit = (event) => {
         event.preventDefault();
         const CVFile = cv;
