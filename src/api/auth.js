@@ -24,7 +24,6 @@ export const login = ({ remember, ...credentials }) => {
       }
     });
 };
-// prueba
 export const logout = () => {
   return Promise.resolve()
     .then(() => {
