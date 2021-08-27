@@ -36,13 +36,7 @@ describe("tests in <DashboardAdmin />", () => {
         </Link>
         <Link
           className="link"
-          to="/ObservationUser"
-        >
-          Observations Users
-        </Link>
-        <Link
-          className="link"
-          to="#"
+          to="/myProfile"
         >
           Modify Profile
         </Link>

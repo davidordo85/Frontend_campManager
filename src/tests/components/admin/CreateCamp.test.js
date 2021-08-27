@@ -14,9 +14,13 @@ describe("tests in <CreateCampPage />", () => {
           className="card-createCamp"
         >
           <CardHeader
-            className="title-createCamps"
+            className="title-createCamps-header"
           >
-            Create Camp
+            <CardText
+              className="title-createCamps"
+            >
+              Create Camp
+            </CardText>
           </CardHeader>
           <CreateCampForm
             className=""

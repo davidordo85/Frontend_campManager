@@ -6,7 +6,6 @@ describe("tests in <FilterCamps />", () => {
   const wrapper = shallow(<FilterCamps />);
 
   test("should render successful", () => {
-
     expect(wrapper).toMatchInlineSnapshot(`
       <Form
         className="mb-3"
@@ -83,11 +82,11 @@ describe("tests in <FilterCamps />", () => {
             <FormControl
               className="filter-date"
               max="2025-12-31"
-              min="2021-08-24"
+              min="2021-08-27"
               onChange={[Function]}
               placeholder="desde"
               type="date"
-              value="2021-08-24"
+              value="2021-08-27"
             />
           </FormGroup>
           <FormGroup
@@ -108,7 +107,7 @@ describe("tests in <FilterCamps />", () => {
             <FormControl
               className="filter-date"
               max="2025-12-31"
-              min="2021-08-24"
+              min="2021-08-27"
               onChange={[Function]}
               placeholder="hasta"
               type="date"
@@ -221,7 +220,5 @@ describe("tests in <FilterCamps />", () => {
         </Row>
       </Form>
     `);
-
   });
-  
 });
