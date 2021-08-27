@@ -13,6 +13,7 @@ import './CampList.css';
 
 const CampList = ({ id, history, location, ...props }) => {
   const [camps, setCamps] = React.useState([]);
+  const [numberCamps, setNumberCamps] = React.useState([Number]);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
@@ -41,6 +42,7 @@ const CampList = ({ id, history, location, ...props }) => {
       setLoading(true);
       const paginationCampList = await getPaginationCamps(location);
       setCamps(paginationCampList.data);
+      setNumberCamps(paginationCampList.total);
       setError(null);
     } catch (error) {
       setError(error);
@@ -84,7 +86,11 @@ const CampList = ({ id, history, location, ...props }) => {
             </div>
           )}
 
-          <Pagination className="pagination" location={location} />
+          <Pagination
+            className="pagination"
+            number={numberCamps}
+            location={location}
+          />
         </Card>
       </div>
     </Layout>

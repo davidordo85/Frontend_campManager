@@ -18,10 +18,7 @@ const DashboardAdmin = () => {
       <Link to="/UserList" className="link">
         Users List
       </Link>
-      <Link to="/ObservationUser" className="link">
-        Observations Users
-      </Link>
-      <Link to="#" className="link">
+      <Link to="/myProfile" className="link">
         Modify Profile
       </Link>
     </div>

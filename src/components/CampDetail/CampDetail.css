@@ -12,6 +12,13 @@
   font-size: 3rem;
 }
 
+.status {
+  margin: 2rem 2rem 0 2rem;
+}
+
+.status > .img-txt {
+  text-align: center;
+}
 .columns {
   display: grid;
   margin: 1rem;
@@ -19,7 +26,7 @@
 
 .sign-up {
   margin-top: 1rem;
-  margin-left: 2rem;
+  margin-left: 10rem;
 }
 
 @media (min-width: 650px) {
@@ -48,6 +55,6 @@
   }
   .sign-up {
     margin-top: -7rem;
-    margin-left: 7rem;
+    margin-left: 15rem;
   }
 }

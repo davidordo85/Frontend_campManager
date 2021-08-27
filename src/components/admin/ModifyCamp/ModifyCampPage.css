@@ -1,0 +1,32 @@
+.card-form {
+  margin: 8rem 7rem 7rem 22rem;
+}
+
+.form-modify {
+  margin: 1rem;
+}
+
+.form-groupModify {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.form-groupModify > div {
+  margin: 0.1rem;
+}
+
+@media (max-width: 900px) {
+  .card-form {
+    margin: 8rem 1rem 1rem 11rem;
+  }
+  .form-groupModify {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-form {
+    margin: 7rem 1rem 2rem 1rem;
+  }
+}

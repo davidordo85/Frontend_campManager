@@ -1,54 +1,49 @@
- import { useState } from 'react';
-// import { useHistory } from 'react-router-dom'
+import { useState } from 'react';
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
 
-const ForgotPasswordForm = () => {
-  const [email, setEmail] = useState('')
-  const [isPending, setIsPending] = useState('')
-  // const history = useHistory()
-  const url = `${process.env.REACT_APP_API_BASE_URL}/api/v1/auth/forgotpassword`
+const ForgotPasswordForm = ({ onSubmit }) => {
+  const [send, setSend] = useState({
+    email: 'await',
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const forgotPasswordData = event => {
+    const aver = { email: event.target.value };
+    setSend(aver);
+  };
 
-    fetch(url, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(email)
-    }).then(() => {
-      setIsPending(false)
-      // history.push('/login')
-    })
-  }
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSubmit(send);
+  };
+
+  const email = send.email;
 
   return (
     <Form className="form-login" onSubmit={handleSubmit}>
       <Form.Group controlId="email">
-        <Form.Label>Reset Password</Form.Label>
+        <Form.Label className="loginform-label">Reset Password</Form.Label>
         <Form.Control
           type="email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={forgotPasswordData}
           placeholder="Enter your registered email address"
           required
         />
         <Form.Text className="text-muted">
-        Wait for email and follow instructions 
+          Wait for email and follow instructions
         </Form.Text>
       </Form.Group>
       <ButtonGroup>
-        <Button 
+        <Button
           type="submit"
-          className="LoginFormSubmit" 
+          className="LoginFormSubmit"
           variant="outline-dark"
-          disabled={isPending || !email}
         >
           Submit
         </Button>
       </ButtonGroup>
     </Form>
   );
-}
+};
 
-export default ForgotPasswordForm
+export default ForgotPasswordForm;

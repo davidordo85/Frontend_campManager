@@ -1,0 +1,20 @@
+.dashboardUser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #212529;
+  position: fixed;
+  z-index: 1;
+}
+
+.dashboardUser > .link {
+  text-decoration: none;
+  color: white;
+  margin: 3rem 1rem 1rem 1rem;
+}
+
+@media (max-width: 600px) {
+  .dashboardUser {
+    opacity: 0.7;
+  }
+}

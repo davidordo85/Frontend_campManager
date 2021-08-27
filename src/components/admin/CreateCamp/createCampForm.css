@@ -5,6 +5,12 @@
 
 .title-createCamps {
   text-align: center;
+  font-size: 2rem;
+}
+
+.newCamp-label,
+.label-tag {
+  margin-top: 1rem;
 }
 
 .form-groupCreate {
@@ -25,6 +31,7 @@
 
 .activities {
   grid-column: 1 / -1;
+  margin-bottom: 0.1rem;
 }
 
 .activities-checkbox {
@@ -37,9 +44,26 @@
 
 .badge {
   margin-top: 1.3rem;
+  display: none;
 }
 
 .button-createCamp {
   margin: 1rem 0 1rem 0;
-  grid-column: 1;
+  grid-column: 2;
+}
+
+@media (max-width: 1000px) {
+  .card-createCamp {
+    margin: 7rem 5rem 5rem 15rem;
+  }
+  .form-groupCreate {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-createCamp {
+    margin: 7rem 1rem 2rem 1rem;
+  }
 }

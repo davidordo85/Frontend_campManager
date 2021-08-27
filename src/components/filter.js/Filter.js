@@ -1,6 +1,5 @@
 import React from 'react';
 import './filter.css';
-//import FilterButton from '../Buttons/FilterButton';
 import CheckboxFilter from './CheckboxFilter';
 import moment from 'moment';
 import { Button, Form, Row, Col } from 'react-bootstrap';
@@ -80,7 +79,7 @@ const FilterCamps = ({ onSubmit, index }) => {
       }
     }
   };
-  const { name, activities, location, from, to } = filterCamp;
+  const { name, /* activities, */ location, from, to } = filterCamp;
 
   //TODO - activity list should come from Backend
   const activityList = [
@@ -108,7 +107,9 @@ const FilterCamps = ({ onSubmit, index }) => {
           />
         </Form.Group>
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label filter-placeholder">Country</Form.Label>
+          <Form.Label className="filterForm-label filter-placeholder">
+            Country
+          </Form.Label>
           <Form.Control
             className="filter-name"
             type="text"
@@ -121,7 +122,9 @@ const FilterCamps = ({ onSubmit, index }) => {
 
       <Row className="filterForm-Row">
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label filter-placeholder">From</Form.Label>
+          <Form.Label className="filterForm-label filter-placeholder">
+            From
+          </Form.Label>
           <Form.Control
             className="filter-date"
             type="date"
