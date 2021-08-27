@@ -5,7 +5,7 @@ const authPath = '/api/v1/auth';
 const usersPath = '/api/v1/users/';
 
 export const login = ({ remember, ...credentials }) => {
-  return client
+  return console.log(client)
     .post(`${authPath}/login`, credentials)
     .then(({ token, role }) => {
       if (remember) {
