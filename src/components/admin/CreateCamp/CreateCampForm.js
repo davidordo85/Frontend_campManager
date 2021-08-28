@@ -1,21 +1,24 @@
-import { useState } from 'react';
+import React from 'react';
 import { Form, Badge, Button } from 'react-bootstrap';
+import Select from 'react-select';
+import moment from 'moment';
 
 import SelectTag from './SelectTag';
-import SelectActivities from './SelectActivities';
 
 const CreateCampForm = ({ onSubmit }) => {
-  const [camp, setCamp] = useState({
+  var today = moment().format('YYYY-MM-DD');
+
+  const [camp, setCamp] = React.useState({
     name: '',
     edition: '',
     location: '',
     description: '',
     tag: 'urban',
-    activities: 'reading',
+    activities: [],
     address: '',
     phone: '111-111-1111',
     email: 'camps@campmanager.com',
-    from: '',
+    from: today,
     to: '',
     capacity: 30,
     inPeople: 0,
@@ -34,7 +37,25 @@ const CreateCampForm = ({ onSubmit }) => {
     });
   };
 
-  const [availability, setAvailability] = useState();
+  const [act, setAct] = React.useState([]);
+
+  const options = [
+    { value: 'pool', label: 'pool' },
+    { value: 'reading', label: 'reading' },
+    { value: 'conference', label: 'conference' },
+    { value: 'crafts workshop', label: 'crafts workshop' },
+    { value: 'museum', label: 'museum' },
+    { value: 'meditation', label: 'meditation' },
+    { value: 'recycling workshop', label: 'recycling workshop' },
+    { value: 'seminar', label: 'seminar' },
+    { value: 'show', label: 'show' },
+  ];
+
+  const handleActivities = selectedOptions => {
+    setAct([].slice.call(selectedOptions).map(item => item.value));
+  };
+
+  const [availability, setAvailability] = React.useState();
 
   const handleAvailavility = e => {
     const availability = e.target.value;
@@ -50,7 +71,7 @@ const CreateCampForm = ({ onSubmit }) => {
       location: camp.location,
       description: camp.description,
       tag: camp.tag,
-      activities: camp.activities,
+      activities: act,
       address: camp.address,
       phone: camp.phone,
       email: camp.email,
@@ -74,7 +95,6 @@ const CreateCampForm = ({ onSubmit }) => {
     location,
     description,
     tag,
-    activities,
     address,
     phone,
     email,
@@ -82,16 +102,15 @@ const CreateCampForm = ({ onSubmit }) => {
     to,
     capacity,
     inPeople,
-    helpers,
-    guests,
   } = camp;
 
   return (
-    <Form className="form-createCamps">
+    <Form className="form-createCamps" onSubmit={handleSubmit}>
       <Form.Group className="form-groupCreate">
         <div>
-          <Form.Label>Name</Form.Label>
+          <Form.Label className="newCamp-label">Name</Form.Label>
           <Form.Control
+            id="name"
             className=""
             type="text"
             name="name"
@@ -101,8 +120,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Edition</Form.Label>
+          <Form.Label className="newCamp-label">Edition</Form.Label>
           <Form.Control
+            id="edition"
             className=""
             type="text"
             name="edition"
@@ -112,8 +132,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Location</Form.Label>
+          <Form.Label className="newCamp-label">Location</Form.Label>
           <Form.Control
+            id="location"
             type="text"
             name="location"
             className=""
@@ -123,8 +144,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Description</Form.Label>
+          <Form.Label className="newCamp-label">Description</Form.Label>
           <Form.Control
+            id="description"
             type="text"
             name="description"
             className=""
@@ -134,15 +156,16 @@ const CreateCampForm = ({ onSubmit }) => {
         </div>
         <div>
           <SelectTag
+            id="tag"
             className=""
-            name="tag"
             value={tag}
             handleChange={handleCreateCamp}
           />
         </div>
         <div>
-          <Form.Label>Address</Form.Label>
+          <Form.Label className="newCamp-label">Address</Form.Label>
           <Form.Control
+            id="address"
             type="text"
             name="address"
             className=""
@@ -152,16 +175,22 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div className="activities">
-          <SelectActivities
-            className=""
-            name="activities"
-            value={activities}
-            handleChange={handleCreateCamp}
+          <Form.Label className="newCamp-label">Activities</Form.Label>
+          <Select
+            id="activities"
+            className="activities"
+            classNamePrefix="activities"
+            isMulti
+            placeholder="Select activities..."
+            isClearable={false}
+            options={options}
+            onChange={handleActivities}
           />
         </div>
         <div>
-          <Form.Label>Phone</Form.Label>
+          <Form.Label className="newCamp-label">Phone</Form.Label>
           <Form.Control
+            id="phone"
             type="text"
             name="phone"
             className=""
@@ -171,8 +200,9 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>Email</Form.Label>
+          <Form.Label className="newCamp-label">Email</Form.Label>
           <Form.Control
+            id="email"
             type="email"
             name="email"
             className=""
@@ -182,30 +212,35 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label>From</Form.Label>
+          <Form.Label className="newCamp-label">From</Form.Label>
           <Form.Control
+            id="from"
             className=""
             type="date"
             name="from"
             value={from}
+            min={today}
             onChange={handleCreateCamp}
             required
           />
         </div>
         <div>
-          <Form.Label>To</Form.Label>
+          <Form.Label className="newCamp-label">To</Form.Label>
           <Form.Control
+            id="from"
             className=""
             type="date"
             name="to"
+            min={from}
             value={to}
             onChange={handleCreateCamp}
             required
           />
         </div>
         <div>
-          <Form.Label>Capacity</Form.Label>
+          <Form.Label className="newCamp-label">Capacity</Form.Label>
           <Form.Control
+            id="capacity"
             type="number"
             name="capacity"
             className=""
@@ -219,9 +254,10 @@ const CreateCampForm = ({ onSubmit }) => {
             Suscribed {inPeople}
           </Badge>
         </div>
-        <div className="">
-          <Form.Label className="">Available</Form.Label>
+        <div>
+          <Form.Label className="newCamp-label">Available</Form.Label>
           <Form.Select
+            id="available"
             name="availability"
             className=""
             onChange={handleAvailavility}
@@ -230,40 +266,18 @@ const CreateCampForm = ({ onSubmit }) => {
             <option value={false}>No</option>
           </Form.Select>
         </div>
-        <div>
-          <Form.Label>Helpers</Form.Label>
-          <Form.Control
-            type="text"
-            name="helpers"
-            className=""
-            value={helpers}
-            onChange={handleCreateCamp}
-            required
-          />
-        </div>
-        <div>
-          <Form.Label>Guests</Form.Label>
-          <Form.Control
-            type="text"
-            name="guests"
-            className=""
-            value={guests}
-            onChange={handleCreateCamp}
-            required
-          />
-        </div>
+
         <Button
           variant="outline-dark"
           type="submit"
           className="button-createCamp"
-          onSubmit={handleSubmit}
           disabled={
             !name ||
             !edition ||
             !location ||
             !description ||
             !tag ||
-            !activities ||
+            //!activities ||
             !address ||
             !phone ||
             !email ||
@@ -271,7 +285,7 @@ const CreateCampForm = ({ onSubmit }) => {
             !to
           }
         >
-          Submit
+          Create
         </Button>
       </Form.Group>
     </Form>

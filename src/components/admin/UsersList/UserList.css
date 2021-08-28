@@ -1,0 +1,61 @@
+.user-list {
+  margin: 8rem 7rem 7rem 18rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.user-list-cardBody {
+  padding: 1rem;
+}
+
+.list {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.item-list {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.role,
+.item-list > p {
+  text-align: center;
+}
+
+.role {
+  margin: 0.2rem;
+}
+
+.item-list > Form {
+  margin: 1rem;
+}
+
+.submit-role,
+.label-text {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.header {
+  font-size: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .user-list {
+    margin: 8rem 5rem 5rem 15rem;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .user-list {
+    margin: 8rem 1rem 1rem 1rem;
+  }
+}

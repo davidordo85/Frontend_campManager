@@ -17,11 +17,9 @@ function LoginPage({ onLogin, history, location }) {
   React.useEffect(() => {
     if (isLogged.current) {
       onLogin();
-      //TODO: arreglar la devolución a la página en la que se estaba antes
-      window.location.replace('/');
 
-      /*       const { from } = location.state || { from: { pathname: '/' } };
-      location.replace(from); */
+      const { from } = location.state || { from: { pathname: '/' } };
+      history.replace(from);
     }
   });
 

@@ -1,31 +1,22 @@
 import React from 'react';
 import Layout from '../layout/layout';
-import { getCampDetail } from '../../api/camps';
-import { getMe } from '../../api/auth';
+import { Link } from 'react-router-dom';
+import { getCampDetail, subscribe, unSubscribe } from '../../api/camps';
 import Loader from '../Loader/Loader';
+import pending from '../../assets/images/pending.svg';
+import accepted from '../../assets/images/accepted.svg';
+import rejected from '../../assets/images/rejected.svg';
 import { Card, Alert, ListGroup, CardColumns } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 import './CampDetail.css';
 
-// console.log(sessionStorage,'sessionStorage');
-// console.log(localStorage,'localStorage')
-// const token = sessionStorage.auth
-// const user = getMe({ headers: {"Authorization" : `Bearer ${token}`}});
-// console.log(user)
-// if(sessionStorage){
-//   const user = getMe(sessionStorage.auth);
-//   console.log(user,'user');
-// }
-// const user = getMe();
-// console.log(user,'user');
-
-const CampDetail = ({ history, isLogged, ...props }) => {
+const CampDetail = ({ history, isLogged, _id, ...props }) => {
   const [camp, setCamp] = React.useState({
     activities: ['await'],
     createdAt: '2021-07-28T00:18:07.898Z',
     confirmedHelpers: '',
-    confirmedGuests: ''
+    confirmedGuests: '',
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
@@ -51,9 +42,38 @@ const CampDetail = ({ history, isLogged, ...props }) => {
     }
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
+
+  const handleSubmit = async () => {
+    try {
+      await subscribe(paramsId);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+      window.location.reload();
+    }
+  };
+
+  const handleSubmitUnsubscribe = async () => {
+    try {
+      await unSubscribe(paramsId);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+      window.location.reload();
+    }
+  };
+
+  const confirmed = props.confirmed;
+  const requested = props.requested;
+  const reject = props.reject;
+  const role = props.role;
+
+  function compare(item1, item2) {
+    return item1.some(item => item2 === item);
   }
+
   const createdAt = camp.createdAt.split('T');
 
   return (
@@ -64,7 +84,6 @@ const CampDetail = ({ history, isLogged, ...props }) => {
           <Card.Header className="detail-header">
             <Card.Text className="detail-title">{camp.name}</Card.Text>
           </Card.Header>
-          <Card.Text className="detail-text">{camp.description}</Card.Text>
           <CardColumns className="columns">
             <Card className="detail-description">
               <Card.Header className="detail-header">
@@ -74,6 +93,25 @@ const CampDetail = ({ history, isLogged, ...props }) => {
                 <Card.Text>Direction: {camp.address}</Card.Text>
                 <Card.Text>Location: {camp.location}</Card.Text>
                 <Card.Text>Edition: {camp.edition}</Card.Text>
+                {!isLogged ? null : role === 'admin' ? null : compare(
+                    confirmed,
+                    paramsId,
+                  ) ? (
+                  <div className="status">
+                    <Card.Text className="img-txt">Request status</Card.Text>
+                    <Card.Img className="type-camp" src={accepted} />
+                  </div>
+                ) : compare(requested, paramsId) ? (
+                  <div className="status">
+                    <Card.Text className="img-txt">Request status</Card.Text>
+                    <Card.Img className="type-camp" src={pending} />
+                  </div>
+                ) : compare(reject, paramsId) ? (
+                  <div className="status">
+                    <Card.Text className="img-txt">Request status</Card.Text>
+                    <Card.Img className="type-camp" src={rejected} />
+                  </div>
+                ) : null}
               </Card.Body>
             </Card>
             <Card>
@@ -135,15 +173,48 @@ const CampDetail = ({ history, isLogged, ...props }) => {
             </Alert>
           )}
         </Card>
-        <Button 
-        type="submit"
-        onSubmit={handleSubmit}
-        variant="outline-dark" 
-        className="sign-up"
-        disabled={!isLogged}
-        >
-          Sign up
-        </Button>
+        {!isLogged ? null : role === 'admin' ? null : compare(
+            confirmed,
+            paramsId,
+          ) ? (
+          <Button
+            type="submit"
+            onClick={handleSubmitUnsubscribe}
+            variant="outline-danger"
+            className="sign-up"
+          >
+            Cancel sign
+          </Button>
+        ) : compare(requested, paramsId) ? (
+          <Button
+            type="submit"
+            onClick={handleSubmitUnsubscribe}
+            variant="outline-danger"
+            className="sign-up"
+          >
+            Cancel sign
+          </Button>
+        ) : (
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            variant="outline-dark"
+            className="sign-up"
+          >
+            Sign up
+          </Button>
+        )}
+        {!isLogged ? null : role === 'admin' ? (
+          <Button
+            as={Link}
+            to={`/campModify/${paramsId}`}
+            variant="outline-dark"
+            className="sign-up"
+          >
+            {' '}
+            Edit camp
+          </Button>
+        ) : null}
       </div>
     </Layout>
   );

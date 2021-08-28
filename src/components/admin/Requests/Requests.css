@@ -1,0 +1,45 @@
+.request {
+  margin: 8rem 7rem 7rem 15rem;
+}
+
+.request-header,
+.text {
+  text-align: center;
+}
+
+.request-list {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.request-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.text-title {
+  font-weight: bold;
+}
+
+.request-button {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 850px) {
+  .request {
+    margin: 8rem 1rem 1rem 11rem;
+  }
+
+  .request-list {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .request {
+    margin: 7rem 1rem 2rem 1rem;
+  }
+}

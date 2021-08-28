@@ -1,16 +1,13 @@
 import React from 'react';
 import './filter.css';
-//import FilterButton from '../Buttons/FilterButton';
-import CheckboxFilter from './CheckboxFilter';
-import moment from 'moment';
 import { Button, Form, Row, Col } from 'react-bootstrap';
+import SelectActivities from './SelectActivities';
 
-const FilterCamps = ({ onSubmit, index }) => {
-  var today = moment().format('YYYY-MM-DD');
-
+const FilterCamps = ({ onSubmit, index, ...props }) => {
+  const [act, setAct] = React.useState({});
   const [filterCamp, setFilterCamp] = React.useState({
     name: '',
-    from: today,
+    from: '',
     to: '',
     location: '',
     activities: [],
@@ -22,7 +19,15 @@ const FilterCamps = ({ onSubmit, index }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(filterCamp);
+    const filterData = {
+      name: filterCamp.name,
+      from: filterCamp.from,
+      to: filterCamp.to,
+      location: filterCamp.location,
+      activities: act,
+    };
+    console.log(filterData);
+    onSubmit(filterData);
   };
 
   const handleFilterByName = event => {
@@ -56,44 +61,12 @@ const FilterCamps = ({ onSubmit, index }) => {
     setFilterCamp(newFilterCamp);
   };
 
-  const addActivities = (activity, selectedActivity) => {
-    return activity.concat([selectedActivity]);
-  };
-  const removeTag = (activity, selectedActivity) => {
-    return activity.filter(activity => activity !== selectedActivity);
+  const handleActivities = selectedOptions => {
+    setAct([].slice.call(selectedOptions).map(item => item.value));
   };
 
-  const setActivity = event => {
-    const activity = filterCamp.activities;
-    const activityName = event.target.value;
+  const { name, location, from, to } = filterCamp;
 
-    if (event.target.checked) {
-      if (!activity.includes(activityName)) {
-        const newActivity = addActivities(activity, activityName);
-        setFilterCamp({ ...filterCamp, activities: newActivity });
-      }
-    } else {
-      const index = activity.indexOf(activity, activityName);
-      if (index <= 0) {
-        const newActivity = removeTag(activity, activityName);
-        setFilterCamp({ ...filterCamp, activities: newActivity });
-      }
-    }
-  };
-  const { name, activities, location, from, to } = filterCamp;
-
-  //TODO - activity list should come from Backend
-  const activityList = [
-    'pool',
-    'crafts workshop',
-    'recycling workshop',
-    'reading',
-    'museum',
-    'seminar',
-    'conference',
-    'meditation',
-    'show',
-  ];
   return (
     <Form className="mb-3" onSubmit={handleSubmit}>
       <Row className="filterForm-Row">
@@ -108,7 +81,9 @@ const FilterCamps = ({ onSubmit, index }) => {
           />
         </Form.Group>
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label filter-placeholder">Country</Form.Label>
+          <Form.Label className="filterForm-label filter-placeholder">
+            Country
+          </Form.Label>
           <Form.Control
             className="filter-name"
             type="text"
@@ -121,14 +96,15 @@ const FilterCamps = ({ onSubmit, index }) => {
 
       <Row className="filterForm-Row">
         <Form.Group as={Col}>
-          <Form.Label className="filterForm-label filter-placeholder">From</Form.Label>
+          <Form.Label className="filterForm-label filter-placeholder">
+            From
+          </Form.Label>
           <Form.Control
             className="filter-date"
             type="date"
             placeholder="desde"
             value={from}
             onChange={handleFilterbyFrom}
-            min={today}
             max="2025-12-31"
           />
         </Form.Group>
@@ -148,7 +124,7 @@ const FilterCamps = ({ onSubmit, index }) => {
 
       <Form.Group>
         <Form.Label className="filterForm-label">Activities</Form.Label>
-        <br />
+        {/*         <br />
         <div className="filterForm-checkbox">
           {activityList.map((activity, index) => {
             return (
@@ -162,7 +138,8 @@ const FilterCamps = ({ onSubmit, index }) => {
               />
             );
           })}
-        </div>
+        </div> */}
+        <SelectActivities isMulti onChange={handleActivities} {...props} />
       </Form.Group>
 
       <Row className="filterForm-Row">

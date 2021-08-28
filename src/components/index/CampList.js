@@ -7,19 +7,17 @@ import Loader from '../Loader/Loader';
 import Target from './Target';
 import FilterCamps from '../filter.js/Filter';
 import { Card } from 'react-bootstrap';
-//import Dashboard from '../auth/Dashboard/Dashboard';
 
 import './CampList.css';
 
 const CampList = ({ id, history, location, ...props }) => {
   const [camps, setCamps] = React.useState([]);
+  const [numberCamps, setNumberCamps] = React.useState([Number]);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-
   const resetError = () => setError(null);
 
   React.useEffect(() => {
-    //getAllCamps();
     paginationLocation(location.search);
   }, [location.search]);
 
@@ -41,6 +39,7 @@ const CampList = ({ id, history, location, ...props }) => {
       setLoading(true);
       const paginationCampList = await getPaginationCamps(location);
       setCamps(paginationCampList.data);
+      setNumberCamps(paginationCampList.total);
       setError(null);
     } catch (error) {
       setError(error);
@@ -53,7 +52,7 @@ const CampList = ({ id, history, location, ...props }) => {
     <Layout {...props}>
       <div className="container-camps">
         <Card className="container-card">
-          <FilterCamps onSubmit={handleFilterSubmit} />
+          <FilterCamps onSubmit={handleFilterSubmit} {...props} />
           <Loader hidden={!loading} />
           <Card className="card-list" border="light">
             {camps.length > 0 ? (
@@ -84,7 +83,11 @@ const CampList = ({ id, history, location, ...props }) => {
             </div>
           )}
 
-          <Pagination className="pagination" location={location} />
+          <Pagination
+            className="pagination"
+            number={numberCamps}
+            location={location}
+          />
         </Card>
       </div>
     </Layout>

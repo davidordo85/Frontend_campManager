@@ -1,0 +1,91 @@
+.edit-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.profile {
+  margin-top: 53px;
+  margin-left: 140px;
+  padding-top: 1px;
+}
+
+.profile-card-body {
+  padding: 2rem;
+}
+
+.text-header {
+  font-size: 2.5rem;
+}
+
+.edit-photo {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-edit-photo,
+.profile-edit-cv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editCV {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.registerForm-photo {
+  display: flex;
+  justify-content: center;
+  height: 38px;
+  width: 170px;
+  margin-top: 10px;
+}
+.registerForm-CV {
+  display: flex;
+  justify-content: center;
+  height: 38px;
+  width: 170px;
+  margin-top: 10px;
+}
+.title-photo {
+  margin-left: 20px;
+}
+
+.prueba {
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+  border: black 5px solid;
+  /* margin-top: 30px;
+  margin-left: -13px; */
+}
+
+.edit-photo-button {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.edit-button  {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+}
+
+@media (max-width: 600px) {
+  .profile {
+    margin: 8rem 1rem 1rem 1rem;
+  }
+}
