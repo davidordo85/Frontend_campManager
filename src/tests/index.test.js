@@ -3,11 +3,9 @@ import { shallow } from "enzyme";
 import App from "../App";
 
 describe("tests in index.js", () => {
-  
   const wrapper = shallow(<App />);
 
   test("should render successful", () => {
-
     expect(wrapper).toMatchInlineSnapshot(`
       <div
         className="App"
@@ -19,6 +17,29 @@ describe("tests in index.js", () => {
           >
             <Component />
           </Route>
+          <PrivateRouteAdmin
+            admin={false}
+            exact={true}
+            path="/campModify/:id"
+          >
+            <Component />
+          </PrivateRouteAdmin>
+          <PrivateRoute
+            exact={true}
+            onLogout={[Function]}
+            path="/myProfile"
+          >
+            <MyProfile
+              onLogout={[Function]}
+            />
+          </PrivateRoute>
+          <PrivateRoute
+            exact={true}
+            onLogout={[Function]}
+            path="/userRequests"
+          >
+            <Component />
+          </PrivateRoute>
           <Route
             path="/login"
           >
@@ -34,46 +55,38 @@ describe("tests in index.js", () => {
           >
             <ForgotPasswordPage />
           </Route>
-          <Route
+          <PrivateRouteAdmin
+            admin={false}
             exact={true}
             path="/createCamp"
           >
             <CreateCampPage
               onLogout={[Function]}
             />
-          </Route>
-          <Route
+          </PrivateRouteAdmin>
+          <PrivateRouteAdmin
+            admin={false}
             exact={true}
             path="/requests"
           >
             <Requests
               onLogout={[Function]}
             />
-          </Route>
-          <Route
+          </PrivateRouteAdmin>
+          <PrivateRouteAdmin
+            admin={false}
             exact={true}
             path="/modifyCamp"
           >
-            <Requests
-              onLogout={[Function]}
-            />
-          </Route>
-          <Route
+            <Component />
+          </PrivateRouteAdmin>
+          <PrivateRouteAdmin
+            admin={false}
             exact={true}
             path="/userList"
           >
-            <UserList
-              onLogout={[Function]}
-            />
-          </Route>
-          <Route
-            exact={true}
-            path="/ObservationUser"
-          >
-            <ObservationUser
-              onLogout={[Function]}
-            />
-          </Route>
+            <Component />
+          </PrivateRouteAdmin>
           <Route
             exact={true}
             path="/"
@@ -83,17 +96,7 @@ describe("tests in index.js", () => {
           <Route
             path="/404"
           >
-            <div
-              style={
-                Object {
-                  "fontSize": 48,
-                  "fontWeight": "bold",
-                  "textAlign": "center",
-                }
-              }
-            >
-              404 | Not found page
-            </div>
+            <PageError />
           </Route>
           <Route>
             <Redirect
@@ -103,7 +106,5 @@ describe("tests in index.js", () => {
         </Switch>
       </div>
     `);
-
   });
-
 });

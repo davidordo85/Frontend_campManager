@@ -22,8 +22,6 @@ function App({ isInitiallyLogged, roles }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
   const role = React.useState(roles);
 
-  console.log(role[0]);
-
   const [me, setMe] = React.useState({
     campsConfirmed: [],
     campsRequested: [],
