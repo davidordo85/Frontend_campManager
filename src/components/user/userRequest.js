@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 import './request.css';
 
 
-const UserRequest = ({ ...props }) => {
+const UserRequest = ({ data, ...props }) => {
 
     const [request, setRequest] = React.useState({});
     const [loading, setLoading] = React.useState(false);
@@ -15,13 +15,14 @@ const UserRequest = ({ ...props }) => {
 
      React.useEffect(() => {
        handleCamps();
+       
     }, []);
 
   
     const handleCamps = async id => {
       try {
         setLoading(true);
-        const idData = await getMe();
+        const idData = data.campsRequested;
         const myRequest = await getMyCampsRequest(idData.data._id)
         setRequest(myRequest.data)
       } catch (error) {

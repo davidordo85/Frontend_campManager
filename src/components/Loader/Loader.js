@@ -21,6 +21,8 @@ const Loader = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  justify-content: center;
+  align-items: center;
   
 `;
 

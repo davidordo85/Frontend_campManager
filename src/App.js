@@ -18,24 +18,40 @@ import PageError from './components/Error/PageError';
 import UserRequest from './components/user/userRequest';
 import MyProfile from './components/user/MyProfile';
 
+
+
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
   const [me, setMe] = React.useState({
     campsConfirmed: [],
     campsRequested: [],
+    
   });
+  
 
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);
 
+  
+
   React.useEffect(() => {
     handleMe();
-  }, []);
+    
+    return () => {
+
+    };
+    
+  }, []); 
+
+ 
+
+  
 
   const handleMe = async () => {
     if (isLogged) {
       try {
         const meDates = await getMe('auth');
+
         setMe(meDates.data);
       } catch (error) {
         throw new Error(error);
@@ -44,7 +60,9 @@ function App({ isInitiallyLogged }) {
   };
 
   return (
+    
     <div className="App">
+     
       <Switch>
         {/*TODO: de las mas precisas a las menos precisas */}
         <Route exact path="/campDetail/:id">
@@ -75,9 +93,9 @@ function App({ isInitiallyLogged }) {
           )}
         </PrivateRouteAdmin>
         <PrivateRoute isLogged={isLogged} onLogout={handleLogout} exact path="/myProfile">
-          <MyProfile  isLogged={isLogged} onLogout={handleLogout} />
+          <MyProfile  isLogged={isLogged} onLogout={handleLogout} data={me}  />
         </PrivateRoute>
-        <PrivateRoute isLogged={isLogged} onLogout={handleLogout}  exact path="/userRequests">
+        <PrivateRoute isLogged={isLogged} onLogout={handleLogout} data={me} exact path="/userRequests">
           {routeProps => (
             
             <UserRequest  
@@ -165,6 +183,7 @@ function App({ isInitiallyLogged }) {
           <Redirect to="/404"></Redirect>
         </Route>
       </Switch>
+      
     </div>
   );
 }
