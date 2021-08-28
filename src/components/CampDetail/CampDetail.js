@@ -42,6 +42,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
     }
   };
 
+
   const handleSubmit = async () => {
     try {
       await subscribe(paramsId);
@@ -92,7 +93,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
                 <Card.Text>Direction: {camp.address}</Card.Text>
                 <Card.Text>Location: {camp.location}</Card.Text>
                 <Card.Text>Edition: {camp.edition}</Card.Text>
-                {/* TODO: donde tengo el array de solicitudes cancelladas? */}
                 {!isLogged ? null : role === 'admin' ? null : compare(
                     confirmed,
                     paramsId,

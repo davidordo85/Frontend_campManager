@@ -97,9 +97,7 @@ function App({ isInitiallyLogged, roles }) {
             <UserRequest
               isLogged={isLogged}
               onLogout={handleLogout}
-              confirmed={me.campsConfirmed}
-              requests={me.campsRequested}
-              role={role[0]}
+              id={me._id}
               {...routeProps}
             />
           )}
