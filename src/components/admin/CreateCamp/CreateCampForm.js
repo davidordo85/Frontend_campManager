@@ -108,7 +108,7 @@ const CreateCampForm = ({ onSubmit }) => {
     <Form className="form-createCamps" onSubmit={handleSubmit}>
       <Form.Group className="form-groupCreate">
         <div>
-          <Form.Label for="name" className="newCamp-label">Name</Form.Label>
+          <Form.Label className="newCamp-label">Name</Form.Label>
           <Form.Control
             id="name"
             className=""
@@ -120,7 +120,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="edition" className="newCamp-label">Edition</Form.Label>
+          <Form.Label className="newCamp-label">Edition</Form.Label>
           <Form.Control
             id="edition"
             className=""
@@ -132,7 +132,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="location" className="newCamp-label">Location</Form.Label>
+          <Form.Label className="newCamp-label">Location</Form.Label>
           <Form.Control
             id="location"
             type="text"
@@ -144,7 +144,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="description" className="newCamp-label">Description</Form.Label>
+          <Form.Label className="newCamp-label">Description</Form.Label>
           <Form.Control
             id="description"
             type="text"
@@ -163,7 +163,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="address" className="newCamp-label">Address</Form.Label>
+          <Form.Label className="newCamp-label">Address</Form.Label>
           <Form.Control
             id="address"
             type="text"
@@ -175,7 +175,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div className="activities">
-          <Form.Label for="activities" className="newCamp-label">Activities</Form.Label>
+          <Form.Label className="newCamp-label">Activities</Form.Label>
           <Select
             id="activities"
             className="activities"
@@ -188,7 +188,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="phone" className="newCamp-label">Phone</Form.Label>
+          <Form.Label className="newCamp-label">Phone</Form.Label>
           <Form.Control
             id="phone"
             type="text"
@@ -200,7 +200,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="email" className="newCamp-label">Email</Form.Label>
+          <Form.Label className="newCamp-label">Email</Form.Label>
           <Form.Control
             id="email"
             type="email"
@@ -212,7 +212,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="from" className="newCamp-label">From</Form.Label>
+          <Form.Label className="newCamp-label">From</Form.Label>
           <Form.Control
             id="from"
             className=""
@@ -225,7 +225,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="to" className="newCamp-label">To</Form.Label>
+          <Form.Label className="newCamp-label">To</Form.Label>
           <Form.Control
             id="from"
             className=""
@@ -238,7 +238,7 @@ const CreateCampForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <Form.Label for="capacity" className="newCamp-label">Capacity</Form.Label>
+          <Form.Label className="newCamp-label">Capacity</Form.Label>
           <Form.Control
             id="capacity"
             type="number"
@@ -255,7 +255,7 @@ const CreateCampForm = ({ onSubmit }) => {
           </Badge>
         </div>
         <div>
-          <Form.Label for="available" className="newCamp-label">Available</Form.Label>
+          <Form.Label className="newCamp-label">Available</Form.Label>
           <Form.Select
             id="available"
             name="availability"
@@ -266,7 +266,7 @@ const CreateCampForm = ({ onSubmit }) => {
             <option value={false}>No</option>
           </Form.Select>
         </div>
-        
+
         <Button
           variant="outline-dark"
           type="submit"
