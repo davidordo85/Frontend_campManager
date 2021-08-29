@@ -1,36 +1,35 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import {  getMe } from '../../api/auth';
+import { Form, Button, Card } from 'react-bootstrap';
+import { getMe } from '../../api/auth';
 import './profile.css';
 
-const EditCV = ({CVEdit, ...props}) => {
+const EditCV = ({CVEdit, cvData, ...props}) => {
 
     const [oldData, setOldData] = React.useState({});
     const [cv, setCV] = React.useState({});
 
-    React.useEffect(() => {
-        handleOldData();
-    }, []);
+     const handleCVData = async () => {
+    const oldPhoto = await getMe();
+    setOldData(oldPhoto.data.curriculum)
+  }
 
-    const handleOldData = async () => {
-      const myOldData = await getMe();
-      setOldData(myOldData.data);
-    };
+  React.useEffect(()=> {
+    handleCVData()
+  })
 
     const handleChangeFile = event => {
         const cv = event.target.files[0];
         setCV(cv);
     };
     
-    console.log(cv)
     const handleSubmit = (event) => {
         event.preventDefault();
+        const id = cvData._id;
         const CVFile = cv;
-        CVEdit(CVFile);
+        CVEdit(id, CVFile);
     }
 
-    console.log(oldData)
-
+    const myCV = 'http://localhost:5000/uploads/'+oldData;
 
     return (
         <div className='editCV'>
@@ -45,9 +44,14 @@ const EditCV = ({CVEdit, ...props}) => {
                 />
 
                 {oldData.curriculum === '' ?
-                <h5>No hay ningún archivo subido</h5>
+                <Card>
+                    <Card.Body>Ningún archivo subido</Card.Body>
+                </Card>
             :
-                <img src={null} />
+                <Card>
+                    <Card.Body>{cvData.name}_CV.pdf</Card.Body>
+                    <Card.Link className='preview' href={myCV} target="_blank">Preview</Card.Link>
+                </Card>
             }
 
                 <Button
