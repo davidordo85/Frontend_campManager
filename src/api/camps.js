@@ -25,20 +25,17 @@ export const filteredCamp = filterCamp => {
     let operator = !isFirstParam ? '?' : '&';
 
     if (filterCamp[filter] && filterCamp[filter].length > 0) {
-      if (Array.isArray(filterCamp[filter])) {
+      if (Array.isArray(filterCamp[filter].length >= 1)) {
         for (const element of filterCamp[filter]) {
-          operator = !isFirstParam ? '?' : '&';
           filterCampUrl = `${operator}${filter}=${element}`;
-          if (!isFirstParam) isFirstParam = true;
         }
-      } else {
-        filterCampUrl += `${operator}${filter}=${filterCamp[filter]}`;
-        if (!isFirstParam) isFirstParam = true;
-      }
+      } else filterCampUrl += `${operator}${filter}=${filterCamp[filter]}`;
+      if (!isFirstParam) isFirstParam = true;
     }
   });
 
   const url = `${campsBaseUrl}${filterCampUrl}`;
+  console.log(url);
   return client.get(url);
 };
 

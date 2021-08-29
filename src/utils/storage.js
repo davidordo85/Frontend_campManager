@@ -7,12 +7,11 @@ const storage = {
       return null;
     }
 
-    if(valueSession){
+    if (valueSession) {
       return JSON.parse(valueSession);
-    }else if(valueLocal) {
-      return JSON.parse(valueLocal)
+    } else if (valueLocal) {
+      return JSON.parse(valueLocal);
     }
-
   },
 
   remember(key, value) {
@@ -23,9 +22,11 @@ const storage = {
     sessionStorage.setItem(key, JSON.stringify(value));
   },
 
-  remove(key) {
+  remove(key, role) {
     sessionStorage.removeItem(key);
+    sessionStorage.removeItem(role);
     localStorage.removeItem(key);
+    localStorage.removeItem(role);
   },
 };
 

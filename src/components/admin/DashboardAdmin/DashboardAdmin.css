@@ -12,3 +12,9 @@
   color: white;
   margin: 3rem 1rem 1rem 1rem;
 }
+
+@media (max-width: 600px) {
+  .dashboardAdmin {
+    opacity: 0.7;
+  }
+}

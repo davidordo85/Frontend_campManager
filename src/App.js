@@ -22,6 +22,10 @@ import MyProfile from './components/user/MyProfile';
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
+  const role = React.useState(roles);
+
+  console.log(role[0]);
+
   const [me, setMe] = React.useState({
     campsConfirmed: [],
     campsRequested: [],
@@ -45,7 +49,7 @@ function App({ isInitiallyLogged }) {
         setMe(meDates.data);
       } catch (error) {
         throw new Error(error);
-      } 
+      }
     }
   };
 
@@ -63,13 +67,13 @@ function App({ isInitiallyLogged }) {
               confirmed={me.campsConfirmed}
               requested={me.campsRequested}
               reject={me.campsRejected}
-              role={me.role}
+              role={role[0]}
               {...routeProps}
             />
           )}
         </Route>
         <PrivateRouteAdmin
-          admin={me.role === 'admin'}
+          admin={role[0] === 'admin'}
           isLogged={isLogged}
           exact
           path="/campModify/:id"
@@ -87,16 +91,15 @@ function App({ isInitiallyLogged }) {
         </PrivateRoute>
         <PrivateRoute isLogged={isLogged} onLogout={handleLogout} data={me} exact path="/userRequests">
           {routeProps => (
-            
-            <UserRequest  
-              isLogged={isLogged} 
+            <UserRequest
+              isLogged={isLogged}
               onLogout={handleLogout}
               confirmed={me.campsConfirmed}
               requests={me.campsRequested}
-              role={me.role}
+              role={role[0]}
               {...routeProps}
             />
-            )}
+          )}
         </PrivateRoute>
         <Route path="/login">
           {({ history, location }) => (
@@ -115,7 +118,7 @@ function App({ isInitiallyLogged }) {
         </Route>
         <PrivateRouteAdmin
           isLogged={isLogged}
-          admin={me.role === 'admin'}
+          admin={role[0] === 'admin'}
           exact
           path="/createCamp"
         >
@@ -123,7 +126,7 @@ function App({ isInitiallyLogged }) {
         </PrivateRouteAdmin>
         <PrivateRouteAdmin
           isLogged={isLogged}
-          admin={me.role === 'admin'}
+          admin={role[0] === 'admin'}
           exact
           path="/requests"
         >
@@ -131,7 +134,7 @@ function App({ isInitiallyLogged }) {
         </PrivateRouteAdmin>
         <PrivateRouteAdmin
           isLogged={isLogged}
-          admin={me.role === 'admin'}
+          admin={role[0] === 'admin'}
           exact
           path="/modifyCamp"
         >
@@ -145,7 +148,7 @@ function App({ isInitiallyLogged }) {
         </PrivateRouteAdmin>
         <PrivateRouteAdmin
           isLogged={isLogged}
-          admin={me.role === 'admin'}
+          admin={role[0] === 'admin'}
           exact
           path="/userList"
         >

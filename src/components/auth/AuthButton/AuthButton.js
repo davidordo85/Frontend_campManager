@@ -10,14 +10,21 @@ const AuthButton = ({ className, isLogged, onLogout }) => {
   };
 
   const props = isLogged
-    ? { onClick: handleLogoutClick, children: 'Log out' }
+    ? { onClick: handleLogoutClick, children: 'Log out', className: 'logout' }
     : {
         as: Link,
         to: '/login',
         children: 'Log in',
       };
 
-  return <Button size="lg" className={className} variant="outline-light" {...props} />;
+  return (
+    <Button
+      size="lg"
+      className={className}
+      variant="outline-light"
+      {...props}
+    />
+  );
 };
 
 export default AuthButton;

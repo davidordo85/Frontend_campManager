@@ -7,12 +7,14 @@ const usersPath = '/api/v1/users/';
 export const login = ({ remember, ...credentials }) => {
   return client
     .post(`${authPath}/login`, credentials)
-    .then(({ token }) => {
+    .then(({ token, role }) => {
       if (remember) {
         storage.remember('auth', token);
+        storage.remember('role', role);
       }
-      configureClient({ token });
+      configureClient({ token, role });
       storage.set('auth', token);
+      storage.set('role', role);
     })
     .catch(error => {
       if (error.data.error === 'Invalid credentials') {
@@ -22,14 +24,13 @@ export const login = ({ remember, ...credentials }) => {
       }
     });
 };
-
 export const logout = () => {
   return Promise.resolve()
     .then(() => {
       resetClient();
     })
     .then(() => {
-      storage.remove('auth');
+      storage.remove('auth', 'role');
     })
     .catch(error => {
       throw Error('Server Error', error);
@@ -83,10 +84,10 @@ export const editCVProfile = (id, cvData) => {
   return client.put(url, formData);
 };
 
-export const getMyCampsRequest = (id) => {
+export const getMyCampsRequest = id => {
   const url = `${usersPath}${id}/solics`;
   return client.get(url);
-}
+};
 
 export const getMe = () => {
   const url = `${authPath}/me`;

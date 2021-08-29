@@ -6,6 +6,7 @@ import { Card } from 'react-bootstrap';
 import Loader from '../Loader/Loader';
 import './request.css';
 
+<<<<<<< HEAD
 
 const UserRequest = ({ data, ...props }) => {
 
@@ -30,35 +31,63 @@ const UserRequest = ({ data, ...props }) => {
       } finally {
         setLoading(false)
       }
-    }
-  
-  
+=======
+const UserRequest = ({ ...props }) => {
+  const [request, setRequest] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
 
-    return (
-        <Layout { ...props}>
-            <UserDashboard />
-            <div className='container-camps'>
-        <Card className="container-card">
+  React.useEffect(() => {
+    handleCamps();
+  }, []);
+
+  const handleCamps = async id => {
+    try {
+      setLoading(true);
+      const idData = await getMe();
+      const myRequest = await getMyCampsRequest(idData.data._id);
+      setRequest(myRequest.data);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+>>>>>>> da47143e8b94b0a706aabbc39641d023bc6ce8d2
+    }
+  };
+
+  return (
+    <Layout {...props}>
+      <UserDashboard />
+      <div className="container-camps">
+        <Card className="container-request">
           <Loader hidden={!loading} />
-         { request.length > 0 ? (
-            request.map((req, index ) => (
-              <Card className='card-request'>
-                <Card.Header>
-                  {index + 1}
-                </Card.Header>
+          {request.length > 0 ? (
+            request.map((req, index) => (
+              <Card className="card-request">
+                <Card.Header>{index + 1}</Card.Header>
                 <Card.Body key={index}>
-                  <Card.Text><b>Campname:</b>{req.campName}</Card.Text>
-                  <Card.Text><b>Role:</b>{req.role}</Card.Text>
-                  <Card.Text><b>Status:</b>{req.status}</Card.Text>
+                  <Card.Text>
+                    <b>Campname:</b>
+                    {req.campName}
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Role:</b>
+                    {req.role}
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Status:</b>
+                    {req.status}
+                  </Card.Text>
                 </Card.Body>
               </Card>
-           )))
-               : ( <Card.Text>You have no pending requests... </Card.Text>)}
+            ))
+          ) : (
+            <Card.Text>You have no pending requests... </Card.Text>
+          )}
         </Card>
       </div>
     </Layout>
-    )
-}
-
+  );
+};
 
 export default UserRequest;

@@ -1,9 +1,9 @@
 .user-list {
-  margin: 12rem 7rem 7rem 22rem;
+  margin: 8rem 7rem 7rem 18rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.user-list-cardBody{
+.user-list-cardBody {
   padding: 1rem;
 }
 
@@ -41,4 +41,21 @@
 
 .header {
   font-size: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .user-list {
+    margin: 8rem 5rem 5rem 15rem;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .user-list {
+    margin: 8rem 1rem 1rem 1rem;
+  }
 }

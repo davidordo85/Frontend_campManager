@@ -89,3 +89,9 @@
   justify-content: center;
   outline: none;
 }
+
+@media (max-width: 600px) {
+  .profile {
+    margin: 8rem 1rem 1rem 1rem;
+  }
+}

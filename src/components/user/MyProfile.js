@@ -81,7 +81,7 @@ const MyProfile = ({ location, data,  ...props }) => {
                 </Card>
             </div>
     </Layout>
-    )
-}
+  );
+};
 
 export default MyProfile;
