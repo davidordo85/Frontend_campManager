@@ -47,7 +47,6 @@ const CampList = ({ id, history, location, ...props }) => {
       setLoading(false);
     }
   };
-  //prueba
   return (
     <Layout {...props}>
       <div className="con-camps">
