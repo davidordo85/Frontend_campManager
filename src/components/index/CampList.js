@@ -50,11 +50,11 @@ const CampList = ({ id, history, location, ...props }) => {
 
   return (
     <Layout {...props}>
-      <div className="container-camps">
-        <Card className="container-card">
+      <div className="con-camps">
+        <Card className="con-card">
           <FilterCamps onSubmit={handleFilterSubmit} {...props} />
           <Loader hidden={!loading} />
-          <Card className="card-list" border="light">
+          <Card className="list-cards" border="light">
             {camps.length > 0 ? (
               camps.map((camp, index) => (
                 <Target

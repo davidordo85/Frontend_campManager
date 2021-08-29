@@ -1,5 +1,5 @@
 
-.card-list {
+.list-cards {
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -17,12 +17,12 @@
 }
 
 @media (min-width: 605px) {
-  .container-card {
+  .con-card {
     margin: 2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
-  .card-list {
+  .list-cards {
     margin: 1rem;
     display: grid;
     grid-template-rows: repeat(2, 50%);
@@ -31,7 +31,7 @@
 }
 
 @media (min-width: 1080px) {
-  .container-card {
+  .con-card {
     margin: 7rem;
   }
 }
