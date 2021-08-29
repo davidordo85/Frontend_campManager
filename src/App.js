@@ -20,7 +20,7 @@ import MyProfile from './components/user/MyProfile';
 
 
 
-function App({ isInitiallyLogged }) {
+function App({ isInitiallyLogged, roles }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
   const role = React.useState(roles);
 
