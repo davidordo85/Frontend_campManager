@@ -56,6 +56,7 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
         >
           Edit photo
         </Button>
+       
       </Form>
     
     </div>
