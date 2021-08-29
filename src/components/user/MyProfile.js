@@ -1,80 +1,85 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import {Alert, Card } from 'react-bootstrap';
 import Layout from '../layout/layout';
 import UserDashboard from './dashboard-user';
-import {
-  editCVProfile,
-  editPhotoProfile,
-  editProfile,
-  getMe,
-} from '../../api/auth';
+import { editCVProfile, editPhotoProfile, editProfile } from '../../api/auth';
 import './profile.css';
 import EditProfile from './edit-profile';
 import EditPhoto from './edit-Photo';
 import EditCV from './edit-cv';
+import Loader from '../Loader/Loader';
 
-const MyProfile = ({ ...props }) => {
-  const [oldData, setOldData] = React.useState({});
-  const [error, setError] = React.useState();
-  const [loading, setLoading] = React.useState(false);
-  React.useEffect(() => {
-    handleOldData();
-  }, []);
 
-  const handleOldData = async () => {
-    const myOldData = await getMe();
-    setOldData(myOldData.data);
-  };
+const MyProfile = ({ location, data,  ...props }) => {
 
-  const handleSubmit = async data => {
-    const id = oldData._id;
-    try {
-      setLoading(true);
-      await editProfile(id, data);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
+    const [error, setError] = React.useState();
+    const [loading, setLoading] = React.useState(false);
+
+    
+    const resetError = () => setError(null);
+
+    const handleSubmit= async (id, data) => {
+        try {
+            setLoading(true)
+            await editProfile(id, data)
+        } catch (error) {
+            setError(error)
+        } finally {
+           setLoading(false)
+          
+        }
+    };
+
+    const handlePhotoSubmit = async (id, photoData) => {
+        try {
+            setLoading(true)
+            await editPhotoProfile(id, photoData)
+        } catch (error) {
+            setError(error)
+        } finally {
+           setLoading(false)
+        }
     }
-  };
 
-  const handlePhotoSubmit = async photoData => {
-    const id = oldData._id;
-    try {
-      setLoading(true);
-      await editPhotoProfile(id, photoData);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  const handleCVSubmit = async cvData => {
-    const id = oldData._id;
-    try {
-      setLoading(true);
-      await editCVProfile(id, cvData);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <Layout {...props}>
-      <div className="profile">
-        <Card border="dark" className="card-register">
-          <Card.Header>
-            <Card.Text className="text-header">Edit your profile</Card.Text>
-          </Card.Header>
-          <Card.Body className="profile-card-body">
-            <EditPhoto photoEdit={handlePhotoSubmit} />
-            <EditProfile {...props} callApi={handleSubmit} />
-            <EditCV CVEdit={handleCVSubmit} />
-          </Card.Body>
-        </Card>
-      </div>
+      const handleCVSubmit = async (id, cvData) => {
+        
+        try {
+            setLoading(true)
+            await editCVProfile(id, cvData);
+        } catch (error) {
+            setError(error)
+        } finally {
+            setLoading(false)
+        }
+    } 
+       return (
+        <Layout { ...props}>
+            <UserDashboard />
+            <div className='profile'>
+                <Card border="dark" className="card-register">
+                    <Card.Header>
+                        <Card.Text className="text-header">Edit your profile</Card.Text>
+                    </Card.Header>
+                    <Card.Body className="profile-card-body">
+                        {loading ? null : <EditPhoto photoEdit={handlePhotoSubmit} photoData={data}/>}
+                        <hr></hr>
+                       {  loading ?  <Loader hidden={!loading} />
+                       : <EditProfile  callApi={handleSubmit} />  }
+                        <hr></hr>
+                        { loading ? null : <EditCV CVEdit={handleCVSubmit} cvData={data}/> }
+                    </Card.Body> 
+                     {error && (
+                        <Alert
+                            onClick={resetError}
+                            variant="danger"
+                            className="loginPage-error"
+                        >
+                        {error.message}
+                            <br />
+                        </Alert>
+        )}
+                </Card>
+            </div>
     </Layout>
   );
 };

@@ -5,6 +5,32 @@ import { Card, Alert } from 'react-bootstrap';
 import Loader from '../Loader/Loader';
 import './request.css';
 
+<<<<<<< HEAD
+
+const UserRequest = ({ data, ...props }) => {
+
+    const [request, setRequest] = React.useState({});
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState(null);
+
+     React.useEffect(() => {
+       handleCamps();
+       
+    }, []);
+
+  
+    const handleCamps = async id => {
+      try {
+        setLoading(true);
+        const idData = data.campsRequested;
+        const myRequest = await getMyCampsRequest(idData.data._id)
+        setRequest(myRequest.data)
+      } catch (error) {
+        setError(error)
+      } finally {
+        setLoading(false)
+      }
+=======
 const UserRequest = ({ ...props }) => {
   const [request, setRequest] = React.useState({});
   const [loading, setLoading] = React.useState(false);
@@ -28,6 +54,7 @@ const UserRequest = ({ ...props }) => {
       setError(error);
     } finally {
       setLoading(false);
+>>>>>>> da47143e8b94b0a706aabbc39641d023bc6ce8d2
     }
   };
 

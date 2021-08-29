@@ -16,7 +16,7 @@ const CreateCampForm = ({ onSubmit }) => {
     tag: 'urban',
     activities: [],
     address: '',
-    phone: '111-111-1111',
+    phone: '1111111111',
     email: 'camps@campmanager.com',
     from: today,
     to: '',

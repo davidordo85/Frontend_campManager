@@ -2,12 +2,17 @@ import React from 'react';
 import './filter.css';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import SelectActivities from './SelectActivities';
+import moment from 'moment'
+
+const today = moment().format('YYYY-MM-DD')
+const minDate = moment().subtract(4,'years').format('YYYY-MM-DD')
+const maxDate = moment().add(4,'years').format('YYYY-MM-DD')
 
 const FilterCamps = ({ onSubmit, index, ...props }) => {
   const [act, setAct] = React.useState({});
   const [filterCamp, setFilterCamp] = React.useState({
     name: '',
-    from: '',
+    from: today,
     to: '',
     location: '',
     activities: [],
@@ -105,7 +110,8 @@ const FilterCamps = ({ onSubmit, index, ...props }) => {
             placeholder="desde"
             value={from}
             onChange={handleFilterbyFrom}
-            max="2025-12-31"
+            max={maxDate}
+            min={minDate}
           />
         </Form.Group>
         <Form.Group as={Col}>
@@ -117,7 +123,7 @@ const FilterCamps = ({ onSubmit, index, ...props }) => {
             value={to}
             onChange={handleFilterbyTo}
             min={from}
-            max="2025-12-31"
+            max={maxDate}
           />
         </Form.Group>
       </Row>
