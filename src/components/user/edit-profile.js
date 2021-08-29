@@ -1,26 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import {  getMe } from '../../api/auth';
-import placeholder from '../../assets/images/placeholder.png' 
+import './profile.css';
+import Loader from '../Loader/Loader';
+import { getMe } from '../../api/auth';
 
-const EditProfile = ({callApi, ...props}) => {
+
+const EditProfile = ({callApi,  ...props}) => {
 
     const [oldData, setOldData] = React.useState({});
+    const [newData, setNewData] = React.useState({});
+    const [loading, setLoading] = React.useState(false);
 
-    React.useEffect(() => {
-        handleOldData();
-    }, []);
+    useEffect(() => {
+        const ac = new AbortController()
+         handleData()
+        return () => {
+            ac.abort()
+        }
+    },[])
 
-    const handleOldData = async () => {
-      const myOldData = await getMe();
-      setOldData(myOldData.data)
-    };
-
-
+    const handleData = async () => {
+        const myData = await getMe();
+        setOldData(myData.data)
+    }
+    
     const handleEditProfile = event => {
-        setOldData(oldCredentials => {
+        setOldData(oldData => {   
         const newCredentials = {
-            ...oldCredentials,
+            ...oldData,
             [event.target.name] : event.target.value,
         }
         return newCredentials;
@@ -29,15 +36,17 @@ const EditProfile = ({callApi, ...props}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const id = oldData._id
         const data = oldData;
-        callApi(data);
+        callApi(id, data);
     };
 
-
+  
     
     return (
-
+        <div>
         <Form className="edit-register-form" onSubmit={ handleSubmit }>
+ 
             <Form.Group className="form-group" >
                 <div>
                     <Form.Label>Email</Form.Label>
@@ -99,7 +108,7 @@ const EditProfile = ({callApi, ...props}) => {
                             type="text"
                             name="secondFamilyName"
                             className="registerForm-name"
-                            value={oldData.secondFamilyName }
+                            value={oldData.secondFamilyName}
                             onChange={handleEditProfile}
                             placeholder={oldData.secondFamilyName === "" || null ?  'add your second surname' : oldData.secondFamilyName}
                         />
@@ -122,9 +131,10 @@ const EditProfile = ({callApi, ...props}) => {
                         required
                         className="identify-form"
                         onChange={handleEditProfile}
+                        value={oldData.documentId}
                         
                     >
-                        <option defaultChecked="DNI" selected="selected">
+                        <option defaultChecked="DNI" selected={oldData.documentId}>
                         DNI
                         </option>
                         <option value="NIF">NIF</option>
@@ -211,11 +221,13 @@ const EditProfile = ({callApi, ...props}) => {
             <Button
                 variant="outline-dark"
                 type="submit"
-                className="edit-button"
+                className="edit-profile-button"
+                
             >
                 Edit profile
             </Button>
         </Form>
+        </div>
     )
 }
 

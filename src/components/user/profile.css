@@ -77,11 +77,17 @@
   margin-top: 5px;
 }
 
-.edit-button  {
+.edit-profile-button  {
   display: flex;
-  flex-direction: column;
-  justify-self: center;
-  align-self: center;
+  justify-content: center;
+  width: 120px;
+  align-items: center;
+  margin-top: 5px;
+}
+.preview {
+  display: flex;
+  justify-content: center;
+  outline: none;
 }
 
 @media (max-width: 600px) {
