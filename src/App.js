@@ -27,26 +27,16 @@ function App({ isInitiallyLogged }) {
     campsRequested: [],
     
   });
-  
 
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);
 
-  
-
   React.useEffect(() => {
     handleMe();
-    
-    return () => {
-
-    };
-    
+ 
   }, []); 
 
  
-
-  
-
   const handleMe = async () => {
     if (isLogged) {
       try {

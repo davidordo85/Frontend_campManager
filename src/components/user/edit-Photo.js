@@ -28,7 +28,6 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
     const userId = id;
     photoEdit( userId,  newPhoto);
   };
-  console.log(oldData)
 
   const myPhoto = 'http://localhost:5000/photos/'+oldData
 
