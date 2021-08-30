@@ -2,11 +2,11 @@ import React from 'react';
 import './filter.css';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import SelectActivities from './SelectActivities';
-import moment from 'moment'
+import moment from 'moment';
 
-const today = moment().format('YYYY-MM-DD')
-const minDate = moment().subtract(4,'years').format('YYYY-MM-DD')
-const maxDate = moment().add(4,'years').format('YYYY-MM-DD')
+const today = moment().format('YYYY-MM-DD');
+const minDate = moment().subtract(4, 'years').format('YYYY-MM-DD');
+const maxDate = moment().add(4, 'years').format('YYYY-MM-DD');
 
 const FilterCamps = ({ onSubmit, index, ...props }) => {
   const [act, setAct] = React.useState({});
@@ -31,7 +31,6 @@ const FilterCamps = ({ onSubmit, index, ...props }) => {
       location: filterCamp.location,
       activities: act,
     };
-    console.log(filterData);
     onSubmit(filterData);
   };
 
