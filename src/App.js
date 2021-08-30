@@ -29,15 +29,14 @@ function App({ isInitiallyLogged, roles }) {
   const [me, setMe] = React.useState({
     campsConfirmed: [],
     campsRequested: [],
-    
+    campsRejected: [],
   });
 
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);
 
   React.useEffect(() => {
-    handleMe();
- 
+    handleMe(); 
   }, []); 
 
  
@@ -45,7 +44,6 @@ function App({ isInitiallyLogged, roles }) {
     if (isLogged) {
       try {
         const meDates = await getMe('auth');
-
         setMe(meDates.data);
       } catch (error) {
         throw new Error(error);

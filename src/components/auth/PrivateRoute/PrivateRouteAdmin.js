@@ -1,13 +1,7 @@
 import { Redirect, Route } from 'react-router-dom';
 
-const PrivateRouteAdmin = ({ admin, isLogged, ...props }) => {
-  const routeProps = !isLogged
-    ? {
-        children: ({ location }) => (
-          <Redirect to={{ pathname: '/login', state: { from: location } }} />
-        ),
-      }
-    : admin
+const PrivateRouteAdmin = ({ admin, ...props }) => {
+  const routeProps = admin
     ? props
     : {
         children: ({ location }) => (
