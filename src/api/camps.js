@@ -35,7 +35,6 @@ export const filteredCamp = filterCamp => {
   });
 
   const url = `${campsBaseUrl}${filterCampUrl}`;
-  console.log(url);
   return client.get(url);
 };
 

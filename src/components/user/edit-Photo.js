@@ -7,7 +7,6 @@ import './profile.css';
 const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
   const [newPhoto, setNewPhoto] = React.useState({});
   const [oldData, setOldData] = React.useState({});
-  const [id, setId]= React.useState(photoData._id)
 
   const handlePhotoData = async () => {
     const oldPhoto = await getMe();
@@ -17,6 +16,8 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
   useEffect(()=> {
     handlePhotoData()
   })
+
+  const id = photoData._id
 
   const handleChangeFile = event => {
     const file = event.target.files[0];
@@ -32,7 +33,7 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
   const myPhoto = 'http://localhost:5000/photos/'+oldData
 
   return (
-    <div className="edit-photo">
+    <div className="edit-photo" {...props}>
     
       <Form className="profile-edit-photo">
         <Form.Label className="title-photo">Profile picture</Form.Label>
