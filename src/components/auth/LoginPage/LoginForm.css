@@ -7,3 +7,9 @@
 .loginPage-error {
   text-align: center;
 }
+
+
+.notAccount{
+  display: flex;
+  margin-left: 450px;
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './LoginForm.css'
 
 function LoginForm({ onSubmit, isLoading }) {
   const [credentials, setCredentials] = React.useState({
@@ -60,6 +62,9 @@ function LoginForm({ onSubmit, isLoading }) {
             className="loginform-check loginform-label"
           />
           <Form.Label>Remember Password</Form.Label>
+          <Link to="/register" variant="outline-light">
+            <p className='notAccount'>Not account yet? Click here!</p>
+          </Link>
         </div>
       </Form.Group>
       <Button

@@ -2,6 +2,9 @@ import React from 'react';
 import SelectRole from './SelectRole';
 import { Form, Button } from 'react-bootstrap';
 import './registerForm.css';
+import moment from 'moment';
+
+const minDate = moment().subtract(18, 'years').format('YYYY-MM-DD');
 
 const RegisterForm = ({ onSubmit }) => {
   const [register, setRegister] = React.useState({
@@ -333,6 +336,7 @@ const RegisterForm = ({ onSubmit }) => {
             name="bornDate"
             id="bornDate"
             value={bornDate}
+            max={minDate}
             onChange={handleChangeRegister}
             required
           />
