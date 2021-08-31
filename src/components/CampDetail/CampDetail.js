@@ -1,7 +1,12 @@
 import React from 'react';
 import Layout from '../layout/layout';
-import { Link } from 'react-router-dom';
-import { getCampDetail, subscribe, unSubscribe } from '../../api/camps';
+import { Link, Redirect } from 'react-router-dom';
+import {
+  getCampDetail,
+  subscribe,
+  unSubscribe,
+  deletedCamp,
+} from '../../api/camps';
 import Loader from '../Loader/Loader';
 import pending from '../../assets/images/pending.svg';
 import accepted from '../../assets/images/accepted.svg';
@@ -20,6 +25,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
+  const [deleted, setDeleted] = React.useState(false);
 
   const resetError = () => setError(null);
 
@@ -42,7 +48,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
     }
   };
 
-
   const handleSubmit = async () => {
     try {
       await subscribe(paramsId);
@@ -62,6 +67,21 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
     } finally {
       setLoading(false);
       window.location.reload();
+    }
+  };
+
+  const handleDeleted = async () => {
+    if (window.confirm('sure you want to delete this camp?')) {
+      alert('gracias por confirmar');
+      /*       try {
+        await deletedCamp(paramsId);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      } */
+    } else {
+      alert('tus muertos');
     }
   };
 
@@ -163,14 +183,18 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
               </Card.Body>
             </Card>
           </CardColumns>
-          {error && (
-            <Alert
-              variant="danger"
-              onClick={resetError}
-              className="loginPage-error"
-            >
-              {error.message}
-            </Alert>
+          {error && error.status === 404 ? (
+            <Redirect to="/404" />
+          ) : (
+            error && (
+              <Alert
+                variant="danger"
+                onClick={resetError}
+                className="loginPage-error"
+              >
+                {error.message}
+              </Alert>
+            )
           )}
         </Card>
         {!isLogged ? null : role === 'admin' ? null : compare(
@@ -205,15 +229,25 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
           </Button>
         )}
         {!isLogged ? null : role === 'admin' ? (
-          <Button
-            as={Link}
-            to={`/campModify/${paramsId}`}
-            variant="outline-dark"
-            className="sign-up"
-          >
-            {' '}
-            Edit camp
-          </Button>
+          <div>
+            <Button
+              className="sign-up"
+              type="submit"
+              onClick={handleDeleted}
+              variant="outline-danger"
+            >
+              Delete camp
+            </Button>
+            <Button
+              as={Link}
+              to={`/campModify/${paramsId}`}
+              variant="outline-dark"
+              className="sign-up"
+            >
+              {' '}
+              Edit camp
+            </Button>
+          </div>
         ) : null}
       </div>
     </Layout>
