@@ -20,6 +20,7 @@ function LoginPage({ onLogin, history, location }) {
 
       const { from } = location.state || { from: { pathname: '/' } };
       history.replace(from);
+      window.location.reload();
     }
   });
 

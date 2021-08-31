@@ -9,7 +9,7 @@ const Dashboard = () => {
     <div>
       {role === 'admin' ? (
         <DashboardAdmin />
-      ) : role === 'helper' ? (
+      ) : role === 'helper' || 'guest' ? (
         <UserDashboard />
       ) : null}
     </div>
