@@ -30,7 +30,7 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
     photoEdit( userId,  newPhoto);
   };
 
-  const myPhoto = 'http://localhost:5000/photos/'+oldData
+  const myPhoto = process.env.REACT_APP_API_PHOTO+oldData;
 
   return (
     <div className="edit-photo" {...props}>

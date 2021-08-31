@@ -29,7 +29,7 @@ const EditCV = ({CVEdit, cvData, ...props}) => {
         CVEdit(id, CVFile);
     }
 
-    const myCV = 'http://localhost:5000/uploads/'+oldData;
+    const myCV = process.env.REACT_APP_API_CV+oldData;
 
     return (
         <div className='editCV'>

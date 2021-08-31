@@ -13,9 +13,15 @@ const CreateCampPage = ({ ...props }) => {
 
   const resetError = () => setError(null);
 
-  /*   React.useEffect(() => {
+
+   React.useEffect(() => {
+    const ac = new AbortController();
     handleSubmit();
-  }, []); */
+    return () => {
+      ac.abort();
+      setNewCamp(null)
+    };
+  }, []);
 
   const handleSubmit = async create => {
     resetError();
