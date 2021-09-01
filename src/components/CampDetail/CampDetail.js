@@ -85,8 +85,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
     }
   };
 
-  console.log(camp);
-
   const confirmed = props.confirmed;
   const requested = props.requested;
   const reject = props.reject;

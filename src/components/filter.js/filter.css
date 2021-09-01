@@ -10,8 +10,12 @@
   margin-left: 1rem;
 }
 
-.filter-placeholder::placeholder{
+.filter-placeholder::placeholder {
   font-weight: lighter;
+}
+
+.reset {
+  margin-left: 1rem;
 }
 
 @media (min-width: 608px) {
