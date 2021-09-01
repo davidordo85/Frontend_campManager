@@ -17,8 +17,7 @@ function LoginPage({ onLogin, history, location }) {
   React.useEffect(() => {
     if (isLogged.current) {
       onLogin();
-
-      window.location.reload();
+      window.location.replace('/');
     }
   });
 
