@@ -1,22 +1,45 @@
 import React from 'react';
-import {Alert, Card } from 'react-bootstrap';
+import {Alert, Card, Button } from 'react-bootstrap';
 import Layout from '../layout/layout';
 import UserDashboard from './dashboard-user';
-import { editCVProfile, editPhotoProfile, editProfile } from '../../api/auth';
+import { deleteMyProfile, editCVProfile, editPhotoProfile, editProfile, logout } from '../../api/auth';
 import './profile.css';
 import EditProfile from './edit-profile';
 import EditPhoto from './edit-Photo';
 import EditCV from './edit-cv';
 import Loader from '../Loader/Loader';
+import { Redirect } from 'react-router-dom';
 
 
-const MyProfile = ({ location, data,  ...props }) => {
+const MyProfile = ({ location, data, onLogout,  ...props }) => {
 
     const [error, setError] = React.useState();
     const [loading, setLoading] = React.useState(false);
+    const [ deleteProfile, setDeleteProfile ] = React.useState(false)
 
-    
+    const id = data._id;
+
+
+   
+     
     const resetError = () => setError(null);
+
+    const handleClickDelete = async () => {
+        if (window.confirm('Estás seguro que quieres borrar tu perfil?')) {
+            console.log(id)
+            try {
+                await deleteMyProfile(id);
+               onLogout(true)
+            } catch (error) {
+                setError(error)
+            }finally {
+            setDeleteProfile(true)
+            }
+        }
+    }
+    if (deleteProfile) {
+        return <Redirect to='/login' />
+    }
 
     const handleSubmit= async (id, data) => {
         try {
@@ -67,7 +90,15 @@ const MyProfile = ({ location, data,  ...props }) => {
                        : <EditProfile  callApi={handleSubmit} />  }
                         <hr></hr>
                         { loading ? null : <EditCV CVEdit={handleCVSubmit} cvData={data}/> }
-                    </Card.Body> 
+                        <Button
+                            variant="outline-danger"
+                            type="submit"
+                            className="edit-profile-button"
+                            onClick={handleClickDelete}
+                        >
+                        Delete profile
+                        </Button>
+                    </Card.Body>
                      {error && (
                         <Alert
                             onClick={resetError}

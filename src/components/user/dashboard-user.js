@@ -5,8 +5,6 @@ import './dashboard-user.css'
 
 const UserDashboard = () => {
 
-    
-
 
     return (
          <div className="dashboardUser">

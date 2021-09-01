@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../layout/layout';
 import { Link, Redirect } from 'react-router-dom';
 import {
+  deletedCamp,
   getCampDetail,
   subscribe,
   unSubscribe,
@@ -25,7 +26,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-  //const [deleted, setDeleted] = React.useState(false);
+  const [deleted, setDeleted] = React.useState(false);
 
   const resetError = () => setError(null);
 
@@ -72,7 +73,9 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
 
   const handleDeleted = async () => {
     if (window.confirm('sure you want to delete this camp?')) {
-      alert('gracias por confirmar');
+      // setDeleted(true)
+      // await deletedCamp(paramsId)
+
       /*       try {
         await deletedCamp(paramsId);
       } catch (error) {
@@ -84,6 +87,10 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
       alert('tus muertos');
     }
   };
+  if (deleted){
+    setDeleted(false)
+    return <Redirect to='/' />
+  }
 
   const confirmed = props.confirmed;
   const requested = props.requested;
