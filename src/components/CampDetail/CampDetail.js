@@ -5,7 +5,7 @@ import {
   getCampDetail,
   subscribe,
   unSubscribe,
-  deletedCamp,
+  //deletedCamp,
 } from '../../api/camps';
 import Loader from '../Loader/Loader';
 import pending from '../../assets/images/pending.svg';
@@ -25,7 +25,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-  const [deleted, setDeleted] = React.useState(false);
+  //const [deleted, setDeleted] = React.useState(false);
 
   const resetError = () => setError(null);
 
@@ -84,6 +84,8 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
       alert('tus muertos');
     }
   };
+
+  console.log(camp);
 
   const confirmed = props.confirmed;
   const requested = props.requested;
@@ -198,6 +200,12 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
           )}
         </Card>
         {!isLogged ? null : role === 'admin' ? null : compare(
+            reject,
+            paramsId,
+          ) ? null : role === 'guest' &&
+          camp.confirmedHelpers.length >=
+            camp.confirmedGuests.length ? null : role === 'helper' &&
+          camp.confirmedHelpers.length >= camp.capacity ? null : compare(
             confirmed,
             paramsId,
           ) ? (
