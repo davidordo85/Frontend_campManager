@@ -24,4 +24,5 @@ jobs:
         env:
           REACT_APP_API_BASE_URL: http://ec2-3-13-142-162.us-east-2.compute.amazonaws.com
           REACT_APP_API_PHOTO: http://ec2-3-13-142-162.us-east-2.compute.amazonaws.com/photos/
+          REACT_APP_API_CV: http://ec2-3-13-142-162.us-east-2.compute.amazonaws.com/uploads/
       # - run: npm test

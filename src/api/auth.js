@@ -106,5 +106,5 @@ export const editRole = (data, id) => {
 
 export const deleteMyProfile = id => {
   const url = `${usersPath}/${id}`;
-  return client.delete(url)
-}
+  return client.delete(url);
+};

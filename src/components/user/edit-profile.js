@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import './profile.css';
 import Loader from '../Loader/Loader';
-import { getMe } from '../../api/auth';
 
-const EditProfile = ({ callApi, setData, data,  ...props }) => {
+const EditProfile = ({ callApi, setData, data, ...props }) => {
   const [oldData, setOldData] = React.useState({});
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -21,7 +20,7 @@ const EditProfile = ({ callApi, setData, data,  ...props }) => {
 
   const handleData = async () => {
     try {
-      setLoading(true);   
+      setLoading(true);
       setOldData(data);
     } catch (error) {
       setError(error);
@@ -162,6 +161,7 @@ const EditProfile = ({ callApi, setData, data,  ...props }) => {
               name="sex"
               className="gender-form"
               onChange={handleEditProfile}
+              value={oldData.gender}
             >
               <option value="hombre">Man</option>
               <option value="Mujer">Woman</option>
@@ -196,6 +196,7 @@ const EditProfile = ({ callApi, setData, data,  ...props }) => {
               name="medical"
               className="medical-form"
               onChange={handleEditProfile}
+              value={oldData.medicalKnowledge}
             >
               <option value={true}>Sí</option>
               <option value={false}>No</option>

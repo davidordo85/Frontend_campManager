@@ -19,27 +19,27 @@ import UserRequest from './components/user/userRequest';
 import MyProfile from './components/user/MyProfile';
 
 function App({ isInitiallyLogged, roles }) {
-  const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
+  const [islogged, setIsLogged] = React.useState(isInitiallyLogged);
   const role = React.useState(roles);
 
   const [me, setMe] = React.useState({
     campsConfirmed: [],
     campsRequested: [],
     campsRejected: [],
+    email: [],
   });
-
 
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);
 
   React.useEffect(() => {
-    if (isLogged){
+    if (islogged) {
       handleMe();
     }
   }, []);
 
   const handleMe = async () => {
-    if (isLogged) {
+    if (islogged) {
       try {
         const meDates = await getMe('auth');
         setMe(meDates.data);
@@ -56,7 +56,7 @@ function App({ isInitiallyLogged, roles }) {
         <Route exact path="/campDetail/:id">
           {routeProps => (
             <CampDetail
-              isLogged={isLogged}
+              islogged={islogged}
               onLogout={handleLogout}
               confirmed={me.campsConfirmed}
               requested={me.campsRequested}
@@ -66,25 +66,25 @@ function App({ isInitiallyLogged, roles }) {
             />
           )}
         </Route>
-        <PrivateRouteAdmin isLogged={isLogged} exact path="/campModify/:id">
+        <PrivateRouteAdmin islogged={islogged} exact path="/campModify/:id">
           {routeProps => (
             <ModifyCampPage
-              isLogged={isLogged}
+              islogged={islogged}
               onLogout={handleLogout}
               {...routeProps}
             />
           )}
         </PrivateRouteAdmin>
-        <PrivateRoute
-          isLogged={isLogged}
-          onLogout={handleLogout}
-          exact
-          path="/myProfile"
-        >
-          <MyProfile isLogged={isLogged} onLogout={handleLogout} handleMe={handleMe} data={me}/>
+        <PrivateRoute islogged={islogged} exact path="/myProfile">
+          <MyProfile
+            islogged={islogged}
+            onLogout={handleLogout}
+            handleMe={handleMe}
+            data={me}
+          />
         </PrivateRoute>
         <PrivateRoute
-          isLogged={isLogged}
+          islogged={islogged}
           onLogout={handleLogout}
           data={me}
           exact
@@ -92,7 +92,7 @@ function App({ isInitiallyLogged, roles }) {
         >
           {routeProps => (
             <UserRequest
-              isLogged={isLogged}
+              islogged={islogged}
               onLogout={handleLogout}
               id={me._id}
               {...routeProps}
@@ -114,25 +114,25 @@ function App({ isInitiallyLogged, roles }) {
         <Route path="/forgotpassword">
           <ForgotPasswordPage />
         </Route>
-        <PrivateRouteAdmin isLogged={isLogged} exact path="/createCamp">
-          <CreateCamp isLogged={isLogged} onLogout={handleLogout} />
+        <PrivateRouteAdmin islogged={islogged} exact path="/createCamp">
+          <CreateCamp islogged={islogged} onLogout={handleLogout} />
         </PrivateRouteAdmin>
-        <PrivateRouteAdmin isLogged={isLogged} exact path="/requests">
-          <Requests isLogged={isLogged} onLogout={handleLogout} />
+        <PrivateRouteAdmin islogged={islogged} exact path="/requests">
+          <Requests islogged={islogged} onLogout={handleLogout} />
         </PrivateRouteAdmin>
-        <PrivateRouteAdmin isLogged={isLogged} exact path="/modifyCamp">
+        <PrivateRouteAdmin islogged={islogged} exact path="/modifyCamp">
           {routeProps => (
             <ModifyCampList
-              isLogged={isLogged}
+              islogged={islogged}
               onLogout={handleLogout}
               {...routeProps}
             />
           )}
         </PrivateRouteAdmin>
-        <PrivateRouteAdmin isLogged={isLogged} exact path="/userList">
+        <PrivateRouteAdmin islogged={islogged} exact path="/userList">
           {routeProps => (
             <UserList
-              isLogged={isLogged}
+              islogged={islogged}
               onLogout={handleLogout}
               {...routeProps}
             />
@@ -141,7 +141,7 @@ function App({ isInitiallyLogged, roles }) {
         <Route exact path="/">
           {routeProps => (
             <CampList
-              isLogged={isLogged}
+              islogged={islogged}
               onLogout={handleLogout}
               {...routeProps}
             />
