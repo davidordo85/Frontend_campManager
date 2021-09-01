@@ -197,7 +197,11 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
             )
           )}
         </Card>
-        {!isLogged ? null : role === 'admin' ? null : compare(
+        {!isLogged ? (
+          <Link to="/login" className="sign-up">
+            login to join the camp{' '}
+          </Link>
+        ) : role === 'admin' ? null : compare(
             reject,
             paramsId,
           ) ? null : role === 'guest' &&
