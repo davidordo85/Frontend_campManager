@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { getMe } from '../../api/auth';
 import placeholder from '../../assets/images/placeholder.png';
 import './profile.css';
 
@@ -9,8 +8,7 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
   const [oldData, setOldData] = React.useState({});
 
   const handlePhotoData = async () => {
-    const oldPhoto = await getMe();
-    setOldData(oldPhoto.data.photo)
+    setOldData(photoData.photo)
   }
 
   useEffect(()=> {
@@ -18,6 +16,7 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
   })
 
   const id = photoData._id
+
 
   const handleChangeFile = event => {
     const file = event.target.files[0];
@@ -27,10 +26,11 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const userId = id;
+
     photoEdit( userId,  newPhoto);
   };
 
-  const myPhoto = process.env.REACT_APP_API_PHOTO+oldData;
+  const myPhoto = process.env.REACT_APP_API_PHOTO+photoData.photo;
 
   return (
     <div className="edit-photo" {...props}>
@@ -46,7 +46,7 @@ const EditPhoto = ({ photoEdit, photoData,   ...props }) => {
           className="registerForm-photo"
           type="file"
           name="photo"
-          value={null}
+          value={undefined}
           onChange={handleChangeFile}
         />
         <Button

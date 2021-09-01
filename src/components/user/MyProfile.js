@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Alert, Card, Button } from 'react-bootstrap';
 import Layout from '../layout/layout';
 import UserDashboard from './dashboard-user';
-import { deleteMyProfile, editCVProfile, editPhotoProfile, editProfile, logout } from '../../api/auth';
+import { deleteMyProfile, editCVProfile, editPhotoProfile, editProfile } from '../../api/auth';
 import './profile.css';
 import EditProfile from './edit-profile';
 import EditPhoto from './edit-Photo';
@@ -11,25 +11,32 @@ import Loader from '../Loader/Loader';
 import { Redirect } from 'react-router-dom';
 
 
-const MyProfile = ({ location, data, onLogout,  ...props }) => {
+const MyProfile = ({ location, onLogout, data, handleMe,  ...props }) => {
 
     const [error, setError] = React.useState();
     const [loading, setLoading] = React.useState(false);
     const [ deleteProfile, setDeleteProfile ] = React.useState(false)
 
-    const id = data._id;
 
+  const handleNewData = async () => {
+      try{
+          setLoading(true)
+          await handleMe()
+      } catch(error) {
+          setError(error)
+      }finally{
+          setLoading(false)
+      }
+  }
 
-   
-     
     const resetError = () => setError(null);
 
     const handleClickDelete = async () => {
         if (window.confirm('Estás seguro que quieres borrar tu perfil?')) {
-            console.log(id)
+            console.log()
             try {
-                await deleteMyProfile(id);
-               onLogout(true)
+                await deleteMyProfile(data._id);
+                onLogout()
             } catch (error) {
                 setError(error)
             }finally {
@@ -41,7 +48,7 @@ const MyProfile = ({ location, data, onLogout,  ...props }) => {
         return <Redirect to='/login' />
     }
 
-    const handleSubmit= async (id, data) => {
+    const handleSubmit= async ( id, data) => {
         try {
             setLoading(true)
             await editProfile(id, data)
@@ -49,11 +56,11 @@ const MyProfile = ({ location, data, onLogout,  ...props }) => {
             setError(error)
         } finally {
            setLoading(false)
-          
+           handleNewData()
         }
     };
 
-    const handlePhotoSubmit = async (id, photoData) => {
+    const handlePhotoSubmit = async (id,  photoData) => {
         try {
             setLoading(true)
             await editPhotoProfile(id, photoData)
@@ -61,11 +68,11 @@ const MyProfile = ({ location, data, onLogout,  ...props }) => {
             setError(error)
         } finally {
            setLoading(false)
+           handleNewData()
         }
     }
 
-      const handleCVSubmit = async (id, cvData) => {
-        
+      const handleCVSubmit = async (id,  cvData) => {
         try {
             setLoading(true)
             await editCVProfile(id, cvData);
@@ -73,12 +80,15 @@ const MyProfile = ({ location, data, onLogout,  ...props }) => {
             setError(error)
         } finally {
             setLoading(false)
+            handleNewData()
         }
     } 
+
        return (
         <Layout { ...props}>
             <UserDashboard />
             <div className='profile'>
+                
                 <Card border="dark" className="card-register">
                     <Card.Header>
                         <Card.Text className="text-header">Edit your profile</Card.Text>
@@ -87,7 +97,7 @@ const MyProfile = ({ location, data, onLogout,  ...props }) => {
                         {loading ? null : <EditPhoto photoEdit={handlePhotoSubmit} photoData={data}/>}
                         <hr></hr>
                        {  loading ?  <Loader hidden={!loading} />
-                       : <EditProfile  callApi={handleSubmit} />  }
+                       : <EditProfile  callApi={handleSubmit} data={data}  {...props} />  }
                         <hr></hr>
                         { loading ? null : <EditCV CVEdit={handleCVSubmit} cvData={data}/> }
                         <Button
@@ -110,6 +120,7 @@ const MyProfile = ({ location, data, onLogout,  ...props }) => {
                         </Alert>
         )}
                 </Card>
+            
             </div>
     </Layout>
   );

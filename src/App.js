@@ -28,11 +28,14 @@ function App({ isInitiallyLogged, roles }) {
     campsRejected: [],
   });
 
+
   const handleLogin = () => setIsLogged(true);
   const handleLogout = () => setIsLogged(false);
 
   React.useEffect(() => {
-    handleMe();
+    if (isLogged){
+      handleMe();
+    }
   }, []);
 
   const handleMe = async () => {
@@ -78,7 +81,7 @@ function App({ isInitiallyLogged, roles }) {
           exact
           path="/myProfile"
         >
-          <MyProfile isLogged={isLogged} onLogout={handleLogout} data={me} />
+          <MyProfile isLogged={isLogged} onLogout={handleLogout} handleMe={handleMe} data={me}/>
         </PrivateRoute>
         <PrivateRoute
           isLogged={isLogged}
