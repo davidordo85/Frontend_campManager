@@ -103,3 +103,8 @@ export const editRole = (data, id) => {
   const url = `/api/v1/users/${id}`;
   return client.put(url, data);
 };
+
+export const deleteMyProfile = id => {
+  const url = `${usersPath}/${id}`;
+  return client.delete(url);
+};

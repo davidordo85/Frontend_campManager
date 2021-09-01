@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from '../layout/layout';
 import { Link, Redirect } from 'react-router-dom';
 import {
+  deletedCamp,
   getCampDetail,
   subscribe,
   unSubscribe,
-  deletedCamp,
 } from '../../api/camps';
 import Loader from '../Loader/Loader';
 import pending from '../../assets/images/pending.svg';
@@ -16,7 +16,7 @@ import Button from 'react-bootstrap/Button';
 
 import './CampDetail.css';
 
-const CampDetail = ({ history, isLogged, _id, ...props }) => {
+const CampDetail = ({ history, islogged, _id, ...props }) => {
   const [camp, setCamp] = React.useState({
     activities: ['await'],
     createdAt: '2021-07-28T00:18:07.898Z',
@@ -95,7 +95,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   const createdAt = camp.createdAt.split('T');
 
   return (
-    <Layout isLogged={isLogged} {...props}>
+    <Layout islogged={islogged} {...props}>
       <div className="detail">
         <Loader hidden={!loading} />
         <Card className="card-exterior">
@@ -111,7 +111,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
                 <Card.Text>Direction: {camp.address}</Card.Text>
                 <Card.Text>Location: {camp.location}</Card.Text>
                 <Card.Text>Edition: {camp.edition}</Card.Text>
-                {!isLogged ? null : role === 'admin' ? null : compare(
+                {!islogged ? null : role === 'admin' ? null : compare(
                     confirmed,
                     paramsId,
                   ) ? (
@@ -195,7 +195,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
             )
           )}
         </Card>
-        {!isLogged ? (
+        {!islogged ? (
           <Link to="/login" className="sign-up">
             login to join the camp{' '}
           </Link>
@@ -236,7 +236,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
             Sign up
           </Button>
         )}
-        {!isLogged ? null : role === 'admin' ? (
+        {!islogged ? null : role === 'admin' ? (
           <div>
             <Button
               className="sign-up"

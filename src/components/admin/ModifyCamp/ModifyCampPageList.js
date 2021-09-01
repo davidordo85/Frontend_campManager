@@ -5,7 +5,6 @@ import Loader from '../../Loader/Loader';
 import { Card, ListGroup } from 'react-bootstrap';
 import List from './List';
 import './ModifyCampPageList.css';
-import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 const ModifyCampList = ({ id, history, ...props }) => {
   const [camps, setCamps] = React.useState([]);
@@ -35,9 +34,9 @@ const ModifyCampList = ({ id, history, ...props }) => {
       <div className="main">
         <Loader hidden={!loading} />
         <Card className="card-modify">
-          <CardHeader className="header">
+          <Card.Header className="header">
             <Card.Text className="modifyCampForm-title">Choose the camp to modify</Card.Text>
-          </CardHeader>
+          </Card.Header>
           <ListGroup className="list-group">
             {camps.map((camp, index) => (
               <List

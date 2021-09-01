@@ -7,7 +7,7 @@ import AuthButton from '../auth/AuthButton';
 import Dashboard from '../auth/Dashboard/Dashboard';
 import './Header.css';
 
-const Header = ({ isLogged, onLogout }) => {
+const Header = ({ islogged, onLogout }) => {
   const [hidden, setHidden] = React.useState(false);
 
   const handleClick = event => {
@@ -26,8 +26,8 @@ const Header = ({ isLogged, onLogout }) => {
         <Link to="/" variant="outline-light">
           <img className="logo" alt="logo" src={logo}></img>
         </Link>
-        <AuthButton className="login" isLogged={isLogged} onLogout={onLogout} />
-        {isLogged ? (
+        <AuthButton className="login" islogged={islogged} onLogout={onLogout} />
+        {islogged ? (
           <div>
             <Button
               size="lg"
@@ -38,11 +38,11 @@ const Header = ({ isLogged, onLogout }) => {
               Menu
             </Button>
             {!hidden || window.innerWidth >= 600 ? (
-              <Dashboard isLogged={isLogged} onLogout={onLogout} />
+              <Dashboard islogged={islogged} onLogout={onLogout} />
             ) : null}
           </div>
         ) : null}
-        {isLogged ? null : (
+        {islogged ? null : (
           <Button
             size="lg"
             className="register"

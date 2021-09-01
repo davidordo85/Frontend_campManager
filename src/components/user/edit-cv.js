@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
-import { getMe } from '../../api/auth';
 import './profile.css';
 
 const EditCV = ({CVEdit, cvData, ...props}) => {
@@ -8,14 +7,14 @@ const EditCV = ({CVEdit, cvData, ...props}) => {
     const [oldData, setOldData] = React.useState({});
     const [cv, setCV] = React.useState({});
 
-     const handleCVData = async () => {
-    const oldPhoto = await getMe();
-    setOldData(oldPhoto.data.curriculum)
+    const handleCVData = async () => {
+    setOldData(cvData.curriculum)
   }
 
   React.useEffect(()=> {
     handleCVData()
   })
+   const id = cvData._id;
 
     const handleChangeFile = event => {
         const cv = event.target.files[0];
@@ -24,12 +23,11 @@ const EditCV = ({CVEdit, cvData, ...props}) => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        const id = cvData._id;
         const CVFile = cv;
         CVEdit(id, CVFile);
-    }
+    };
 
-    const myCV = process.env.REACT_APP_API_CV+oldData;
+    const myCV = process.env.REACT_APP_API_CV+cvData.curriculum;
 
     return (
         <div className='editCV'>
@@ -39,7 +37,7 @@ const EditCV = ({CVEdit, cvData, ...props}) => {
                     className="registerForm-CV"
                     type="file"
                     name="cv"
-                    value={null}
+                    value={undefined}
                     onChange={handleChangeFile}
                 />
 

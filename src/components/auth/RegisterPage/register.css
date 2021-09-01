@@ -1,5 +1,4 @@
 .card-register {
-  display: grid;
   grid-template-columns: repeat(3, 33%);
 }
 

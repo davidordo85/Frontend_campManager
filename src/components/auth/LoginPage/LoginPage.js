@@ -10,12 +10,12 @@ import './LoginPage.css';
 function LoginPage({ onLogin, history, location }) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  const isLogged = React.useRef(false);
+  const islogged = React.useRef(false);
 
   const resetError = () => setError(null);
 
   React.useEffect(() => {
-    if (isLogged.current) {
+    if (islogged.current) {
       onLogin();
       window.location.replace('/');
     }
@@ -26,7 +26,7 @@ function LoginPage({ onLogin, history, location }) {
     setIsLoading(true);
     try {
       await login(credentials);
-      isLogged.current = true;
+      islogged.current = true;
     } catch (error) {
       setError(error);
     } finally {

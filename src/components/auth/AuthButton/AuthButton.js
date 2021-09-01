@@ -4,12 +4,12 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { logout } from '../../../api/auth';
 
-const AuthButton = ({ className, isLogged, onLogout }) => {
+const AuthButton = ({ className, islogged, onLogout }) => {
   const handleLogoutClick = () => {
     logout().then(onLogout);
   };
 
-  const props = isLogged
+  const props = islogged
     ? { onClick: handleLogoutClick, children: 'Log out', className: 'logout' }
     : {
         as: Link,

@@ -47,7 +47,6 @@ const CampList = ({ id, history, location, ...props }) => {
       setLoading(false);
     }
   };
-
   return (
     <Layout {...props}>
       <div className="con-camps">
@@ -71,10 +70,7 @@ const CampList = ({ id, history, location, ...props }) => {
                 />
               ))
             ) : (
-              <EmptyList
-                title="Aún no se ha registrado nadie, ¡Se el primero!"
-                description="Tan solo tienes que registrarte y publicar tu campamento. En caso de tener cuenta, accede y publicalo."
-              />
+              <EmptyList title="There are no camps yet !!!" />
             )}
           </Card>
           {error && (
