@@ -1,14 +1,10 @@
 import React from 'react';
-import Button from '../Buttons/Button';
-const EmptyList = ({title, description }) => {
-
-    return (
-        <div>
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <Button>Registrarse</Button>
-        </div>
-    )
-}
+const EmptyList = ({ title }) => {
+  return (
+    <div>
+      <h1>{title}</h1>
+    </div>
+  );
+};
 
 export default EmptyList;
