@@ -5,7 +5,7 @@ import {
   getCampDetail,
   subscribe,
   unSubscribe,
-  //deletedCamp,
+  deletedCamp,
 } from '../../api/camps';
 import Loader from '../Loader/Loader';
 import pending from '../../assets/images/pending.svg';
@@ -25,7 +25,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-  //const [deleted, setDeleted] = React.useState(false);
+  const [deleted, setDeleted] = React.useState(false);
 
   const resetError = () => setError(null);
 
@@ -72,16 +72,16 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
 
   const handleDeleted = async () => {
     if (window.confirm('sure you want to delete this camp?')) {
-      alert('gracias por confirmar');
-      /*       try {
+      alert('thanks for confirm');
+      try {
         await deletedCamp(paramsId);
+        setDeleted(true);
       } catch (error) {
         setError(error);
       } finally {
         setLoading(false);
-      } */
-    } else {
-      alert('tus muertos');
+        window.location.reload();
+      }
     }
   };
 
