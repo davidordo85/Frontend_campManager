@@ -18,8 +18,6 @@ function LoginPage({ onLogin, history, location }) {
     if (isLogged.current) {
       onLogin();
 
-      const { from } = location.state || { from: { pathname: '/' } };
-      history.replace(from);
       window.location.reload();
     }
   });

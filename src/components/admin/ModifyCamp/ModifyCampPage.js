@@ -9,6 +9,17 @@ import './ModifyCampPage.css';
 
 const ModifyCampPage = ({ history, ...props }) => {
   const [oldCamp, setOldCamp] = React.useState({
+    name: '',
+    edition: '',
+    location: '',
+    description: '',
+    tag: '',
+    address: '',
+    phone: '',
+    email: '',
+    from: '',
+    to: '',
+    capacity: '',
     activities: [''],
   });
 
@@ -120,7 +131,9 @@ const ModifyCampPage = ({ history, ...props }) => {
       <Loader hidden={!loading} />
       <Card className="card-form" onSubmit={handleSubmit}>
         <Card.Header className="header">
-          <Card.Text className="modifyCampForm-title">Modify Camp: {oldCamp.name}</Card.Text>
+          <Card.Text className="modifyCampForm-title">
+            Modify Camp: {oldCamp.name}
+          </Card.Text>
         </Card.Header>
         <Form className="form-modify">
           <Form.Group className="form-groupModify">
@@ -158,7 +171,9 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label className="modifyCampForm-label">Description</Form.Label>
+              <Form.Label className="modifyCampForm-label">
+                Description
+              </Form.Label>
               <Form.Control
                 as="textarea"
                 name="description"
@@ -188,7 +203,9 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div className="activities">
-              <Form.Label  className="modifyCampForm-label">Activities</Form.Label>
+              <Form.Label className="modifyCampForm-label">
+                Activities
+              </Form.Label>
               <Select
                 className="activities"
                 classNamePrefix="activities"
@@ -222,7 +239,9 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label className="modifyCampForm-label">From (previously: {oldCamp.from})</Form.Label>
+              <Form.Label className="modifyCampForm-label">
+                From (previously: {oldCamp.from})
+              </Form.Label>
               <Form.Control
                 className=""
                 type="date"
@@ -232,7 +251,9 @@ const ModifyCampPage = ({ history, ...props }) => {
               />
             </div>
             <div>
-              <Form.Label className="modifyCampForm-label">To (previously: {oldCamp.to})</Form.Label>
+              <Form.Label className="modifyCampForm-label">
+                To (previously: {oldCamp.to})
+              </Form.Label>
               <Form.Control
                 className=""
                 type="date"
@@ -253,7 +274,11 @@ const ModifyCampPage = ({ history, ...props }) => {
                 onChange={handleEditCamp}
               />
             </div>
-            <Button variant="outline-dark" type="submit" className="modifyCamp-submit">
+            <Button
+              variant="outline-dark"
+              type="submit"
+              className="modifyCamp-submit"
+            >
               Submit
             </Button>
           </Form.Group>
