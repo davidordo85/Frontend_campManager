@@ -25,7 +25,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   });
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-  const [deleted, setDeleted] = React.useState(false);
 
   const resetError = () => setError(null);
 
@@ -75,7 +74,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
       alert('thanks for confirm');
       try {
         await deletedCamp(paramsId);
-        setDeleted(true);
       } catch (error) {
         setError(error);
       } finally {
