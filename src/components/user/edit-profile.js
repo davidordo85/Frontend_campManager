@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import './profile.css';
 import Loader from '../Loader/Loader';
 import { getMe } from '../../api/auth';
 
-const EditProfile = ({ callApi, ...props }) => {
+const EditProfile = ({ callApi, setData, data,  ...props }) => {
   const [oldData, setOldData] = React.useState({});
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -21,9 +21,8 @@ const EditProfile = ({ callApi, ...props }) => {
 
   const handleData = async () => {
     try {
-      setLoading(true);
-      const myData = await getMe();
-      setOldData(myData.data);
+      setLoading(true);   
+      setOldData(data);
     } catch (error) {
       setError(error);
     } finally {
