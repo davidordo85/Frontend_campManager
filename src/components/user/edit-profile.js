@@ -2,9 +2,8 @@ import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import './profile.css';
 import Loader from '../Loader/Loader';
-import { getMe } from '../../api/auth';
 
-const EditProfile = ({ callApi, ...props }) => {
+const EditProfile = ({ callApi, setData, data, ...props }) => {
   const [oldData, setOldData] = React.useState({});
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -22,8 +21,7 @@ const EditProfile = ({ callApi, ...props }) => {
   const handleData = async () => {
     try {
       setLoading(true);
-      const myData = await getMe();
-      setOldData(myData.data);
+      setOldData(data);
     } catch (error) {
       setError(error);
     } finally {
@@ -163,6 +161,7 @@ const EditProfile = ({ callApi, ...props }) => {
               name="sex"
               className="gender-form"
               onChange={handleEditProfile}
+              value={oldData.gender}
             >
               <option value="hombre">Man</option>
               <option value="Mujer">Woman</option>
@@ -197,6 +196,7 @@ const EditProfile = ({ callApi, ...props }) => {
               name="medical"
               className="medical-form"
               onChange={handleEditProfile}
+              value={oldData.medicalKnowledge}
             >
               <option value={true}>Sí</option>
               <option value={false}>No</option>

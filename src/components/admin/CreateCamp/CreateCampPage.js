@@ -13,28 +13,29 @@ const CreateCampPage = ({ ...props }) => {
 
   const resetError = () => setError(null);
 
-
-   React.useEffect(() => {
+  React.useEffect(() => {
     const ac = new AbortController();
     handleSubmit();
     return () => {
       ac.abort();
-      setNewCamp(null)
+      setNewCamp(null);
     };
   }, []);
 
   const handleSubmit = async create => {
     resetError();
     setIsLoading(true);
-    try {
-      setIsLoading(true);
-      await createCamp(create);
-      setNewCamp(true);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-      setNewCamp(false);
+    if (create) {
+      try {
+        setIsLoading(true);
+        await createCamp(create);
+        setNewCamp(true);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+        setNewCamp(false);
+      }
     }
   };
 

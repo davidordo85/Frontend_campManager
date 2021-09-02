@@ -34,6 +34,16 @@ const FilterCamps = ({ onSubmit, index, ...props }) => {
     onSubmit(filterData);
   };
 
+  const handleReset = event => {
+    setFilterCamp({
+      name: '',
+      from: today,
+      to: '',
+      location: '',
+      activities: [],
+    });
+  };
+
   const handleFilterByName = event => {
     const newFilterCamp = {
       ...filterCamp,
@@ -149,13 +159,18 @@ const FilterCamps = ({ onSubmit, index, ...props }) => {
 
       <Row className="filterForm-Row">
         <Form.Group className="filterForm-submitWrapper">
-          <Button
-            type="submit"
-            className="filterForm-submit"
-            variant="outline-dark"
-          >
-            Filtrar
-          </Button>
+          <div className="filterForm-submit">
+            <Button type="submit" variant="outline-dark">
+              Filtrar
+            </Button>
+            <Button
+              variant="outline-dark"
+              className="reset"
+              onClick={handleReset}
+            >
+              Reset
+            </Button>
+          </div>
         </Form.Group>
       </Row>
     </Form>

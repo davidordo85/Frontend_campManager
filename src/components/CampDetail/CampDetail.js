@@ -1,7 +1,12 @@
 import React from 'react';
 import Layout from '../layout/layout';
-import { Link } from 'react-router-dom';
-import { getCampDetail, subscribe, unSubscribe } from '../../api/camps';
+import { Link, Redirect } from 'react-router-dom';
+import {
+  deletedCamp,
+  getCampDetail,
+  subscribe,
+  unSubscribe,
+} from '../../api/camps';
 import Loader from '../Loader/Loader';
 import pending from '../../assets/images/pending.svg';
 import accepted from '../../assets/images/accepted.svg';
@@ -11,7 +16,7 @@ import Button from 'react-bootstrap/Button';
 
 import './CampDetail.css';
 
-const CampDetail = ({ history, isLogged, _id, ...props }) => {
+const CampDetail = ({ history, islogged, _id, ...props }) => {
   const [camp, setCamp] = React.useState({
     activities: ['await'],
     createdAt: '2021-07-28T00:18:07.898Z',
@@ -42,7 +47,6 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
     }
   };
 
-
   const handleSubmit = async () => {
     try {
       await subscribe(paramsId);
@@ -65,6 +69,20 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
     }
   };
 
+  const handleDeleted = async () => {
+    if (window.confirm('sure you want to delete this camp?')) {
+      alert('thanks for confirm');
+      try {
+        await deletedCamp(paramsId);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+        window.location.reload();
+      }
+    }
+  };
+
   const confirmed = props.confirmed;
   const requested = props.requested;
   const reject = props.reject;
@@ -77,7 +95,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
   const createdAt = camp.createdAt.split('T');
 
   return (
-    <Layout isLogged={isLogged} {...props}>
+    <Layout islogged={islogged} {...props}>
       <div className="detail">
         <Loader hidden={!loading} />
         <Card className="card-exterior">
@@ -93,7 +111,7 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
                 <Card.Text>Direction: {camp.address}</Card.Text>
                 <Card.Text>Location: {camp.location}</Card.Text>
                 <Card.Text>Edition: {camp.edition}</Card.Text>
-                {!isLogged ? null : role === 'admin' ? null : compare(
+                {!islogged ? null : role === 'admin' ? null : compare(
                     confirmed,
                     paramsId,
                   ) ? (
@@ -163,17 +181,31 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
               </Card.Body>
             </Card>
           </CardColumns>
-          {error && (
-            <Alert
-              variant="danger"
-              onClick={resetError}
-              className="loginPage-error"
-            >
-              {error.message}
-            </Alert>
+          {error && error.status === 404 ? (
+            <Redirect to="/404" />
+          ) : (
+            error && (
+              <Alert
+                variant="danger"
+                onClick={resetError}
+                className="loginPage-error"
+              >
+                {error.message}
+              </Alert>
+            )
           )}
         </Card>
-        {!isLogged ? null : role === 'admin' ? null : compare(
+        {!islogged ? (
+          <Link to="/login" className="sign-up">
+            login to join the camp{' '}
+          </Link>
+        ) : role === 'admin' ? null : compare(
+            reject,
+            paramsId,
+          ) ? null : role === 'guest' &&
+          camp.confirmedHelpers.length >=
+            camp.confirmedGuests.length ? null : role === 'helper' &&
+          camp.confirmedHelpers.length >= camp.capacity ? null : compare(
             confirmed,
             paramsId,
           ) ? (
@@ -204,16 +236,26 @@ const CampDetail = ({ history, isLogged, _id, ...props }) => {
             Sign up
           </Button>
         )}
-        {!isLogged ? null : role === 'admin' ? (
-          <Button
-            as={Link}
-            to={`/campModify/${paramsId}`}
-            variant="outline-dark"
-            className="sign-up"
-          >
-            {' '}
-            Edit camp
-          </Button>
+        {!islogged ? null : role === 'admin' ? (
+          <div>
+            <Button
+              className="sign-up"
+              type="submit"
+              onClick={handleDeleted}
+              variant="outline-danger"
+            >
+              Delete camp
+            </Button>
+            <Button
+              as={Link}
+              to={`/campModify/${paramsId}`}
+              variant="outline-dark"
+              className="sign-up"
+            >
+              {' '}
+              Edit camp
+            </Button>
+          </div>
         ) : null}
       </div>
     </Layout>

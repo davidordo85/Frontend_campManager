@@ -57,3 +57,8 @@ export const unSubscribe = data => {
   const url = `${campsBaseUrl}/${data}/unsubscribe`;
   return client.put(url);
 };
+
+export const deletedCamp = id => {
+  const url = `${campsBaseUrl}/${id}`;
+  return client.delete(url);
+};

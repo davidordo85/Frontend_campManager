@@ -1,11 +1,11 @@
 import { Redirect, Route } from 'react-router-dom';
 import storage from '../../../utils/storage';
 
-const PrivateRouteAdmin = ({ isLogged, ...props }) => {
+const PrivateRouteAdmin = ({ islogged, ...props }) => {
   const role = storage.get('role');
   const admin = role === 'admin';
   const routeProps =
-    admin && isLogged
+    admin && islogged
       ? props
       : {
           children: ({ location }) => (
